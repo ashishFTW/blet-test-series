@@ -1,0 +1,3186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET Computer Awareness Test Series</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f3f6fc;color:#18243b}
+header{background:linear-gradient(120deg,#101e46,#2456a6);color:white;padding:28px 6%;text-align:center}
+header h1{font-size:28px;margin-bottom:9px}
+header p{color:#dce7ff;font-size:14px}
+.container{max-width:1100px;margin:28px auto;padding:0 18px}
+.hero{background:white;padding:25px;border-radius:15px;box-shadow:0 4px 18px #172b4d12;margin-bottom:22px}
+.hero h2{color:#173c7a;margin-bottom:10px}
+.hero p{line-height:1.7;color:#596579}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.stat{background:#edf3ff;padding:17px;border-radius:12px;text-align:center}
+.stat strong{display:block;font-size:25px;color:#2456a6}
+.stat span{font-size:13px;color:#667085}
+.section-title{margin:25px 0 15px;font-size:21px}
+.set-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.set-card{background:white;border:1px solid #e1e7f0;border-radius:13px;padding:18px;text-align:left;cursor:pointer;transition:.2s}
+.set-card:hover{transform:translateY(-3px);box-shadow:0 7px 20px #172b4d18;border-color:#3975d7}
+.set-card h3{color:#214f9b;margin-bottom:7px}
+.set-card p{font-size:12px;color:#718096}
+.set-card button,.primary{border:0;background:#2456a6;color:white;padding:11px 18px;border-radius:8px;cursor:pointer;font-weight:bold;margin-top:13px}
+.set-card button:hover,.primary:hover{background:#173d80}
+#testArea,#resultArea{display:none}
+.test-top{background:white;border-radius:13px;padding:18px;margin-bottom:15px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.timer{background:#fff0e9;color:#c64c21;padding:10px 15px;border-radius:9px;font-weight:bold}
+.progress{height:7px;background:#e5eaf2;border-radius:20px;margin-top:13px;overflow:hidden}
+.progress-bar{height:100%;background:#2672cf;width:0%}
+.test-layout{display:grid;grid-template-columns:1fr 250px;gap:17px}
+.question-box,.palette-box,.result-box{background:white;border-radius:13px;padding:22px;box-shadow:0 3px 14px #172b4d0b}
+.q-number{color:#2456a6;font-weight:bold;margin-bottom:15px}
+.question{font-size:18px;font-weight:bold;line-height:1.6;margin-bottom:9px}
+.hindi{font-size:17px;color:#39465d;line-height:1.6;margin-bottom:20px}
+.option{display:flex;gap:11px;align-items:flex-start;padding:13px;border:1px solid #e0e6ef;border-radius:9px;margin:10px 0;cursor:pointer;line-height:1.5}
+.option:hover{background:#f2f6ff;border-color:#7ba4e5}
+.option.selected{background:#eaf2ff;border-color:#2867bd}
+.option input{margin-top:4px}
+.option small{display:block;color:#526078;font-size:14px;margin-top:3px}
+.nav-buttons{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.secondary{border:1px solid #2456a6;color:#2456a6;background:white;padding:11px 18px;border-radius:8px;cursor:pointer;font-weight:bold}
+.palette-box h3{margin-bottom:12px}
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.palette button{padding:9px 3px;border:1px solid #dce3ed;background:white;border-radius:7px;cursor:pointer}
+.palette button.current{background:#2456a6;color:white}
+.palette button.answered{background:#d8f5e5;border-color:#56b77c;color:#176b3b}
+.legend{font-size:12px;color:#64748b;line-height:2;margin-top:15px}
+.result-box{text-align:center;padding:30px}
+.score{font-size:48px;color:#2456a6;font-weight:bold;margin:15px}
+.result-details{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+.result-details div{background:#f0f4fb;padding:15px;border-radius:10px}
+.result-details strong{display:block;font-size:23px}
+.review-item{text-align:left;border-top:1px solid #e5eaf2;padding:17px 0;line-height:1.7}
+.correct{color:#16834b;font-weight:bold}
+.wrong{color:#c43e3e;font-weight:bold}
+footer{text-align:center;padding:25px;color:#788397;font-size:13px}
+@media(max-width:750px){
+ .set-grid{grid-template-columns:repeat(2,1fr)}
+ .test-layout{grid-template-columns:1fr}
+ .stats{grid-template-columns:1fr}
+ .palette{grid-template-columns:repeat(5,1fr)}
+}
+@media(max-width:420px){
+ .set-grid{grid-template-columns:1fr 1fr}
+ header h1{font-size:22px}
+ .question-box{padding:15px}
+}
+.portal-header {
+    background: linear-gradient(135deg, #173b75, #2456a4);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    border-radius: 0 0 12px 12px;
+}
+
+.portal-header h1 {
+    display: inline-block;
+    background: #073cae;
+    color: white;
+    font-size: 27px;
+    font-weight: 800;
+    padding: 3px 12px;
+    margin: 0 0 10px;
+}
+
+.portal-header h2 {
+    font-size: 19px;
+    margin: 5px 0;
+}
+
+.portal-header p {
+    font-size: 15px;
+    margin: 4px 0;
+}
+
+.portal-header .hindi-text {
+    font-size: 16px;
+}
+
+@media (max-width: 600px) {
+    .portal-header h1 {
+        font-size: 20px;
+    }
+
+    .portal-header h2 {
+        font-size: 16px;
+    }
+
+    .portal-header p {
+        font-size: 13px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+<header class="portal-header">
+    <h1>BIHAR LIBRARY ELIGIBILITY TEST</h1>
+    <h2>Special Test Series for Jahnavi Jee</h2>
+    <p>Online Test Series</p>
+    <p class="hindi-text">
+        बिहार पुस्तकालय पात्रता परीक्षा – जाह्नवी जी के लिए विशेष अभ्यास पोर्टल
+    </p>
+</header>
+
+<main class="container">
+
+<section id="homeArea">
+ <div class="hero">
+  <h2>Welcome to Your BLET Test Series</h2>
+  <p>Prepare for your examination with topic-wise computer awareness practice tests. Each test contains 20 multiple-choice questions in English and Hindi.</p>
+  <p>अपनी परीक्षा की तैयारी विषयवार ऑनलाइन टेस्ट के माध्यम से करें। प्रत्येक टेस्ट में हिंदी और अंग्रेजी में 20 बहुविकल्पीय प्रश्न हैं।</p>
+
+  <div class="stats">
+   <div class="stat"><strong>20</strong><span>Total Test Sets</span></div>
+   <div class="stat"><strong>400</strong><span>Total Questions</span></div>
+   <div class="stat"><strong>20 Min</strong><span>Time per Test</span></div>
+  </div>
+ </div>
+
+ <h2 class="section-title">Available Test Sets / टेस्ट सीरीज</h2>
+ <div class="set-grid" id="setGrid"></div>
+</section>
+
+<section id="testArea">
+ <div class="test-top">
+  <div>
+   <h2 id="testTitle">Test Set 01</h2>
+   <p id="questionCount">Question 1 of 20</p>
+  </div>
+  <div class="timer" id="timer">Time Left: 20:00</div>
+ </div>
+
+ <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+ <div class="test-layout" style="margin-top:16px">
+  <div class="question-box">
+   <div class="q-number" id="qNumber"></div>
+   <div class="question" id="questionEn"></div>
+   <div class="hindi" id="questionHi"></div>
+   <div id="optionsArea"></div>
+
+   <div class="nav-buttons">
+    <button class="secondary" onclick="previousQuestion()">← Previous</button>
+    <button class="primary" onclick="nextQuestion()">Next →</button>
+   </div>
+   <button class="primary" style="width:100%;background:#16834b" onclick="submitTest()">Submit Test / टेस्ट जमा करें</button>
+  </div>
+
+  <aside class="palette-box">
+   <h3>Question Palette</h3>
+   <div class="palette" id="palette"></div>
+   <div class="legend">
+    <p>🟦 Current Question</p>
+    <p>🟩 Answered</p>
+    <p>⬜ Not Answered</p>
+   </div>
+   <p style="margin-top:15px;font-size:13px;color:#64748b">Select any question number to navigate directly.</p>
+  </aside>
+ </div>
+</section>
+
+<section id="resultArea">
+ <div class="result-box">
+  <h2>Test Completed!</h2>
+  <p>आपका टेस्ट पूरा हो गया है।</p>
+  <div class="score" id="scoreText">0/20</div>
+  <p id="percentageText"></p>
+
+  <div class="result-details">
+   <div><strong id="correctCount" class="correct">0</strong><span>Correct</span></div>
+   <div><strong id="wrongCount" class="wrong">0</strong><span>Incorrect</span></div>
+   <div><strong id="unattemptedCount">0</strong><span>Unattempted</span></div>
+  </div>
+
+  <button class="primary" onclick="showReview()">View Answers & Explanations</button>
+  <button class="secondary" onclick="goHome()">Back to Home</button>
+ </div>
+ <div class="question-box" id="reviewArea" style="margin-top:18px;display:none">
+  <h2>Answer Key & Explanations</h2>
+  <div id="reviewContent"></div>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ BLET Computer Awareness Test Series | Practice • Learn • Improve
+</footer>
+
+<script>
+// Add the remaining test sets in the next parts.
+const syllabus = [
+ "Computer Fundamentals",
+ "Generations & Types of Computers",
+ "CPU, ALU & Motherboard",
+ "Input & Output Devices",
+ "Computer Software",
+ "Operating Systems",
+ "Computer Memory & Storage",
+ "MS Word",
+ "MS Excel",
+ "MS PowerPoint",
+ "Internet & WWW",
+ "Email & Web Browsing",
+ "Computer Networks",
+ "Database & DBMS",
+ "Cyber Security",
+ "Computer Number System",
+ "Computer Abbreviations",
+ "Digital Technology",
+ "Mixed Practice Test 1",
+ "Mixed Practice Test 2"
+];
+
+// Question format:
+// en = English question, hi = Hindi question
+// options = [ [English option, Hindi option], ... ]
+// answer = correct option index (0 to 3)
+
+const questionSets = {
+ 1: [
+  {
+   en:"Who is known as the Father of the Computer?",
+   hi:"कंप्यूटर का जनक किसे कहा जाता है?",
+   options:[
+    ["Charles Babbage","चार्ल्स बैबेज"],
+    ["Alan Turing","एलन ट्यूरिंग"],
+    ["Bill Gates","बिल गेट्स"],
+    ["John von Neumann","जॉन वॉन न्यूमैन"]
+   ],
+   answer:0,
+   explanation:"Charles Babbage designed the Analytical Engine and is known as the Father of the Computer. / चार्ल्स बैबेज ने एनालिटिकल इंजन की रूपरेखा तैयार की थी।"
+  },
+  {
+   en:"What is the full form of CPU?",
+   hi:"CPU का पूरा नाम क्या है?",
+   options:[
+    ["Central Processing Unit","सेंट्रल प्रोसेसिंग यूनिट"],
+    ["Computer Processing Utility","कंप्यूटर प्रोसेसिंग यूटिलिटी"],
+    ["Central Program Unit","सेंट्रल प्रोग्राम यूनिट"],
+    ["Control Processing User","कंट्रोल प्रोसेसिंग यूजर"]
+   ],
+   answer:0,
+   explanation:"CPU stands for Central Processing Unit. / CPU का अर्थ सेंट्रल प्रोसेसिंग यूनिट है।"
+  },
+  {
+   en:"Which part is called the brain of a computer?",
+   hi:"कंप्यूटर का मस्तिष्क किस भाग को कहा जाता है?",
+   options:[
+    ["Monitor","मॉनिटर"],
+    ["CPU","सीपीयू"],
+    ["Keyboard","कीबोर्ड"],
+    ["Mouse","माउस"]
+   ],
+   answer:1,
+   explanation:"CPU controls and processes instructions, so it is called the brain of the computer. / CPU निर्देशों को नियंत्रित और प्रोसेस करता है।"
+  },
+  {
+   en:"Which of the following is an input device?",
+   hi:"निम्नलिखित में से कौन-सा इनपुट डिवाइस है?",
+   options:[
+    ["Monitor","मॉनिटर"],
+    ["Printer","प्रिंटर"],
+    ["Keyboard","कीबोर्ड"],
+    ["Speaker","स्पीकर"]
+   ],
+   answer:2,
+   explanation:"A keyboard is used to enter data into a computer. / कीबोर्ड का उपयोग कंप्यूटर में डेटा डालने के लिए किया जाता है।"
+  },
+  {
+   en:"Which of the following is an output device?",
+   hi:"निम्नलिखित में से कौन-सा आउटपुट डिवाइस है?",
+   options:[
+    ["Mouse","माउस"],
+    ["Scanner","स्कैनर"],
+    ["Keyboard","कीबोर्ड"],
+    ["Monitor","मॉनिटर"]
+   ],
+   answer:3,
+   explanation:"A monitor displays processed information. / मॉनिटर प्रोसेस की गई जानकारी दिखाता है।"
+  },
+  {
+   en:"Which type of memory is volatile?",
+   hi:"किस प्रकार की मेमोरी अस्थायी (Volatile) होती है?",
+   options:[
+    ["ROM","रोम"],
+    ["RAM","रैम"],
+    ["DVD","डीवीडी"],
+    ["Hard Disk","हार्ड डिस्क"]
+   ],
+   answer:1,
+   explanation:"RAM loses its stored data when power is switched off. / बिजली बंद होने पर RAM का डेटा मिट जाता है।"
+  },
+  {
+   en:"What is the smallest unit of data in a computer?",
+   hi:"कंप्यूटर में डेटा की सबसे छोटी इकाई क्या है?",
+   options:[
+    ["Byte","बाइट"],
+    ["Bit","बिट"],
+    ["KB","केबी"],
+    ["MB","एमबी"]
+   ],
+   answer:1,
+   explanation:"A bit is the smallest unit of digital data. / बिट डिजिटल डेटा की सबसे छोटी इकाई है।"
+  },
+  {
+   en:"How many bits are there in one byte?",
+   hi:"एक बाइट में कितने बिट होते हैं?",
+   options:[
+    ["4 bits","4 बिट"],
+    ["8 bits","8 बिट"],
+    ["16 bits","16 बिट"],
+    ["32 bits","32 बिट"]
+   ],
+   answer:1,
+   explanation:"One byte contains 8 bits. / एक बाइट में 8 बिट होते हैं।"
+  },
+  {
+   en:"Which software manages computer hardware and software resources?",
+   hi:"कौन-सा सॉफ्टवेयर कंप्यूटर के हार्डवेयर और सॉफ्टवेयर संसाधनों को मैनेज करता है?",
+   options:[
+    ["Operating System","ऑपरेटिंग सिस्टम"],
+    ["MS Word","एमएस वर्ड"],
+    ["Paint","पेंट"],
+    ["Calculator","कैलकुलेटर"]
+   ],
+   answer:0,
+   explanation:"An operating system manages hardware, software and system resources. / ऑपरेटिंग सिस्टम कंप्यूटर के संसाधनों का प्रबंधन करता है।"
+  },
+  {
+   en:"Which of the following is an example of an operating system?",
+   hi:"निम्नलिखित में से कौन ऑपरेटिंग सिस्टम का उदाहरण है?",
+   options:[
+    ["MS Excel","एमएस एक्सेल"],
+    ["Windows","विंडोज"],
+    ["Google Chrome","गूगल क्रोम"],
+    ["MS PowerPoint","एमएस पावरपॉइंट"]
+   ],
+   answer:1,
+   explanation:"Windows is an operating system. / विंडोज एक ऑपरेटिंग सिस्टम है।"
+  },
+  {
+   en:"Which device is used to print documents on paper?",
+   hi:"कागज पर दस्तावेज प्रिंट करने के लिए किस डिवाइस का उपयोग किया जाता है?",
+   options:[
+    ["Scanner","स्कैनर"],
+    ["Monitor","मॉनिटर"],
+    ["Printer","प्रिंटर"],
+    ["Microphone","माइक्रोफोन"]
+   ],
+   answer:2,
+   explanation:"A printer produces a hard copy on paper. / प्रिंटर कागज पर हार्ड कॉपी तैयार करता है।"
+  },
+  {
+   en:"Which of these is an example of application software?",
+   hi:"इनमें से कौन एप्लीकेशन सॉफ्टवेयर का उदाहरण है?",
+   options:[
+    ["Linux","लिनक्स"],
+    ["Windows","विंडोज"],
+    ["MS Word","एमएस वर्ड"],
+    ["BIOS","बायोस"]
+   ],
+   answer:2,
+   explanation:"MS Word is application software used for word processing. / MS Word का उपयोग दस्तावेज बनाने के लिए होता है।"
+  },
+  {
+   en:"What is the full form of WWW?",
+   hi:"WWW का पूरा नाम क्या है?",
+   options:[
+    ["World Wide Web","वर्ल्ड वाइड वेब"],
+    ["World Web Window","वर्ल्ड वेब विंडो"],
+    ["Wide World Website","वाइड वर्ल्ड वेबसाइट"],
+    ["Web World Work","वेब वर्ल्ड वर्क"]
+   ],
+   answer:0,
+   explanation:"WWW stands for World Wide Web. / WWW का अर्थ वर्ल्ड वाइड वेब है।"
+  },
+  {
+   en:"Which of the following is a web browser?",
+   hi:"निम्नलिखित में से कौन वेब ब्राउज़र है?",
+   options:[
+    ["MS Excel","एमएस एक्सेल"],
+    ["Google Chrome","गूगल क्रोम"],
+    ["Windows","विंडोज"],
+    ["Linux","लिनक्स"]
+   ],
+   answer:1,
+   explanation:"Google Chrome is a web browser used to access websites. / गूगल क्रोम वेबसाइट खोलने के लिए उपयोग किया जाता है।"
+  },
+  {
+   en:"What does URL stand for?",
+   hi:"URL का पूरा नाम क्या है?",
+   options:[
+    ["Uniform Resource Locator","यूनिफॉर्म रिसोर्स लोकेटर"],
+    ["Universal Record Link","यूनिवर्सल रिकॉर्ड लिंक"],
+    ["Uniform Read Line","यूनिफॉर्म रीड लाइन"],
+    ["User Resource Location","यूजर रिसोर्स लोकेशन"]
+   ],
+   answer:0,
+   explanation:"URL stands for Uniform Resource Locator. / URL किसी वेब संसाधन का पता होता है।"
+  },
+  {
+   en:"Which device connects different networks and forwards data between them?",
+   hi:"कौन-सा डिवाइस अलग-अलग नेटवर्क को जोड़ता है और उनके बीच डेटा भेजता है?",
+   options:[
+    ["Keyboard","कीबोर्ड"],
+    ["Router","राउटर"],
+    ["Printer","प्रिंटर"],
+    ["Scanner","स्कैनर"]
+   ],
+   answer:1,
+   explanation:"A router forwards data packets between networks. / राउटर विभिन्न नेटवर्कों के बीच डेटा भेजता है।"
+  },
+  {
+   en:"Which network covers a small geographical area such as an office?",
+   hi:"कौन-सा नेटवर्क ऑफिस जैसे छोटे भौगोलिक क्षेत्र को कवर करता है?",
+   options:[
+    ["WAN","डब्ल्यूएएन"],
+    ["MAN","एमएएन"],
+    ["LAN","लैन"],
+    ["PAN","पैन"]
+   ],
+   answer:2,
+   explanation:"LAN stands for Local Area Network. / LAN छोटे क्षेत्र में कंप्यूटरों को जोड़ता है।"
+  },
+  {
+   en:"Which software is commonly used to create spreadsheets?",
+   hi:"स्प्रेडशीट बनाने के लिए सामान्यतः किस सॉफ्टवेयर का उपयोग किया जाता है?",
+   options:[
+    ["MS Word","एमएस वर्ड"],
+    ["MS Excel","एमएस एक्सेल"],
+    ["MS Paint","एमएस पेंट"],
+    ["Notepad","नोटपैड"]
+   ],
+   answer:1,
+   explanation:"MS Excel is spreadsheet software. / MS Excel स्प्रेडशीट बनाने के लिए उपयोग होता है।"
+  },
+  {
+   en:"What is the main function of antivirus software?",
+   hi:"एंटीवायरस सॉफ्टवेयर का मुख्य कार्य क्या है?",
+   options:[
+    ["Create presentations","प्रेजेंटेशन बनाना"],
+    ["Browse websites","वेबसाइट खोलना"],
+    ["Detect and remove malware","मैलवेयर का पता लगाना और हटाना"],
+    ["Print documents","दस्तावेज प्रिंट करना"]
+   ],
+   answer:2,
+   explanation:"Antivirus software helps detect, prevent and remove malicious software. / एंटीवायरस हानिकारक सॉफ्टवेयर से सुरक्षा देता है।"
+  },
+  {
+   en:"Which of the following is used to send electronic messages over the Internet?",
+   hi:"इंटरनेट के माध्यम से इलेक्ट्रॉनिक संदेश भेजने के लिए किसका उपयोग किया जाता है?",
+   options:[
+    ["Email","ईमेल"],
+    ["Scanner","स्कैनर"],
+    ["Printer","प्रिंटर"],
+    ["Joystick","जॉयस्टिक"]
+   ],
+   answer:0,
+   explanation:"Email is used to send and receive electronic messages. / ईमेल से इलेक्ट्रॉनिक संदेश भेजे और प्राप्त किए जाते हैं।"
+  }
+ ],
+
+  2: [
+   {
+    en:"Which generation of computers used vacuum tubes?",
+    hi:"कंप्यूटर की किस पीढ़ी में वैक्यूम ट्यूब का उपयोग किया जाता था?",
+    options:[["First Generation","पहली पीढ़ी"],["Second Generation","दूसरी पीढ़ी"],["Third Generation","तीसरी पीढ़ी"],["Fourth Generation","चौथी पीढ़ी"]],
+    answer:0,explanation:"First-generation computers used vacuum tubes. / पहली पीढ़ी के कंप्यूटरों में वैक्यूम ट्यूब का उपयोग होता था।"
+   },
+   {
+    en:"Which technology was used in second-generation computers?",
+    hi:"दूसरी पीढ़ी के कंप्यूटरों में किस तकनीक का उपयोग हुआ?",
+    options:[["Vacuum Tubes","वैक्यूम ट्यूब"],["Transistors","ट्रांजिस्टर"],["ICs","इंटीग्रेटेड सर्किट"],["Microprocessors","माइक्रोप्रोसेसर"]],
+    answer:1,explanation:"Second-generation computers used transistors. / दूसरी पीढ़ी में ट्रांजिस्टर का उपयोग हुआ।"
+   },
+   {
+    en:"Which generation introduced Integrated Circuits (ICs)?",
+    hi:"इंटीग्रेटेड सर्किट (IC) किस पीढ़ी में शुरू हुए?",
+    options:[["First","पहली"],["Second","दूसरी"],["Third","तीसरी"],["Fourth","चौथी"]],
+    answer:2,explanation:"Third-generation computers used ICs. / तीसरी पीढ़ी में IC का उपयोग हुआ।"
+   },
+   {
+    en:"Which generation of computers uses microprocessors?",
+    hi:"किस पीढ़ी के कंप्यूटर में माइक्रोप्रोसेसर का उपयोग होता है?",
+    options:[["First","पहली"],["Second","दूसरी"],["Third","तीसरी"],["Fourth","चौथी"]],
+    answer:3,explanation:"Fourth-generation computers are based on microprocessors. / चौथी पीढ़ी माइक्रोप्रोसेसर पर आधारित है।"
+   },
+   {
+    en:"Which generation is associated with Artificial Intelligence?",
+    hi:"आर्टिफिशियल इंटेलिजेंस किस पीढ़ी से संबंधित है?",
+    options:[["First","पहली"],["Second","दूसरी"],["Fourth","चौथी"],["Fifth","पाँचवीं"]],
+    answer:3,explanation:"Fifth-generation computing is associated with AI and advanced processing. / पाँचवीं पीढ़ी AI और उन्नत प्रोसेसिंग से जुड़ी है।"
+   },
+   {
+    en:"Which type of computer works with continuous data?",
+    hi:"कौन-सा कंप्यूटर निरंतर डेटा पर कार्य करता है?",
+    options:[["Digital Computer","डिजिटल कंप्यूटर"],["Analog Computer","एनालॉग कंप्यूटर"],["Hybrid Computer","हाइब्रिड कंप्यूटर"],["Microcomputer","माइक्रो कंप्यूटर"]],
+    answer:1,explanation:"Analog computers process continuous data. / एनालॉग कंप्यूटर निरंतर डेटा पर काम करते हैं।"
+   },
+   {
+    en:"Which type of computer processes data in binary form?",
+    hi:"कौन-सा कंप्यूटर बाइनरी रूप में डेटा प्रोसेस करता है?",
+    options:[["Analog","एनालॉग"],["Digital","डिजिटल"],["Mechanical","मैकेनिकल"],["Hybrid","हाइब्रिड"]],
+    answer:1,explanation:"Digital computers process data using discrete binary values. / डिजिटल कंप्यूटर बाइनरी डेटा पर काम करते हैं।"
+   },
+   {
+    en:"A computer that combines analog and digital features is called:",
+    hi:"एनालॉग और डिजिटल दोनों विशेषताओं वाले कंप्यूटर को क्या कहते हैं?",
+    options:[["Hybrid Computer","हाइब्रिड कंप्यूटर"],["Mainframe","मेनफ्रेम"],["Supercomputer","सुपर कंप्यूटर"],["Microcomputer","माइक्रो कंप्यूटर"]],
+    answer:0,explanation:"A hybrid computer combines analog and digital processing. / हाइब्रिड कंप्यूटर दोनों प्रकार की विशेषताओं को जोड़ता है।"
+   },
+   {
+    en:"Which is the most powerful type of computer?",
+    hi:"सबसे शक्तिशाली प्रकार का कंप्यूटर कौन-सा है?",
+    options:[["Microcomputer","माइक्रो कंप्यूटर"],["Minicomputer","मिनी कंप्यूटर"],["Supercomputer","सुपर कंप्यूटर"],["Laptop","लैपटॉप"]],
+    answer:2,explanation:"Supercomputers perform extremely complex calculations at very high speeds. / सुपर कंप्यूटर बहुत तेज गति से जटिल गणनाएँ करते हैं।"
+   },
+   {
+    en:"Which computer is commonly used for large-scale banking transactions?",
+    hi:"बड़े स्तर के बैंकिंग लेन-देन में सामान्यतः किस कंप्यूटर का उपयोग होता है?",
+    options:[["Mainframe Computer","मेनफ्रेम कंप्यूटर"],["Tablet","टैबलेट"],["Personal Computer","पर्सनल कंप्यूटर"],["Calculator","कैलकुलेटर"]],
+    answer:0,explanation:"Mainframe computers handle large volumes of transactions and users. / मेनफ्रेम कंप्यूटर बड़ी मात्रा में लेन-देन संभालते हैं।"
+   },
+   {
+    en:"Which of the following is a microcomputer?",
+    hi:"निम्नलिखित में से कौन माइक्रो कंप्यूटर है?",
+    options:[["Supercomputer","सुपर कंप्यूटर"],["Desktop Computer","डेस्कटॉप कंप्यूटर"],["Mainframe","मेनफ्रेम"],["Minicomputer","मिनी कंप्यूटर"]],
+    answer:1,explanation:"A desktop computer is a type of microcomputer. / डेस्कटॉप माइक्रो कंप्यूटर का उदाहरण है।"
+   },
+   {
+    en:"Who invented the Analytical Engine?",
+    hi:"एनालिटिकल इंजन का डिजाइन किसने बनाया था?",
+    options:[["Charles Babbage","चार्ल्स बैबेज"],["John Napier","जॉन नेपियर"],["Blaise Pascal","ब्लेज पास्कल"],["Alan Turing","एलन ट्यूरिंग"]],
+    answer:0,explanation:"Charles Babbage designed the Analytical Engine. / एनालिटिकल इंजन का डिजाइन चार्ल्स बैबेज ने बनाया था।"
+   },
+   {
+    en:"Which was an early electronic general-purpose computer?",
+    hi:"प्रारंभिक इलेक्ट्रॉनिक सामान्य-उद्देश्य कंप्यूटर कौन-सा था?",
+    options:[["ENIAC","एनिएक"],["UNIVAC","यूनिवैक"],["IBM PC","आईबीएम पीसी"],["PARAM","परम"]],
+    answer:0,explanation:"ENIAC was an early electronic general-purpose computer. / ENIAC शुरुआती इलेक्ट्रॉनिक सामान्य-उद्देश्य कंप्यूटर था।"
+   },
+   {
+    en:"Which computer is designed to perform one specific task within a larger device?",
+    hi:"किसी बड़े उपकरण में एक विशेष कार्य करने के लिए कौन-सा कंप्यूटर बनाया जाता है?",
+    options:[["Embedded Computer","एम्बेडेड कंप्यूटर"],["Supercomputer","सुपर कंप्यूटर"],["Mainframe","मेनफ्रेम"],["Desktop","डेस्कटॉप"]],
+    answer:0,explanation:"Embedded computers are designed for dedicated functions. / एम्बेडेड कंप्यूटर विशेष कार्यों के लिए बनाए जाते हैं।"
+   },
+   {
+    en:"Which of the following is a portable computer?",
+    hi:"निम्नलिखित में से कौन पोर्टेबल कंप्यूटर है?",
+    options:[["Laptop","लैपटॉप"],["Mainframe","मेनफ्रेम"],["Supercomputer","सुपर कंप्यूटर"],["Server Rack","सर्वर रैक"]],
+    answer:0,explanation:"A laptop is portable and can be carried easily. / लैपटॉप को आसानी से एक स्थान से दूसरे स्थान ले जाया जा सकता है।"
+   },
+   {
+    en:"Which generation was generally smaller and more reliable than the first generation?",
+    hi:"कौन-सी पीढ़ी पहली पीढ़ी की तुलना में सामान्यतः छोटी और अधिक विश्वसनीय थी?",
+    options:[["Second Generation","दूसरी पीढ़ी"],["First Generation","पहली पीढ़ी"],["Fifth Generation","पाँचवीं पीढ़ी"],["None","कोई नहीं"]],
+    answer:0,explanation:"Transistors made second-generation computers smaller and more reliable than vacuum-tube machines. / ट्रांजिस्टर के कारण दूसरी पीढ़ी के कंप्यूटर छोटे और अधिक विश्वसनीय हुए।"
+   },
+   {
+    en:"Which technology replaced transistors in third-generation computers?",
+    hi:"तीसरी पीढ़ी के कंप्यूटरों में ट्रांजिस्टर की जगह किस तकनीक ने ली?",
+    options:[["Vacuum Tubes","वैक्यूम ट्यूब"],["Integrated Circuits","इंटीग्रेटेड सर्किट"],["Microprocessors","माइक्रोप्रोसेसर"],["Artificial Intelligence","आर्टिफिशियल इंटेलिजेंस"]],
+    answer:1,explanation:"Integrated circuits replaced individual transistors in third-generation computers. / तीसरी पीढ़ी में IC ने अलग-अलग ट्रांजिस्टरों की जगह ली।"
+   },
+   {
+    en:"Which of these is an example of a supercomputer developed in India?",
+    hi:"भारत में विकसित सुपर कंप्यूटर का उदाहरण कौन-सा है?",
+    options:[["PARAM","परम"],["ENIAC","एनिएक"],["UNIVAC","यूनिवैक"],["EDVAC","एडवैक"]],
+    answer:0,explanation:"PARAM is a series of Indian supercomputers developed by C-DAC. / PARAM भारत में C-DAC द्वारा विकसित सुपर कंप्यूटरों की श्रृंखला है।"
+   },
+   {
+    en:"Which type of computer is best suited for weather forecasting?",
+    hi:"मौसम का पूर्वानुमान लगाने के लिए कौन-सा कंप्यूटर सबसे उपयुक्त है?",
+    options:[["Supercomputer","सुपर कंप्यूटर"],["Calculator","कैलकुलेटर"],["Desktop","डेस्कटॉप"],["Tablet","टैबलेट"]],
+    answer:0,explanation:"Supercomputers are used for complex weather simulations. / जटिल मौसम गणनाओं के लिए सुपर कंप्यूटर उपयोग किए जाते हैं।"
+   },
+   {
+    en:"What is the main feature of a fifth-generation computer?",
+    hi:"पाँचवीं पीढ़ी के कंप्यूटर की मुख्य विशेषता क्या है?",
+    options:[["Vacuum Tubes","वैक्यूम ट्यूब"],["Transistors","ट्रांजिस्टर"],["Artificial Intelligence","आर्टिफिशियल इंटेलिजेंस"],["Magnetic Drums","मैग्नेटिक ड्रम"]],
+    answer:2,explanation:"Fifth-generation computers are associated with AI and intelligent systems. / पाँचवीं पीढ़ी AI और बुद्धिमान प्रणालियों से संबंधित है।"
+   }
+  ],
+
+  3: [
+   {
+    en:"What is the main function of the CPU?",
+    hi:"CPU का मुख्य कार्य क्या है?",
+    options:[["Processing instructions","निर्देशों को प्रोसेस करना"],["Printing documents","दस्तावेज प्रिंट करना"],["Displaying images","चित्र दिखाना"],["Storing files permanently","फाइलों को स्थायी रूप से रखना"]],
+    answer:0,explanation:"The CPU executes instructions and processes data. / CPU निर्देशों को निष्पादित और डेटा को प्रोसेस करता है।"
+   },
+   {
+    en:"What is the full form of ALU?",
+    hi:"ALU का पूरा नाम क्या है?",
+    options:[["Arithmetic Logic Unit","अर्थमेटिक लॉजिक यूनिट"],["Advanced Logic Utility","एडवांस्ड लॉजिक यूटिलिटी"],["Automatic Link Unit","ऑटोमेटिक लिंक यूनिट"],["Arithmetic Local Unit","अर्थमेटिक लोकल यूनिट"]],
+    answer:0,explanation:"ALU stands for Arithmetic Logic Unit. / ALU का अर्थ अर्थमेटिक लॉजिक यूनिट है।"
+   },
+   {
+    en:"Which unit performs arithmetic calculations and logical comparisons?",
+    hi:"अंकगणितीय गणना और तार्किक तुलना कौन-सी यूनिट करती है?",
+    options:[["Control Unit","कंट्रोल यूनिट"],["ALU","एएलयू"],["RAM","रैम"],["ROM","रोम"]],
+    answer:1,explanation:"ALU performs arithmetic and logical operations. / ALU गणितीय और तार्किक कार्य करती है।"
+   },
+   {
+    en:"What is the full form of CU in a CPU?",
+    hi:"CPU में CU का पूरा नाम क्या है?",
+    options:[["Computer Unit","कंप्यूटर यूनिट"],["Control Unit","कंट्रोल यूनिट"],["Calculation Unit","कैलकुलेशन यूनिट"],["Central Utility","सेंट्रल यूटिलिटी"]],
+    answer:1,explanation:"CU stands for Control Unit. / CU का अर्थ कंट्रोल यूनिट है।"
+   },
+   {
+    en:"Which unit controls and coordinates the operations of a computer?",
+    hi:"कंप्यूटर के कार्यों को नियंत्रित और समन्वित कौन करता है?",
+    options:[["ALU","एएलयू"],["Control Unit","कंट्रोल यूनिट"],["Hard Disk","हार्ड डिस्क"],["Monitor","मॉनिटर"]],
+    answer:1,explanation:"The Control Unit coordinates the activities of computer components. / कंट्रोल यूनिट कंप्यूटर के विभिन्न भागों के कार्यों का समन्वय करती है।"
+   },
+   {
+    en:"Which component connects the major parts of a computer?",
+    hi:"कंप्यूटर के मुख्य भागों को कौन-सा घटक आपस में जोड़ता है?",
+    options:[["Motherboard","मदरबोर्ड"],["Mouse","माउस"],["Speaker","स्पीकर"],["Printer","प्रिंटर"]],
+    answer:0,explanation:"The motherboard connects and allows communication among major components. / मदरबोर्ड मुख्य कंपोनेंट्स को जोड़ता है।"
+   },
+   {
+    en:"Where is the CPU installed?",
+    hi:"CPU किस पर लगाया जाता है?",
+    options:[["Motherboard","मदरबोर्ड"],["Monitor","मॉनिटर"],["Keyboard","कीबोर्ड"],["Printer","प्रिंटर"]],
+    answer:0,explanation:"The CPU is installed in a socket on the motherboard. / CPU मदरबोर्ड के सॉकेट में लगाया जाता है।"
+   },
+   {
+    en:"Which CPU component fetches and decodes instructions?",
+    hi:"CPU का कौन-सा भाग निर्देशों को प्राप्त और डिकोड करता है?",
+    options:[["Control Unit","कंट्रोल यूनिट"],["Printer","प्रिंटर"],["Hard Disk","हार्ड डिस्क"],["Speaker","स्पीकर"]],
+    answer:0,explanation:"The Control Unit fetches and decodes instructions and directs their execution. / कंट्रोल यूनिट निर्देशों को प्राप्त और डिकोड करती है।"
+   },
+   {
+    en:"Which memory is located closest to the CPU for very fast access?",
+    hi:"बहुत तेज एक्सेस के लिए CPU के सबसे पास कौन-सी मेमोरी होती है?",
+    options:[["Cache Memory","कैश मेमोरी"],["DVD","डीवीडी"],["Pen Drive","पेन ड्राइव"],["Optical Disk","ऑप्टिकल डिस्क"]],
+    answer:0,explanation:"Cache memory is a small, high-speed memory close to the CPU. / कैश मेमोरी CPU के पास स्थित तेज मेमोरी होती है।"
+   },
+   {
+    en:"What is a CPU register?",
+    hi:"CPU रजिस्टर क्या होता है?",
+    options:[["Small, fast storage inside CPU","CPU के अंदर छोटी और तेज स्टोरेज"],["An output device","एक आउटपुट डिवाइस"],["A type of printer","प्रिंटर का प्रकार"],["A network cable","नेटवर्क केबल"]],
+    answer:0,explanation:"Registers are very fast storage locations inside the CPU. / रजिस्टर CPU के अंदर बहुत तेज स्टोरेज स्थान होते हैं।"
+   },
+   {
+    en:"Which bus carries data between computer components?",
+    hi:"कौन-सी बस कंप्यूटर के भागों के बीच डेटा ले जाती है?",
+    options:[["Data Bus","डेटा बस"],["Address Bus","एड्रेस बस"],["Control Bus","कंट्रोल बस"],["Power Cable","पावर केबल"]],
+    answer:0,explanation:"The data bus transfers data between components. / डेटा बस कंपोनेंट्स के बीच डेटा स्थानांतरित करती है।"
+   },
+   {
+    en:"Which bus carries the address of a memory location?",
+    hi:"कौन-सी बस मेमोरी लोकेशन का पता ले जाती है?",
+    options:[["Data Bus","डेटा बस"],["Address Bus","एड्रेस बस"],["Control Bus","कंट्रोल बस"],["USB Bus","यूएसबी बस"]],
+    answer:1,explanation:"The address bus carries memory addresses. / एड्रेस बस मेमोरी का पता ले जाती है।"
+   },
+   {
+    en:"Which component supplies electrical power to computer components?",
+    hi:"कंप्यूटर के भागों को विद्युत शक्ति कौन देता है?",
+    options:[["SMPS","एसएमपीएस"],["ALU","एएलयू"],["RAM","रैम"],["BIOS","बायोस"]],
+    answer:0,explanation:"The SMPS converts incoming power into suitable DC power for computer components. / SMPS कंप्यूटर के भागों को आवश्यक DC बिजली देता है।"
+   },
+   {
+    en:"What is the full form of BIOS?",
+    hi:"BIOS का पूरा नाम क्या है?",
+    options:[["Basic Input Output System","बेसिक इनपुट आउटपुट सिस्टम"],["Binary Input Operating Software","बाइनरी इनपुट ऑपरेटिंग सॉफ्टवेयर"],["Basic Internet Operating System","बेसिक इंटरनेट ऑपरेटिंग सिस्टम"],["Built-in Output Service","बिल्ट-इन आउटपुट सर्विस"]],
+    answer:0,explanation:"BIOS stands for Basic Input/Output System. / BIOS का अर्थ बेसिक इनपुट/आउटपुट सिस्टम है।"
+   },
+   {
+    en:"What is the function of a heat sink in a computer?",
+    hi:"कंप्यूटर में हीट सिंक का क्या कार्य है?",
+    options:[["Cooling components","कंपोनेंट्स को ठंडा करना"],["Storing files","फाइलें स्टोर करना"],["Printing pages","पेज प्रिंट करना"],["Connecting to Internet","इंटरनेट से जोड़ना"]],
+    answer:0,explanation:"A heat sink helps remove heat from components such as the CPU. / हीट सिंक CPU जैसे भागों की गर्मी कम करने में मदद करता है।"
+   },
+   {
+    en:"Which component temporarily stores data currently being processed?",
+    hi:"प्रोसेस हो रहे डेटा को अस्थायी रूप से कौन स्टोर करता है?",
+    options:[["RAM","रैम"],["DVD","डीवीडी"],["ROM","रोम"],["Printer","प्रिंटर"]],
+    answer:0,explanation:"RAM temporarily stores programs and data currently in use. / RAM वर्तमान में उपयोग हो रहे प्रोग्राम और डेटा को अस्थायी रूप से रखती है।"
+   },
+   {
+    en:"Which part of the CPU performs comparison operations?",
+    hi:"CPU का कौन-सा भाग तुलना करने का कार्य करता है?",
+    options:[["ALU","एएलयू"],["Control Unit","कंट्रोल यूनिट"],["Power Supply","पावर सप्लाई"],["Hard Disk","हार्ड डिस्क"]],
+    answer:0,explanation:"Logical comparisons are performed by the ALU. / तार्किक तुलना ALU द्वारा की जाती है।"
+   },
+   {
+    en:"What is the main purpose of an expansion slot?",
+    hi:"एक्सपेंशन स्लॉट का मुख्य उद्देश्य क्या है?",
+    options:[["Adding expansion cards","एक्सपेंशन कार्ड लगाना"],["Printing documents","दस्तावेज प्रिंट करना"],["Cooling the CPU","CPU को ठंडा करना"],["Storing passwords","पासवर्ड स्टोर करना"]],
+    answer:0,explanation:"Expansion slots allow additional cards to be installed on the motherboard. / एक्सपेंशन स्लॉट से मदरबोर्ड में अतिरिक्त कार्ड लगाए जाते हैं।"
+   },
+   {
+    en:"Which component stores the computer's firmware settings?",
+    hi:"कंप्यूटर की फर्मवेयर सेटिंग्स किस मेमोरी में रखी जाती हैं?",
+    options:[["Flash memory or ROM","फ्लैश मेमोरी या ROM"],["Monitor","मॉनिटर"],["Keyboard","कीबोर्ड"],["Speaker","स्पीकर"]],
+    answer:0,explanation:"Firmware is stored in non-volatile memory such as flash memory. / फर्मवेयर फ्लैश जैसी नॉन-वोलेटाइल मेमोरी में रहता है।"
+   },
+   {
+    en:"What does a computer clock signal help coordinate?",
+    hi:"कंप्यूटर क्लॉक सिग्नल किस कार्य में समन्वय करता है?",
+    options:[["Timing of operations","कार्यों का समय निर्धारित करना"],["Printing colour","प्रिंट का रंग"],["Internet billing","इंटरनेट बिलिंग"],["Screen brightness only","केवल स्क्रीन की चमक"]],
+    answer:0,explanation:"The clock provides timing signals to coordinate operations. / क्लॉक विभिन्न कार्यों के समय का समन्वय करती है।"
+   }
+  ],
+
+  4: [
+   {
+    en:"Which device is used to enter text into a computer?",
+    hi:"कंप्यूटर में टेक्स्ट डालने के लिए किस डिवाइस का उपयोग होता है?",
+    options:[["Keyboard","कीबोर्ड"],["Monitor","मॉनिटर"],["Speaker","स्पीकर"],["Projector","प्रोजेक्टर"]],
+    answer:0,explanation:"A keyboard is an input device used to enter text. / कीबोर्ड टेक्स्ट डालने वाला इनपुट डिवाइस है।"
+   },
+   {
+    en:"Which device is commonly used to point and click?",
+    hi:"पॉइंट और क्लिक करने के लिए सामान्यतः किस डिवाइस का उपयोग होता है?",
+    options:[["Mouse","माउस"],["Printer","प्रिंटर"],["Monitor","मॉनिटर"],["Speaker","स्पीकर"]],
+    answer:0,explanation:"A mouse is a pointing input device. / माउस एक पॉइंटिंग इनपुट डिवाइस है।"
+   },
+   {
+    en:"Which device converts a paper document into a digital image?",
+    hi:"कौन-सा डिवाइस कागजी दस्तावेज को डिजिटल इमेज में बदलता है?",
+    options:[["Scanner","स्कैनर"],["Speaker","स्पीकर"],["Monitor","मॉनिटर"],["Plotter","प्लॉटर"]],
+    answer:0,explanation:"A scanner captures documents and images in digital form. / स्कैनर दस्तावेजों और चित्रों को डिजिटल रूप में बदलता है।"
+   },
+   {
+    en:"Which device is used to input sound?",
+    hi:"आवाज को कंप्यूटर में डालने के लिए किस डिवाइस का उपयोग होता है?",
+    options:[["Microphone","माइक्रोफोन"],["Printer","प्रिंटर"],["Monitor","मॉनिटर"],["Plotter","प्लॉटर"]],
+    answer:0,explanation:"A microphone captures sound as input. / माइक्रोफोन आवाज को इनपुट के रूप में लेता है।"
+   },
+   {
+    en:"Which device displays visual output?",
+    hi:"दृश्य आउटपुट दिखाने के लिए किस डिवाइस का उपयोग होता है?",
+    options:[["Monitor","मॉनिटर"],["Keyboard","कीबोर्ड"],["Mouse","माउस"],["Scanner","स्कैनर"]],
+    answer:0,explanation:"A monitor displays text, images and videos. / मॉनिटर टेक्स्ट, चित्र और वीडियो दिखाता है।"
+   },
+   {
+    en:"Which device produces sound output?",
+    hi:"आवाज के रूप में आउटपुट कौन-सा डिवाइस देता है?",
+    options:[["Speaker","स्पीकर"],["Scanner","स्कैनर"],["Keyboard","कीबोर्ड"],["Mouse","माउस"]],
+    answer:0,explanation:"Speakers convert audio signals into sound. / स्पीकर ऑडियो सिग्नल को आवाज में बदलते हैं।"
+   },
+   {
+    en:"Which device produces a hard copy?",
+    hi:"हार्ड कॉपी कौन-सा डिवाइस तैयार करता है?",
+    options:[["Printer","प्रिंटर"],["Monitor","मॉनिटर"],["Microphone","माइक्रोफोन"],["Mouse","माउस"]],
+    answer:0,explanation:"A printer produces output on paper. / प्रिंटर कागज पर आउटपुट देता है।"
+   },
+   {
+    en:"Which device is used to print large engineering drawings?",
+    hi:"बड़े इंजीनियरिंग ड्रॉइंग प्रिंट करने के लिए किसका उपयोग होता है?",
+    options:[["Plotter","प्लॉटर"],["Keyboard","कीबोर्ड"],["Mouse","माउस"],["Microphone","माइक्रोफोन"]],
+    answer:0,explanation:"A plotter is used for large and precise drawings. / प्लॉटर बड़े और सटीक ड्रॉइंग बनाने के लिए उपयोग होता है।"
+   },
+   {
+    en:"Which technology is used by a barcode reader?",
+    hi:"बारकोड रीडर में किस तकनीक का उपयोग होता है?",
+    options:[["Optical scanning","ऑप्टिकल स्कैनिंग"],["Sound recording","ध्वनि रिकॉर्डिंग"],["Printing","प्रिंटिंग"],["Cooling","कूलिंग"]],
+    answer:0,explanation:"A barcode reader optically scans barcode patterns. / बारकोड रीडर प्रकाशीय तरीके से बारकोड पढ़ता है।"
+   },
+   {
+    en:"Which device is used to read marks on examination answer sheets?",
+    hi:"परीक्षा की उत्तर पुस्तिकाओं पर बने निशान पढ़ने के लिए किसका उपयोग होता है?",
+    options:[["OMR","ओएमआर"],["OCR","ओसीआर"],["MICR","एमआईसीआर"],["Plotter","प्लॉटर"]],
+    answer:0,explanation:"OMR detects marked responses on forms and answer sheets. / OMR उत्तर पुस्तिकाओं पर भरे गए निशानों को पढ़ता है।"
+   },
+   {
+    en:"Which technology converts printed text into editable digital text?",
+    hi:"छपे हुए टेक्स्ट को एडिट करने योग्य डिजिटल टेक्स्ट में कौन बदलता है?",
+    options:[["OCR","ओसीआर"],["OMR","ओएमआर"],["MICR","एमआईसीआर"],["LCD","एलसीडी"]],
+    answer:0,explanation:"OCR recognizes printed characters and converts them into digital text. / OCR छपे अक्षरों को पहचानकर डिजिटल टेक्स्ट में बदलता है।"
+   },
+   {
+    en:"Which technology is commonly used to read characters on bank cheques?",
+    hi:"बैंक चेक पर लिखे विशेष अक्षरों को पढ़ने के लिए किस तकनीक का उपयोग होता है?",
+    options:[["MICR","एमआईसीआर"],["OMR","ओएमआर"],["OCR","ओसीआर"],["GPS","जीपीएस"]],
+    answer:0,explanation:"MICR reads magnetic-ink characters, commonly used on cheques. / MICR चेक पर चुंबकीय स्याही से लिखे अक्षरों को पढ़ता है।"
+   },
+   {
+    en:"Which of the following is both an input and output device?",
+    hi:"निम्नलिखित में से कौन इनपुट और आउटपुट दोनों डिवाइस है?",
+    options:[["Touchscreen","टचस्क्रीन"],["Printer","प्रिंटर"],["Speaker","स्पीकर"],["Plotter","प्लॉटर"]],
+    answer:0,explanation:"A touchscreen displays output and accepts touch input. / टचस्क्रीन आउटपुट दिखाती है और टच इनपुट भी लेती है।"
+   },
+   {
+    en:"Which printer uses toner powder?",
+    hi:"कौन-सा प्रिंटर टोनर पाउडर का उपयोग करता है?",
+    options:[["Laser Printer","लेजर प्रिंटर"],["Inkjet Printer","इंकजेट प्रिंटर"],["Dot Matrix Printer","डॉट मैट्रिक्स प्रिंटर"],["Thermal Keyboard","थर्मल कीबोर्ड"]],
+    answer:0,explanation:"Laser printers use toner powder to print. / लेजर प्रिंटर प्रिंटिंग के लिए टोनर पाउडर का उपयोग करते हैं।"
+   },
+   {
+    en:"Which printer sprays tiny droplets of ink onto paper?",
+    hi:"कौन-सा प्रिंटर कागज पर स्याही की छोटी बूंदें छिड़कता है?",
+    options:[["Inkjet Printer","इंकजेट प्रिंटर"],["Laser Printer","लेजर प्रिंटर"],["Plotter","प्लॉटर"],["Dot Matrix Printer","डॉट मैट्रिक्स प्रिंटर"]],
+    answer:0,explanation:"Inkjet printers print by spraying tiny ink droplets. / इंकजेट प्रिंटर स्याही की छोटी बूंदों से प्रिंट करते हैं।"
+   },
+   {
+    en:"Which of these is an impact printer?",
+    hi:"इनमें से कौन इम्पैक्ट प्रिंटर है?",
+    options:[["Dot Matrix Printer","डॉट मैट्रिक्स प्रिंटर"],["Laser Printer","लेजर प्रिंटर"],["Inkjet Printer","इंकजेट प्रिंटर"],["Thermal Printer","थर्मल प्रिंटर"]],
+    answer:0,explanation:"A dot matrix printer strikes an ink ribbon against paper. / डॉट मैट्रिक्स प्रिंटर रिबन पर प्रहार करके प्रिंट करता है।"
+   },
+   {
+    en:"Which device is used to control a pointer in computer games?",
+    hi:"कंप्यूटर गेम में पॉइंटर को नियंत्रित करने के लिए किस डिवाइस का उपयोग होता है?",
+    options:[["Joystick","जॉयस्टिक"],["Printer","प्रिंटर"],["Scanner","स्कैनर"],["Monitor","मॉनिटर"]],
+    answer:0,explanation:"A joystick controls movement and direction in games. / जॉयस्टिक गेम में दिशा और गति नियंत्रित करता है।"
+   },
+   {
+    en:"Which device is used to capture video for a computer?",
+    hi:"कंप्यूटर में वीडियो कैप्चर करने के लिए किस डिवाइस का उपयोग होता है?",
+    options:[["Webcam","वेबकैम"],["Plotter","प्लॉटर"],["Speaker","स्पीकर"],["Printer","प्रिंटर"]],
+    answer:0,explanation:"A webcam captures video and sends it to the computer. / वेबकैम वीडियो कैप्चर करके कंप्यूटर तक पहुँचाता है।"
+   },
+   {
+    en:"Which of the following is an output device?",
+    hi:"निम्नलिखित में से कौन आउटपुट डिवाइस है?",
+    options:[["Projector","प्रोजेक्टर"],["Keyboard","कीबोर्ड"],["Scanner","स्कैनर"],["Microphone","माइक्रोफोन"]],
+    answer:0,explanation:"A projector displays computer output on a large surface. / प्रोजेक्टर कंप्यूटर का आउटपुट बड़ी स्क्रीन पर दिखाता है।"
+   },
+   {
+    en:"What is the full form of LCD?",
+    hi:"LCD का पूरा नाम क्या है?",
+    options:[["Liquid Crystal Display","लिक्विड क्रिस्टल डिस्प्ले"],["Light Control Device","लाइट कंट्रोल डिवाइस"],["Liquid Computer Display","लिक्विड कंप्यूटर डिस्प्ले"],["Local Crystal Data","लोकल क्रिस्टल डेटा"]],
+    answer:0,explanation:"LCD stands for Liquid Crystal Display. / LCD का अर्थ लिक्विड क्रिस्टल डिस्प्ले है।"
+   }
+  ],
+
+  5: [
+   {
+    en:"What is software?",
+    hi:"सॉफ्टवेयर क्या है?",
+    options:[["A set of programs and instructions","प्रोग्राम और निर्देशों का समूह"],["A physical device","एक भौतिक उपकरण"],["An input cable","एक इनपुट केबल"],["A computer desk","कंप्यूटर टेबल"]],
+    answer:0,explanation:"Software is a collection of programs and instructions. / सॉफ्टवेयर प्रोग्राम और निर्देशों का समूह है।"
+   },
+   {
+    en:"Which software manages computer hardware?",
+    hi:"कंप्यूटर हार्डवेयर का प्रबंधन कौन-सा सॉफ्टवेयर करता है?",
+    options:[["System Software","सिस्टम सॉफ्टवेयर"],["Application Software","एप्लीकेशन सॉफ्टवेयर"],["Presentation Software","प्रेजेंटेशन सॉफ्टवेयर"],["Drawing Software","ड्रॉइंग सॉफ्टवेयर"]],
+    answer:0,explanation:"System software manages hardware and provides a platform for applications. / सिस्टम सॉफ्टवेयर हार्डवेयर और एप्लीकेशन को संभालता है।"
+   },
+   {
+    en:"Which of the following is system software?",
+    hi:"निम्नलिखित में से कौन सिस्टम सॉफ्टवेयर है?",
+    options:[["Windows","विंडोज"],["MS Word","एमएस वर्ड"],["MS Excel","एमएस एक्सेल"],["PowerPoint","पावरपॉइंट"]],
+    answer:0,explanation:"Windows is system software. / विंडोज सिस्टम सॉफ्टवेयर है।"
+   },
+   {
+    en:"Which of the following is application software?",
+    hi:"निम्नलिखित में से कौन एप्लीकेशन सॉफ्टवेयर है?",
+    options:[["MS Word","एमएस वर्ड"],["BIOS","बायोस"],["Device Driver","डिवाइस ड्राइवर"],["Operating System","ऑपरेटिंग सिस्टम"]],
+    answer:0,explanation:"MS Word is application software used to create documents. / MS Word दस्तावेज बनाने वाला एप्लीकेशन सॉफ्टवेयर है।"
+   },
+   {
+    en:"Which software is used to detect and remove computer viruses?",
+    hi:"कंप्यूटर वायरस का पता लगाने और हटाने के लिए कौन-सा सॉफ्टवेयर उपयोग होता है?",
+    options:[["Antivirus","एंटीवायरस"],["Compiler","कंपाइलर"],["Browser","ब्राउज़र"],["Spreadsheet","स्प्रेडशीट"]],
+    answer:0,explanation:"Antivirus software helps detect and remove malicious programs. / एंटीवायरस हानिकारक प्रोग्रामों का पता लगाता और हटाता है।"
+   },
+   {
+    en:"Which software translates a high-level program into machine code all at once?",
+    hi:"कौन-सा सॉफ्टवेयर हाई-लेवल प्रोग्राम को एक साथ मशीन कोड में बदलता है?",
+    options:[["Compiler","कंपाइलर"],["Interpreter","इंटरप्रेटर"],["Browser","ब्राउज़र"],["Editor","एडिटर"]],
+    answer:0,explanation:"A compiler translates a program into machine code before execution. / कंपाइलर प्रोग्राम को निष्पादन से पहले मशीन कोड में बदलता है।"
+   },
+   {
+    en:"Which translator executes a program statement by statement?",
+    hi:"कौन-सा ट्रांसलेटर प्रोग्राम को एक-एक स्टेटमेंट करके चलाता है?",
+    options:[["Interpreter","इंटरप्रेटर"],["Compiler","कंपाइलर"],["Assembler","असेंबलर"],["Linker","लिंकर"]],
+    answer:0,explanation:"An interpreter translates and executes statements one at a time. / इंटरप्रेटर एक-एक स्टेटमेंट को अनुवाद करके चलाता है।"
+   },
+   {
+    en:"Which software converts assembly language into machine code?",
+    hi:"असेंबली भाषा को मशीन कोड में कौन बदलता है?",
+    options:[["Assembler","असेंबलर"],["Compiler","कंपाइलर"],["Interpreter","इंटरप्रेटर"],["Browser","ब्राउज़र"]],
+    answer:0,explanation:"An assembler translates assembly language into machine code. / असेंबलर असेंबली भाषा को मशीन कोड में बदलता है।"
+   },
+   {
+    en:"Which software is used to compress files?",
+    hi:"फाइलों का आकार कम करने के लिए किस सॉफ्टवेयर का उपयोग होता है?",
+    options:[["File Compression Utility","फाइल कंप्रेशन यूटिलिटी"],["Word Processor","वर्ड प्रोसेसर"],["Media Player","मीडिया प्लेयर"],["Web Browser","वेब ब्राउज़र"]],
+    answer:0,explanation:"Compression utilities reduce file size. / कंप्रेशन यूटिलिटी फाइल का आकार कम करती है।"
+   },
+   {
+    en:"Which of the following is utility software?",
+    hi:"निम्नलिखित में से कौन यूटिलिटी सॉफ्टवेयर है?",
+    options:[["Disk Cleanup Utility","डिस्क क्लीनअप यूटिलिटी"],["MS Word","एमएस वर्ड"],["PowerPoint","पावरपॉइंट"],["Paint","पेंट"]],
+    answer:0,explanation:"Disk cleanup is a utility used to remove unnecessary files. / डिस्क क्लीनअप अनावश्यक फाइलें हटाने वाली यूटिलिटी है।"
+   },
+   {
+    en:"What is a device driver?",
+    hi:"डिवाइस ड्राइवर क्या होता है?",
+    options:[["Software that helps the OS communicate with hardware","ऐसा सॉफ्टवेयर जो OS को हार्डवेयर से संवाद करने में मदद करता है"],["A physical cable","एक भौतिक केबल"],["A storage device","एक स्टोरेज डिवाइस"],["A type of monitor","मॉनिटर का प्रकार"]],
+    answer:0,explanation:"A device driver allows the operating system to control a hardware device. / डिवाइस ड्राइवर OS को हार्डवेयर नियंत्रित करने में मदद करता है।"
+   },
+   {
+    en:"Which software is used to create presentations?",
+    hi:"प्रेजेंटेशन बनाने के लिए किस सॉफ्टवेयर का उपयोग होता है?",
+    options:[["MS PowerPoint","एमएस पावरपॉइंट"],["MS Access","एमएस एक्सेस"],["Notepad","नोटपैड"],["Calculator","कैलकुलेटर"]],
+    answer:0,explanation:"PowerPoint is presentation software. / पावरपॉइंट प्रेजेंटेशन बनाने का सॉफ्टवेयर है।"
+   },
+   {
+    en:"Which software is used to manage databases?",
+    hi:"डेटाबेस को मैनेज करने के लिए किस सॉफ्टवेयर का उपयोग होता है?",
+    options:[["DBMS","डीबीएमएस"],["Paint","पेंट"],["Media Player","मीडिया प्लेयर"],["Text Editor","टेक्स्ट एडिटर"]],
+    answer:0,explanation:"A DBMS is used to create and manage databases. / DBMS डेटाबेस बनाने और प्रबंधित करने के लिए उपयोग होता है।"
+   },
+   {
+    en:"What is open-source software?",
+    hi:"ओपन-सोर्स सॉफ्टवेयर क्या है?",
+    options:[["Software whose source code is available under its licence","ऐसा सॉफ्टवेयर जिसका सोर्स कोड उसके लाइसेंस के अनुसार उपलब्ध हो"],["Software that cannot be modified","ऐसा सॉफ्टवेयर जिसे बदला नहीं जा सकता"],["Only paid software","केवल भुगतान वाला सॉफ्टवेयर"],["Hardware firmware only","केवल हार्डवेयर फर्मवेयर"]],
+    answer:0,explanation:"Open-source software makes its source code available under specified licence terms. / ओपन-सोर्स सॉफ्टवेयर का सोर्स कोड लाइसेंस की शर्तों के अनुसार उपलब्ध होता है।"
+   },
+   {
+    en:"Which of these is an example of open-source software?",
+    hi:"इनमें से कौन ओपन-सोर्स सॉफ्टवेयर का उदाहरण है?",
+    options:[["Linux","लिनक्स"],["Microsoft Windows","माइक्रोसॉफ्ट विंडोज"],["MS Office","एमएस ऑफिस"],["Adobe Photoshop","एडोबी फोटोशॉप"]],
+    answer:0,explanation:"Linux is a well-known open-source operating system. / लिनक्स एक प्रसिद्ध ओपन-सोर्स ऑपरेटिंग सिस्टम है।"
+   },
+   {
+    en:"What is freeware?",
+    hi:"फ्रीवेयर क्या है?",
+    options:[["Software available for use without a purchase price","ऐसा सॉफ्टवेयर जिसे बिना खरीद मूल्य दिए उपयोग किया जा सकता है"],["Software that is always open source","हमेशा ओपन-सोर्स सॉफ्टवेयर"],["Hardware sold free","मुफ्त हार्डवेयर"],["Software that cannot run","ऐसा सॉफ्टवेयर जो चल नहीं सकता"]],
+    answer:0,explanation:"Freeware can be used without paying a purchase price, though licence restrictions may apply. / फ्रीवेयर बिना खरीद मूल्य के उपयोग किया जा सकता है, लेकिन लाइसेंस की शर्तें हो सकती हैं।"
+   },
+   {
+    en:"Which type of software is designed for a specific user task?",
+    hi:"किसी विशेष उपयोगकर्ता कार्य के लिए कौन-सा सॉफ्टवेयर बनाया जाता है?",
+    options:[["Application Software","एप्लीकेशन सॉफ्टवेयर"],["System Software","सिस्टम सॉफ्टवेयर"],["Firmware","फर्मवेयर"],["Boot Loader","बूट लोडर"]],
+    answer:0,explanation:"Application software performs tasks such as writing, calculation and presentation. / एप्लीकेशन सॉफ्टवेयर लेखन, गणना और प्रेजेंटेशन जैसे काम करता है।"
+   },
+   {
+    en:"Which software protects a computer by filtering network traffic?",
+    hi:"नेटवर्क ट्रैफिक को फिल्टर करके कंप्यूटर की सुरक्षा कौन करता है?",
+    options:[["Firewall","फायरवॉल"],["Word Processor","वर्ड प्रोसेसर"],["Compiler","कंपाइलर"],["Paint Program","पेंट प्रोग्राम"]],
+    answer:0,explanation:"A firewall filters network traffic according to security rules. / फायरवॉल सुरक्षा नियमों के अनुसार नेटवर्क ट्रैफिक को नियंत्रित करता है।"
+   },
+   {
+    en:"What is a software licence?",
+    hi:"सॉफ्टवेयर लाइसेंस क्या है?",
+    options:[["Terms that define permitted software use","सॉफ्टवेयर उपयोग की अनुमति बताने वाली शर्तें"],["A computer keyboard","कंप्यूटर कीबोर्ड"],["A storage device","स्टोरेज डिवाइस"],["A network address","नेटवर्क पता"]],
+    answer:0,explanation:"A software licence defines the rights and restrictions for using software. / सॉफ्टवेयर लाइसेंस उसके उपयोग के अधिकार और सीमाएँ बताता है।"
+   },
+   {
+    en:"Which of these is an example of a word processor?",
+    hi:"इनमें से कौन वर्ड प्रोसेसर का उदाहरण है?",
+    options:[["MS Word","एमएस वर्ड"],["MS Excel","एमएस एक्सेल"],["MS PowerPoint","एमएस पावरपॉइंट"],["VLC Player","वीएलसी प्लेयर"]],
+    answer:0,explanation:"MS Word is used to create and edit text documents. / MS Word टेक्स्ट दस्तावेज बनाने और एडिट करने के लिए है।"
+   }
+  ],
+
+  6: [
+   {
+    en:"What is the main purpose of an operating system?",
+    hi:"ऑपरेटिंग सिस्टम का मुख्य उद्देश्य क्या है?",
+    options:[["Managing computer resources","कंप्यूटर संसाधनों का प्रबंधन करना"],["Printing only","केवल प्रिंट करना"],["Creating websites only","केवल वेबसाइट बनाना"],["Playing music only","केवल संगीत चलाना"]],
+    answer:0,explanation:"An operating system manages hardware, software and user interaction. / ऑपरेटिंग सिस्टम हार्डवेयर, सॉफ्टवेयर और उपयोगकर्ता के बीच काम संभालता है।"
+   },
+   {
+    en:"Which of the following is an operating system?",
+    hi:"निम्नलिखित में से कौन ऑपरेटिंग सिस्टम है?",
+    options:[["Linux","लिनक्स"],["MS Word","एमएस वर्ड"],["Google Chrome","गूगल क्रोम"],["Photoshop","फोटोशॉप"]],
+    answer:0,explanation:"Linux is an operating system. / लिनक्स एक ऑपरेटिंग सिस्टम है।"
+   },
+   {
+    en:"Which operating system is developed by Microsoft?",
+    hi:"माइक्रोसॉफ्ट द्वारा कौन-सा ऑपरेटिंग सिस्टम विकसित किया गया है?",
+    options:[["Windows","विंडोज"],["Linux","लिनक्स"],["Ubuntu","उबंटू"],["Android","एंड्रॉयड"]],
+    answer:0,explanation:"Windows is developed by Microsoft. / विंडोज माइक्रोसॉफ्ट द्वारा विकसित किया गया है।"
+   },
+   {
+    en:"Which operating system is widely used on smartphones?",
+    hi:"स्मार्टफोन में व्यापक रूप से कौन-सा ऑपरेटिंग सिस्टम उपयोग होता है?",
+    options:[["Android","एंड्रॉयड"],["MS-DOS","एमएस-डॉस"],["Windows Server","विंडोज सर्वर"],["UNIX Mainframe","यूनिक्स मेनफ्रेम"]],
+    answer:0,explanation:"Android is a widely used mobile operating system. / एंड्रॉयड एक व्यापक रूप से उपयोग किया जाने वाला मोबाइल OS है।"
+   },
+   {
+    en:"What is booting?",
+    hi:"बूटिंग क्या है?",
+    options:[["Starting a computer and loading its operating system","कंप्यूटर चालू करके ऑपरेटिंग सिस्टम लोड करना"],["Printing a file","फाइल प्रिंट करना"],["Deleting a folder","फोल्डर हटाना"],["Connecting a printer","प्रिंटर जोड़ना"]],
+    answer:0,explanation:"Booting is the process of starting a computer and loading the OS. / बूटिंग में कंप्यूटर शुरू होता है और OS लोड होता है।"
+   },
+   {
+    en:"What is the first stage of starting a computer called?",
+    hi:"कंप्यूटर चालू होने की शुरुआती प्रक्रिया को क्या कहते हैं?",
+    options:[["Booting","बूटिंग"],["Formatting","फॉर्मेटिंग"],["Scanning","स्कैनिंग"],["Debugging","डिबगिंग"]],
+    answer:0,explanation:"The startup process is commonly called booting. / कंप्यूटर शुरू करने की प्रक्रिया को बूटिंग कहते हैं।"
+   },
+   {
+    en:"Which interface uses icons, windows and menus?",
+    hi:"कौन-सा इंटरफेस आइकन, विंडो और मेनू का उपयोग करता है?",
+    options:[["GUI","जीयूआई"],["CLI","सीएलआई"],["API","एपीआई"],["BIOS","बायोस"]],
+    answer:0,explanation:"GUI stands for Graphical User Interface. / GUI का अर्थ ग्राफिकल यूजर इंटरफेस है।"
+   },
+   {
+    en:"What is the full form of CLI?",
+    hi:"CLI का पूरा नाम क्या है?",
+    options:[["Command Line Interface","कमांड लाइन इंटरफेस"],["Computer Link Internet","कंप्यूटर लिंक इंटरनेट"],["Central Logic Input","सेंट्रल लॉजिक इनपुट"],["Common Language Interface","कॉमन लैंग्वेज इंटरफेस"]],
+    answer:0,explanation:"CLI stands for Command Line Interface. / CLI का अर्थ कमांड लाइन इंटरफेस है।"
+   },
+   {
+    en:"Which operating system is known for its open-source nature?",
+    hi:"कौन-सा ऑपरेटिंग सिस्टम ओपन-सोर्स होने के लिए जाना जाता है?",
+    options:[["Linux","लिनक्स"],["Windows","विंडोज"],["iOS","आईओएस"],["Proprietary DOS","प्रोप्राइटरी डॉस"]],
+    answer:0,explanation:"Linux is an open-source operating system. / लिनक्स ओपन-सोर्स ऑपरेटिंग सिस्टम है।"
+   },
+   {
+    en:"Which OS function manages files and folders?",
+    hi:"फाइल और फोल्डर का प्रबंधन OS के किस कार्य में आता है?",
+    options:[["File Management","फाइल मैनेजमेंट"],["Power Management only","केवल पावर मैनेजमेंट"],["Printing only","केवल प्रिंटिंग"],["Web Hosting only","केवल वेब होस्टिंग"]],
+    answer:0,explanation:"File management organizes, stores and retrieves files. / फाइल मैनेजमेंट फाइलों को व्यवस्थित और उपलब्ध कराता है।"
+   },
+   {
+    en:"Which OS function allocates memory to running programs?",
+    hi:"चल रहे प्रोग्रामों को मेमोरी कौन आवंटित करता है?",
+    options:[["Memory Management","मेमोरी मैनेजमेंट"],["File Printing","फाइल प्रिंटिंग"],["Screen Recording","स्क्रीन रिकॉर्डिंग"],["Web Browsing","वेब ब्राउज़िंग"]],
+    answer:0,explanation:"Memory management allocates and tracks memory usage. / मेमोरी मैनेजमेंट प्रोग्रामों को मेमोरी देता और उसका उपयोग नियंत्रित करता है।"
+   },
+   {
+    en:"What is multitasking in an operating system?",
+    hi:"ऑपरेटिंग सिस्टम में मल्टीटास्किंग क्या है?",
+    options:[["Running multiple tasks apparently at the same time","एक ही समय में कई कार्य चलाना"],["Using only one file","केवल एक फाइल उपयोग करना"],["Turning off the computer","कंप्यूटर बंद करना"],["Formatting a disk","डिस्क फॉर्मेट करना"]],
+    answer:0,explanation:"Multitasking allows multiple tasks to make progress concurrently. / मल्टीटास्किंग में कई कार्य साथ-साथ आगे बढ़ सकते हैं।"
+   },
+   {
+    en:"What is a file?",
+    hi:"फाइल क्या होती है?",
+    options:[["A named collection of data","डेटा का नाम दिया हुआ संग्रह"],["A computer cable","कंप्यूटर केबल"],["A hardware chip","हार्डवेयर चिप"],["A monitor setting","मॉनिटर सेटिंग"]],
+    answer:0,explanation:"A file is a named collection of stored data. / फाइल डेटा का नाम दिया हुआ संग्रह है।"
+   },
+   {
+    en:"What is a folder used for?",
+    hi:"फोल्डर का उपयोग किस लिए किया जाता है?",
+    options:[["Organizing files and other folders","फाइल और अन्य फोल्डर व्यवस्थित करना"],["Increasing CPU speed","CPU की गति बढ़ाना"],["Displaying sound","आवाज दिखाना"],["Scanning viruses only","केवल वायरस स्कैन करना"]],
+    answer:0,explanation:"Folders organize files and subfolders. / फोल्डर फाइलों और सबफोल्डर को व्यवस्थित करते हैं।"
+   },
+   {
+    en:"Which keyboard shortcut is commonly used to copy selected text or files in Windows?",
+    hi:"Windows में चुने हुए टेक्स्ट या फाइल को कॉपी करने की शॉर्टकट कुंजी कौन-सी है?",
+    options:[["Ctrl + C","Ctrl + C"],["Ctrl + V","Ctrl + V"],["Ctrl + X","Ctrl + X"],["Ctrl + Z","Ctrl + Z"]],
+    answer:0,explanation:"Ctrl + C copies the selected item. / Ctrl + C चुनी हुई चीज को कॉपी करता है।"
+   },
+   {
+    en:"Which shortcut is used to paste copied content?",
+    hi:"कॉपी किए गए कंटेंट को पेस्ट करने की शॉर्टकट कुंजी क्या है?",
+    options:[["Ctrl + P","Ctrl + P"],["Ctrl + V","Ctrl + V"],["Ctrl + A","Ctrl + A"],["Ctrl + S","Ctrl + S"]],
+    answer:1,explanation:"Ctrl + V pastes copied or cut content. / Ctrl + V कॉपी या कट किए गए कंटेंट को पेस्ट करता है।"
+   },
+   {
+    en:"Which shortcut is used to undo the last action in many Windows applications?",
+    hi:"कई Windows एप्लीकेशन में पिछला कार्य Undo करने की शॉर्टकट कुंजी क्या है?",
+    options:[["Ctrl + Z","Ctrl + Z"],["Ctrl + Y","Ctrl + Y"],["Ctrl + N","Ctrl + N"],["Ctrl + F","Ctrl + F"]],
+    answer:0,explanation:"Ctrl + Z is commonly used to undo the last action. / Ctrl + Z पिछला कार्य वापस करता है।"
+   },
+   {
+    en:"What is a process in an operating system?",
+    hi:"ऑपरेटिंग सिस्टम में प्रोसेस क्या है?",
+    options:[["A program in execution","चल रहा प्रोग्राम"],["A printed document","प्रिंट किया हुआ दस्तावेज"],["A storage cable","स्टोरेज केबल"],["A folder name","फोल्डर का नाम"]],
+    answer:0,explanation:"A process is a program that is currently executing. / प्रोसेस वह प्रोग्राम है जो वर्तमान में चल रहा है।"
+   },
+   {
+    en:"Which operating system is designed to support multiple users?",
+    hi:"कई उपयोगकर्ताओं को सपोर्ट करने वाला ऑपरेटिंग सिस्टम क्या कहलाता है?",
+    options:[["Multi-user OS","मल्टी-यूजर OS"],["Single-task OS","सिंगल-टास्क OS"],["Standalone file","स्टैंडअलोन फाइल"],["Device driver","डिवाइस ड्राइवर"]],
+    answer:0,explanation:"A multi-user OS allows multiple users to access system resources. / मल्टी-यूजर OS कई उपयोगकर्ताओं को संसाधन उपयोग करने देता है।"
+   },
+   {
+    en:"What is the Recycle Bin in Windows used for?",
+    hi:"Windows में Recycle Bin का उपयोग किस लिए होता है?",
+    options:[["Temporarily storing deleted files","डिलीट की गई फाइलों को अस्थायी रूप से रखना"],["Running programs","प्रोग्राम चलाना"],["Increasing RAM","RAM बढ़ाना"],["Browsing websites","वेबसाइट खोलना"]],
+    answer:0,explanation:"The Recycle Bin holds deleted files until they are restored or permanently removed. / Recycle Bin डिलीट की गई फाइलों को अस्थायी रूप से रखता है।"
+   }
+  ],
+
+
+  7: [
+   {
+    en:"Which type of memory loses its data when power is switched off?",
+    hi:"बिजली बंद होने पर किस प्रकार की मेमोरी का डेटा मिट जाता है?",
+    options:[["RAM","रैम"],["ROM","रोम"],["Hard Disk","हार्ड डिस्क"],["DVD","डीवीडी"]],
+    answer:0,explanation:"RAM is volatile memory and loses its contents when power is switched off. / RAM अस्थायी मेमोरी है और बिजली बंद होने पर इसका डेटा मिट जाता है।"
+   },
+   {
+    en:"Which memory is non-volatile?",
+    hi:"कौन-सी मेमोरी नॉन-वोलेटाइल होती है?",
+    options:[["RAM","रैम"],["ROM","रोम"],["Cache","कैश"],["Register","रजिस्टर"]],
+    answer:1,explanation:"ROM retains its data even when power is switched off. / ROM बिजली बंद होने पर भी डेटा सुरक्षित रखती है।"
+   },
+   {
+    en:"Which memory is faster than RAM and is located close to the CPU?",
+    hi:"कौन-सी मेमोरी RAM से तेज होती है और CPU के पास स्थित होती है?",
+    options:[["Cache Memory","कैश मेमोरी"],["Hard Disk","हार्ड डिस्क"],["DVD","डीवीडी"],["Pen Drive","पेन ड्राइव"]],
+    answer:0,explanation:"Cache is high-speed memory located close to the CPU. / कैश CPU के पास स्थित तेज मेमोरी है।"
+   },
+   {
+    en:"Which of the following is secondary storage?",
+    hi:"निम्नलिखित में से कौन सेकेंडरी स्टोरेज है?",
+    options:[["RAM","रैम"],["Register","रजिस्टर"],["Hard Disk","हार्ड डिस्क"],["Cache","कैश"]],
+    answer:2,explanation:"A hard disk provides long-term secondary storage. / हार्ड डिस्क स्थायी सेकेंडरी स्टोरेज प्रदान करती है।"
+   },
+   {
+    en:"What is the full form of RAM?",
+    hi:"RAM का पूरा नाम क्या है?",
+    options:[["Random Access Memory","रैंडम एक्सेस मेमोरी"],["Read Access Memory","रीड एक्सेस मेमोरी"],["Run Active Memory","रन एक्टिव मेमोरी"],["Random Application Memory","रैंडम एप्लीकेशन मेमोरी"]],
+    answer:0,explanation:"RAM stands for Random Access Memory. / RAM का अर्थ रैंडम एक्सेस मेमोरी है।"
+   },
+   {
+    en:"What is the full form of ROM?",
+    hi:"ROM का पूरा नाम क्या है?",
+    options:[["Read Only Memory","रीड ओनली मेमोरी"],["Random Only Memory","रैंडम ओनली मेमोरी"],["Read Open Memory","रीड ओपन मेमोरी"],["Run Only Memory","रन ओनली मेमोरी"]],
+    answer:0,explanation:"ROM stands for Read Only Memory. / ROM का अर्थ रीड ओनली मेमोरी है।"
+   },
+   {
+    en:"Which storage device uses flash memory?",
+    hi:"कौन-सा स्टोरेज डिवाइस फ्लैश मेमोरी का उपयोग करता है?",
+    options:[["Pen Drive","पेन ड्राइव"],["DVD","डीवीडी"],["CD-ROM","सीडी-रोम"],["Magnetic Tape","मैग्नेटिक टेप"]],
+    answer:0,explanation:"Pen drives use flash memory for data storage. / पेन ड्राइव डेटा स्टोर करने के लिए फ्लैश मेमोरी का उपयोग करती है।"
+   },
+   {
+    en:"Which storage device generally has no moving mechanical parts?",
+    hi:"किस स्टोरेज डिवाइस में सामान्यतः कोई घूमने वाला मैकेनिकल भाग नहीं होता?",
+    options:[["SSD","एसएसडी"],["HDD","एचडीडी"],["Floppy Disk","फ्लॉपी डिस्क"],["Magnetic Tape","मैग्नेटिक टेप"]],
+    answer:0,explanation:"An SSD uses flash memory and has no moving mechanical parts. / SSD फ्लैश मेमोरी का उपयोग करता है और इसमें घूमने वाले भाग नहीं होते।"
+   },
+   {
+    en:"What is the full form of HDD?",
+    hi:"HDD का पूरा नाम क्या है?",
+    options:[["Hard Disk Drive","हार्ड डिस्क ड्राइव"],["High Data Device","हाई डेटा डिवाइस"],["Hardware Digital Disk","हार्डवेयर डिजिटल डिस्क"],["High Disk Drive","हाई डिस्क ड्राइव"]],
+    answer:0,explanation:"HDD stands for Hard Disk Drive. / HDD का अर्थ हार्ड डिस्क ड्राइव है।"
+   },
+   {
+    en:"Which unit is commonly used to measure computer storage capacity?",
+    hi:"कंप्यूटर स्टोरेज क्षमता मापने के लिए किस इकाई का उपयोग होता है?",
+    options:[["Byte","बाइट"],["Volt","वोल्ट"],["Watt","वाट"],["Ampere","एम्पियर"]],
+    answer:0,explanation:"Storage capacity is commonly measured in bytes and larger units. / स्टोरेज क्षमता बाइट और उसकी बड़ी इकाइयों में मापी जाती है।"
+   },
+   {
+    en:"How many bits are there in one byte?",
+    hi:"एक बाइट में कितने बिट होते हैं?",
+    options:[["4","4"],["8","8"],["16","16"],["32","32"]],
+    answer:1,explanation:"One byte contains 8 bits. / एक बाइट में 8 बिट होते हैं।"
+   },
+   {
+    en:"In the commonly used binary convention, 1 KB equals:",
+    hi:"सामान्य बाइनरी गणना के अनुसार 1 KB कितना होता है?",
+    options:[["100 bytes","100 बाइट"],["512 bytes","512 बाइट"],["1024 bytes","1024 बाइट"],["2048 bytes","2048 बाइट"]],
+    answer:2,explanation:"In the traditional binary convention, 1 KB is 1024 bytes. / पारंपरिक बाइनरी गणना में 1 KB = 1024 बाइट होता है।"
+   },
+   {
+    en:"Which is the largest unit among these?",
+    hi:"इनमें सबसे बड़ी इकाई कौन-सी है?",
+    options:[["KB","केबी"],["MB","एमबी"],["GB","जीबी"],["TB","टीबी"]],
+    answer:3,explanation:"TB is larger than GB, MB and KB. / TB, GB, MB और KB से बड़ी इकाई है।"
+   },
+   {
+    en:"Which optical storage medium generally stores more data than a CD?",
+    hi:"कौन-सा ऑप्टिकल स्टोरेज माध्यम सामान्यतः CD से अधिक डेटा रखता है?",
+    options:[["DVD","डीवीडी"],["Floppy Disk","फ्लॉपी डिस्क"],["RAM","रैम"],["Cache","कैश"]],
+    answer:0,explanation:"A DVD generally has a higher capacity than a standard CD. / DVD की क्षमता सामान्य CD से अधिक होती है।"
+   },
+   {
+    en:"Which memory is directly accessible by the CPU for currently running programs?",
+    hi:"चल रहे प्रोग्रामों के लिए CPU सीधे किस मेमोरी का उपयोग करता है?",
+    options:[["Main Memory","मेन मेमोरी"],["DVD","डीवीडी"],["Pen Drive","पेन ड्राइव"],["Blu-ray Disc","ब्लू-रे डिस्क"]],
+    answer:0,explanation:"Main memory, especially RAM, holds data and instructions currently in use. / मेन मेमोरी में वर्तमान में उपयोग हो रहे डेटा और निर्देश रहते हैं।"
+   },
+   {
+    en:"Which of the following is primary memory?",
+    hi:"निम्नलिखित में से कौन प्राइमरी मेमोरी है?",
+    options:[["RAM","रैम"],["DVD","डीवीडी"],["Hard Disk","हार्ड डिस्क"],["Pen Drive","पेन ड्राइव"]],
+    answer:0,explanation:"RAM is a type of primary memory. / RAM प्राइमरी मेमोरी का एक प्रकार है।"
+   },
+   {
+    en:"Which storage medium uses magnetic technology?",
+    hi:"कौन-सा स्टोरेज माध्यम मैग्नेटिक तकनीक का उपयोग करता है?",
+    options:[["Hard Disk Drive","हार्ड डिस्क ड्राइव"],["DVD","डीवीडी"],["Blu-ray","ब्लू-रे"],["CD","सीडी"]],
+    answer:0,explanation:"Traditional HDDs store data magnetically on rotating platters. / पारंपरिक HDD घूमने वाली प्लेटों पर चुंबकीय रूप से डेटा स्टोर करते हैं।"
+   },
+   {
+    en:"What is virtual memory?",
+    hi:"वर्चुअल मेमोरी क्या है?",
+    options:[["A technique that uses storage to extend available memory","स्टोरेज का उपयोग करके उपलब्ध मेमोरी बढ़ाने की तकनीक"],["A type of printer","प्रिंटर का प्रकार"],["A monitor setting","मॉनिटर सेटिंग"],["A network cable","नेटवर्क केबल"]],
+    answer:0,explanation:"Virtual memory uses secondary storage to extend the address space available to programs. / वर्चुअल मेमोरी स्टोरेज की मदद से प्रोग्रामों के लिए उपलब्ध मेमोरी बढ़ाती है।"
+   },
+   {
+    en:"Which memory is generally the fastest among these?",
+    hi:"इनमें सामान्यतः सबसे तेज मेमोरी कौन-सी है?",
+    options:[["CPU Register","CPU रजिस्टर"],["RAM","रैम"],["Hard Disk","हार्ड डिस्क"],["DVD","डीवीडी"]],
+    answer:0,explanation:"CPU registers are extremely fast storage locations inside the processor. / CPU रजिस्टर प्रोसेसर के अंदर बहुत तेज स्टोरेज स्थान होते हैं।"
+   },
+   {
+    en:"What is the main advantage of an SSD over a traditional HDD?",
+    hi:"पारंपरिक HDD की तुलना में SSD का मुख्य लाभ क्या है?",
+    options:[["Faster access and no moving parts","तेज एक्सेस और कोई घूमने वाला भाग नहीं"],["It always has unlimited capacity","इसकी क्षमता हमेशा असीमित होती है"],["It needs more mechanical parts","इसे अधिक मैकेनिकल भाग चाहिए"],["It cannot store data","यह डेटा स्टोर नहीं कर सकता"]],
+    answer:0,explanation:"SSDs generally offer faster access and have no moving mechanical parts. / SSD सामान्यतः तेज होता है और इसमें घूमने वाले भाग नहीं होते।"
+   }
+  ],
+
+  8: [
+   {
+    en:"Which software is used to create and edit text documents?",
+    hi:"टेक्स्ट दस्तावेज बनाने और एडिट करने के लिए किस सॉफ्टवेयर का उपयोग होता है?",
+    options:[["MS Word","एमएस वर्ड"],["MS Excel","एमएस एक्सेल"],["MS PowerPoint","एमएस पावरपॉइंट"],["MS Paint","एमएस पेंट"]],
+    answer:0,explanation:"MS Word is a word-processing application. / MS Word एक वर्ड प्रोसेसिंग एप्लीकेशन है।"
+   },
+   {
+    en:"What is the default file extension of a modern Word document?",
+    hi:"आधुनिक Word दस्तावेज का डिफॉल्ट फाइल एक्सटेंशन क्या है?",
+    options:[[".docx",".docx"],[".xlsx",".xlsx"],[".pptx",".pptx"],[".txt",".txt"]],
+    answer:0,explanation:"Modern Word documents commonly use the .docx extension. / आधुनिक Word फाइलों में सामान्यतः .docx एक्सटेंशन होता है।"
+   },
+   {
+    en:"Which shortcut makes selected text bold in MS Word?",
+    hi:"MS Word में चुने हुए टेक्स्ट को Bold करने की शॉर्टकट कुंजी क्या है?",
+    options:[["Ctrl + B","Ctrl + B"],["Ctrl + I","Ctrl + I"],["Ctrl + U","Ctrl + U"],["Ctrl + P","Ctrl + P"]],
+    answer:0,explanation:"Ctrl + B applies bold formatting. / Ctrl + B टेक्स्ट को बोल्ड करता है।"
+   },
+   {
+    en:"Which shortcut is used to underline selected text?",
+    hi:"चुने हुए टेक्स्ट को Underline करने की शॉर्टकट कुंजी क्या है?",
+    options:[["Ctrl + U","Ctrl + U"],["Ctrl + B","Ctrl + B"],["Ctrl + L","Ctrl + L"],["Ctrl + E","Ctrl + E"]],
+    answer:0,explanation:"Ctrl + U underlines selected text. / Ctrl + U टेक्स्ट के नीचे लाइन लगाता है।"
+   },
+   {
+    en:"Which shortcut is used to italicize selected text?",
+    hi:"चुने हुए टेक्स्ट को Italic करने की शॉर्टकट कुंजी क्या है?",
+    options:[["Ctrl + I","Ctrl + I"],["Ctrl + B","Ctrl + B"],["Ctrl + S","Ctrl + S"],["Ctrl + A","Ctrl + A"]],
+    answer:0,explanation:"Ctrl + I applies italic formatting. / Ctrl + I टेक्स्ट को इटैलिक करता है।"
+   },
+   {
+    en:"Which shortcut is used to save a document?",
+    hi:"दस्तावेज सेव करने की शॉर्टकट कुंजी क्या है?",
+    options:[["Ctrl + S","Ctrl + S"],["Ctrl + P","Ctrl + P"],["Ctrl + O","Ctrl + O"],["Ctrl + N","Ctrl + N"]],
+    answer:0,explanation:"Ctrl + S saves the current document. / Ctrl + S वर्तमान दस्तावेज सेव करता है।"
+   },
+   {
+    en:"Which shortcut is used to print a document?",
+    hi:"दस्तावेज प्रिंट करने की शॉर्टकट कुंजी क्या है?",
+    options:[["Ctrl + P","Ctrl + P"],["Ctrl + C","Ctrl + C"],["Ctrl + X","Ctrl + X"],["Ctrl + Z","Ctrl + Z"]],
+    answer:0,explanation:"Ctrl + P opens the print interface. / Ctrl + P प्रिंट विकल्प खोलता है।"
+   },
+   {
+    en:"Which alignment places text equally between the left and right margins?",
+    hi:"कौन-सा अलाइनमेंट टेक्स्ट को बाएँ और दाएँ मार्जिन के बीच बराबर करता है?",
+    options:[["Justify","जस्टिफाई"],["Left","लेफ्ट"],["Right","राइट"],["Center","सेंटर"]],
+    answer:0,explanation:"Justify alignment adjusts spacing so text aligns with both margins. / जस्टिफाई दोनों मार्जिन के अनुसार टेक्स्ट व्यवस्थित करता है।"
+   },
+   {
+    en:"Which shortcut aligns text to the centre?",
+    hi:"टेक्स्ट को बीच में लाने की शॉर्टकट कुंजी क्या है?",
+    options:[["Ctrl + E","Ctrl + E"],["Ctrl + L","Ctrl + L"],["Ctrl + R","Ctrl + R"],["Ctrl + J","Ctrl + J"]],
+    answer:0,explanation:"Ctrl + E applies centre alignment. / Ctrl + E टेक्स्ट को बीच में करता है।"
+   },
+   {
+    en:"Which feature checks spelling and grammar in Word?",
+    hi:"Word में स्पेलिंग और ग्रामर जाँचने के लिए किस फीचर का उपयोग होता है?",
+    options:[["Editor/Spelling & Grammar","एडिटर/स्पेलिंग और ग्रामर"],["Mail Merge","मेल मर्ज"],["WordArt","वर्डआर्ट"],["Page Colour","पेज कलर"]],
+    answer:0,explanation:"Word's Editor or spelling and grammar tools help identify writing issues. / Word के एडिटर टूल लिखने की गलतियाँ पहचानने में मदद करते हैं।"
+   },
+   {
+    en:"Which feature is used to create many personalized letters from one template?",
+    hi:"एक टेम्पलेट से कई व्यक्तिगत पत्र बनाने के लिए किस फीचर का उपयोग होता है?",
+    options:[["Mail Merge","मेल मर्ज"],["Find","फाइंड"],["Replace","रिप्लेस"],["WordArt","वर्डआर्ट"]],
+    answer:0,explanation:"Mail Merge combines a main document with a data source. / मेल मर्ज मुख्य दस्तावेज और डेटा सोर्स को जोड़ता है।"
+   },
+   {
+    en:"Which tab is commonly used to insert a table in Word?",
+    hi:"Word में टेबल डालने के लिए सामान्यतः किस टैब का उपयोग होता है?",
+    options:[["Insert","इन्सर्ट"],["Review","रिव्यू"],["View","व्यू"],["File","फाइल"]],
+    answer:0,explanation:"The Insert tab contains the Table command. / इन्सर्ट टैब में टेबल कमांड होता है।"
+   },
+   {
+    en:"Which feature adds text at the top of every page?",
+    hi:"हर पेज के ऊपर टेक्स्ट जोड़ने के लिए किस फीचर का उपयोग होता है?",
+    options:[["Header","हेडर"],["Footer","फूटर"],["Margin","मार्जिन"],["Orientation","ओरिएंटेशन"]],
+    answer:0,explanation:"A header appears in the top margin area of pages. / हेडर पेज के ऊपरी हिस्से में दिखाई देता है।"
+   },
+   {
+    en:"Which feature adds text at the bottom of every page?",
+    hi:"हर पेज के नीचे टेक्स्ट जोड़ने के लिए किस फीचर का उपयोग होता है?",
+    options:[["Footer","फूटर"],["Header","हेडर"],["Theme","थीम"],["Indent","इंडेंट"]],
+    answer:0,explanation:"A footer appears in the bottom margin area of pages. / फूटर पेज के निचले हिस्से में दिखाई देता है।"
+   },
+   {
+    en:"Which option changes a page between Portrait and Landscape?",
+    hi:"पेज को Portrait और Landscape में बदलने के लिए किस विकल्प का उपयोग होता है?",
+    options:[["Orientation","ओरिएंटेशन"],["Font Size","फॉन्ट साइज"],["Line Spacing","लाइन स्पेसिंग"],["Word Count","वर्ड काउंट"]],
+    answer:0,explanation:"Page Orientation changes the page layout direction. / पेज ओरिएंटेशन पेज की दिशा बदलता है।"
+   },
+   {
+    en:"Which shortcut selects all text in a document?",
+    hi:"दस्तावेज का पूरा टेक्स्ट चुनने की शॉर्टकट कुंजी क्या है?",
+    options:[["Ctrl + A","Ctrl + A"],["Ctrl + C","Ctrl + C"],["Ctrl + V","Ctrl + V"],["Ctrl + X","Ctrl + X"]],
+    answer:0,explanation:"Ctrl + A selects all content in the active document. / Ctrl + A पूरे कंटेंट को चुनता है।"
+   },
+   {
+    en:"Which feature replaces one word with another throughout a document?",
+    hi:"दस्तावेज में एक शब्द को दूसरे शब्द से बदलने के लिए कौन-सा फीचर उपयोग होता है?",
+    options:[["Find and Replace","फाइंड एंड रिप्लेस"],["Mail Merge","मेल मर्ज"],["Zoom","जूम"],["Print Preview","प्रिंट प्रीव्यू"]],
+    answer:0,explanation:"Find and Replace searches for text and replaces it. / फाइंड एंड रिप्लेस टेक्स्ट खोजकर बदलता है।"
+   },
+   {
+    en:"Which option controls the blank space around the edges of a page?",
+    hi:"पेज के किनारों पर खाली जगह को कौन-सा विकल्प नियंत्रित करता है?",
+    options:[["Margins","मार्जिन"],["Font","फॉन्ट"],["Bold","बोल्ड"],["Header","हेडर"]],
+    answer:0,explanation:"Margins define the blank space around page edges. / मार्जिन पेज के किनारों की खाली जगह निर्धारित करता है।"
+   },
+   {
+    en:"Which feature displays the number of words in a document?",
+    hi:"दस्तावेज में शब्दों की संख्या दिखाने वाला फीचर कौन-सा है?",
+    options:[["Word Count","वर्ड काउंट"],["Mail Merge","मेल मर्ज"],["Page Colour","पेज कलर"],["SmartArt","स्मार्टआर्ट"]],
+    answer:0,explanation:"Word Count displays document statistics such as the number of words. / वर्ड काउंट दस्तावेज में शब्दों की संख्या बताता है।"
+   },
+   {
+    en:"Which shortcut creates a new document in Word?",
+    hi:"Word में नया दस्तावेज बनाने की शॉर्टकट कुंजी क्या है?",
+    options:[["Ctrl + N","Ctrl + N"],["Ctrl + O","Ctrl + O"],["Ctrl + P","Ctrl + P"],["Ctrl + W","Ctrl + W"]],
+    answer:0,explanation:"Ctrl + N creates a new document. / Ctrl + N नया दस्तावेज बनाता है।"
+   }
+  ],
+
+  9: [
+   {
+    en:"Which software is used to create spreadsheets?",
+    hi:"स्प्रेडशीट बनाने के लिए किस सॉफ्टवेयर का उपयोग होता है?",
+    options:[["MS Excel","एमएस एक्सेल"],["MS Word","एमएस वर्ड"],["MS PowerPoint","एमएस पावरपॉइंट"],["Notepad","नोटपैड"]],
+    answer:0,explanation:"MS Excel is spreadsheet software. / MS Excel स्प्रेडशीट सॉफ्टवेयर है।"
+   },
+   {
+    en:"What is the intersection of a row and a column called?",
+    hi:"एक रो और कॉलम के मिलने वाले स्थान को क्या कहते हैं?",
+    options:[["Cell","सेल"],["Sheet","शीट"],["Workbook","वर्कबुक"],["Range","रेंज"]],
+    answer:0,explanation:"The intersection of a row and column is called a cell. / रो और कॉलम के मिलने से सेल बनता है।"
+   },
+   {
+    en:"Which symbol is used to begin a formula in Excel?",
+    hi:"Excel में फॉर्मूला किस चिन्ह से शुरू होता है?",
+    options:[["=","="],["+","+"],["#","#"],["@","@"]],
+    answer:0,explanation:"Excel formulas normally begin with an equals sign. / Excel में फॉर्मूला सामान्यतः बराबर के चिन्ह से शुरू होता है।"
+   },
+   {
+    en:"What is the default file extension of a modern Excel workbook?",
+    hi:"आधुनिक Excel वर्कबुक का डिफॉल्ट एक्सटेंशन क्या है?",
+    options:[[".xlsx",".xlsx"],[".docx",".docx"],[".pptx",".pptx"],[".exe",".exe"]],
+    answer:0,explanation:"Modern Excel workbooks use the .xlsx extension. / आधुनिक Excel वर्कबुक में .xlsx एक्सटेंशन होता है।"
+   },
+   {
+    en:"Which function adds numbers in Excel?",
+    hi:"Excel में संख्याओं को जोड़ने के लिए कौन-सा फंक्शन है?",
+    options:[["SUM()","SUM()"],["COUNT()","COUNT()"],["MAX()","MAX()"],["MIN()","MIN()"]],
+    answer:0,explanation:"SUM() adds the values in selected cells. / SUM() चुने हुए सेल की संख्याओं को जोड़ता है।"
+   },
+   {
+    en:"Which function calculates the average of numbers?",
+    hi:"संख्याओं का औसत निकालने के लिए कौन-सा फंक्शन उपयोग होता है?",
+    options:[["AVERAGE()","AVERAGE()"],["SUM()","SUM()"],["MAX()","MAX()"],["COUNT()","COUNT()"]],
+    answer:0,explanation:"AVERAGE() calculates the arithmetic mean. / AVERAGE() संख्याओं का औसत निकालता है।"
+   },
+   {
+    en:"Which function returns the largest value in a range?",
+    hi:"किसी रेंज में सबसे बड़ी संख्या कौन-सा फंक्शन देता है?",
+    options:[["MAX()","MAX()"],["MIN()","MIN()"],["SUM()","SUM()"],["COUNT()","COUNT()"]],
+    answer:0,explanation:"MAX() returns the largest value. / MAX() सबसे बड़ी संख्या देता है।"
+   },
+   {
+    en:"Which function returns the smallest value in a range?",
+    hi:"किसी रेंज में सबसे छोटी संख्या कौन-सा फंक्शन देता है?",
+    options:[["MIN()","MIN()"],["MAX()","MAX()"],["SUM()","SUM()"],["AVERAGE()","AVERAGE()"]],
+    answer:0,explanation:"MIN() returns the smallest value. / MIN() सबसे छोटी संख्या देता है।"
+   },
+   {
+    en:"Which function counts cells containing numbers?",
+    hi:"संख्या वाले सेल की गिनती कौन-सा फंक्शन करता है?",
+    options:[["COUNT()","COUNT()"],["SUM()","SUM()"],["MAX()","MAX()"],["LEFT()","LEFT()"]],
+    answer:0,explanation:"COUNT() counts cells containing numeric values. / COUNT() संख्यात्मक मान वाले सेल गिनता है।"
+   },
+   {
+    en:"What is a workbook in Excel?",
+    hi:"Excel में वर्कबुक क्या होती है?",
+    options:[["An Excel file containing one or more worksheets","एक Excel फाइल जिसमें एक या अधिक वर्कशीट होती हैं"],["A single cell","एक सेल"],["A chart only","केवल चार्ट"],["A formula only","केवल फॉर्मूला"]],
+    answer:0,explanation:"A workbook is an Excel file that can contain multiple worksheets. / वर्कबुक Excel फाइल होती है जिसमें कई वर्कशीट हो सकती हैं।"
+   },
+   {
+    en:"What is a worksheet?",
+    hi:"वर्कशीट क्या होती है?",
+    options:[["A grid of rows and columns","रो और कॉलम का ग्रिड"],["A printer","एक प्रिंटर"],["A text document","एक टेक्स्ट दस्तावेज"],["A presentation slide","एक प्रेजेंटेशन स्लाइड"]],
+    answer:0,explanation:"A worksheet is a spreadsheet grid made up of rows and columns. / वर्कशीट रो और कॉलम से बना स्प्रेडशीट पेज है।"
+   },
+   {
+    en:"Which shortcut saves an Excel workbook?",
+    hi:"Excel वर्कबुक सेव करने की शॉर्टकट कुंजी क्या है?",
+    options:[["Ctrl + S","Ctrl + S"],["Ctrl + P","Ctrl + P"],["Ctrl + X","Ctrl + X"],["Ctrl + B","Ctrl + B"]],
+    answer:0,explanation:"Ctrl + S saves the workbook. / Ctrl + S वर्कबुक सेव करता है।"
+   },
+   {
+    en:"Which feature arranges data in ascending or descending order?",
+    hi:"डेटा को बढ़ते या घटते क्रम में व्यवस्थित करने वाला फीचर कौन-सा है?",
+    options:[["Sort","सॉर्ट"],["Filter","फिल्टर"],["Merge","मर्ज"],["Wrap Text","रैप टेक्स्ट"]],
+    answer:0,explanation:"Sort arranges data in a chosen order. / सॉर्ट डेटा को चुने हुए क्रम में लगाता है।"
+   },
+   {
+    en:"Which feature displays only records that meet specified conditions?",
+    hi:"निर्धारित शर्तों को पूरा करने वाले रिकॉर्ड दिखाने के लिए कौन-सा फीचर उपयोग होता है?",
+    options:[["Filter","फिल्टर"],["Sort","सॉर्ट"],["Format Painter","फॉर्मेट पेंटर"],["Zoom","जूम"]],
+    answer:0,explanation:"Filter displays records that meet specified criteria. / फिल्टर निर्धारित शर्तों के अनुसार रिकॉर्ड दिखाता है।"
+   },
+   {
+    en:"Which function checks a condition and returns different results?",
+    hi:"किसी शर्त की जाँच करके अलग-अलग परिणाम देने वाला फंक्शन कौन-सा है?",
+    options:[["IF()","IF()"],["SUM()","SUM()"],["MAX()","MAX()"],["ROUND()","ROUND()"]],
+    answer:0,explanation:"IF() returns one value when a condition is true and another when it is false. / IF() शर्त सही या गलत होने पर अलग परिणाम देता है।"
+   },
+   {
+    en:"Which Excel feature represents data graphically?",
+    hi:"डेटा को चित्रात्मक रूप में दिखाने के लिए Excel में किस फीचर का उपयोग होता है?",
+    options:[["Chart","चार्ट"],["Formula Bar","फॉर्मूला बार"],["Name Box","नेम बॉक्स"],["Status Bar","स्टेटस बार"]],
+    answer:0,explanation:"Charts display data visually. / चार्ट डेटा को चित्रात्मक रूप में दिखाते हैं।"
+   },
+   {
+    en:"What is the cell address at column B and row 5?",
+    hi:"कॉलम B और रो 5 में स्थित सेल का पता क्या है?",
+    options:[["B5","B5"],["5B","5B"],["BB5","BB5"],["B-5","B-5"]],
+    answer:0,explanation:"Cell addresses use the column letter followed by the row number. / सेल एड्रेस में पहले कॉलम अक्षर और फिर रो संख्या आती है।"
+   },
+   {
+    en:"Which shortcut makes selected cell content bold?",
+    hi:"चुने हुए सेल के कंटेंट को बोल्ड करने की शॉर्टकट कुंजी क्या है?",
+    options:[["Ctrl + B","Ctrl + B"],["Ctrl + I","Ctrl + I"],["Ctrl + U","Ctrl + U"],["Ctrl + P","Ctrl + P"]],
+    answer:0,explanation:"Ctrl + B applies bold formatting. / Ctrl + B बोल्ड फॉर्मेटिंग लागू करता है।"
+   },
+   {
+    en:"Which feature combines multiple cells into one cell?",
+    hi:"कई सेल को एक सेल में मिलाने वाला फीचर कौन-सा है?",
+    options:[["Merge Cells","मर्ज सेल"],["Sort","सॉर्ट"],["Filter","फिल्टर"],["Freeze Panes","फ्रीज पेन"]],
+    answer:0,explanation:"Merge Cells combines selected cells into one. / मर्ज सेल चुने हुए सेल को एक में मिलाता है।"
+   },
+   {
+    en:"Which symbol is used in an absolute cell reference?",
+    hi:"Absolute Cell Reference में किस चिन्ह का उपयोग होता है?",
+    options:[["$","$"],["#","#"],["&","&"],["%","%"]],
+    answer:0,explanation:"The dollar sign fixes a row or column in an absolute or mixed reference. / डॉलर चिन्ह सेल रेफरेंस में रो या कॉलम को स्थिर करता है।"
+   }
+  ],
+
+  10: [
+   {
+    en:"Which software is used to create slide presentations?",
+    hi:"स्लाइड प्रेजेंटेशन बनाने के लिए किस सॉफ्टवेयर का उपयोग होता है?",
+    options:[["MS PowerPoint","एमएस पावरपॉइंट"],["MS Word","एमएस वर्ड"],["MS Excel","एमएस एक्सेल"],["Notepad","नोटपैड"]],
+    answer:0,explanation:"PowerPoint is used to create slide-based presentations. / पावरपॉइंट स्लाइड आधारित प्रेजेंटेशन बनाता है।"
+   },
+   {
+    en:"What is the default extension of a modern PowerPoint presentation?",
+    hi:"आधुनिक PowerPoint प्रेजेंटेशन का डिफॉल्ट एक्सटेंशन क्या है?",
+    options:[[".pptx",".pptx"],[".docx",".docx"],[".xlsx",".xlsx"],[".txt",".txt"]],
+    answer:0,explanation:"Modern PowerPoint presentations use the .pptx extension. / आधुनिक PowerPoint फाइल में .pptx एक्सटेंशन होता है।"
+   },
+   {
+    en:"What is a single page in PowerPoint called?",
+    hi:"PowerPoint के एक पेज को क्या कहा जाता है?",
+    options:[["Slide","स्लाइड"],["Cell","सेल"],["Worksheet","वर्कशीट"],["Document","दस्तावेज"]],
+    answer:0,explanation:"Each page in a PowerPoint presentation is called a slide. / PowerPoint के प्रत्येक पेज को स्लाइड कहते हैं।"
+   },
+   {
+    en:"Which key starts a slide show from the beginning?",
+    hi:"शुरुआत से स्लाइड शो चलाने के लिए कौन-सी कुंजी दबाते हैं?",
+    options:[["F5","F5"],["F2","F2"],["F7","F7"],["F12","F12"]],
+    answer:0,explanation:"F5 starts the slide show from the beginning in PowerPoint. / F5 शुरुआत से स्लाइड शो चलाता है।"
+   },
+   {
+    en:"Which shortcut starts a slide show from the current slide?",
+    hi:"वर्तमान स्लाइड से स्लाइड शो शुरू करने की शॉर्टकट कुंजी क्या है?",
+    options:[["Shift + F5","Shift + F5"],["Ctrl + F5","Ctrl + F5"],["Alt + F5","Alt + F5"],["Ctrl + S","Ctrl + S"]],
+    answer:0,explanation:"Shift + F5 starts the presentation from the current slide. / Shift + F5 वर्तमान स्लाइड से शो शुरू करता है।"
+   },
+   {
+    en:"What is a transition in PowerPoint?",
+    hi:"PowerPoint में ट्रांजिशन क्या होता है?",
+    options:[["Visual effect between slides","स्लाइडों के बीच दिखाई देने वाला प्रभाव"],["A spelling tool","स्पेलिंग टूल"],["A formula","फॉर्मूला"],["A database table","डेटाबेस टेबल"]],
+    answer:0,explanation:"Transitions are visual effects that occur when moving from one slide to another. / ट्रांजिशन एक स्लाइड से दूसरी स्लाइड पर जाने का दृश्य प्रभाव है।"
+   },
+   {
+    en:"What is an animation in PowerPoint?",
+    hi:"PowerPoint में एनीमेशन क्या होता है?",
+    options:[["Effect applied to objects on a slide","स्लाइड के ऑब्जेक्ट पर लगाया गया प्रभाव"],["A type of worksheet","वर्कशीट का प्रकार"],["A file extension","फाइल एक्सटेंशन"],["A printing command","प्रिंट कमांड"]],
+    answer:0,explanation:"Animations control how text and objects appear or move on a slide. / एनीमेशन स्लाइड के टेक्स्ट और ऑब्जेक्ट के दिखाई देने या चलने का तरीका नियंत्रित करता है।"
+   },
+   {
+    en:"Which view displays slides as small thumbnails for rearranging?",
+    hi:"स्लाइडों को छोटे चित्रों के रूप में दिखाकर क्रम बदलने वाला व्यू कौन-सा है?",
+    options:[["Slide Sorter View","स्लाइड सॉर्टर व्यू"],["Reading View","रीडिंग व्यू"],["Notes Page View","नोट्स पेज व्यू"],["Normal View only","केवल नॉर्मल व्यू"]],
+    answer:0,explanation:"Slide Sorter View helps rearrange slides easily. / स्लाइड सॉर्टर व्यू से स्लाइडों का क्रम बदलना आसान होता है।"
+   },
+   {
+    en:"Which feature allows a presenter to add private notes to a slide?",
+    hi:"प्रेजेंटर को स्लाइड के लिए निजी नोट्स जोड़ने की सुविधा कौन देता है?",
+    options:[["Speaker Notes","स्पीकर नोट्स"],["Transitions","ट्रांजिशन"],["Themes","थीम"],["Animations","एनीमेशन"]],
+    answer:0,explanation:"Speaker Notes are used to add notes for the presenter. / स्पीकर नोट्स प्रेजेंटर के लिए अतिरिक्त जानकारी रखते हैं।"
+   },
+   {
+    en:"Which tab is commonly used to add pictures to a slide?",
+    hi:"स्लाइड में चित्र जोड़ने के लिए सामान्यतः किस टैब का उपयोग होता है?",
+    options:[["Insert","इन्सर्ट"],["Review","रिव्यू"],["View","व्यू"],["File","फाइल"]],
+    answer:0,explanation:"The Insert tab contains commands for adding pictures and other objects. / इन्सर्ट टैब से चित्र और अन्य ऑब्जेक्ट जोड़े जाते हैं।"
+   },
+   {
+    en:"Which feature applies a consistent design to presentation slides?",
+    hi:"सभी स्लाइडों पर एक जैसा डिजाइन लागू करने वाला फीचर कौन-सा है?",
+    options:[["Theme","थीम"],["Spell Check","स्पेल चेक"],["Word Count","वर्ड काउंट"],["Mail Merge","मेल मर्ज"]],
+    answer:0,explanation:"Themes provide coordinated colours, fonts and effects. / थीम रंग, फॉन्ट और प्रभावों का एक समान सेट देती है।"
+   },
+   {
+    en:"Which feature controls the overall layout and design of multiple slides?",
+    hi:"कई स्लाइडों के समग्र लेआउट और डिजाइन को कौन नियंत्रित करता है?",
+    options:[["Slide Master","स्लाइड मास्टर"],["Clipboard","क्लिपबोर्ड"],["Formula Bar","फॉर्मूला बार"],["Status Bar","स्टेटस बार"]],
+    answer:0,explanation:"Slide Master controls common design elements across slides. / स्लाइड मास्टर कई स्लाइडों के सामान्य डिजाइन को नियंत्रित करता है।"
+   },
+   {
+    en:"Which shortcut is commonly used to create a new slide?",
+    hi:"नई स्लाइड बनाने की सामान्य शॉर्टकट कुंजी क्या है?",
+    options:[["Ctrl + M","Ctrl + M"],["Ctrl + N","Ctrl + N"],["Ctrl + P","Ctrl + P"],["Ctrl + B","Ctrl + B"]],
+    answer:0,explanation:"Ctrl + M inserts a new slide in PowerPoint. / Ctrl + M नई स्लाइड जोड़ता है।"
+   },
+   {
+    en:"Which key ends a running slide show?",
+    hi:"चल रहे स्लाइड शो को बंद करने के लिए कौन-सी कुंजी दबाते हैं?",
+    options:[["Esc","Esc"],["F5","F5"],["Enter","Enter"],["Tab","Tab"]],
+    answer:0,explanation:"Esc exits the slide show. / Esc स्लाइड शो से बाहर निकलता है।"
+   },
+   {
+    en:"Which option changes the size and orientation of slides?",
+    hi:"स्लाइड का आकार और दिशा बदलने के लिए कौन-सा विकल्प उपयोग होता है?",
+    options:[["Slide Size","स्लाइड साइज"],["Font Size","फॉन्ट साइज"],["Line Spacing","लाइन स्पेसिंग"],["Word Count","वर्ड काउंट"]],
+    answer:0,explanation:"Slide Size controls the dimensions and orientation of slides. / स्लाइड साइज से स्लाइड की माप और दिशा तय होती है।"
+   },
+   {
+    en:"Which file format is commonly used to share a presentation as a fixed-layout document?",
+    hi:"प्रेजेंटेशन को निश्चित लेआउट वाले दस्तावेज के रूप में साझा करने के लिए कौन-सा फॉर्मेट उपयोग होता है?",
+    options:[["PDF","पीडीएफ"],["EXE","एक्सई"],["DLL","डीएलएल"],["BAT","बैट"]],
+    answer:0,explanation:"PDF preserves document layout across devices. / PDF अलग-अलग डिवाइस पर दस्तावेज का लेआउट सुरक्षित रखता है।"
+   },
+   {
+    en:"What is the purpose of a placeholder in PowerPoint?",
+    hi:"PowerPoint में प्लेसहोल्डर का क्या उद्देश्य है?",
+    options:[["To hold content such as text or pictures","टेक्स्ट या चित्र जैसे कंटेंट रखने के लिए"],["To delete a slide","स्लाइड हटाने के लिए"],["To shut down the computer","कंप्यूटर बंद करने के लिए"],["To calculate formulas","फॉर्मूला की गणना करने के लिए"]],
+    answer:0,explanation:"Placeholders provide areas for slide content. / प्लेसहोल्डर स्लाइड में कंटेंट रखने का स्थान देते हैं।"
+   },
+   {
+    en:"Which view is mainly used to edit an individual slide?",
+    hi:"एक स्लाइड को एडिट करने के लिए मुख्य रूप से कौन-सा व्यू उपयोग होता है?",
+    options:[["Normal View","नॉर्मल व्यू"],["Slide Sorter View","स्लाइड सॉर्टर व्यू"],["Slide Show View","स्लाइड शो व्यू"],["Reading View","रीडिंग व्यू"]],
+    answer:0,explanation:"Normal View is the main editing view. / नॉर्मल व्यू मुख्य एडिटिंग व्यू है।"
+   },
+   {
+    en:"Which object is used to display numerical information visually in PowerPoint?",
+    hi:"PowerPoint में संख्यात्मक जानकारी को चित्रात्मक रूप में दिखाने के लिए क्या उपयोग होता है?",
+    options:[["Chart","चार्ट"],["Header","हेडर"],["Footer","फूटर"],["Comment","कमेंट"]],
+    answer:0,explanation:"Charts present numerical data visually. / चार्ट संख्यात्मक डेटा को चित्रात्मक रूप में दिखाते हैं।"
+   },
+   {
+    en:"What is the purpose of rehearse timings in PowerPoint?",
+    hi:"PowerPoint में Rehearse Timings का उद्देश्य क्या है?",
+    options:[["Practising and recording slide timings","स्लाइड दिखाने का समय अभ्यास और रिकॉर्ड करना"],["Checking spelling only","केवल स्पेलिंग जाँचना"],["Changing file extension","फाइल एक्सटेंशन बदलना"],["Adding a password to Windows","Windows में पासवर्ड जोड़ना"]],
+    answer:0,explanation:"Rehearse Timings helps practise and record the time spent on slides. / Rehearse Timings स्लाइड पर लगने वाला समय अभ्यास और रिकॉर्ड करता है।"
+   }
+  ],
+
+  11: [
+   {
+    en:"What is the Internet?",
+    hi:"इंटरनेट क्या है?",
+    options:[["A global network of interconnected networks","आपस में जुड़े नेटवर्कों का वैश्विक नेटवर्क"],["A single computer","एक कंप्यूटर"],["A type of printer","प्रिंटर का प्रकार"],["A computer language","कंप्यूटर भाषा"]],
+    answer:0,explanation:"The Internet is a worldwide network of interconnected computer networks. / इंटरनेट आपस में जुड़े कंप्यूटर नेटवर्कों का विश्वव्यापी नेटवर्क है।"
+   },
+   {
+    en:"What is the full form of WWW?",
+    hi:"WWW का पूरा नाम क्या है?",
+    options:[["World Wide Web","वर्ल्ड वाइड वेब"],["World Web Window","वर्ल्ड वेब विंडो"],["Wide World Work","वाइड वर्ल्ड वर्क"],["Web World Wide","वेब वर्ल्ड वाइड"]],
+    answer:0,explanation:"WWW stands for World Wide Web. / WWW का अर्थ वर्ल्ड वाइड वेब है।"
+   },
+   {
+    en:"Who invented the World Wide Web?",
+    hi:"वर्ल्ड वाइड वेब का आविष्कार किसने किया?",
+    options:[["Tim Berners-Lee","टिम बर्नर्स-ली"],["Charles Babbage","चार्ल्स बैबेज"],["Bill Gates","बिल गेट्स"],["Steve Jobs","स्टीव जॉब्स"]],
+    answer:0,explanation:"Tim Berners-Lee invented the World Wide Web. / टिम बर्नर्स-ली ने वर्ल्ड वाइड वेब का आविष्कार किया।"
+   },
+   {
+    en:"Which software is used to access websites?",
+    hi:"वेबसाइट खोलने के लिए किस सॉफ्टवेयर का उपयोग होता है?",
+    options:[["Web Browser","वेब ब्राउज़र"],["Compiler","कंपाइलर"],["Calculator","कैलकुलेटर"],["Antivirus only","केवल एंटीवायरस"]],
+    answer:0,explanation:"A web browser retrieves and displays web pages. / वेब ब्राउज़र वेब पेज खोलता और दिखाता है।"
+   },
+   {
+    en:"Which of the following is a search engine?",
+    hi:"निम्नलिखित में से कौन सर्च इंजन है?",
+    options:[["Google","गूगल"],["Windows","विंडोज"],["MS Word","एमएस वर्ड"],["Linux","लिनक्स"]],
+    answer:0,explanation:"Google is a search engine used to find information online. / गूगल ऑनलाइन जानकारी खोजने वाला सर्च इंजन है।"
+   },
+   {
+    en:"What is a website?",
+    hi:"वेबसाइट क्या होती है?",
+    options:[["A collection of related web pages","आपस में संबंधित वेब पेजों का संग्रह"],["A computer processor","कंप्यूटर प्रोसेसर"],["A keyboard layout","कीबोर्ड लेआउट"],["A type of memory","मेमोरी का प्रकार"]],
+    answer:0,explanation:"A website is a collection of related web pages under a domain. / वेबसाइट एक डोमेन के अंतर्गत संबंधित वेब पेजों का संग्रह है।"
+   },
+   {
+    en:"What is a homepage?",
+    hi:"होमपेज क्या होता है?",
+    options:[["The main or introductory page of a website","वेबसाइट का मुख्य या शुरुआती पेज"],["The last page of a book","किताब का अंतिम पेज"],["A computer folder","कंप्यूटर फोल्डर"],["A printer setting","प्रिंटर सेटिंग"]],
+    answer:0,explanation:"A homepage is commonly the main entry page of a website. / होमपेज वेबसाइट का मुख्य प्रवेश पेज होता है।"
+   },
+   {
+    en:"What does URL stand for?",
+    hi:"URL का पूरा नाम क्या है?",
+    options:[["Uniform Resource Locator","यूनिफॉर्म रिसोर्स लोकेटर"],["Universal Record Link","यूनिवर्सल रिकॉर्ड लिंक"],["Uniform Read Location","यूनिफॉर्म रीड लोकेशन"],["User Resource Line","यूजर रिसोर्स लाइन"]],
+    answer:0,explanation:"URL stands for Uniform Resource Locator. / URL का अर्थ यूनिफॉर्म रिसोर्स लोकेटर है।"
+   },
+   {
+    en:"Which protocol is commonly used to transfer web pages?",
+    hi:"वेब पेज ट्रांसफर करने के लिए सामान्यतः कौन-सा प्रोटोकॉल उपयोग होता है?",
+    options:[["HTTP","एचटीटीपी"],["FTP","एफटीपी"],["SMTP","एसएमटीपी"],["POP3","पीओपी3"]],
+    answer:0,explanation:"HTTP is the Hypertext Transfer Protocol used for web communication. / HTTP वेब संचार के लिए उपयोग किया जाने वाला प्रोटोकॉल है।"
+   },
+   {
+    en:"What does HTTPS provide in addition to HTTP?",
+    hi:"HTTPS, HTTP की तुलना में अतिरिक्त क्या प्रदान करता है?",
+    options:[["Encrypted communication using TLS","TLS द्वारा एन्क्रिप्टेड संचार"],["Unlimited storage","असीमित स्टोरेज"],["Faster CPU","तेज CPU"],["Free Internet access","मुफ्त इंटरनेट"]],
+    answer:0,explanation:"HTTPS protects communication using encryption through TLS. / HTTPS, TLS के माध्यम से संचार को एन्क्रिप्ट करके सुरक्षित करता है।"
+   },
+   {
+    en:"Which of these is a web browser?",
+    hi:"इनमें से कौन वेब ब्राउज़र है?",
+    options:[["Mozilla Firefox","मोज़िला फायरफॉक्स"],["MS Excel","एमएस एक्सेल"],["Linux","लिनक्स"],["PowerPoint","पावरपॉइंट"]],
+    answer:0,explanation:"Mozilla Firefox is a web browser. / मोज़िला फायरफॉक्स एक वेब ब्राउज़र है।"
+   },
+   {
+    en:"What is a domain name?",
+    hi:"डोमेन नेम क्या होता है?",
+    options:[["A human-readable name identifying a website or Internet resource","वेबसाइट या इंटरनेट संसाधन की पहचान करने वाला आसानी से पढ़ा जाने वाला नाम"],["A printer model","प्रिंटर मॉडल"],["A type of RAM","RAM का प्रकार"],["A computer password","कंप्यूटर पासवर्ड"]],
+    answer:0,explanation:"A domain name provides a readable address for an Internet resource. / डोमेन नेम इंटरनेट संसाधन का पढ़ने योग्य पता होता है।"
+   },
+   {
+    en:"Which system translates domain names into IP addresses?",
+    hi:"डोमेन नेम को IP एड्रेस में कौन बदलता है?",
+    options:[["DNS","डीएनएस"],["HTML","एचटीएमएल"],["USB","यूएसबी"],["CPU","सीपीयू"]],
+    answer:0,explanation:"DNS stands for Domain Name System. / DNS का अर्थ डोमेन नेम सिस्टम है।"
+   },
+   {
+    en:"What is the full form of ISP?",
+    hi:"ISP का पूरा नाम क्या है?",
+    options:[["Internet Service Provider","इंटरनेट सर्विस प्रोवाइडर"],["Internal System Program","इंटरनल सिस्टम प्रोग्राम"],["Internet Software Protocol","इंटरनेट सॉफ्टवेयर प्रोटोकॉल"],["Information Security Process","इन्फॉर्मेशन सिक्योरिटी प्रोसेस"]],
+    answer:0,explanation:"An ISP provides Internet access to users. / ISP उपयोगकर्ताओं को इंटरनेट सेवा देता है।"
+   },
+   {
+    en:"Which protocol is commonly used for secure web browsing?",
+    hi:"सुरक्षित वेब ब्राउज़िंग के लिए सामान्यतः कौन-सा प्रोटोकॉल उपयोग होता है?",
+    options:[["HTTPS","एचटीटीपीएस"],["HTTP only","केवल एचटीटीपी"],["FTP","एफटीपी"],["Telnet","टेलनेट"]],
+    answer:0,explanation:"HTTPS uses encryption to protect data exchanged with websites. / HTTPS वेबसाइट के साथ डेटा आदान-प्रदान को एन्क्रिप्ट करता है।"
+   },
+   {
+    en:"What is a hyperlink?",
+    hi:"हाइपरलिंक क्या होता है?",
+    options:[["A clickable link to another resource or location","किसी अन्य संसाधन या स्थान पर जाने वाला क्लिक करने योग्य लिंक"],["A computer virus","कंप्यूटर वायरस"],["A storage device","स्टोरेज डिवाइस"],["A printer command","प्रिंटर कमांड"]],
+    answer:0,explanation:"A hyperlink connects one page or resource to another. / हाइपरलिंक एक पेज या संसाधन को दूसरे से जोड़ता है।"
+   },
+   {
+    en:"What is downloading?",
+    hi:"डाउनलोडिंग क्या है?",
+    options:[["Receiving data from another system to your device","दूसरे सिस्टम से अपने डिवाइस में डेटा प्राप्त करना"],["Sending data to another system","दूसरे सिस्टम को डेटा भेजना"],["Deleting a file","फाइल हटाना"],["Printing a page","पेज प्रिंट करना"]],
+    answer:0,explanation:"Downloading means receiving data from a remote system. / डाउनलोडिंग का अर्थ दूसरे सिस्टम से डेटा प्राप्त करना है।"
+   },
+   {
+    en:"What is uploading?",
+    hi:"अपलोडिंग क्या है?",
+    options:[["Sending data from your device to another system","अपने डिवाइस से दूसरे सिस्टम पर डेटा भेजना"],["Receiving data from the Internet","इंटरनेट से डेटा प्राप्त करना"],["Deleting browser history","ब्राउज़र हिस्ट्री हटाना"],["Formatting a drive","ड्राइव फॉर्मेट करना"]],
+    answer:0,explanation:"Uploading means sending data from your device to a remote system. / अपलोडिंग का अर्थ अपने डिवाइस से दूसरे सिस्टम पर डेटा भेजना है।"
+   },
+   {
+    en:"Which of these is a cloud storage service?",
+    hi:"इनमें से कौन क्लाउड स्टोरेज सेवा है?",
+    options:[["Google Drive","गूगल ड्राइव"],["MS Paint","एमएस पेंट"],["Notepad","नोटपैड"],["Calculator","कैलकुलेटर"]],
+    answer:0,explanation:"Google Drive provides online file storage and sharing. / गूगल ड्राइव ऑनलाइन फाइल स्टोरेज और शेयरिंग सेवा देता है।"
+   },
+   {
+    en:"Which symbol commonly separates the username and domain in an email address?",
+    hi:"ईमेल एड्रेस में यूजरनेम और डोमेन को अलग करने के लिए किस चिन्ह का उपयोग होता है?",
+    options:[["@","@"],["#","#"],["$","$"],["&","&"]],
+    answer:0,explanation:"The @ symbol separates the local part and domain in an email address. / @ चिन्ह ईमेल एड्रेस में यूजरनेम और डोमेन को अलग करता है।"
+   }
+  ],
+
+  12: [
+{
+en: "What is the full form of email?",
+hi: "ईमेल का पूरा नाम क्या है?",
+options: [["Electronic Mail","इलेक्ट्रॉनिक मेल"],["Easy Mail","आसान मेल"],["Electric Message","इलेक्ट्रिक संदेश"],["Express Mail","एक्सप्रेस मेल"]],
+answer: 0,
+explanation: "Email stands for Electronic Mail. / Email का अर्थ इलेक्ट्रॉनिक मेल है।"
+},
+{
+en: "Which symbol is compulsory in an email address?",
+hi: "ईमेल एड्रेस में कौन-सा चिन्ह अनिवार्य है?",
+options: [["#","#"],["@","@"],["&","&"],["%","%"]],
+answer: 1,
+explanation: "The @ symbol separates the username and domain. / @ चिन्ह यूजरनेम और डोमेन को अलग करता है।"
+},
+{
+en: "Which field is used to enter the receiver's email address?",
+hi: "प्राप्तकर्ता का ईमेल एड्रेस किस फील्ड में लिखा जाता है?",
+options: [["CC","CC"],["BCC","BCC"],["To","To"],["Subject","विषय"]],
+answer: 2,
+explanation: "The To field contains the main receiver's email address. / To फील्ड में मुख्य प्राप्तकर्ता का ईमेल लिखा जाता है।"
+},
+{
+en: "What is the full form of CC in email?",
+hi: "ईमेल में CC का पूरा नाम क्या है?",
+options: [["Carbon Copy","कार्बन कॉपी"],["Computer Copy","कंप्यूटर कॉपी"],["Common Copy","कॉमन कॉपी"],["Central Copy","सेंट्रल कॉपी"]],
+answer: 0,
+explanation: "CC stands for Carbon Copy. / CC का अर्थ Carbon Copy है।"
+},
+{
+en: "What is the main purpose of BCC?",
+hi: "BCC का मुख्य उद्देश्य क्या है?",
+options: [["Delete email","ईमेल हटाना"],["Hide recipients' addresses from other recipients","अन्य प्राप्तकर्ताओं से ईमेल एड्रेस छिपाना"],["Attach a file","फाइल जोड़ना"],["Print email","ईमेल प्रिंट करना"]],
+answer: 1,
+explanation: "BCC hides recipient addresses from other recipients. / BCC अन्य प्राप्तकर्ताओं से एड्रेस छिपाता है।"
+},
+{
+en: "Which field is used to write the topic of an email?",
+hi: "ईमेल का विषय लिखने के लिए किस फील्ड का उपयोग होता है?",
+options: [["To","To"],["CC","CC"],["Subject","विषय"],["From","From"]],
+answer: 2,
+explanation: "The Subject field describes the topic of the email. / Subject फील्ड ईमेल का विषय बताता है।"
+},
+{
+en: "Which option is used to send a file with an email?",
+hi: "ईमेल के साथ फाइल भेजने के लिए किस विकल्प का उपयोग होता है?",
+options: [["Attachment","अटैचमेंट"],["Forward","फॉरवर्ड"],["Reply","रिप्लाई"],["Draft","ड्राफ्ट"]],
+answer: 0,
+explanation: "Attachment is used to add files to an email. / Attachment से ईमेल में फाइल जोड़ी जाती है।"
+},
+{
+en: "Which folder stores received emails?",
+hi: "प्राप्त ईमेल किस फोल्डर में रखे जाते हैं?",
+options: [["Sent","भेजे गए"],["Inbox","इनबॉक्स"],["Drafts","ड्राफ्ट"],["Trash","ट्रैश"]],
+answer: 1,
+explanation: "Inbox stores received emails. / Inbox में प्राप्त ईमेल रखे जाते हैं।"
+},
+{
+en: "Where are emails saved before sending?",
+hi: "भेजने से पहले ईमेल कहाँ सेव होते हैं?",
+options: [["Spam","स्पैम"],["Trash","ट्रैश"],["Drafts","ड्राफ्ट"],["Sent","सेंट"]],
+answer: 2,
+explanation: "Unsent emails are usually saved in Drafts. / न भेजे गए ईमेल Drafts में सेव होते हैं।"
+},
+{
+en: "Which option sends an email to another person?",
+hi: "किस विकल्प से ईमेल किसी दूसरे व्यक्ति को भेजा जाता है?",
+options: [["Forward","फॉरवर्ड"],["Delete","डिलीट"],["Archive","आर्काइव"],["Reply","रिप्लाई"]],
+answer: 0,
+explanation: "Forward sends a received email to another person. / Forward प्राप्त ईमेल को दूसरे व्यक्ति को भेजता है।"
+},
+{
+en: "Which protocol is commonly used to send emails?",
+hi: "ईमेल भेजने के लिए सामान्यतः किस प्रोटोकॉल का उपयोग होता है?",
+options: [["HTTP","HTTP"],["SMTP","SMTP"],["FTP","FTP"],["POP3","POP3"]],
+answer: 1,
+explanation: "SMTP is used for sending email. / SMTP का उपयोग ईमेल भेजने के लिए होता है।"
+},
+{
+en: "Which protocol can be used to download emails from a mail server?",
+hi: "मेल सर्वर से ईमेल डाउनलोड करने के लिए किस प्रोटोकॉल का उपयोग किया जा सकता है?",
+options: [["HTML","HTML"],["HTTP","HTTP"],["POP3","POP3"],["SMTP","SMTP"]],
+answer: 2,
+explanation: "POP3 is a protocol used to retrieve emails. / POP3 ईमेल प्राप्त करने का प्रोटोकॉल है।"
+},
+{
+en: "What does URL stand for?",
+hi: "URL का पूरा नाम क्या है?",
+options: [["Uniform Resource Locator","यूनिफॉर्म रिसोर्स लोकेटर"],["Universal Record Link","यूनिवर्सल रिकॉर्ड लिंक"],["Uniform Reading Language","यूनिफॉर्म रीडिंग लैंग्वेज"],["User Resource Location","यूजर रिसोर्स लोकेशन"]],
+answer: 0,
+explanation: "URL stands for Uniform Resource Locator. / URL का अर्थ Uniform Resource Locator है।"
+},
+{
+en: "Which of the following is an email service?",
+hi: "निम्नलिखित में से कौन-सी ईमेल सेवा है?",
+options: [["MS Paint","एमएस पेंट"],["Gmail","जीमेल"],["Notepad","नोटपैड"],["Calculator","कैलकुलेटर"]],
+answer: 1,
+explanation: "Gmail is an email service provided by Google. / Gmail गूगल की ईमेल सेवा है।"
+},
+{
+en: "What is spam email?",
+hi: "स्पैम ईमेल क्या होता है?",
+options: [["Important official email","महत्वपूर्ण आधिकारिक ईमेल"],["Personal email","व्यक्तिगत ईमेल"],["Unwanted or junk email","अनचाहा या बेकार ईमेल"],["Saved email","सेव किया हुआ ईमेल"]],
+answer: 2,
+explanation: "Spam refers to unwanted or unsolicited messages. / स्पैम अनचाहे संदेशों को कहते हैं।"
+},
+{
+en: "Which option is used to respond to the sender of an email?",
+hi: "ईमेल भेजने वाले को जवाब देने के लिए किस विकल्प का उपयोग होता है?",
+options: [["Reply","रिप्लाई"],["Forward","फॉरवर्ड"],["Delete","डिलीट"],["Compose","कंपोज"]],
+answer: 0,
+explanation: "Reply sends a response to the sender. / Reply भेजने वाले को जवाब भेजता है।"
+},
+{
+en: "What is an email signature?",
+hi: "ईमेल सिग्नेचर क्या होता है?",
+options: [["Email password","ईमेल पासवर्ड"],["Automatically added closing details","स्वचालित रूप से जुड़ने वाला अंतिम विवरण"],["Email attachment","ईमेल अटैचमेंट"],["Email subject","ईमेल विषय"]],
+answer: 1,
+explanation: "An email signature contains details such as name and contact information. / इसमें नाम और संपर्क जानकारी जैसे विवरण होते हैं।"
+},
+{
+en: "Which folder generally stores sent emails?",
+hi: "भेजे गए ईमेल सामान्यतः किस फोल्डर में होते हैं?",
+options: [["Inbox","इनबॉक्स"],["Drafts","ड्राफ्ट"],["Sent","सेंट"],["Spam","स्पैम"]],
+answer: 2,
+explanation: "Sent folder stores emails that have been sent. / Sent फोल्डर में भेजे गए ईमेल रहते हैं।"
+},
+{
+en: "What should you do before opening an attachment from an unknown sender?",
+hi: "अज्ञात व्यक्ति के अटैचमेंट को खोलने से पहले क्या करना चाहिए?",
+options: [["Verify the sender and scan the file","भेजने वाले की जाँच करें और फाइल स्कैन करें"],["Open it immediately","तुरंत खोलें"],["Forward it to everyone","सभी को भेजें"],["Disable antivirus","एंटीवायरस बंद करें"]],
+answer: 0,
+explanation: "Unknown attachments may contain malware. / अज्ञात अटैचमेंट में मैलवेयर हो सकता है।"
+},
+{
+en: "Which option is used to create a new email message?",
+hi: "नया ईमेल संदेश बनाने के लिए किस विकल्प का उपयोग होता है?",
+options: [["Archive","आर्काइव"],["Compose","कंपोज"],["Delete","डिलीट"],["Spam","स्पैम"]],
+answer: 1,
+explanation: "Compose opens a new email message window. / Compose नया ईमेल लिखने के लिए विंडो खोलता है।"
+}
+],
+
+13: [
+{
+en: "What is a computer network?",
+hi: "कंप्यूटर नेटवर्क क्या है?",
+options: [["A group of connected computers","आपस में जुड़े कंप्यूटरों का समूह"],["A single computer","एक कंप्यूटर"],["A type of printer","प्रिंटर का प्रकार"],["An operating system","ऑपरेटिंग सिस्टम"]],
+answer: 0,
+explanation: "A network connects computers to share data and resources. / नेटवर्क कंप्यूटरों को डेटा और संसाधन साझा करने के लिए जोड़ता है।"
+},
+{
+en: "What is the full form of LAN?",
+hi: "LAN का पूरा नाम क्या है?",
+options: [["Large Area Network","लार्ज एरिया नेटवर्क"],["Local Area Network","लोकल एरिया नेटवर्क"],["Long Access Network","लॉन्ग एक्सेस नेटवर्क"],["Linked Area Node","लिंक्ड एरिया नोड"]],
+answer: 1,
+explanation: "LAN stands for Local Area Network. / LAN का अर्थ Local Area Network है।"
+},
+{
+en: "Which network covers a large geographical area?",
+hi: "कौन-सा नेटवर्क बड़े भौगोलिक क्षेत्र को कवर करता है?",
+options: [["LAN","LAN"],["PAN","PAN"],["WAN","WAN"],["CAN","CAN"]],
+answer: 2,
+explanation: "WAN connects networks over large geographical areas. / WAN बड़े भौगोलिक क्षेत्रों में नेटवर्क जोड़ता है।"
+},
+{
+en: "What is the full form of MAN?",
+hi: "MAN का पूरा नाम क्या है?",
+options: [["Metropolitan Area Network","मेट्रोपॉलिटन एरिया नेटवर्क"],["Main Access Network","मेन एक्सेस नेटवर्क"],["Multiple Area Node","मल्टीपल एरिया नोड"],["Medium Area Network","मीडियम एरिया नेटवर्क"]],
+answer: 0,
+explanation: "MAN stands for Metropolitan Area Network. / MAN का अर्थ Metropolitan Area Network है।"
+},
+{
+en: "Which device connects different networks?",
+hi: "कौन-सा डिवाइस अलग-अलग नेटवर्क को जोड़ता है?",
+options: [["Keyboard","कीबोर्ड"],["Router","राउटर"],["Monitor","मॉनिटर"],["Scanner","स्कैनर"]],
+answer: 1,
+explanation: "A router forwards data between different networks. / राउटर अलग-अलग नेटवर्क के बीच डेटा भेजता है।"
+},
+{
+en: "Which device connects multiple devices within a LAN?",
+hi: "LAN के अंदर कई डिवाइसों को कौन जोड़ता है?",
+options: [["Printer","प्रिंटर"],["Modem","मॉडेम"],["Switch","स्विच"],["Speaker","स्पीकर"]],
+answer: 2,
+explanation: "A network switch connects devices within a LAN. / नेटवर्क स्विच LAN के अंदर डिवाइसों को जोड़ता है।"
+},
+{
+en: "What is the full form of IP?",
+hi: "IP का पूरा नाम क्या है?",
+options: [["Internet Protocol","इंटरनेट प्रोटोकॉल"],["Internal Program","इंटरनल प्रोग्राम"],["Information Process","इन्फॉर्मेशन प्रोसेस"],["Internet Provider","इंटरनेट प्रोवाइडर"]],
+answer: 0,
+explanation: "IP stands for Internet Protocol. / IP का अर्थ Internet Protocol है।"
+},
+{
+en: "What is an IP address used for?",
+hi: "IP एड्रेस का उपयोग किसलिए किया जाता है?",
+options: [["Printing documents","दस्तावेज प्रिंट करने के लिए"],["Identifying a device on a network","नेटवर्क पर डिवाइस की पहचान करने के लिए"],["Playing music","संगीत चलाने के लिए"],["Editing images","चित्र संपादित करने के लिए"]],
+answer: 1,
+explanation: "An IP address identifies a device on an IP network. / IP एड्रेस नेटवर्क पर डिवाइस की पहचान करता है।"
+},
+{
+en: "Which device converts signals for internet communication?",
+hi: "इंटरनेट संचार के लिए सिग्नल बदलने वाला उपकरण कौन-सा है?",
+options: [["Mouse","माउस"],["Scanner","स्कैनर"],["Modem","मॉडेम"],["Monitor","मॉनिटर"]],
+answer: 2,
+explanation: "A modem modulates and demodulates signals. / मॉडेम सिग्नल को मॉड्यूलेट और डिमॉड्यूलेट करता है।"
+},
+{
+en: "What is the full form of Wi-Fi?",
+hi: "Wi-Fi का सही अर्थ क्या है?",
+options: [["Wireless networking technology","वायरलेस नेटवर्किंग तकनीक"],["Wired File","वायर्ड फाइल"],["Wide Frequency Internet","वाइड फ्रीक्वेंसी इंटरनेट"],["Wireless Finder","वायरलेस फाइंडर"]],
+answer: 0,
+explanation: "Wi-Fi is a wireless networking technology. / Wi-Fi एक वायरलेस नेटवर्किंग तकनीक है।"
+},
+{
+en: "Which topology connects all devices to a central hub or switch?",
+hi: "कौन-सी टोपोलॉजी सभी डिवाइसों को एक केंद्रीय हब या स्विच से जोड़ती है?",
+options: [["Bus","बस"],["Star","स्टार"],["Ring","रिंग"],["Mesh","मेश"]],
+answer: 1,
+explanation: "In star topology, devices connect to a central device. / स्टार टोपोलॉजी में डिवाइस केंद्रीय उपकरण से जुड़ते हैं।"
+},
+{
+en: "Which topology connects devices in a circular arrangement?",
+hi: "कौन-सी टोपोलॉजी डिवाइसों को गोलाकार रूप में जोड़ती है?",
+options: [["Star","स्टार"],["Bus","बस"],["Ring","रिंग"],["Tree","ट्री"]],
+answer: 2,
+explanation: "Ring topology connects devices in a ring. / रिंग टोपोलॉजी में डिवाइस गोलाकार रूप में जुड़े होते हैं।"
+},
+{
+en: "What is the full form of NIC?",
+hi: "NIC का पूरा नाम क्या है?",
+options: [["Network Interface Card","नेटवर्क इंटरफेस कार्ड"],["Network Internet Code","नेटवर्क इंटरनेट कोड"],["New Interface Cable","न्यू इंटरफेस केबल"],["Node Information Center","नोड इन्फॉर्मेशन सेंटर"]],
+answer: 0,
+explanation: "NIC stands for Network Interface Card. / NIC का अर्थ Network Interface Card है।"
+},
+{
+en: "Which network is commonly used within a school computer lab?",
+hi: "स्कूल की कंप्यूटर लैब में सामान्यतः कौन-सा नेटवर्क उपयोग होता है?",
+options: [["WAN","WAN"],["LAN","LAN"],["MAN","MAN"],["GAN","GAN"]],
+answer: 1,
+explanation: "A LAN is suitable for connecting computers in a lab. / लैब के कंप्यूटरों को जोड़ने के लिए LAN उपयुक्त है।"
+},
+{
+en: "What is bandwidth in networking?",
+hi: "नेटवर्किंग में बैंडविड्थ क्या है?",
+options: [["Computer memory size","कंप्यूटर मेमोरी का आकार"],["Screen resolution","स्क्रीन रिजॉल्यूशन"],["Data carrying capacity of a connection","कनेक्शन की डेटा वहन क्षमता"],["Processor speed","प्रोसेसर की गति"]],
+answer: 2,
+explanation: "Bandwidth indicates the data carrying capacity of a connection. / बैंडविड्थ कनेक्शन की डेटा वहन क्षमता बताती है।"
+},
+{
+en: "Which protocol is commonly used to browse websites securely?",
+hi: "वेबसाइट सुरक्षित रूप से खोलने के लिए किस प्रोटोकॉल का उपयोग होता है?",
+options: [["HTTPS","HTTPS"],["FTP","FTP"],["SMTP","SMTP"],["POP3","POP3"]],
+answer: 0,
+explanation: "HTTPS uses encryption to secure web communication. / HTTPS वेब संचार को सुरक्षित करने के लिए एन्क्रिप्शन का उपयोग करता है।"
+},
+{
+en: "What is the full form of FTP?",
+hi: "FTP का पूरा नाम क्या है?",
+options: [["File Transfer Program","फाइल ट्रांसफर प्रोग्राम"],["File Transfer Protocol","फाइल ट्रांसफर प्रोटोकॉल"],["Fast Transfer Process","फास्ट ट्रांसफर प्रोसेस"],["File Tracking Protocol","फाइल ट्रैकिंग प्रोटोकॉल"]],
+answer: 1,
+explanation: "FTP stands for File Transfer Protocol. / FTP का अर्थ File Transfer Protocol है।"
+},
+{
+en: "Which network is used for personal devices over a short range?",
+hi: "कम दूरी पर व्यक्तिगत डिवाइसों के लिए कौन-सा नेटवर्क उपयोग होता है?",
+options: [["WAN","WAN"],["MAN","MAN"],["PAN","PAN"],["LAN","LAN"]],
+answer: 2,
+explanation: "PAN stands for Personal Area Network. / PAN का अर्थ Personal Area Network है।"
+},
+{
+en: "What is the full form of DNS?",
+hi: "DNS का पूरा नाम क्या है?",
+options: [["Domain Name System","डोमेन नेम सिस्टम"],["Data Network Service","डेटा नेटवर्क सर्विस"],["Digital Name Server","डिजिटल नेम सर्वर"],["Domain Number Service","डोमेन नंबर सर्विस"]],
+answer: 0,
+explanation: "DNS stands for Domain Name System. / DNS डोमेन नाम को IP एड्रेस में बदलने में मदद करता है।"
+},
+{
+en: "Which of the following is a wireless communication technology?",
+hi: "निम्नलिखित में से कौन-सी वायरलेस संचार तकनीक है?",
+options: [["Ethernet cable","ईथरनेट केबल"],["Bluetooth","ब्लूटूथ"],["Coaxial cable","कोएक्सियल केबल"],["Fiber cable","फाइबर केबल"]],
+answer: 1,
+explanation: "Bluetooth allows short-range wireless communication. / ब्लूटूथ कम दूरी का वायरलेस संचार प्रदान करता है।"
+}
+],
+
+14: [
+{
+en: "What is a database?",
+hi: "डेटाबेस क्या है?",
+options: [["An organized collection of data","डेटा का व्यवस्थित संग्रह"],["A computer virus","कंप्यूटर वायरस"],["An input device","इनपुट डिवाइस"],["A programming error","प्रोग्रामिंग त्रुटि"]],
+answer: 0,
+explanation: "A database stores organized information. / डेटाबेस व्यवस्थित जानकारी को संग्रहित करता है।"
+},
+{
+en: "What is the full form of DBMS?",
+hi: "DBMS का पूरा नाम क्या है?",
+options: [["Data Backup Management System","डेटा बैकअप मैनेजमेंट सिस्टम"],["Database Management System","डेटाबेस मैनेजमेंट सिस्टम"],["Digital Base Management Software","डिजिटल बेस मैनेजमेंट सॉफ्टवेयर"],["Data Binary Management System","डेटा बाइनरी मैनेजमेंट सिस्टम"]],
+answer: 1,
+explanation: "DBMS stands for Database Management System. / DBMS का अर्थ Database Management System है।"
+},
+{
+en: "Which of the following is a DBMS software?",
+hi: "निम्नलिखित में से कौन-सा DBMS सॉफ्टवेयर है?",
+options: [["MS Paint","एमएस पेंट"],["Notepad","नोटपैड"],["MySQL","मायएसक्यूएल"],["Calculator","कैलकुलेटर"]],
+answer: 2,
+explanation: "MySQL is a relational database management system. / MySQL एक रिलेशनल डेटाबेस मैनेजमेंट सिस्टम है।"
+},
+{
+en: "What is a table in a database?",
+hi: "डेटाबेस में टेबल क्या होती है?",
+options: [["A collection of rows and columns","पंक्तियों और स्तंभों का संग्रह"],["A type of monitor","मॉनिटर का प्रकार"],["A network cable","नेटवर्क केबल"],["A printer setting","प्रिंटर सेटिंग"]],
+answer: 0,
+explanation: "A database table organizes data in rows and columns. / डेटाबेस टेबल डेटा को पंक्तियों और स्तंभों में व्यवस्थित करती है।"
+},
+{
+en: "What is a row in a database table commonly called?",
+hi: "डेटाबेस टेबल की एक पंक्ति को सामान्यतः क्या कहते हैं?",
+options: [["Field","फील्ड"],["Record","रिकॉर्ड"],["Column","कॉलम"],["Query","क्वेरी"]],
+answer: 1,
+explanation: "A row represents a record. / एक पंक्ति एक रिकॉर्ड को दर्शाती है।"
+},
+{
+en: "What is a column in a database table commonly called?",
+hi: "डेटाबेस टेबल के एक स्तंभ को सामान्यतः क्या कहते हैं?",
+options: [["Record","रिकॉर्ड"],["Table","टेबल"],["Field","फील्ड"],["File","फाइल"]],
+answer: 2,
+explanation: "A column represents a field or attribute. / एक स्तंभ फील्ड या एट्रिब्यूट को दर्शाता है।"
+},
+{
+en: "What is a primary key?",
+hi: "प्राइमरी की क्या होती है?",
+options: [["A field that uniquely identifies each record","ऐसा फील्ड जो प्रत्येक रिकॉर्ड की विशिष्ट पहचान करता है"],["A duplicate field","डुप्लीकेट फील्ड"],["A blank field","खाली फील्ड"],["A password","पासवर्ड"]],
+answer: 0,
+explanation: "A primary key uniquely identifies each row in a table. / प्राइमरी की टेबल की प्रत्येक पंक्ति की विशिष्ट पहचान करती है।"
+},
+{
+en: "Which SQL command is used to retrieve data?",
+hi: "डेटा प्राप्त करने के लिए कौन-सी SQL कमांड उपयोग होती है?",
+options: [["DELETE","DELETE"],["SELECT","SELECT"],["DROP","DROP"],["UPDATE","UPDATE"]],
+answer: 1,
+explanation: "SELECT retrieves data from a database. / SELECT डेटाबेस से डेटा प्राप्त करता है।"
+},
+{
+en: "Which SQL command is used to insert new records?",
+hi: "नए रिकॉर्ड जोड़ने के लिए कौन-सी SQL कमांड उपयोग होती है?",
+options: [["UPDATE","UPDATE"],["DELETE","DELETE"],["INSERT","INSERT"],["DROP","DROP"]],
+answer: 2,
+explanation: "INSERT adds new records to a table. / INSERT टेबल में नए रिकॉर्ड जोड़ता है।"
+},
+{
+en: "Which SQL command is used to modify existing records?",
+hi: "मौजूदा रिकॉर्ड में बदलाव करने के लिए कौन-सी SQL कमांड उपयोग होती है?",
+options: [["UPDATE","UPDATE"],["SELECT","SELECT"],["CREATE","CREATE"],["INSERT","INSERT"]],
+answer: 0,
+explanation: "UPDATE modifies existing records. / UPDATE मौजूदा रिकॉर्ड में बदलाव करता है।"
+},
+{
+en: "Which SQL command removes records from a table?",
+hi: "टेबल से रिकॉर्ड हटाने के लिए कौन-सी SQL कमांड उपयोग होती है?",
+options: [["SELECT","SELECT"],["DELETE","DELETE"],["INSERT","INSERT"],["ALTER","ALTER"]],
+answer: 1,
+explanation: "DELETE removes records from a table. / DELETE टेबल से रिकॉर्ड हटाता है।"
+},
+{
+en: "What does SQL stand for?",
+hi: "SQL का पूरा नाम क्या है?",
+options: [["Simple Query Language","सिंपल क्वेरी लैंग्वेज"],["System Question Language","सिस्टम क्वेश्चन लैंग्वेज"],["Structured Query Language","स्ट्रक्चर्ड क्वेरी लैंग्वेज"],["Standard Queue Language","स्टैंडर्ड क्यू लैंग्वेज"]],
+answer: 2,
+explanation: "SQL stands for Structured Query Language. / SQL का अर्थ Structured Query Language है।"
+},
+{
+en: "Which key can refer to the primary key of another table?",
+hi: "कौन-सी की दूसरी टेबल की प्राइमरी की को संदर्भित कर सकती है?",
+options: [["Foreign Key","फॉरेन की"],["Candidate Key","कैंडिडेट की"],["Alternate Key","ऑल्टरनेट की"],["Super Key","सुपर की"]],
+answer: 0,
+explanation: "A foreign key establishes a relationship between tables. / फॉरेन की टेबलों के बीच संबंध स्थापित करती है।"
+},
+{
+en: "Which of the following is an example of a relational DBMS?",
+hi: "निम्नलिखित में से कौन रिलेशनल DBMS का उदाहरण है?",
+options: [["MS Paint","एमएस पेंट"],["Oracle Database","ओरेकल डेटाबेस"],["VLC Player","वीएलसी प्लेयर"],["Windows Media Player","विंडोज मीडिया प्लेयर"]],
+answer: 1,
+explanation: "Oracle Database is a relational database system. / Oracle Database एक रिलेशनल डेटाबेस सिस्टम है।"
+},
+{
+en: "What is data?",
+hi: "डेटा क्या है?",
+options: [["Processed information only","केवल संसाधित जानकारी"],["A computer program","कंप्यूटर प्रोग्राम"],["Raw facts and figures","कच्चे तथ्य और आंकड़े"],["A network device","नेटवर्क डिवाइस"]],
+answer: 2,
+explanation: "Data consists of raw facts and figures. / डेटा कच्चे तथ्यों और आंकड़ों का समूह है।"
+},
+{
+en: "What is information?",
+hi: "इन्फॉर्मेशन क्या है?",
+options: [["Processed and meaningful data","प्रसंस्कृत और अर्थपूर्ण डेटा"],["Random symbols","यादृच्छिक चिन्ह"],["An empty record","खाली रिकॉर्ड"],["A hardware device","हार्डवेयर डिवाइस"]],
+answer: 0,
+explanation: "Information is processed data that has meaning. / इन्फॉर्मेशन अर्थपूर्ण संसाधित डेटा है।"
+},
+{
+en: "What is a query in a database?",
+hi: "डेटाबेस में क्वेरी क्या होती है?",
+options: [["A storage device","स्टोरेज डिवाइस"],["A request to retrieve or manipulate data","डेटा प्राप्त या संशोधित करने का अनुरोध"],["A computer virus","कंप्यूटर वायरस"],["A type of cable","केबल का प्रकार"]],
+answer: 1,
+explanation: "A query requests data or performs an operation on it. / क्वेरी डेटा प्राप्त करने या उस पर कार्य करने का अनुरोध है।"
+},
+{
+en: "Which SQL command creates a new table?",
+hi: "नई टेबल बनाने के लिए कौन-सी SQL कमांड उपयोग होती है?",
+options: [["DELETE","DELETE"],["SELECT","SELECT"],["CREATE","CREATE"],["UPDATE","UPDATE"]],
+answer: 2,
+explanation: "CREATE TABLE creates a new table. / CREATE TABLE नई टेबल बनाता है।"
+},
+{
+en: "Which property prevents a primary key from containing NULL values?",
+hi: "कौन-सा गुण प्राइमरी की में NULL वैल्यू होने से रोकता है?",
+options: [["NOT NULL","NOT NULL"],["ORDER BY","ORDER BY"],["GROUP BY","GROUP BY"],["DISTINCT","DISTINCT"]],
+answer: 0,
+explanation: "A primary key cannot contain NULL values. / प्राइमरी की में NULL वैल्यू नहीं हो सकती।"
+},
+{
+en: "What is the main purpose of a DBMS?",
+hi: "DBMS का मुख्य उद्देश्य क्या है?",
+options: [["Designing graphics","ग्राफिक्स बनाना"],["Managing and organizing data","डेटा का प्रबंधन और संगठन"],["Playing videos","वीडियो चलाना"],["Creating animations","एनीमेशन बनाना"]],
+answer: 1,
+explanation: "DBMS helps store, retrieve, update and manage data. / DBMS डेटा को संग्रहित, प्राप्त, अपडेट और प्रबंधित करता है।"
+}
+],
+
+15: [
+{
+en: "What is cyber security?",
+hi: "साइबर सुरक्षा क्या है?",
+options: [["Protection of computers and networks from digital threats","कंप्यूटर और नेटवर्क को डिजिटल खतरों से बचाना"],["Computer decoration","कंप्यूटर सजाना"],["Data printing","डेटा प्रिंट करना"],["File formatting","फाइल फॉर्मेट करना"]],
+answer: 0,
+explanation: "Cyber security protects systems, networks and data. / साइबर सुरक्षा सिस्टम, नेटवर्क और डेटा की रक्षा करती है।"
+},
+{
+en: "What is a computer virus?",
+hi: "कंप्यूटर वायरस क्या है?",
+options: [["An antivirus tool","एंटीवायरस टूल"],["A malicious program that can infect files","हानिकारक प्रोग्राम जो फाइलों को संक्रमित कर सकता है"],["An input device","इनपुट डिवाइस"],["A web browser","वेब ब्राउजर"]],
+answer: 1,
+explanation: "A computer virus is malicious software that can spread by infecting files. / वायरस एक हानिकारक सॉफ्टवेयर है जो फाइलों को संक्रमित करके फैल सकता है।"
+},
+{
+en: "What is malware?",
+hi: "मैलवेयर क्या है?",
+options: [["Useful software","उपयोगी सॉफ्टवेयर"],["Hardware component","हार्डवेयर घटक"],["Malicious software","हानिकारक सॉफ्टवेयर"],["Operating system","ऑपरेटिंग सिस्टम"]],
+answer: 2,
+explanation: "Malware is software designed to harm or exploit systems. / मैलवेयर सिस्टम को नुकसान पहुँचाने या उसका गलत उपयोग करने के लिए बनाया जाता है।"
+},
+{
+en: "What is phishing?",
+hi: "फिशिंग क्या है?",
+options: [["A fraudulent attempt to steal sensitive information","गोपनीय जानकारी चुराने का धोखाधड़ी वाला प्रयास"],["A file backup process","फाइल बैकअप प्रक्रिया"],["A printing method","प्रिंटिंग विधि"],["A data compression technique","डेटा कम्प्रेशन तकनीक"]],
+answer: 0,
+explanation: "Phishing tricks users into revealing sensitive information. / फिशिंग में लोगों को धोखे से गोपनीय जानकारी देने के लिए फंसाया जाता है।"
+},
+{
+en: "Which of the following is a strong password practice?",
+hi: "निम्नलिखित में से कौन-सा मजबूत पासवर्ड बनाने का तरीका है?",
+options: [["Using your name only","केवल अपना नाम उपयोग करना"],["Using a long and unique password","लंबा और अलग पासवर्ड उपयोग करना"],["Using 123456","123456 उपयोग करना"],["Sharing your password","पासवर्ड साझा करना"]],
+answer: 1,
+explanation: "A long, unique password is harder to guess. / लंबा और अलग पासवर्ड अनुमान लगाना कठिन बनाता है।"
+},
+{
+en: "What is ransomware?",
+hi: "रैनसमवेयर क्या है?",
+options: [["A search engine","सर्च इंजन"],["A spreadsheet","स्प्रेडशीट"],["Malware that locks or encrypts data and demands payment","ऐसा मैलवेयर जो डेटा लॉक या एन्क्रिप्ट करके पैसे मांगता है"],["A firewall","फायरवॉल"]],
+answer: 2,
+explanation: "Ransomware blocks access to data and demands a ransom. / रैनसमवेयर डेटा तक पहुँच रोककर फिरौती मांगता है।"
+},
+{
+en: "What is the main function of antivirus software?",
+hi: "एंटीवायरस सॉफ्टवेयर का मुख्य कार्य क्या है?",
+options: [["Detecting and removing malicious software","हानिकारक सॉफ्टवेयर का पता लगाना और हटाना"],["Creating presentations","प्रेजेंटेशन बनाना"],["Increasing screen size","स्क्रीन का आकार बढ़ाना"],["Connecting printers","प्रिंटर जोड़ना"]],
+answer: 0,
+explanation: "Antivirus software helps detect and remove malware. / एंटीवायरस मैलवेयर का पता लगाने और हटाने में मदद करता है।"
+},
+{
+en: "What is a firewall?",
+hi: "फायरवॉल क्या है?",
+options: [["A computer game","कंप्यूटर गेम"],["A security system that filters network traffic","नेटवर्क ट्रैफिक को नियंत्रित करने वाला सुरक्षा सिस्टम"],["A type of keyboard","कीबोर्ड का प्रकार"],["A storage device","स्टोरेज डिवाइस"]],
+answer: 1,
+explanation: "A firewall monitors and controls network traffic. / फायरवॉल नेटवर्क ट्रैफिक की निगरानी और नियंत्रण करता है।"
+},
+{
+en: "What does HTTPS indicate?",
+hi: "HTTPS क्या दर्शाता है?",
+options: [["A website without a domain","बिना डोमेन वाली वेबसाइट"],["A broken website","खराब वेबसाइट"],["An encrypted connection to a website","वेबसाइट से एन्क्रिप्टेड कनेक्शन"],["A computer virus","कंप्यूटर वायरस"]],
+answer: 2,
+explanation: "HTTPS protects data exchanged between a browser and a website using encryption. / HTTPS ब्राउजर और वेबसाइट के बीच डेटा को एन्क्रिप्शन से सुरक्षित करता है।"
+},
+{
+en: "What is two-factor authentication?",
+hi: "टू-फैक्टर ऑथेंटिकेशन क्या है?",
+options: [["Using two different verification methods","दो अलग-अलग सत्यापन तरीकों का उपयोग"],["Using two usernames","दो यूजरनेम उपयोग करना"],["Using two browsers","दो ब्राउजर उपयोग करना"],["Using two computers","दो कंप्यूटर उपयोग करना"]],
+answer: 0,
+explanation: "Two-factor authentication adds an extra layer of account security. / यह अकाउंट की सुरक्षा के लिए एक अतिरिक्त स्तर जोड़ता है।"
+},
+{
+en: "Which information should never be shared publicly?",
+hi: "कौन-सी जानकारी सार्वजनिक रूप से साझा नहीं करनी चाहिए?",
+options: [["Weather report","मौसम रिपोर्ट"],["Bank OTP and password","बैंक OTP और पासवर्ड"],["Public news","सार्वजनिक समाचार"],["General knowledge","सामान्य ज्ञान"]],
+answer: 1,
+explanation: "Never share OTPs or passwords with anyone. / OTP और पासवर्ड किसी के साथ साझा न करें।"
+},
+{
+en: "What is spyware?",
+hi: "स्पाइवेयर क्या है?",
+options: [["A useful calculator","उपयोगी कैलकुलेटर"],["A printer driver","प्रिंटर ड्राइवर"],["Software that secretly monitors user activity","ऐसा सॉफ्टवेयर जो गुप्त रूप से गतिविधियों पर नजर रखता है"],["A text editor","टेक्स्ट एडिटर"]],
+answer: 2,
+explanation: "Spyware secretly collects information about users. / स्पाइवेयर गुप्त रूप से उपयोगकर्ता की जानकारी एकत्र करता है।"
+},
+{
+en: "Why should software be updated regularly?",
+hi: "सॉफ्टवेयर को नियमित रूप से अपडेट क्यों करना चाहिए?",
+options: [["To fix security weaknesses and bugs","सुरक्षा कमजोरियों और त्रुटियों को ठीक करने के लिए"],["To delete all files","सभी फाइलें हटाने के लिए"],["To stop the internet","इंटरनेट बंद करने के लिए"],["To reduce screen brightness","स्क्रीन की चमक कम करने के लिए"]],
+answer: 0,
+explanation: "Updates often fix security vulnerabilities and bugs. / अपडेट सुरक्षा कमजोरियों और त्रुटियों को ठीक करते हैं।"
+},
+{
+en: "What is social engineering in cyber security?",
+hi: "साइबर सुरक्षा में सोशल इंजीनियरिंग क्या है?",
+options: [["Building social media websites","सोशल मीडिया वेबसाइट बनाना"],["Manipulating people to reveal confidential information","लोगों को बहला-फुसलाकर गोपनीय जानकारी लेना"],["Repairing computers","कंप्यूटर ठीक करना"],["Creating databases","डेटाबेस बनाना"]],
+answer: 1,
+explanation: "Social engineering uses deception to manipulate people. / सोशल इंजीनियरिंग में धोखे से लोगों को प्रभावित किया जाता है।"
+},
+{
+en: "What should you do with a suspicious email link?",
+hi: "संदिग्ध ईमेल लिंक के साथ क्या करना चाहिए?",
+options: [["Click immediately","तुरंत क्लिक करें"],["Share with friends","दोस्तों को भेजें"],["Avoid clicking and verify the sender","क्लिक न करें और भेजने वाले की जाँच करें"],["Enter your password","अपना पासवर्ड डालें"]],
+answer: 2,
+explanation: "Suspicious links may lead to phishing or malware websites. / संदिग्ध लिंक फिशिंग या मैलवेयर वेबसाइट पर ले जा सकते हैं।"
+},
+{
+en: "What is encryption?",
+hi: "एन्क्रिप्शन क्या है?",
+options: [["Converting readable data into coded form","पढ़े जाने वाले डेटा को कोड में बदलना"],["Deleting data","डेटा हटाना"],["Printing data","डेटा प्रिंट करना"],["Copying files","फाइल कॉपी करना"]],
+answer: 0,
+explanation: "Encryption converts data into a coded form to protect it. / एन्क्रिप्शन डेटा को सुरक्षित रखने के लिए कोड में बदलता है।"
+},
+{
+en: "What is a backup?",
+hi: "बैकअप क्या है?",
+options: [["A virus","वायरस"],["An extra copy of data","डेटा की अतिरिक्त कॉपी"],["A network cable","नेटवर्क केबल"],["A password error","पासवर्ड त्रुटि"]],
+answer: 1,
+explanation: "A backup is an extra copy used to restore data if needed. / बैकअप डेटा की अतिरिक्त कॉपी है जिसका उपयोग जरूरत पड़ने पर रिकवरी के लिए होता है।"
+},
+{
+en: "What is identity theft?",
+hi: "पहचान की चोरी क्या है?",
+options: [["Changing a username","यूजरनेम बदलना"],["Creating a new email","नया ईमेल बनाना"],["Using someone's personal information without permission","बिना अनुमति किसी की व्यक्तिगत जानकारी का उपयोग करना"],["Installing antivirus","एंटीवायरस इंस्टॉल करना"]],
+answer: 2,
+explanation: "Identity theft involves misusing another person's personal information. / पहचान की चोरी में किसी दूसरे व्यक्ति की निजी जानकारी का गलत उपयोग होता है।"
+},
+{
+en: "Which practice is safest when using public Wi-Fi?",
+hi: "सार्वजनिक Wi-Fi का उपयोग करते समय सबसे सुरक्षित तरीका कौन-सा है?",
+options: [["Avoid sensitive transactions on unsecured networks","असुरक्षित नेटवर्क पर गोपनीय लेन-देन से बचें"],["Share your banking password","बैंकिंग पासवर्ड साझा करें"],["Disable device security","डिवाइस सुरक्षा बंद करें"],["Download unknown files","अज्ञात फाइल डाउनलोड करें"]],
+answer: 0,
+explanation: "Avoid sensitive activities on unsecured public Wi-Fi. / असुरक्षित सार्वजनिक Wi-Fi पर संवेदनशील कार्य न करें।"
+},
+{
+en: "What is the purpose of a CAPTCHA?",
+hi: "CAPTCHA का उद्देश्य क्या है?",
+options: [["Increase internet speed","इंटरनेट की गति बढ़ाना"],["Distinguish humans from automated bots","मनुष्य और स्वचालित बॉट में अंतर करना"],["Create a database","डेटाबेस बनाना"],["Format a hard disk","हार्ड डिस्क फॉर्मेट करना"]],
+answer: 1,
+explanation: "CAPTCHA helps identify human users and block automated bots. / CAPTCHA मनुष्य की पहचान करने और स्वचालित बॉट रोकने में मदद करता है।"
+}
+],
+
+16: [
+{
+en: "What is digital technology?",
+hi: "डिजिटल तकनीक क्या है?",
+options: [["Technology that processes information in digital form","डिजिटल रूप में जानकारी संसाधित करने वाली तकनीक"],["Only mechanical technology","केवल यांत्रिक तकनीक"],["A type of printer","प्रिंटर का प्रकार"],["A paper-based system","कागज आधारित प्रणाली"]],
+answer: 0,
+explanation: "Digital technology processes and stores information electronically. / डिजिटल तकनीक जानकारी को इलेक्ट्रॉनिक रूप से संसाधित और संग्रहित करती है।"
+},
+{
+en: "What is the full form of IT?",
+hi: "IT का पूरा नाम क्या है?",
+options: [["Internet Transfer","इंटरनेट ट्रांसफर"],["Information Technology","इन्फॉर्मेशन टेक्नोलॉजी"],["Internal Terminal","इंटरनल टर्मिनल"],["Information Table","इन्फॉर्मेशन टेबल"]],
+answer: 1,
+explanation: "IT stands for Information Technology. / IT का अर्थ Information Technology है।"
+},
+{
+en: "What is the full form of ICT?",
+hi: "ICT का पूरा नाम क्या है?",
+options: [["Internet Communication Tool","इंटरनेट कम्युनिकेशन टूल"],["Information Computer Technology","इन्फॉर्मेशन कंप्यूटर टेक्नोलॉजी"],["Information and Communication Technology","इन्फॉर्मेशन एंड कम्युनिकेशन टेक्नोलॉजी"],["Internal Communication Terminal","इंटरनल कम्युनिकेशन टर्मिनल"]],
+answer: 2,
+explanation: "ICT stands for Information and Communication Technology. / ICT का अर्थ Information and Communication Technology है।"
+},
+{
+en: "What is e-governance?",
+hi: "ई-गवर्नेंस क्या है?",
+options: [["Providing government services using digital technology","डिजिटल तकनीक से सरकारी सेवाएँ प्रदान करना"],["Playing online games","ऑनलाइन गेम खेलना"],["Watching movies","फिल्म देखना"],["Sending personal photos","निजी फोटो भेजना"]],
+answer: 0,
+explanation: "E-governance uses digital technology to deliver government services. / ई-गवर्नेंस डिजिटल तकनीक से सरकारी सेवाएँ प्रदान करता है।"
+},
+{
+en: "What is e-commerce?",
+hi: "ई-कॉमर्स क्या है?",
+options: [["Electronic learning","इलेक्ट्रॉनिक शिक्षा"],["Buying and selling goods or services online","ऑनलाइन वस्तुओं या सेवाओं की खरीद-बिक्री"],["Electronic voting only","केवल इलेक्ट्रॉनिक मतदान"],["Sending emails","ईमेल भेजना"]],
+answer: 1,
+explanation: "E-commerce means buying and selling through electronic networks. / ई-कॉमर्स का अर्थ इलेक्ट्रॉनिक नेटवर्क के माध्यम से खरीद-बिक्री है।"
+},
+{
+en: "What is UPI?",
+hi: "UPI क्या है?",
+options: [["A computer operating system","कंप्यूटर ऑपरेटिंग सिस्टम"],["A web browser","वेब ब्राउजर"],["Unified Payments Interface","यूनिफाइड पेमेंट्स इंटरफेस"],["A programming language","प्रोग्रामिंग भाषा"]],
+answer: 2,
+explanation: "UPI is an instant payment system developed in India. / UPI भारत में विकसित एक तत्काल भुगतान प्रणाली है।"
+},
+{
+en: "Which organization operates UPI in India?",
+hi: "भारत में UPI का संचालन कौन-सी संस्था करती है?",
+options: [["NPCI","NPCI"],["ISRO","ISRO"],["DRDO","DRDO"],["SEBI","SEBI"]],
+answer: 0,
+explanation: "NPCI operates UPI in India. / भारत में UPI का संचालन NPCI करता है।"
+},
+{
+en: "What is a QR code?",
+hi: "QR कोड क्या है?",
+options: [["A type of keyboard","कीबोर्ड का प्रकार"],["A two-dimensional barcode","दो आयामी बारकोड"],["A computer virus","कंप्यूटर वायरस"],["A printer cartridge","प्रिंटर कार्ट्रिज"]],
+answer: 1,
+explanation: "QR code stores information that can be scanned by a device. / QR कोड में जानकारी होती है जिसे डिवाइस से स्कैन किया जा सकता है।"
+},
+{
+en: "What is cloud computing?",
+hi: "क्लाउड कंप्यूटिंग क्या है?",
+options: [["Using only local hard disks","केवल लोकल हार्ड डिस्क का उपयोग"],["Repairing computers","कंप्यूटर ठीक करना"],["Using computing services over the internet","इंटरनेट के माध्यम से कंप्यूटिंग सेवाओं का उपयोग"],["Printing cloud images","क्लाउड चित्र प्रिंट करना"]],
+answer: 2,
+explanation: "Cloud computing provides computing resources over the internet. / क्लाउड कंप्यूटिंग इंटरनेट के माध्यम से कंप्यूटिंग संसाधन प्रदान करती है।"
+},
+{
+en: "What is e-learning?",
+hi: "ई-लर्निंग क्या है?",
+options: [["Learning through electronic and digital resources","इलेक्ट्रॉनिक और डिजिटल संसाधनों से सीखना"],["Learning only from printed books","केवल छपी किताबों से सीखना"],["Learning without information","बिना जानकारी सीखना"],["Learning through radio only","केवल रेडियो से सीखना"]],
+answer: 0,
+explanation: "E-learning uses digital devices and online resources for education. / ई-लर्निंग शिक्षा के लिए डिजिटल डिवाइस और ऑनलाइन संसाधनों का उपयोग करती है।"
+},
+{
+en: "What is digital signature?",
+hi: "डिजिटल सिग्नेचर क्या है?",
+options: [["A handwritten name only","केवल हाथ से लिखा नाम"],["An electronic method to verify authenticity and integrity","प्रामाणिकता और अखंडता सत्यापित करने की इलेक्ट्रॉनिक विधि"],["A computer wallpaper","कंप्यूटर वॉलपेपर"],["A printed document","प्रिंट किया हुआ दस्तावेज"]],
+answer: 1,
+explanation: "A digital signature helps verify the authenticity and integrity of digital data. / डिजिटल सिग्नेचर डिजिटल डेटा की प्रामाणिकता और अखंडता की जाँच में मदद करता है।"
+},
+{
+en: "What is the full form of OTP?",
+hi: "OTP का पूरा नाम क्या है?",
+options: [["Online Transfer Password","ऑनलाइन ट्रांसफर पासवर्ड"],["One Time Process","वन टाइम प्रोसेस"],["One Time Password","वन टाइम पासवर्ड"],["Open Transfer Protocol","ओपन ट्रांसफर प्रोटोकॉल"]],
+answer: 2,
+explanation: "OTP stands for One Time Password. / OTP का अर्थ One Time Password है।"
+},
+{
+en: "What is the main purpose of DigiLocker?",
+hi: "DigiLocker का मुख्य उद्देश्य क्या है?",
+options: [["Storing and accessing digital documents","डिजिटल दस्तावेजों को संग्रहित और प्राप्त करना"],["Playing online games","ऑनलाइन गेम खेलना"],["Editing videos","वीडियो संपादित करना"],["Sending spam emails","स्पैम ईमेल भेजना"]],
+answer: 0,
+explanation: "DigiLocker provides access to digital documents. / DigiLocker डिजिटल दस्तावेजों तक पहुँच प्रदान करता है।"
+},
+{
+en: "Which Indian service is commonly used for digital identity verification?",
+hi: "डिजिटल पहचान सत्यापन के लिए भारत में सामान्यतः किस सेवा का उपयोग होता है?",
+options: [["PAN Card only","केवल PAN कार्ड"],["Aadhaar authentication","आधार प्रमाणीकरण"],["MS Word","एमएस वर्ड"],["Bluetooth","ब्लूटूथ"]],
+answer: 1,
+explanation: "Aadhaar authentication is used for identity verification in supported services. / आधार प्रमाणीकरण समर्थित सेवाओं में पहचान सत्यापन के लिए उपयोग होता है।"
+},
+{
+en: "What is telemedicine?",
+hi: "टेलीमेडिसिन क्या है?",
+options: [["Repairing medical equipment","चिकित्सा उपकरण ठीक करना"],["Selling medicines only","केवल दवाइयाँ बेचना"],["Providing healthcare consultation remotely using technology","तकनीक के माध्यम से दूर से स्वास्थ्य परामर्श देना"],["Printing medical reports","मेडिकल रिपोर्ट प्रिंट करना"]],
+answer: 2,
+explanation: "Telemedicine enables remote healthcare consultation through technology. / टेलीमेडिसिन तकनीक से दूरस्थ स्वास्थ्य परामर्श की सुविधा देता है।"
+},
+{
+en: "What is the full form of PDF?",
+hi: "PDF का पूरा नाम क्या है?",
+options: [["Portable Document Format","पोर्टेबल डॉक्यूमेंट फॉर्मेट"],["Personal Data File","पर्सनल डेटा फाइल"],["Printed Document Form","प्रिंटेड डॉक्यूमेंट फॉर्म"],["Program Data Format","प्रोग्राम डेटा फॉर्मेट"]],
+answer: 0,
+explanation: "PDF stands for Portable Document Format. / PDF का अर्थ Portable Document Format है।"
+},
+{
+en: "What is a digital payment?",
+hi: "डिजिटल भुगतान क्या है?",
+options: [["Payment using only cash","केवल नकद भुगतान"],["Payment made electronically","इलेक्ट्रॉनिक रूप से किया गया भुगतान"],["Payment using paper coupons only","केवल कागजी कूपन से भुगतान"],["Payment through handwritten notes","हाथ से लिखे नोट द्वारा भुगतान"]],
+answer: 1,
+explanation: "Digital payment transfers money electronically. / डिजिटल भुगतान में पैसा इलेक्ट्रॉनिक रूप से स्थानांतरित होता है।"
+},
+{
+en: "What is the full form of ATM?",
+hi: "ATM का पूरा नाम क्या है?",
+options: [["Automatic Transfer Machine","ऑटोमैटिक ट्रांसफर मशीन"],["Any Time Money","एनी टाइम मनी"],["Automated Teller Machine","ऑटोमेटेड टेलर मशीन"],["Automatic Token Management","ऑटोमैटिक टोकन मैनेजमेंट"]],
+answer: 2,
+explanation: "ATM stands for Automated Teller Machine. / ATM का अर्थ Automated Teller Machine है।"
+},
+{
+en: "Which technology is used for contactless communication over a very short distance?",
+hi: "बहुत कम दूरी पर संपर्क रहित संचार के लिए किस तकनीक का उपयोग होता है?",
+options: [["NFC","NFC"],["FTP","FTP"],["SMTP","SMTP"],["HTML","HTML"]],
+answer: 0,
+explanation: "NFC enables short-range contactless communication. / NFC कम दूरी का संपर्क रहित संचार प्रदान करता है।"
+},
+{
+en: "What is the main purpose of a digital payment PIN?",
+hi: "डिजिटल भुगतान PIN का मुख्य उद्देश्य क्या है?",
+options: [["Increase internet speed","इंटरनेट की गति बढ़ाना"],["Authenticate and authorize a payment","भुगतान का प्रमाणीकरण और अनुमति देना"],["Create a website","वेबसाइट बनाना"],["Format a mobile phone","मोबाइल फॉर्मेट करना"]],
+answer: 1,
+explanation: "A payment PIN helps authenticate and authorize transactions. / भुगतान PIN लेन-देन का प्रमाणीकरण और अनुमति देने में मदद करता है।"
+}
+],
+
+17: [
+{
+en: "Who is known as the Father of Computer?",
+hi: "कंप्यूटर का जनक किसे कहा जाता है?",
+options: [["Charles Babbage","चार्ल्स बैबेज"],["Alan Turing","एलन ट्यूरिंग"],["Bill Gates","बिल गेट्स"],["John von Neumann","जॉन वॉन न्यूमैन"]],
+answer: 0,
+explanation: "Charles Babbage is known as the Father of Computer. / चार्ल्स बैबेज को कंप्यूटर का जनक कहा जाता है।"
+},
+{
+en: "Which was the first general-purpose electronic digital computer?",
+hi: "पहला सामान्य उद्देश्य वाला इलेक्ट्रॉनिक डिजिटल कंप्यूटर कौन-सा था?",
+options: [["UNIVAC","यूनिवैक"],["ENIAC","एनिएक"],["EDVAC","एडवैक"],["IBM PC","आईबीएम पीसी"]],
+answer: 1,
+explanation: "ENIAC was an early general-purpose electronic digital computer. / ENIAC प्रारंभिक सामान्य उद्देश्य वाला इलेक्ट्रॉनिक डिजिटल कंप्यूटर था।"
+},
+{
+en: "Which generation of computers used transistors?",
+hi: "कंप्यूटर की किस पीढ़ी में ट्रांजिस्टर का उपयोग हुआ?",
+options: [["First","पहली"],["Third","तीसरी"],["Second","दूसरी"],["Fourth","चौथी"]],
+answer: 2,
+explanation: "Second-generation computers used transistors. / दूसरी पीढ़ी के कंप्यूटरों में ट्रांजिस्टर का उपयोग हुआ।"
+},
+{
+en: "Which generation used Integrated Circuits (ICs)?",
+hi: "किस पीढ़ी में इंटीग्रेटेड सर्किट (IC) का उपयोग हुआ?",
+options: [["Third Generation","तीसरी पीढ़ी"],["First Generation","पहली पीढ़ी"],["Second Generation","दूसरी पीढ़ी"],["Fifth Generation","पाँचवीं पीढ़ी"]],
+answer: 0,
+explanation: "Third-generation computers used ICs. / तीसरी पीढ़ी के कंप्यूटरों में IC का उपयोग हुआ।"
+},
+{
+en: "Which computer is designed to perform one specific task?",
+hi: "कौन-सा कंप्यूटर एक विशेष कार्य करने के लिए बनाया जाता है?",
+options: [["General-purpose computer","सामान्य उद्देश्य कंप्यूटर"],["Special-purpose computer","विशेष उद्देश्य कंप्यूटर"],["Supercomputer","सुपर कंप्यूटर"],["Mainframe computer","मेनफ्रेम कंप्यूटर"]],
+answer: 1,
+explanation: "A special-purpose computer is designed for a specific task. / विशेष उद्देश्य कंप्यूटर एक खास कार्य के लिए बनाया जाता है।"
+},
+{
+en: "Which of the following is the fastest type of computer?",
+hi: "निम्नलिखित में से सबसे तेज कंप्यूटर कौन-सा है?",
+options: [["Microcomputer","माइक्रो कंप्यूटर"],["Minicomputer","मिनी कंप्यूटर"],["Supercomputer","सुपर कंप्यूटर"],["Workstation","वर्कस्टेशन"]],
+answer: 2,
+explanation: "Supercomputers are designed for extremely high-speed calculations. / सुपर कंप्यूटर बहुत तेज गणना के लिए बनाए जाते हैं।"
+},
+{
+en: "What is the basic unit of information in a computer?",
+hi: "कंप्यूटर में सूचना की मूल इकाई क्या है?",
+options: [["Bit","बिट"],["Byte","बाइट"],["Kilobyte","किलोबाइट"],["Megabyte","मेगाबाइट"]],
+answer: 0,
+explanation: "Bit is the smallest unit of digital information. / बिट डिजिटल जानकारी की सबसे छोटी इकाई है।"
+},
+{
+en: "How many bits are there in one byte?",
+hi: "एक बाइट में कितने बिट होते हैं?",
+options: [["4","4"],["8","8"],["16","16"],["32","32"]],
+answer: 1,
+explanation: "One byte contains 8 bits. / एक बाइट में 8 बिट होते हैं।"
+},
+{
+en: "Which number system is used internally by computers?",
+hi: "कंप्यूटर आंतरिक रूप से किस संख्या पद्धति का उपयोग करता है?",
+options: [["Decimal","दशमलव"],["Octal","अष्टाधारी"],["Binary","द्विआधारी"],["Roman","रोमन"]],
+answer: 2,
+explanation: "Computers use binary digits 0 and 1. / कंप्यूटर 0 और 1 का उपयोग करता है।"
+},
+{
+en: "What is the decimal value of binary number 1010?",
+hi: "बाइनरी संख्या 1010 का दशमलव मान क्या है?",
+options: [["10","10"],["8","8"],["12","12"],["14","14"]],
+answer: 0,
+explanation: "1010 in binary equals 10 in decimal. / बाइनरी 1010 का दशमलव मान 10 है।"
+},
+{
+en: "Which part of the computer is called its brain?",
+hi: "कंप्यूटर का मस्तिष्क किस भाग को कहा जाता है?",
+options: [["Monitor","मॉनिटर"],["CPU","सीपीयू"],["Keyboard","कीबोर्ड"],["Hard Disk","हार्ड डिस्क"]],
+answer: 1,
+explanation: "CPU controls and processes computer operations. / CPU कंप्यूटर के कार्यों को नियंत्रित और संसाधित करता है।"
+},
+{
+en: "Which memory is volatile?",
+hi: "कौन-सी मेमोरी अस्थायी (Volatile) होती है?",
+options: [["ROM","रोम"],["Hard Disk","हार्ड डिस्क"],["RAM","रैम"],["DVD","डीवीडी"]],
+answer: 2,
+explanation: "RAM loses its stored data when power is turned off. / बिजली बंद होने पर RAM का डेटा मिट जाता है।"
+},
+{
+en: "Which memory is non-volatile?",
+hi: "कौन-सी मेमोरी स्थायी (Non-volatile) होती है?",
+options: [["ROM","रोम"],["RAM","रैम"],["Cache","कैश"],["Register","रजिस्टर"]],
+answer: 0,
+explanation: "ROM retains data even when power is off. / बिजली बंद होने पर भी ROM डेटा सुरक्षित रखती है।"
+},
+{
+en: "Which device is used to convert hard copy into soft copy?",
+hi: "हार्ड कॉपी को सॉफ्ट कॉपी में बदलने के लिए किस उपकरण का उपयोग होता है?",
+options: [["Printer","प्रिंटर"],["Scanner","स्कैनर"],["Speaker","स्पीकर"],["Plotter","प्लॉटर"]],
+answer: 1,
+explanation: "A scanner converts physical documents into digital form. / स्कैनर कागजी दस्तावेजों को डिजिटल रूप में बदलता है।"
+},
+{
+en: "Which of the following is an output device?",
+hi: "निम्नलिखित में से कौन-सा आउटपुट डिवाइस है?",
+options: [["Mouse","माउस"],["Keyboard","कीबोर्ड"],["Monitor","मॉनिटर"],["Scanner","स्कैनर"]],
+answer: 2,
+explanation: "A monitor displays processed information. / मॉनिटर संसाधित जानकारी दिखाता है।"
+},
+{
+en: "Which software manages computer hardware and resources?",
+hi: "कौन-सा सॉफ्टवेयर कंप्यूटर हार्डवेयर और संसाधनों का प्रबंधन करता है?",
+options: [["Operating System","ऑपरेटिंग सिस्टम"],["MS Word","एमएस वर्ड"],["Paint","पेंट"],["PowerPoint","पावरपॉइंट"]],
+answer: 0,
+explanation: "An operating system manages hardware and software resources. / ऑपरेटिंग सिस्टम हार्डवेयर और सॉफ्टवेयर संसाधनों का प्रबंधन करता है।"
+},
+{
+en: "Which of the following is an example of application software?",
+hi: "निम्नलिखित में से एप्लीकेशन सॉफ्टवेयर का उदाहरण कौन-सा है?",
+options: [["Linux","लिनक्स"],["MS Word","एमएस वर्ड"],["Device Driver","डिवाइस ड्राइवर"],["BIOS","बायोस"]],
+answer: 1,
+explanation: "MS Word is application software used for word processing. / MS Word दस्तावेज बनाने के लिए एप्लीकेशन सॉफ्टवेयर है।"
+},
+{
+en: "What is the full form of GUI?",
+hi: "GUI का पूरा नाम क्या है?",
+options: [["General User Internet","जनरल यूजर इंटरनेट"],["Graphical Utility Interface","ग्राफिकल यूटिलिटी इंटरफेस"],["Graphical User Interface","ग्राफिकल यूजर इंटरफेस"],["Global User Information","ग्लोबल यूजर इन्फॉर्मेशन"]],
+answer: 2,
+explanation: "GUI stands for Graphical User Interface. / GUI का अर्थ Graphical User Interface है।"
+},
+{
+en: "Which of the following is an example of an open-source operating system?",
+hi: "निम्नलिखित में से ओपन-सोर्स ऑपरेटिंग सिस्टम का उदाहरण कौन-सा है?",
+options: [["Linux","लिनक्स"],["Windows","विंडोज"],["macOS","मैकोएस"],["MS Office","एमएस ऑफिस"]],
+answer: 0,
+explanation: "Linux is a widely used open-source operating system. / Linux एक लोकप्रिय ओपन-सोर्स ऑपरेटिंग सिस्टम है।"
+},
+{
+en: "What is the main function of an ALU?",
+hi: "ALU का मुख्य कार्य क्या है?",
+options: [["Storing files","फाइल संग्रहित करना"],["Performing arithmetic and logical operations","अंकगणितीय और तार्किक कार्य करना"],["Displaying images","चित्र दिखाना"],["Printing documents","दस्तावेज प्रिंट करना"]],
+answer: 1,
+explanation: "ALU performs arithmetic and logical operations. / ALU अंकगणितीय और तार्किक कार्य करता है।"
+}
+],
+
+18: [
+{
+en: "Which component is known as the main circuit board of a computer?",
+hi: "कंप्यूटर का मुख्य सर्किट बोर्ड किसे कहा जाता है?",
+options: [["Motherboard","मदरबोर्ड"],["Hard Disk","हार्ड डिस्क"],["RAM","रैम"],["Monitor","मॉनिटर"]],
+answer: 0,
+explanation: "The motherboard connects major computer components. / मदरबोर्ड कंप्यूटर के मुख्य घटकों को जोड़ता है।"
+},
+{
+en: "Which component performs arithmetic and logical operations?",
+hi: "अंकगणितीय और तार्किक कार्य कौन करता है?",
+options: [["CU","कंट्रोल यूनिट"],["ALU","एएलयू"],["RAM","रैम"],["ROM","रोम"]],
+answer: 1,
+explanation: "ALU performs arithmetic and logical operations. / ALU अंकगणितीय और तार्किक कार्य करता है।"
+},
+{
+en: "Which unit controls the operations of the computer?",
+hi: "कंप्यूटर के कार्यों को कौन नियंत्रित करता है?",
+options: [["ALU","एएलयू"],["RAM","रैम"],["Control Unit","कंट्रोल यूनिट"],["Hard Disk","हार्ड डिस्क"]],
+answer: 2,
+explanation: "The Control Unit directs and coordinates computer operations. / कंट्रोल यूनिट कंप्यूटर के कार्यों का निर्देशन और समन्वय करती है।"
+},
+{
+en: "Which memory is generally faster than RAM?",
+hi: "सामान्यतः RAM से तेज कौन-सी मेमोरी होती है?",
+options: [["Cache Memory","कैश मेमोरी"],["Hard Disk","हार्ड डिस्क"],["DVD","डीवीडी"],["Pen Drive","पेन ड्राइव"]],
+answer: 0,
+explanation: "Cache memory is faster than main memory and helps the CPU access frequently used data quickly. / कैश मेमोरी RAM से तेज होती है और CPU को बार-बार उपयोग होने वाला डेटा जल्दी उपलब्ध कराती है।"
+},
+{
+en: "Which storage device has no moving mechanical parts?",
+hi: "किस स्टोरेज डिवाइस में घूमने वाले यांत्रिक भाग नहीं होते?",
+options: [["HDD","एचडीडी"],["SSD","एसएसडी"],["Floppy Disk","फ्लॉपी डिस्क"],["CD-ROM","सीडी-रोम"]],
+answer: 1,
+explanation: "SSD uses flash memory and has no moving mechanical parts. / SSD फ्लैश मेमोरी का उपयोग करता है और इसमें घूमने वाले यांत्रिक भाग नहीं होते।"
+},
+{
+en: "Which device supplies temporary power during a power failure?",
+hi: "बिजली जाने पर अस्थायी बिजली कौन-सा उपकरण देता है?",
+options: [["CPU","सीपीयू"],["Scanner","स्कैनर"],["UPS","यूपीएस"],["Router","राउटर"]],
+answer: 2,
+explanation: "UPS provides backup power for a limited time. / UPS कुछ समय के लिए बैकअप बिजली देता है।"
+},
+{
+en: "Which of the following is system software?",
+hi: "निम्नलिखित में से सिस्टम सॉफ्टवेयर कौन-सा है?",
+options: [["Windows","विंडोज"],["MS Excel","एमएस एक्सेल"],["Photoshop","फोटोशॉप"],["PowerPoint","पावरपॉइंट"]],
+answer: 0,
+explanation: "Windows is an operating system and system software. / Windows एक ऑपरेटिंग सिस्टम और सिस्टम सॉफ्टवेयर है।"
+},
+{
+en: "Which software helps detect and remove computer viruses?",
+hi: "कंप्यूटर वायरस का पता लगाने और हटाने में कौन-सा सॉफ्टवेयर मदद करता है?",
+options: [["Compiler","कंपाइलर"],["Antivirus","एंटीवायरस"],["Browser","ब्राउजर"],["Spreadsheet","स्प्रेडशीट"]],
+answer: 1,
+explanation: "Antivirus software helps detect and remove malicious programs. / एंटीवायरस हानिकारक प्रोग्राम का पता लगाने और हटाने में मदद करता है।"
+},
+{
+en: "What is booting?",
+hi: "बूटिंग क्या है?",
+options: [["Deleting files","फाइल हटाना"],["Printing documents","दस्तावेज प्रिंट करना"],["Starting a computer and loading its operating system","कंप्यूटर शुरू करना और ऑपरेटिंग सिस्टम लोड करना"],["Formatting a disk","डिस्क फॉर्मेट करना"]],
+answer: 2,
+explanation: "Booting is the process of starting a computer and loading the operating system. / बूटिंग कंप्यूटर चालू करके ऑपरेटिंग सिस्टम लोड करने की प्रक्रिया है।"
+},
+{
+en: "What is the full form of BIOS?",
+hi: "BIOS का पूरा नाम क्या है?",
+options: [["Basic Input/Output System","बेसिक इनपुट/आउटपुट सिस्टम"],["Binary Input Operating Software","बाइनरी इनपुट ऑपरेटिंग सॉफ्टवेयर"],["Basic Internet Operating System","बेसिक इंटरनेट ऑपरेटिंग सिस्टम"],["Boot Information Output Service","बूट इन्फॉर्मेशन आउटपुट सर्विस"]],
+answer: 0,
+explanation: "BIOS stands for Basic Input/Output System. / BIOS का अर्थ Basic Input/Output System है।"
+},
+{
+en: "Which key is commonly used to refresh a Windows desktop?",
+hi: "Windows डेस्कटॉप को रिफ्रेश करने के लिए सामान्यतः कौन-सी कुंजी उपयोग होती है?",
+options: [["F1","F1"],["F5","F5"],["F2","F2"],["F12","F12"]],
+answer: 1,
+explanation: "F5 is commonly used to refresh the desktop or a window. / F5 का उपयोग डेस्कटॉप या विंडो रिफ्रेश करने के लिए होता है।"
+},
+{
+en: "Which shortcut opens Task Manager directly in Windows?",
+hi: "Windows में Task Manager सीधे खोलने के लिए कौन-सा शॉर्टकट है?",
+options: [["Ctrl + C","Ctrl + C"],["Alt + F4","Alt + F4"],["Ctrl + Shift + Esc","Ctrl + Shift + Esc"],["Ctrl + V","Ctrl + V"]],
+answer: 2,
+explanation: "Ctrl + Shift + Esc opens Task Manager. / Ctrl + Shift + Esc से Task Manager खुलता है।"
+},
+{
+en: "Which operating system is developed by Microsoft?",
+hi: "Microsoft द्वारा कौन-सा ऑपरेटिंग सिस्टम विकसित किया गया है?",
+options: [["Windows","विंडोज"],["Linux","लिनक्स"],["Android","एंड्रॉयड"],["Ubuntu","उबंटू"]],
+answer: 0,
+explanation: "Windows is developed by Microsoft. / Windows को Microsoft ने विकसित किया है।"
+},
+{
+en: "Which of the following is a mobile operating system?",
+hi: "निम्नलिखित में से मोबाइल ऑपरेटिंग सिस्टम कौन-सा है?",
+options: [["MS-DOS","एमएस-डॉस"],["Android","एंड्रॉयड"],["Windows Server","विंडोज सर्वर"],["UNIX Server","यूनिक्स सर्वर"]],
+answer: 1,
+explanation: "Android is a mobile operating system. / Android एक मोबाइल ऑपरेटिंग सिस्टम है।"
+},
+{
+en: "Which software translates source code into machine code?",
+hi: "कौन-सा सॉफ्टवेयर सोर्स कोड को मशीन कोड में बदलता है?",
+options: [["Browser","ब्राउजर"],["Antivirus","एंटीवायरस"],["Compiler","कंपाइलर"],["Media Player","मीडिया प्लेयर"]],
+answer: 2,
+explanation: "A compiler translates source code into machine code or another target form. / कंपाइलर सोर्स कोड को मशीन कोड या अन्य टारगेट फॉर्म में बदलता है।"
+},
+{
+en: "Which device is used to print large engineering drawings?",
+hi: "बड़े इंजीनियरिंग ड्राइंग प्रिंट करने के लिए कौन-सा उपकरण उपयोग होता है?",
+options: [["Plotter","प्लॉटर"],["Mouse","माउस"],["Keyboard","कीबोर्ड"],["Microphone","माइक्रोफोन"]],
+answer: 0,
+explanation: "A plotter is used to print large drawings and designs. / प्लॉटर का उपयोग बड़े ड्राइंग और डिजाइन प्रिंट करने के लिए होता है।"
+},
+{
+en: "Which of the following is an example of utility software?",
+hi: "निम्नलिखित में से यूटिलिटी सॉफ्टवेयर का उदाहरण कौन-सा है?",
+options: [["MS Word","एमएस वर्ड"],["Disk Cleanup","डिस्क क्लीनअप"],["PowerPoint","पावरपॉइंट"],["Chrome","क्रोम"]],
+answer: 1,
+explanation: "Disk Cleanup helps remove unnecessary files. / Disk Cleanup अनावश्यक फाइलों को हटाने में मदद करता है।"
+},
+{
+en: "Which component stores data currently being processed?",
+hi: "वर्तमान में प्रोसेस हो रहे डेटा को कौन-सा घटक अस्थायी रूप से संग्रहित करता है?",
+options: [["DVD","डीवीडी"],["Pen Drive","पेन ड्राइव"],["RAM","रैम"],["Printer","प्रिंटर"]],
+answer: 2,
+explanation: "RAM temporarily stores programs and data currently in use. / RAM वर्तमान में उपयोग हो रहे प्रोग्राम और डेटा को अस्थायी रूप से रखती है।"
+},
+{
+en: "Which of the following is an input device?",
+hi: "निम्नलिखित में से इनपुट डिवाइस कौन-सा है?",
+options: [["Microphone","माइक्रोफोन"],["Monitor","मॉनिटर"],["Speaker","स्पीकर"],["Printer","प्रिंटर"]],
+answer: 0,
+explanation: "A microphone inputs sound into a computer. / माइक्रोफोन कंप्यूटर में आवाज इनपुट करता है।"
+},
+{
+en: "What is multitasking in an operating system?",
+hi: "ऑपरेटिंग सिस्टम में मल्टीटास्किंग क्या है?",
+options: [["Running only one program forever","हमेशा केवल एक प्रोग्राम चलाना"],["Managing multiple tasks apparently at the same time","एक ही समय में कई कार्यों को प्रबंधित करना"],["Deleting multiple files","कई फाइलें हटाना"],["Formatting multiple drives","कई ड्राइव फॉर्मेट करना"]],
+answer: 1,
+explanation: "Multitasking allows an operating system to manage multiple running tasks. / मल्टीटास्किंग ऑपरेटिंग सिस्टम को कई कार्य प्रबंधित करने की सुविधा देती है।"
+}
+],
+
+19: [
+{
+en: "Which shortcut key is used to save a document?",
+hi: "दस्तावेज सेव करने के लिए कौन-सी शॉर्टकट कुंजी उपयोग होती है?",
+options: [["Ctrl + S","Ctrl + S"],["Ctrl + P","Ctrl + P"],["Ctrl + X","Ctrl + X"],["Ctrl + Z","Ctrl + Z"]],
+answer: 0,
+explanation: "Ctrl + S saves the current document. / Ctrl + S वर्तमान दस्तावेज सेव करता है।"
+},
+{
+en: "Which shortcut key is used to copy selected text?",
+hi: "चुने हुए टेक्स्ट को कॉपी करने के लिए कौन-सी शॉर्टकट कुंजी है?",
+options: [["Ctrl + V","Ctrl + V"],["Ctrl + C","Ctrl + C"],["Ctrl + X","Ctrl + X"],["Ctrl + A","Ctrl + A"]],
+answer: 1,
+explanation: "Ctrl + C copies selected text or items. / Ctrl + C चुने हुए टेक्स्ट या आइटम को कॉपी करता है।"
+},
+{
+en: "Which shortcut key is used to paste copied text?",
+hi: "कॉपी किए हुए टेक्स्ट को पेस्ट करने के लिए कौन-सी कुंजी है?",
+options: [["Ctrl + C","Ctrl + C"],["Ctrl + X","Ctrl + X"],["Ctrl + V","Ctrl + V"],["Ctrl + P","Ctrl + P"]],
+answer: 2,
+explanation: "Ctrl + V pastes copied or cut content. / Ctrl + V कॉपी या कट किए गए कंटेंट को पेस्ट करता है।"
+},
+{
+en: "Which shortcut key is used to undo an action?",
+hi: "किसी कार्य को वापस लेने के लिए कौन-सी शॉर्टकट कुंजी है?",
+options: [["Ctrl + Z","Ctrl + Z"],["Ctrl + Y","Ctrl + Y"],["Ctrl + S","Ctrl + S"],["Ctrl + B","Ctrl + B"]],
+answer: 0,
+explanation: "Ctrl + Z is used to undo the last action. / Ctrl + Z अंतिम कार्य को वापस लेता है।"
+},
+{
+en: "Which MS Office application is used for spreadsheets?",
+hi: "स्प्रेडशीट बनाने के लिए कौन-सा MS Office एप्लीकेशन उपयोग होता है?",
+options: [["MS Word","एमएस वर्ड"],["MS Excel","एमएस एक्सेल"],["MS PowerPoint","एमएस पावरपॉइंट"],["MS Access","एमएस एक्सेस"]],
+answer: 1,
+explanation: "MS Excel is used to create and manage spreadsheets. / MS Excel स्प्रेडशीट बनाने और प्रबंधित करने के लिए उपयोग होता है।"
+},
+{
+en: "Which symbol is used to start a formula in Excel?",
+hi: "Excel में फॉर्मूला शुरू करने के लिए किस चिन्ह का उपयोग होता है?",
+options: [["+","+"],["#","#"],["=","="],["@","@"]],
+answer: 2,
+explanation: "Excel formulas begin with an equal sign. / Excel में फॉर्मूला बराबर के चिन्ह से शुरू होता है।"
+},
+{
+en: "Which Excel function is used to add numbers?",
+hi: "Excel में संख्याओं को जोड़ने के लिए कौन-सा फंक्शन उपयोग होता है?",
+options: [["SUM","SUM"],["COUNT","COUNT"],["MAX","MAX"],["MIN","MIN"]],
+answer: 0,
+explanation: "SUM adds the selected numbers or cell values. / SUM चुनी हुई संख्याओं या सेल वैल्यू को जोड़ता है।"
+},
+{
+en: "Which Excel function calculates the average?",
+hi: "Excel में औसत निकालने के लिए कौन-सा फंक्शन है?",
+options: [["SUM","SUM"],["AVERAGE","AVERAGE"],["COUNT","COUNT"],["MAX","MAX"]],
+answer: 1,
+explanation: "AVERAGE calculates the arithmetic mean. / AVERAGE अंकगणितीय औसत निकालता है।"
+},
+{
+en: "What is the intersection of a row and a column called in Excel?",
+hi: "Excel में पंक्ति और स्तंभ के मिलन को क्या कहते हैं?",
+options: [["Workbook","वर्कबुक"],["Worksheet","वर्कशीट"],["Cell","सेल"],["Formula","फॉर्मूला"]],
+answer: 2,
+explanation: "The intersection of a row and column is called a cell. / पंक्ति और स्तंभ के मिलन को सेल कहते हैं।"
+},
+{
+en: "Which application is used to create presentations?",
+hi: "प्रेजेंटेशन बनाने के लिए किस एप्लीकेशन का उपयोग होता है?",
+options: [["MS PowerPoint","एमएस पावरपॉइंट"],["MS Excel","एमएस एक्सेल"],["Notepad","नोटपैड"],["MS Access","एमएस एक्सेस"]],
+answer: 0,
+explanation: "PowerPoint is used to create slide-based presentations. / PowerPoint स्लाइड आधारित प्रेजेंटेशन बनाने के लिए उपयोग होता है।"
+},
+{
+en: "What is the basic unit of a PowerPoint presentation?",
+hi: "PowerPoint प्रेजेंटेशन की मूल इकाई क्या है?",
+options: [["Cell","सेल"],["Slide","स्लाइड"],["Row","पंक्ति"],["Record","रिकॉर्ड"]],
+answer: 1,
+explanation: "A PowerPoint presentation consists of slides. / PowerPoint प्रेजेंटेशन स्लाइड से मिलकर बनता है।"
+},
+{
+en: "Which key starts a PowerPoint slide show from the beginning?",
+hi: "PowerPoint स्लाइड शो शुरू से चलाने के लिए कौन-सी कुंजी है?",
+options: [["F2","F2"],["F5","F5"],["F7","F7"],["F12","F12"]],
+answer: 1,
+explanation: "F5 starts the slide show from the beginning. / F5 स्लाइड शो को शुरू से चलाता है।"
+},
+{
+en: "Which of the following is a web browser?",
+hi: "निम्नलिखित में से वेब ब्राउजर कौन-सा है?",
+options: [["Google Chrome","गूगल क्रोम"],["MS Excel","एमएस एक्सेल"],["Windows","विंडोज"],["MySQL","मायएसक्यूएल"]],
+answer: 0,
+explanation: "Google Chrome is a web browser. / Google Chrome एक वेब ब्राउजर है।"
+},
+{
+en: "Which of the following is a search engine?",
+hi: "निम्नलिखित में से सर्च इंजन कौन-सा है?",
+options: [["Windows","विंडोज"],["Google","गूगल"],["PowerPoint","पावरपॉइंट"],["Linux","लिनक्स"]],
+answer: 1,
+explanation: "Google is a search engine used to find information online. / Google इंटरनेट पर जानकारी खोजने वाला सर्च इंजन है।"
+},
+{
+en: "What does WWW stand for?",
+hi: "WWW का पूरा नाम क्या है?",
+options: [["World Web Window","वर्ल्ड वेब विंडो"],["Wide World Web","वाइड वर्ल्ड वेब"],["World Wide Web","वर्ल्ड वाइड वेब"],["Web World Work","वेब वर्ल्ड वर्क"]],
+answer: 2,
+explanation: "WWW stands for World Wide Web. / WWW का अर्थ World Wide Web है।"
+},
+{
+en: "Which protocol is used for secure web browsing?",
+hi: "सुरक्षित वेब ब्राउजिंग के लिए कौन-सा प्रोटोकॉल उपयोग होता है?",
+options: [["HTTPS","HTTPS"],["FTP","FTP"],["SMTP","SMTP"],["POP3","POP3"]],
+answer: 0,
+explanation: "HTTPS provides encrypted communication between browser and website. / HTTPS ब्राउजर और वेबसाइट के बीच एन्क्रिप्टेड संचार प्रदान करता है।"
+},
+{
+en: "Which device forwards data between different networks?",
+hi: "अलग-अलग नेटवर्क के बीच डेटा भेजने वाला उपकरण कौन-सा है?",
+options: [["Hub","हब"],["Router","राउटर"],["Keyboard","कीबोर्ड"],["Printer","प्रिंटर"]],
+answer: 1,
+explanation: "A router forwards data packets between networks. / राउटर नेटवर्क के बीच डेटा पैकेट भेजता है।"
+},
+{
+en: "Which network covers a small geographical area such as an office?",
+hi: "ऑफिस जैसे छोटे भौगोलिक क्षेत्र में कौन-सा नेटवर्क उपयोग होता है?",
+options: [["WAN","WAN"],["MAN","MAN"],["LAN","LAN"],["GAN","GAN"]],
+answer: 2,
+explanation: "LAN connects devices within a limited area. / LAN सीमित क्षेत्र में डिवाइसों को जोड़ता है।"
+},
+{
+en: "What is the full form of HTTP?",
+hi: "HTTP का पूरा नाम क्या है?",
+options: [["Hypertext Transfer Protocol","हाइपरटेक्स्ट ट्रांसफर प्रोटोकॉल"],["High Transfer Text Program","हाई ट्रांसफर टेक्स्ट प्रोग्राम"],["Hyper Tool Transfer Process","हाइपर टूल ट्रांसफर प्रोसेस"],["Home Text Transfer Protocol","होम टेक्स्ट ट्रांसफर प्रोटोकॉल"]],
+answer: 0,
+explanation: "HTTP stands for Hypertext Transfer Protocol. / HTTP का अर्थ Hypertext Transfer Protocol है।"
+},
+{
+en: "Which protocol is used to transfer files over a network?",
+hi: "नेटवर्क के माध्यम से फाइल ट्रांसफर करने के लिए कौन-सा प्रोटोकॉल उपयोग होता है?",
+options: [["SMTP","SMTP"],["FTP","FTP"],["HTTP","HTTP"],["DNS","DNS"]],
+answer: 1,
+explanation: "FTP stands for File Transfer Protocol. / FTP का अर्थ File Transfer Protocol है।"
+}
+],
+
+20: [
+{
+en: "Which of the following is an example of an operating system?",
+hi: "निम्नलिखित में से ऑपरेटिंग सिस्टम का उदाहरण कौन-सा है?",
+options: [["Linux","लिनक्स"],["MS Word","एमएस वर्ड"],["Google Chrome","गूगल क्रोम"],["Photoshop","फोटोशॉप"]],
+answer: 0,
+explanation: "Linux is an operating system. / Linux एक ऑपरेटिंग सिस्टम है।"
+},
+{
+en: "Which device is used to enter text into a computer?",
+hi: "कंप्यूटर में टेक्स्ट दर्ज करने के लिए किस उपकरण का उपयोग होता है?",
+options: [["Monitor","मॉनिटर"],["Keyboard","कीबोर्ड"],["Speaker","स्पीकर"],["Printer","प्रिंटर"]],
+answer: 1,
+explanation: "A keyboard is an input device used to enter text. / कीबोर्ड टेक्स्ट दर्ज करने वाला इनपुट डिवाइस है।"
+},
+{
+en: "Which memory is closest to the CPU and very fast?",
+hi: "CPU के सबसे नजदीक और बहुत तेज मेमोरी कौन-सी होती है?",
+options: [["Hard Disk","हार्ड डिस्क"],["DVD","डीवीडी"],["Register","रजिस्टर"],["Pen Drive","पेन ड्राइव"]],
+answer: 2,
+explanation: "Registers are very fast storage locations inside the CPU. / रजिस्टर CPU के अंदर बहुत तेज स्टोरेज स्थान होते हैं।"
+},
+{
+en: "What is the full form of USB?",
+hi: "USB का पूरा नाम क्या है?",
+options: [["Universal Serial Bus","यूनिवर्सल सीरियल बस"],["United System Board","यूनाइटेड सिस्टम बोर्ड"],["Universal Storage Box","यूनिवर्सल स्टोरेज बॉक्स"],["User Service Bus","यूजर सर्विस बस"]],
+answer: 0,
+explanation: "USB stands for Universal Serial Bus. / USB का अर्थ Universal Serial Bus है।"
+},
+{
+en: "Which shortcut is used to select all content?",
+hi: "सभी कंटेंट चुनने के लिए कौन-सी शॉर्टकट कुंजी है?",
+options: [["Ctrl + S","Ctrl + S"],["Ctrl + A","Ctrl + A"],["Ctrl + P","Ctrl + P"],["Ctrl + X","Ctrl + X"]],
+answer: 1,
+explanation: "Ctrl + A selects all content. / Ctrl + A सभी कंटेंट चुनता है।"
+},
+{
+en: "Which Excel function counts cells containing numbers?",
+hi: "Excel में संख्याएँ वाली सेल गिनने के लिए कौन-सा फंक्शन है?",
+options: [["SUM","SUM"],["MAX","MAX"],["COUNT","COUNT"],["MIN","MIN"]],
+answer: 2,
+explanation: "COUNT counts cells containing numeric values. / COUNT संख्यात्मक वैल्यू वाली सेल गिनता है।"
+},
+{
+en: "Which file extension is commonly used for modern MS Word documents?",
+hi: "आधुनिक MS Word दस्तावेजों के लिए सामान्यतः कौन-सा फाइल एक्सटेंशन है?",
+options: [[".docx",".docx"],[".xlsx",".xlsx"],[".pptx",".pptx"],[".jpg",".jpg"]],
+answer: 0,
+explanation: ".docx is the standard modern Word document extension. / .docx आधुनिक Word दस्तावेज का सामान्य एक्सटेंशन है।"
+},
+{
+en: "Which file extension is commonly used for Excel workbooks?",
+hi: "Excel वर्कबुक के लिए सामान्यतः कौन-सा फाइल एक्सटेंशन है?",
+options: [[".pptx",".pptx"],[".xlsx",".xlsx"],[".docx",".docx"],[".txt",".txt"]],
+answer: 1,
+explanation: ".xlsx is the standard modern Excel workbook extension. / .xlsx आधुनिक Excel वर्कबुक का सामान्य एक्सटेंशन है।"
+},
+{
+en: "Which file extension is commonly used for PowerPoint presentations?",
+hi: "PowerPoint प्रेजेंटेशन के लिए सामान्यतः कौन-सा फाइल एक्सटेंशन है?",
+options: [[".docx",".docx"],[".xlsx",".xlsx"],[".pptx",".pptx"],[".pdf",".pdf"]],
+answer: 2,
+explanation: ".pptx is the standard modern PowerPoint presentation extension. / .pptx आधुनिक PowerPoint प्रेजेंटेशन का सामान्य एक्सटेंशन है।"
+},
+{
+en: "Which protocol is used to send email?",
+hi: "ईमेल भेजने के लिए कौन-सा प्रोटोकॉल उपयोग होता है?",
+options: [["SMTP","SMTP"],["POP3","POP3"],["IMAP","IMAP"],["FTP","FTP"]],
+answer: 0,
+explanation: "SMTP is used for sending email. / SMTP का उपयोग ईमेल भेजने के लिए होता है।"
+},
+{
+en: "Which of the following is a type of malware?",
+hi: "निम्नलिखित में से मैलवेयर का प्रकार कौन-सा है?",
+options: [["Firewall","फायरवॉल"],["Trojan Horse","ट्रोजन हॉर्स"],["Compiler","कंपाइलर"],["Browser","ब्राउजर"]],
+answer: 1,
+explanation: "A Trojan Horse is malicious software disguised as legitimate software. / ट्रोजन हॉर्स एक हानिकारक सॉफ्टवेयर है जो सामान्य सॉफ्टवेयर जैसा दिखाई देता है।"
+},
+{
+en: "What should you do if you receive an OTP you did not request?",
+hi: "यदि आपको ऐसा OTP मिले जिसे आपने अनुरोध नहीं किया है, तो क्या करना चाहिए?",
+options: [["Share it with a caller","कॉल करने वाले को बता दें"],["Post it online","ऑनलाइन पोस्ट करें"],["Do not share it and check your account security","इसे साझा न करें और अकाउंट की सुरक्षा जाँचें"],["Send it to friends","दोस्तों को भेजें"]],
+answer: 2,
+explanation: "Never share an unexpected OTP. Check for suspicious account activity. / अनचाहा OTP किसी को न बताएं और अकाउंट की संदिग्ध गतिविधि जाँचें।"
+},
+{
+en: "What is the main purpose of a firewall?",
+hi: "फायरवॉल का मुख्य उद्देश्य क्या है?",
+options: [["Monitor and control network traffic","नेटवर्क ट्रैफिक की निगरानी और नियंत्रण"],["Create documents","दस्तावेज बनाना"],["Increase RAM","RAM बढ़ाना"],["Print files","फाइल प्रिंट करना"]],
+answer: 0,
+explanation: "A firewall filters network traffic according to security rules. / फायरवॉल सुरक्षा नियमों के अनुसार नेटवर्क ट्रैफिक को फिल्टर करता है।"
+},
+{
+en: "Which of the following is a strong password?",
+hi: "निम्नलिखित में से मजबूत पासवर्ड कौन-सा है?",
+options: [["123456","123456"],["T9#kP2@vL8!","T9#kP2@vL8!"],["password","password"],["abcdef","abcdef"]],
+answer: 1,
+explanation: "A strong password should be long, unique and difficult to guess. / मजबूत पासवर्ड लंबा, अलग और अनुमान लगाना कठिन होना चाहिए।"
+},
+{
+en: "What is cloud storage?",
+hi: "क्लाउड स्टोरेज क्या है?",
+options: [["Storing files only on paper","फाइलें केवल कागज पर रखना"],["Storing files in RAM only","फाइलें केवल RAM में रखना"],["Storing data on remote servers accessed through the internet","इंटरनेट के माध्यम से दूरस्थ सर्वर पर डेटा संग्रहित करना"],["Storing files in a printer","प्रिंटर में फाइल रखना"]],
+answer: 2,
+explanation: "Cloud storage keeps data on remote servers accessible through the internet. / क्लाउड स्टोरेज में डेटा इंटरनेट से उपलब्ध दूरस्थ सर्वर पर रखा जाता है।"
+},
+{
+en: "Which organization developed the Aadhaar system in India?",
+hi: "भारत में आधार प्रणाली किस संस्था ने विकसित की?",
+options: [["UIDAI","UIDAI"],["ISRO","ISRO"],["RBI","RBI"],["NPCI","NPCI"]],
+answer: 0,
+explanation: "UIDAI is responsible for Aadhaar in India. / भारत में आधार की जिम्मेदारी UIDAI की है।"
+},
+{
+en: "What is the full form of CAPTCHA?",
+hi: "CAPTCHA का पूरा नाम क्या है?",
+options: [["Computer Access Program","कंप्यूटर एक्सेस प्रोग्राम"],["Completely Automated Public Turing test to tell Computers and Humans Apart","कंप्यूटर और मनुष्य में अंतर बताने वाला पूर्णतः स्वचालित सार्वजनिक ट्यूरिंग परीक्षण"],["Central Application Process","सेंट्रल एप्लीकेशन प्रोसेस"],["Common Automated Protocol","कॉमन ऑटोमेटेड प्रोटोकॉल"]],
+answer: 1,
+explanation: "CAPTCHA helps distinguish human users from automated programs. / CAPTCHA मनुष्य और स्वचालित प्रोग्राम में अंतर करने में मदद करता है।"
+},
+{
+en: "Which number system has base 16?",
+hi: "किस संख्या पद्धति का आधार 16 होता है?",
+options: [["Binary","बाइनरी"],["Octal","ऑक्टल"],["Hexadecimal","हेक्साडेसिमल"],["Decimal","डेसिमल"]],
+answer: 2,
+explanation: "Hexadecimal uses sixteen symbols: 0–9 and A–F. / हेक्साडेसिमल में 0–9 और A–F सहित 16 चिन्ह होते हैं।"
+},
+{
+en: "Which of the following is a search engine?",
+hi: "निम्नलिखित में से सर्च इंजन कौन-सा है?",
+options: [["Bing","बिंग"],["Windows","विंडोज"],["Linux","लिनक्स"],["MS Word","एमएस वर्ड"]],
+answer: 0,
+explanation: "Bing is a search engine developed by Microsoft. / Bing Microsoft द्वारा विकसित एक सर्च इंजन है।"
+},
+{
+en: "What is the main purpose of data backup?",
+hi: "डेटा बैकअप का मुख्य उद्देश्य क्या है?",
+options: [["Increase monitor brightness","मॉनिटर की चमक बढ़ाना"],["Restore data after loss or damage","डेटा खोने या खराब होने के बाद उसे वापस प्राप्त करना"],["Increase internet speed","इंटरनेट की गति बढ़ाना"],["Delete unwanted programs","अनचाहे प्रोग्राम हटाना"]],
+answer: 1,
+explanation: "Backups help recover data after accidental deletion, damage or system failure. / बैकअप डेटा हटने, खराब होने या सिस्टम फेल होने पर उसे वापस पाने में मदद करता है।"
+}
+]
+
+ 
+};
+
+const setNames = syllabus;
+let currentSet = 1;
+let currentQuestion = 0;
+let answers = [];
+let seconds = 1200;
+let timerInterval = null;
+let submitted = false;
+
+function renderSets(){
+ const grid=document.getElementById("setGrid");
+ grid.innerHTML="";
+ setNames.forEach((name,index)=>{
+  const number=index+1;
+  const available=Boolean(questionSets[number]);
+  const card=document.createElement("div");
+  card.className="set-card";
+  card.innerHTML=`
+   <h3>Set ${String(number).padStart(2,"0")}</h3>
+   <p>${name}</p>
+   <p style="margin-top:7px">${available?"20 Questions | 20 Minutes":"Questions will be added"}</p>
+   <button ${available?"":"disabled"} style="${available?"":"opacity:.45;cursor:not-allowed"}">
+    ${available?"Start Test":"Coming Soon"}
+   </button>`;
+  if(available)card.querySelector("button").onclick=()=>startTest(number);
+  grid.appendChild(card);
+ });
+}
+
+function startTest(setNumber){
+ currentSet=setNumber;
+ currentQuestion=0;
+ answers=Array(20).fill(null);
+ seconds=1200;
+ submitted=false;
+ document.getElementById("homeArea").style.display="none";
+ document.getElementById("resultArea").style.display="none";
+ document.getElementById("testArea").style.display="block";
+ document.getElementById("reviewArea").style.display="none";
+ document.getElementById("testTitle").textContent="Set "+String(setNumber).padStart(2,"0")+" - "+setNames[setNumber-1];
+ renderQuestion();
+ renderPalette();
+ updateTimer();
+ clearInterval(timerInterval);
+ timerInterval=setInterval(()=>{
+  seconds--;
+  updateTimer();
+  if(seconds<=0){
+   clearInterval(timerInterval);
+   submitTest();
+  }
+ },1000);
+ window.scrollTo(0,0);
+}
+
+function updateTimer(){
+ const min=Math.floor(seconds/60);
+ const sec=seconds%60;
+ document.getElementById("timer").textContent=
+ "Time Left: "+String(min).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+ if(seconds<=60)document.getElementById("timer").style.background="#ffe0e0";
+}
+
+function renderQuestion(){
+ const q=questionSets[currentSet][currentQuestion];
+ document.getElementById("qNumber").textContent="Question "+(currentQuestion+1);
+ document.getElementById("questionCount").textContent="Question "+(currentQuestion+1)+" of 20";
+ document.getElementById("questionEn").textContent=q.en;
+ document.getElementById("questionHi").textContent=q.hi;
+ document.getElementById("progressBar").style.width=((currentQuestion+1)/20*100)+"%";
+
+ const area=document.getElementById("optionsArea");
+ area.innerHTML="";
+ q.options.forEach((option,index)=>{
+  const label=document.createElement("label");
+  label.className="option"+(answers[currentQuestion]===index?" selected":"");
+  label.innerHTML=`
+   <input type="radio" name="answer" ${answers[currentQuestion]===index?"checked":""}>
+   <span><b>${String.fromCharCode(65+index)}. ${option[0]}</b><small>${option[1]}</small></span>`;
+  label.onclick=()=>{
+   answers[currentQuestion]=index;
+   renderQuestion();
+   renderPalette();
+  };
+  area.appendChild(label);
+ });
+ renderPalette();
+}
+
+function renderPalette(){
+ const palette=document.getElementById("palette");
+ palette.innerHTML="";
+ for(let i=0;i<20;i++){
+  const btn=document.createElement("button");
+  btn.textContent=i+1;
+  if(i===currentQuestion)btn.classList.add("current");
+  else if(answers[i]!==null)btn.classList.add("answered");
+  btn.onclick=()=>{currentQuestion=i;renderQuestion()};
+  palette.appendChild(btn);
+ }
+}
+
+function previousQuestion(){
+ if(currentQuestion>0){currentQuestion--;renderQuestion()}
+}
+function nextQuestion(){
+ if(currentQuestion<19){currentQuestion++;renderQuestion()}
+}
+
+function submitTest(){
+ if(submitted)return;
+ const unanswered=answers.filter(a=>a===null).length;
+ const confirmText=unanswered>0
+  ?"You have "+unanswered+" unanswered questions. Submit anyway?"
+  :"Are you sure you want to submit the test?";
+ if(seconds>0&&!confirm(confirmText))return;
+
+ submitted=true;
+ clearInterval(timerInterval);
+ const qs=questionSets[currentSet];
+ let correct=0,wrong=0;
+ qs.forEach((q,i)=>{
+  if(answers[i]===null)return;
+  if(answers[i]===q.answer)correct++;
+  else wrong++;
+ });
+ const unattempted=20-correct-wrong;
+ const percentage=(correct/20*100).toFixed(1);
+
+ document.getElementById("testArea").style.display="none";
+ document.getElementById("resultArea").style.display="block";
+ document.getElementById("scoreText").textContent=correct+"/20";
+ document.getElementById("percentageText").textContent="Percentage: "+percentage+"%";
+ document.getElementById("correctCount").textContent=correct;
+ document.getElementById("wrongCount").textContent=wrong;
+ document.getElementById("unattemptedCount").textContent=unattempted;
+ window.scrollTo(0,0);
+}
+
+function showReview(){
+ const review=document.getElementById("reviewArea");
+ review.style.display="block";
+ const content=document.getElementById("reviewContent");
+ content.innerHTML="";
+ questionSets[currentSet].forEach((q,i)=>{
+  const selected=answers[i];
+  const correct=q.answer;
+  const item=document.createElement("div");
+  item.className="review-item";
+  let answerText=selected===null
+   ?"Not Attempted / प्रयास नहीं किया"
+   :(selected===correct?"Correct / सही उत्तर":"Incorrect / गलत उत्तर");
+  item.innerHTML=`
+   <b>Q${i+1}. ${q.en}</b><br>${q.hi}<br>
+   <span class="${selected===correct?"correct":"wrong"}">${answerText}</span><br>
+   <b>Correct Answer:</b> ${String.fromCharCode(65+correct)}. ${q.options[correct][0]}<br>
+   <span>${q.options[correct][1]}</span><br>
+   <b>Explanation:</b> ${q.explanation}`;
+  content.appendChild(item);
+ });
+ review.scrollIntoView({behavior:"smooth"});
+}
+
+function goHome(){
+ clearInterval(timerInterval);
+ document.getElementById("resultArea").style.display="none";
+ document.getElementById("testArea").style.display="none";
+ document.getElementById("homeArea").style.display="block";
+ window.scrollTo(0,0);
+}
+
+renderSets();
+</script>
+</body>
+</html>

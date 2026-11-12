@@ -1,1 +1,639 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET | GK & Current Affairs Test Series</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Poppins,'Noto Sans Devanagari',sans-serif;background:#f4f6ff;color:#202544}
+header{background:linear-gradient(120deg,#111c55,#3435a5,#7654df);color:white;padding:22px 7%}
+nav{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.logo{font-size:22px;font-weight:800}.logo span{color:#ffd66b}
+.nav-tag{background:#ffffff20;padding:9px 17px;border-radius:30px;font-size:13px}
+.hero{padding:55px 7% 65px;color:white;background:linear-gradient(120deg,#111c55,#3435a5,#7654df)}
+.hero-content{max-width:850px}
+.eyebrow{color:#ffdc78;font-size:13px;font-weight:700;letter-spacing:2px}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.2;margin:15px 0}
+.hero p{color:#e1e4ff;line-height:1.8;max-width:700px}
+.hero-stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.stat{background:#ffffff18;border:1px solid #ffffff35;padding:13px 20px;border-radius:14px;min-width:120px}
+.stat strong{display:block;font-size:22px;color:#ffdc78}.stat small{font-size:12px;color:#e8e9ff}
+main{max-width:1200px;margin:auto;padding:35px 22px 60px}
+.section-heading{display:flex;justify-content:space-between;align-items:end;gap:15px;flex-wrap:wrap;margin-bottom:22px}
+.section-heading h2{font-size:25px;color:#171e50}
+.section-heading p{font-size:13px;color:#777d98;margin-top:5px}
+.progress-box,.topics{background:white;border-radius:17px;padding:20px 22px;box-shadow:0 5px 25px #242d6810;margin-bottom:28px}
+.progress-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:13px;font-weight:600}
+.progress-track{height:9px;background:#eceeff;border-radius:20px;margin-top:13px;overflow:hidden}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#6556e8,#22b9a5);border-radius:20px}
+.set-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:19px}
+.set-card{background:white;border-radius:19px;padding:22px;box-shadow:0 5px 22px #242d6810;border:1px solid #eceeff;transition:.25s;position:relative}
+.set-card:hover{transform:translateY(-5px)}
+.set-card:before{content:"";position:absolute;top:0;left:0;width:100%;height:5px;background:var(--accent)}
+.set-number{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-weight:800;color:var(--accent);background:var(--soft);margin-bottom:17px}
+.set-card h3{font-size:18px;margin-bottom:7px}
+.set-card p{font-size:12px;color:#81869d;line-height:1.7}
+.card-info{display:flex;gap:13px;margin:17px 0;font-size:12px;color:#626984;flex-wrap:wrap}
+button{border:0;border-radius:10px;padding:12px 17px;font-weight:700;font-family:inherit;cursor:pointer}
+.start-btn{width:100%;color:white;background:var(--accent)}
+.topics{margin-top:35px}.topics h2{font-size:21px;margin-bottom:17px}
+.topic-list{display:flex;flex-wrap:wrap;gap:10px}
+.topic{padding:9px 14px;border-radius:30px;background:#f0f1ff;color:#41478d;font-size:12px;font-weight:600}
+footer{text-align:center;background:#151d50;color:#d9dcf7;padding:25px;font-size:12px}
+footer strong{color:#ffdc78}
+#testPage,#resultPage{display:none}
+.test-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:white;padding:17px;border-radius:14px;margin-bottom:18px}
+.timer{color:#d43b55;font-weight:800}
+.test-card,.palette,.result-card{background:white;padding:23px;border-radius:16px;box-shadow:0 5px 20px #20254410}
+.question-top{display:flex;justify-content:space-between;margin-bottom:20px;color:#777}
+.question-text{font-size:19px;font-weight:700;line-height:1.8;margin-bottom:20px}
+.option{display:block;width:100%;text-align:left;border:1px solid #dfe2f3;background:white;margin:10px 0;line-height:1.7}
+.option.selected{background:#eeedff;border:2px solid #6555d9;color:#33278f}
+.test-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+.btn-primary{background:#5142bd;color:white}.btn-green{background:#15966d;color:white}
+.btn-grey{background:#e9eaf7;color:#292d50}.btn-red{background:#d84b5b;color:white}
+.palette{margin-top:18px}.palette h3{margin-bottom:13px}
+#numbers{display:flex;gap:9px;flex-wrap:wrap}
+.num{width:39px;height:39px;padding:0;background:#e9eaf4}
+.num.answered{background:#15966d;color:white}
+.num.current{outline:3px solid #5142bd}
+.num.marked{background:#e6a23c;color:white}
+.result-card{text-align:center}
+.score{font-size:46px;color:#5142bd;font-weight:800;margin:18px}
+.review{text-align:left;margin-top:25px}
+.review-item{text-align:left;padding:15px 0;border-bottom:1px solid #eee;line-height:1.8}
+.correct{color:#14865d;font-weight:bold}.wrong{color:#d43b55;font-weight:bold}
+@media(max-width:850px){.set-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.set-grid{grid-template-columns:1fr}.hero{padding:40px 6%}.test-card,.palette{padding:16px}.question-text{font-size:17px}}
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+<div class="logo">BLET <span>PREPARATION</span></div>
+<div class="nav-tag">Bihar Library Eligibility Test</div>
+</nav>
+</header>
+
+<section class="hero" id="hero">
+<div class="hero-content">
+<div class="eyebrow">SECTION 03 · GENERAL STUDIES</div>
+<h1>General Knowledge<br>& Current Affairs</h1>
+<p>सामान्य ज्ञान एवं समसामयिकी की बेहतर तैयारी के लिए अभ्यास करें और अपनी तैयारी को परखें।</p>
+<div class="hero-stats">
+<div class="stat"><strong>10</strong><small>Test Sets</small></div>
+<div class="stat"><strong>300</strong><small>Total Questions</small></div>
+<div class="stat"><strong>30</strong><small>Marks per Test</small></div>
+<div class="stat"><strong>30 min</strong><small>Time per Test</small></div>
+</div>
+</div>
+</section>
+
+<main>
+<section id="homePage">
+<div class="section-heading">
+<div><h2>Choose Your Test Set</h2><p>अपनी तैयारी शुरू करने के लिए कोई एक टेस्ट चुनें।</p></div>
+</div>
+<div class="progress-box">
+<div class="progress-top"><span>Your Practice Journey</span><span id="progressText">0 of 10 tests completed</span></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+<div class="set-grid" id="setGrid"></div>
+<section class="topics">
+<h2>Topics Covered / पाठ्यक्रम</h2>
+<div class="topic-list">
+<span class="topic">Current Affairs / समसामयिकी</span>
+<span class="topic">Indian History / भारतीय इतिहास</span>
+<span class="topic">Indian Geography / भारतीय भूगोल</span>
+<span class="topic">Indian Polity / भारतीय राजव्यवस्था</span>
+<span class="topic">Indian Economy / भारतीय अर्थव्यवस्था</span>
+<span class="topic">Indian Culture / भारतीय संस्कृति</span>
+<span class="topic">Science & Technology / विज्ञान</span>
+<span class="topic">Bihar GK / बिहार सामान्य ज्ञान</span>
+<span class="topic">Government Schemes / सरकारी योजनाएँ</span>
+</div>
+</section>
+</section>
+
+<section id="testPage">
+<div class="test-head">
+<strong id="testTitle">Test Set 01</strong>
+<strong>Question: <span id="questionCount">1/30</span></strong>
+<strong class="timer">Time: <span id="timer">30:00</span></strong>
+</div>
+<div class="test-card">
+<div class="question-top"><span id="questionNumber">Question 1</span><span>1 Mark</span></div>
+<div class="question-text" id="questionText"></div>
+<div id="options"></div>
+<div class="test-actions">
+<button class="btn-grey" onclick="previousQuestion()">← Previous</button>
+<button class="btn-green" onclick="markQuestion()">Mark for Review</button>
+<button class="btn-grey" onclick="clearAnswer()">Clear Response</button>
+<button class="btn-primary" onclick="nextQuestion()">Next →</button>
+<button class="btn-red" onclick="submitTest()">Submit Test</button>
+</div>
+</div>
+<div class="palette">
+<h3>Question Navigation / प्रश्न सूची</h3>
+<div id="numbers"></div>
+<p style="font-size:12px;margin-top:14px;color:#777">Green: Answered | Orange: Review | Grey: Not Answered</p>
+</div>
+</section>
+
+<section id="resultPage">
+<div class="result-card" id="resultContent"></div>
+</section>
+</main>
+
+<footer><strong>BLET Test Series</strong> · Prepared for Jahnavi Jee<br><br>Practice with consistency. Success follows preparation.</footer>
+
+<script>
+const colors=[
+["#6555d9","#f0edff"],["#168d9c","#e5f8fa"],["#e18a31","#fff3e5"],
+["#d64e78","#fff0f4"],["#36875b","#e9f8ef"],["#466bc7","#edf2ff"],
+["#a45dbb","#f8edfc"],["#c45a40","#fff0eb"],["#318b9b","#e9f8fa"],["#626c80","#eef0f5"]
+];
+
+let questionSets = [
+
+
+[
+{q:"Who is known as the Father of the Indian Constitution? / भारतीय संविधान के जनक किसे कहा जाता है?",o:["Mahatma Gandhi / महात्मा गांधी","Dr. B. R. Ambedkar / डॉ. बी. आर. अम्बेडकर","Jawaharlal Nehru / जवाहरलाल नेहरू","Dr. Rajendra Prasad / डॉ. राजेन्द्र प्रसाद"],a:1,e:"Dr. Ambedkar chaired the Drafting Committee. / डॉ. अम्बेडकर प्रारूप समिति के अध्यक्ष थे।"},
+{q:"When did the Indian Constitution come into force? / भारतीय संविधान कब लागू हुआ?",o:["15 August 1947 / 15 अगस्त 1947","26 January 1950 / 26 जनवरी 1950","26 November 1949 / 26 नवम्बर 1949","2 October 1950 / 2 अक्टूबर 1950"],a:1,e:"It came into force on 26 January 1950. / यह 26 जनवरी 1950 को लागू हुआ।"},
+{q:"Who was the first President of India? / भारत के प्रथम राष्ट्रपति कौन थे?",o:["Dr. Rajendra Prasad / डॉ. राजेन्द्र प्रसाद","Dr. S. Radhakrishnan / डॉ. एस. राधाकृष्णन","Zakir Hussain / जाकिर हुसैन","V. V. Giri / वी. वी. गिरि"],a:0,e:"Dr. Rajendra Prasad was the first President. / डॉ. राजेन्द्र प्रसाद प्रथम राष्ट्रपति थे।"},
+{q:"Which is the longest river flowing entirely within India? / पूरी तरह भारत में बहने वाली सबसे लंबी नदी कौन-सी है?",o:["Yamuna / यमुना","Godavari / गोदावरी","Ganga / गंगा","Narmada / नर्मदा"],a:1,e:"Godavari is the longest river flowing entirely within India. / गोदावरी पूरी तरह भारत में बहने वाली सबसे लंबी नदी है।"},
+{q:"Who founded the Maurya Empire? / मौर्य साम्राज्य की स्थापना किसने की?",o:["Ashoka / अशोक","Chandragupta Maurya / चन्द्रगुप्त मौर्य","Bindusara / बिन्दुसार","Harsha / हर्ष"],a:1,e:"Chandragupta Maurya founded the Maurya Empire. / चन्द्रगुप्त मौर्य ने मौर्य साम्राज्य की स्थापना की।"},
+{q:"Who gave the slogan 'Do or Die'? / 'करो या मरो' का नारा किसने दिया?",o:["Subhas Chandra Bose / सुभाष चन्द्र बोस","Bhagat Singh / भगत सिंह","Mahatma Gandhi / महात्मा गांधी","Bal Gangadhar Tilak / बाल गंगाधर तिलक"],a:2,e:"Gandhi gave this slogan during the Quit India Movement in 1942. / गांधीजी ने यह नारा 1942 में भारत छोड़ो आंदोलन के दौरान दिया।"},
+{q:"Which is the largest Indian state by area? / क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा राज्य कौन-सा है?",o:["Madhya Pradesh / मध्य प्रदेश","Maharashtra / महाराष्ट्र","Uttar Pradesh / उत्तर प्रदेश","Rajasthan / राजस्थान"],a:3,e:"Rajasthan is the largest Indian state by area. / राजस्थान क्षेत्रफल की दृष्टि से सबसे बड़ा राज्य है।"},
+{q:"The Himalayas are located in which part of India? / हिमालय भारत के किस भाग में स्थित हैं?",o:["South / दक्षिण","North / उत्तर","East / पूर्व","West / पश्चिम"],a:1,e:"The Himalayas lie in northern India. / हिमालय उत्तरी भारत में स्थित हैं।"},
+{q:"Which House of Parliament is called the Upper House? / संसद के किस सदन को उच्च सदन कहा जाता है?",o:["Lok Sabha / लोकसभा","Vidhan Sabha / विधानसभा","Rajya Sabha / राज्यसभा","Gram Sabha / ग्रामसभा"],a:2,e:"Rajya Sabha is the Upper House. / राज्यसभा उच्च सदन है।"},
+{q:"Who appoints the Prime Minister of India? / भारत के प्रधानमंत्री की नियुक्ति कौन करता है?",o:["President / राष्ट्रपति","Chief Justice / मुख्य न्यायाधीश","Governor / राज्यपाल","Speaker / अध्यक्ष"],a:0,e:"The President appoints the Prime Minister. / राष्ट्रपति प्रधानमंत्री की नियुक्ति करते हैं।"},
+{q:"Which Article guarantees the Right to Life and Personal Liberty? / जीवन और व्यक्तिगत स्वतंत्रता का अधिकार किस अनुच्छेद में है?",o:["Article 14 / अनुच्छेद 14","Article 19 / अनुच्छेद 19","Article 21 / अनुच्छेद 21","Article 32 / अनुच्छेद 32"],a:2,e:"Article 21 protects life and personal liberty. / अनुच्छेद 21 जीवन और व्यक्तिगत स्वतंत्रता की रक्षा करता है।"},
+{q:"What is the minimum age to become a Lok Sabha member? / लोकसभा सदस्य बनने की न्यूनतम आयु कितनी है?",o:["18 years / 18 वर्ष","21 years / 21 वर्ष","25 years / 25 वर्ष","30 years / 30 वर्ष"],a:2,e:"The minimum age is 25 years. / न्यूनतम आयु 25 वर्ष है।"},
+{q:"Which institution regulates monetary policy in India? / भारत में मौद्रिक नीति का संचालन कौन करता है?",o:["SBI / एसबीआई","RBI / भारतीय रिजर्व बैंक","SEBI / सेबी","NITI Aayog / नीति आयोग"],a:1,e:"The Reserve Bank of India regulates monetary policy. / भारतीय रिजर्व बैंक मौद्रिक नीति का संचालन करता है।"},
+{q:"What does GDP stand for? / GDP का पूरा नाम क्या है?",o:["Gross Domestic Product / सकल घरेलू उत्पाद","General Domestic Price / सामान्य घरेलू मूल्य","Gross Development Plan / सकल विकास योजना","General Development Product / सामान्य विकास उत्पाद"],a:0,e:"GDP means Gross Domestic Product. / GDP का अर्थ सकल घरेलू उत्पाद है।"},
+{q:"GST was introduced in India in which year? / भारत में GST किस वर्ष लागू हुआ?",o:["2015 / 2015","2016 / 2016","2017 / 2017","2018 / 2018"],a:2,e:"GST was introduced on 1 July 2017. / GST 1 जुलाई 2017 को लागू हुआ।"},
+{q:"Bharatanatyam is a classical dance of which state? / भरतनाट्यम किस राज्य का शास्त्रीय नृत्य है?",o:["Kerala / केरल","Tamil Nadu / तमिलनाडु","Punjab / पंजाब","Assam / असम"],a:1,e:"Bharatanatyam originated in Tamil Nadu. / भरतनाट्यम की उत्पत्ति तमिलनाडु में हुई।"},
+{q:"The Sun Temple at Konark is located in which state? / कोणार्क सूर्य मंदिर किस राज्य में है?",o:["Odisha / ओडिशा","Bihar / बिहार","Gujarat / गुजरात","Rajasthan / राजस्थान"],a:0,e:"The temple is located in Odisha. / यह मंदिर ओडिशा में स्थित है।"},
+{q:"Which gas is absorbed by plants during photosynthesis? / प्रकाश संश्लेषण के दौरान पौधे कौन-सी गैस ग्रहण करते हैं?",o:["Oxygen / ऑक्सीजन","Nitrogen / नाइट्रोजन","Carbon dioxide / कार्बन डाइऑक्साइड","Hydrogen / हाइड्रोजन"],a:2,e:"Plants absorb carbon dioxide. / पौधे कार्बन डाइऑक्साइड ग्रहण करते हैं।"},
+{q:"What is the chemical symbol of Gold? / सोने का रासायनिक प्रतीक क्या है?",o:["Ag","Au","Fe","Go"],a:1,e:"Au is the chemical symbol of Gold. / Au सोने का प्रतीक है।"},
+{q:"Which planet is known as the Red Planet? / किस ग्रह को लाल ग्रह कहा जाता है?",o:["Venus / शुक्र","Jupiter / बृहस्पति","Mars / मंगल","Saturn / शनि"],a:2,e:"Mars is known as the Red Planet. / मंगल लाल ग्रह कहलाता है।"},
+{q:"Where is the headquarters of ISRO located? / इसरो का मुख्यालय कहाँ है?",o:["New Delhi / नई दिल्ली","Mumbai / मुंबई","Hyderabad / हैदराबाद","Bengaluru / बेंगलुरु"],a:3,e:"ISRO headquarters is in Bengaluru. / इसरो का मुख्यालय बेंगलुरु में है।"},
+{q:"Which is the largest planet in our Solar System? / सौरमंडल का सबसे बड़ा ग्रह कौन-सा है?",o:["Earth / पृथ्वी","Jupiter / बृहस्पति","Saturn / शनि","Neptune / वरुण"],a:1,e:"Jupiter is the largest planet. / बृहस्पति सबसे बड़ा ग्रह है।"},
+{q:"Which river is known as the Sorrow of Bihar? / बिहार का शोक किस नदी को कहा जाता है?",o:["Ganga / गंगा","Gandak / गंडक","Kosi / कोसी","Son / सोन"],a:2,e:"Kosi is known as the Sorrow of Bihar. / कोसी को बिहार का शोक कहा जाता है।"},
+{q:"Bihar became a separate province in which year? / बिहार किस वर्ष अलग प्रांत बना?",o:["1905 / 1905","1912 / 1912","1936 / 1936","1947 / 1947"],a:1,e:"Bihar became a separate province in 1912. / बिहार 1912 में अलग प्रांत बना।"},
+{q:"What is the capital of Bihar? / बिहार की राजधानी क्या है?",o:["Gaya / गया","Muzaffarpur / मुजफ्फरपुर","Patna / पटना","Bhagalpur / भागलपुर"],a:2,e:"Patna is the capital of Bihar. / पटना बिहार की राजधानी है।"},
+{q:"Who was the permanent President of the Constituent Assembly? / संविधान सभा के स्थायी अध्यक्ष कौन थे?",o:["Dr. Rajendra Prasad / डॉ. राजेन्द्र प्रसाद","Jawaharlal Nehru / जवाहरलाल नेहरू","B. R. Ambedkar / बी. आर. अम्बेडकर","Sardar Patel / सरदार पटेल"],a:0,e:"Dr. Rajendra Prasad was its permanent President. / डॉ. राजेन्द्र प्रसाद इसके स्थायी अध्यक्ष थे।"},
+{q:"Nalanda University was located in which present-day state? / नालंदा विश्वविद्यालय वर्तमान में किस राज्य में है?",o:["Uttar Pradesh / उत्तर प्रदेश","Bihar / बिहार","Jharkhand / झारखंड","West Bengal / पश्चिम बंगाल"],a:1,e:"Nalanda University was in Bihar. / नालंदा विश्वविद्यालय बिहार में था।"},
+{q:"Chhath Puja is mainly dedicated to which deity? / छठ पूजा मुख्य रूप से किस देवता को समर्पित है?",o:["Lord Shiva / भगवान शिव","Lord Vishnu / भगवान विष्णु","Sun God / सूर्य देव","Lord Ganesha / भगवान गणेश"],a:2,e:"Chhath Puja is dedicated to the Sun God. / छठ पूजा सूर्य देव को समर्पित है।"},
+{q:"Which scheme provides a legal guarantee of up to 100 days of wage employment to rural households? / ग्रामीण परिवारों को 100 दिन के मजदूरी रोजगार की कानूनी गारंटी किस योजना में है?",o:["PM-KISAN / पीएम-किसान","MGNREGA / मनरेगा","PMAY / पीएम आवास","Ujjwala Yojana / उज्ज्वला योजना"],a:1,e:"MGNREGA provides this employment guarantee. / मनरेगा यह रोजगार गारंटी प्रदान करता है।"},
+{q:"PM-KISAN provides income support to whom? / पीएम-किसान योजना के तहत किसे आय सहायता दी जाती है?",o:["Students / विद्यार्थियों","Eligible farmer families / पात्र किसान परिवारों","Teachers / शिक्षकों","Businessmen / व्यापारियों"],a:1,e:"PM-KISAN provides income support to eligible farmer families. / पीएम-किसान पात्र किसान परिवारों को आय सहायता देता है।"}
+],
+[
+{q:"Who founded the Slave Dynasty in India? / भारत में गुलाम वंश की स्थापना किसने की?",o:["Iltutmish / इल्तुतमिश","Qutb-ud-din Aibak / कुतुबुद्दीन ऐबक","Balban / बलबन","Alauddin Khilji / अलाउद्दीन खिलजी"],a:1,e:"Qutb-ud-din Aibak founded the Mamluk or Slave Dynasty. / कुतुबुद्दीन ऐबक ने गुलाम वंश की स्थापना की।"},
+{q:"Who founded the Mughal Empire in India? / भारत में मुगल साम्राज्य की स्थापना किसने की?",o:["Akbar / अकबर","Humayun / हुमायूँ","Babur / बाबर","Shah Jahan / शाहजहाँ"],a:2,e:"Babur founded the Mughal Empire after the First Battle of Panipat in 1526. / बाबर ने 1526 में पानीपत के प्रथम युद्ध के बाद मुगल साम्राज्य की स्थापना की।"},
+{q:"The Battle of Plassey was fought in which year? / प्लासी का युद्ध किस वर्ष हुआ?",o:["1757 / 1757","1764 / 1764","1857 / 1857","1773 / 1773"],a:0,e:"The Battle of Plassey was fought in 1757. / प्लासी का युद्ध 1757 में हुआ।"},
+{q:"Who was the first woman ruler of the Delhi Sultanate? / दिल्ली सल्तनत की पहली महिला शासक कौन थीं?",o:["Nur Jahan / नूरजहाँ","Razia Sultan / रजिया सुल्तान","Jahanara / जहाँआरा","Chand Bibi / चाँद बीबी"],a:1,e:"Razia Sultan ruled the Delhi Sultanate. / रजिया सुल्तान ने दिल्ली सल्तनत पर शासन किया।"},
+{q:"Who led the revolt of 1857 at Kanpur? / 1857 के विद्रोह में कानपुर का नेतृत्व किसने किया?",o:["Rani Lakshmibai / रानी लक्ष्मीबाई","Nana Sahib / नाना साहब","Kunwar Singh / कुँवर सिंह","Begum Hazrat Mahal / बेगम हजरत महल"],a:1,e:"Nana Sahib led the revolt at Kanpur. / नाना साहब ने कानपुर में विद्रोह का नेतृत्व किया।"},
+{q:"Which is the highest mountain peak located entirely within India? / पूरी तरह भारत में स्थित सबसे ऊँची पर्वत चोटी कौन-सी है?",o:["Nanda Devi / नंदा देवी","K2 / के2","Kanchenjunga / कंचनजंघा","Anamudi / अनामुडी"],a:0,e:"Nanda Devi is the highest peak located entirely within India. / नंदा देवी पूरी तरह भारत में स्थित सबसे ऊँची चोटी है।"},
+{q:"Which Indian state has the longest coastline? / भारत के किस राज्य की समुद्री तटरेखा सबसे लंबी है?",o:["Tamil Nadu / तमिलनाडु","Andhra Pradesh / आंध्र प्रदेश","Gujarat / गुजरात","Kerala / केरल"],a:2,e:"Gujarat has the longest coastline among Indian states. / गुजरात की तटरेखा भारतीय राज्यों में सबसे लंबी है।"},
+{q:"Black soil is especially suitable for which crop? / काली मिट्टी किस फसल के लिए विशेष रूप से उपयुक्त है?",o:["Tea / चाय","Cotton / कपास","Jute / जूट","Rice / चावल"],a:1,e:"Black soil is suitable for cotton cultivation. / काली मिट्टी कपास की खेती के लिए उपयुक्त है।"},
+{q:"Which river is known as Dakshin Ganga? / किस नदी को दक्षिण गंगा कहा जाता है?",o:["Krishna / कृष्णा","Kaveri / कावेरी","Godavari / गोदावरी","Mahanadi / महानदी"],a:2,e:"Godavari is popularly called Dakshin Ganga. / गोदावरी को दक्षिण गंगा कहा जाता है।"},
+{q:"The Sundarbans are famous for which type of forest? / सुंदरबन किस प्रकार के वन के लिए प्रसिद्ध है?",o:["Coniferous / शंकुधारी","Mangrove / मैंग्रोव","Deciduous / पर्णपाती","Thorn / कांटेदार"],a:1,e:"The Sundarbans are famous for mangrove forests. / सुंदरबन मैंग्रोव वनों के लिए प्रसिद्ध है।"},
+{q:"Who was the Chairman of the Drafting Committee of the Constitution? / संविधान की प्रारूप समिति के अध्यक्ष कौन थे?",o:["Jawaharlal Nehru / जवाहरलाल नेहरू","Dr. B. R. Ambedkar / डॉ. बी. आर. अम्बेडकर","Sardar Patel / सरदार पटेल","Rajendra Prasad / राजेन्द्र प्रसाद"],a:1,e:"Dr. B. R. Ambedkar chaired the Drafting Committee. / डॉ. अम्बेडकर प्रारूप समिति के अध्यक्ष थे।"},
+{q:"Which Article abolishes untouchability? / अस्पृश्यता का अंत किस अनुच्छेद द्वारा किया गया है?",o:["Article 14 / अनुच्छेद 14","Article 15 / अनुच्छेद 15","Article 17 / अनुच्छेद 17","Article 21 / अनुच्छेद 21"],a:2,e:"Article 17 abolishes untouchability. / अनुच्छेद 17 अस्पृश्यता का अंत करता है।"},
+{q:"Who is the ex-officio Chairman of Rajya Sabha? / राज्यसभा का पदेन सभापति कौन होता है?",o:["President / राष्ट्रपति","Vice-President / उपराष्ट्रपति","Prime Minister / प्रधानमंत्री","Speaker / लोकसभा अध्यक्ष"],a:1,e:"The Vice-President of India is the ex-officio Chairman of Rajya Sabha. / भारत के उपराष्ट्रपति राज्यसभा के पदेन सभापति होते हैं।"},
+{q:"Which body conducts elections to Parliament and State Legislatures in India? / भारत में संसद और राज्य विधानसभाओं के चुनाव कौन कराता है?",o:["UPSC / यूपीएससी","Election Commission / निर्वाचन आयोग","Finance Commission / वित्त आयोग","NITI Aayog / नीति आयोग"],a:1,e:"The Election Commission of India conducts these elections. / भारत निर्वाचन आयोग ये चुनाव कराता है।"},
+{q:"Who audits the accounts of the Union and State Governments? / केंद्र और राज्य सरकारों के खातों का लेखा-परीक्षण कौन करता है?",o:["RBI Governor / RBI गवर्नर","CAG / नियंत्रक एवं महालेखा परीक्षक","Finance Minister / वित्त मंत्री","Chief Justice / मुख्य न्यायाधीश"],a:1,e:"The CAG audits government accounts. / CAG सरकारी खातों का लेखा-परीक्षण करता है।"},
+{q:"What is inflation? / मुद्रास्फीति क्या है?",o:["Fall in prices / कीमतों में गिरावट","General rise in prices / सामान्य कीमतों में वृद्धि","Rise in production only / केवल उत्पादन में वृद्धि","Fall in population / जनसंख्या में गिरावट"],a:1,e:"Inflation is a general rise in the price level. / मुद्रास्फीति सामान्य मूल्य स्तर में वृद्धि है।"},
+{q:"Which organisation regulates the securities market in India? / भारत में प्रतिभूति बाजार का नियमन कौन करता है?",o:["RBI / आरबीआई","SEBI / सेबी","IRDAI / इरडाई","NABARD / नाबार्ड"],a:1,e:"SEBI regulates the securities market. / सेबी प्रतिभूति बाजार का नियमन करता है।"},
+{q:"What is the full form of ATM? / ATM का पूरा नाम क्या है?",o:["Automated Teller Machine / ऑटोमेटेड टेलर मशीन","Automatic Transfer Money / ऑटोमैटिक ट्रांसफर मनी","Any Time Money / एनी टाइम मनी","Auto Transaction Mode / ऑटो ट्रांजैक्शन मोड"],a:0,e:"ATM stands for Automated Teller Machine. / ATM का पूरा नाम ऑटोमेटेड टेलर मशीन है।"},
+{q:"Which is the main source of energy for Earth? / पृथ्वी के लिए ऊर्जा का मुख्य स्रोत क्या है?",o:["Moon / चंद्रमा","Sun / सूर्य","Wind / हवा","Coal / कोयला"],a:1,e:"The Sun is the primary energy source for Earth. / सूर्य पृथ्वी के लिए ऊर्जा का प्राथमिक स्रोत है।"},
+{q:"Which vitamin is produced in the skin by sunlight? / सूर्य के प्रकाश से त्वचा में कौन-सा विटामिन बनता है?",o:["Vitamin A / विटामिन A","Vitamin B / विटामिन B","Vitamin C / विटामिन C","Vitamin D / विटामिन D"],a:3,e:"Sunlight helps the skin produce Vitamin D. / सूर्य का प्रकाश त्वचा में विटामिन D बनने में मदद करता है।"},
+{q:"Which blood group is commonly called the universal red-cell donor? / किस रक्त समूह को सामान्यतः सार्वभौमिक लाल रक्त कोशिका दाता कहा जाता है?",o:["AB positive / AB पॉजिटिव","O negative / O नेगेटिव","A positive / A पॉजिटिव","B negative / B नेगेटिव"],a:1,e:"O negative is commonly considered the universal red-cell donor. / O नेगेटिव को सामान्यतः सार्वभौमिक लाल रक्त कोशिका दाता माना जाता है।"},
+{q:"Which instrument measures atmospheric pressure? / वायुमंडलीय दबाव मापने का यंत्र कौन-सा है?",o:["Thermometer / थर्मामीटर","Barometer / बैरोमीटर","Hygrometer / हाइग्रोमीटर","Anemometer / एनीमोमीटर"],a:1,e:"A barometer measures atmospheric pressure. / बैरोमीटर वायुमंडलीय दबाव मापता है।"},
+{q:"Which Indian mission achieved a soft landing near the Moon's south polar region in 2023? / 2023 में चंद्रमा के दक्षिणी ध्रुवीय क्षेत्र के पास सॉफ्ट लैंडिंग किस भारतीय मिशन ने की?",o:["Chandrayaan-1 / चंद्रयान-1","Mangalyaan / मंगलयान","Chandrayaan-3 / चंद्रयान-3","Aditya-L1 / आदित्य-L1"],a:2,e:"Chandrayaan-3 achieved the historic landing in August 2023. / चंद्रयान-3 ने अगस्त 2023 में ऐतिहासिक लैंडिंग की।"},
+{q:"Kathakali is a classical dance-drama of which state? / कथकली किस राज्य का शास्त्रीय नृत्य-नाटक है?",o:["Kerala / केरल","Tamil Nadu / तमिलनाडु","Odisha / ओडिशा","Manipur / मणिपुर"],a:0,e:"Kathakali originated in Kerala. / कथकली की उत्पत्ति केरल में हुई।"},
+{q:"Who wrote the song Vande Mataram? / वंदे मातरम् गीत किसने लिखा?",o:["Rabindranath Tagore / रवीन्द्रनाथ टैगोर","Bankim Chandra Chattopadhyay / बंकिम चन्द्र चट्टोपाध्याय","Sarojini Naidu / सरोजिनी नायडू","Muhammad Iqbal / मुहम्मद इकबाल"],a:1,e:"Bankim Chandra Chattopadhyay wrote Vande Mataram. / बंकिम चन्द्र चट्टोपाध्याय ने वंदे मातरम् लिखा।"},
+{q:"Who commissioned the Taj Mahal? / ताजमहल का निर्माण किस मुगल शासक ने करवाया?",o:["Akbar / अकबर","Babur / बाबर","Shah Jahan / शाहजहाँ","Aurangzeb / औरंगजेब"],a:2,e:"Shah Jahan commissioned the Taj Mahal. / शाहजहाँ ने ताजमहल बनवाया।"},
+{q:"Bodh Gaya is associated with which event in Buddha's life? / बोधगया बुद्ध के जीवन की किस घटना से जुड़ा है?",o:["Birth / जन्म","Enlightenment / ज्ञान प्राप्ति","First sermon / प्रथम उपदेश","Death / महापरिनिर्वाण"],a:1,e:"Gautama Buddha attained enlightenment at Bodh Gaya. / गौतम बुद्ध को बोधगया में ज्ञान प्राप्त हुआ।"},
+{q:"Champaran Satyagraha took place in which year? / चंपारण सत्याग्रह किस वर्ष हुआ?",o:["1915 / 1915","1917 / 1917","1920 / 1920","1930 / 1930"],a:1,e:"Champaran Satyagraha took place in 1917. / चंपारण सत्याग्रह 1917 में हुआ।"},
+{q:"Kanwar Lake is located in which district of Bihar? / कंवर झील बिहार के किस जिले में स्थित है?",o:["Patna / पटना","Begusarai / बेगूसराय","Gaya / गया","Darbhanga / दरभंगा"],a:1,e:"Kanwar Lake is in Begusarai district. / कंवर झील बेगूसराय जिले में है।"},
+{q:"Ayushman Bharat PM-JAY mainly provides what? / आयुष्मान भारत PM-JAY मुख्य रूप से क्या प्रदान करता है?",o:["Free education / मुफ्त शिक्षा","Health cover for eligible families / पात्र परिवारों को स्वास्थ्य सुरक्षा","Housing / आवास","Pension / पेंशन"],a:1,e:"PM-JAY provides health cover to eligible families. / PM-JAY पात्र परिवारों को स्वास्थ्य सुरक्षा प्रदान करता है।"}
+
+],
+[
+{q:"Who was the first Governor-General of independent India? / स्वतंत्र भारत के प्रथम गवर्नर जनरल कौन थे?",o:["Lord Mountbatten / लॉर्ड माउंटबेटन","C. Rajagopalachari / सी. राजगोपालाचारी","Lord Wavell / लॉर्ड वेवेल","Dr. Rajendra Prasad / डॉ. राजेन्द्र प्रसाद"],a:0,e:"Lord Mountbatten was the first Governor-General of independent India. / लॉर्ड माउंटबेटन स्वतंत्र भारत के प्रथम गवर्नर जनरल थे।"},
+{q:"Who was the first Indian Governor-General of India? / भारत के प्रथम भारतीय गवर्नर जनरल कौन थे?",o:["Jawaharlal Nehru / जवाहरलाल नेहरू","C. Rajagopalachari / सी. राजगोपालाचारी","Sardar Patel / सरदार पटेल","Dr. Rajendra Prasad / डॉ. राजेन्द्र प्रसाद"],a:1,e:"C. Rajagopalachari was the first Indian Governor-General. / सी. राजगोपालाचारी प्रथम भारतीय गवर्नर जनरल थे।"},
+{q:"Who founded the Indian National Congress? / भारतीय राष्ट्रीय कांग्रेस की स्थापना किसने की?",o:["A. O. Hume / ए. ओ. ह्यूम","Dadabhai Naoroji / दादाभाई नौरोजी","Bal Gangadhar Tilak / बाल गंगाधर तिलक","Gopal Krishna Gokhale / गोपाल कृष्ण गोखले"],a:0,e:"A. O. Hume helped found the INC in 1885. / ए. ओ. ह्यूम ने 1885 में कांग्रेस की स्थापना में प्रमुख भूमिका निभाई।"},
+{q:"Where was the first session of the Indian National Congress held? / भारतीय राष्ट्रीय कांग्रेस का पहला अधिवेशन कहाँ हुआ?",o:["Calcutta / कलकत्ता","Bombay / बंबई","Madras / मद्रास","Delhi / दिल्ली"],a:1,e:"The first session was held in Bombay in 1885. / पहला अधिवेशन 1885 में बंबई में हुआ।"},
+{q:"Who was the first woman President of the Indian National Congress? / भारतीय राष्ट्रीय कांग्रेस की पहली महिला अध्यक्ष कौन थीं?",o:["Sarojini Naidu / सरोजिनी नायडू","Annie Besant / एनी बेसेंट","Vijaya Lakshmi Pandit / विजयलक्ष्मी पंडित","Sucheta Kriplani / सुचेता कृपलानी"],a:1,e:"Annie Besant became Congress President in 1917. / एनी बेसेंट 1917 में कांग्रेस अध्यक्ष बनीं।"},
+{q:"Which is the largest desert in India? / भारत का सबसे बड़ा मरुस्थल कौन-सा है?",o:["Sahara / सहारा","Thar / थार","Gobi / गोबी","Kalahari / कालाहारी"],a:1,e:"The Thar Desert lies mainly in Rajasthan. / थार मरुस्थल मुख्यतः राजस्थान में स्थित है।"},
+{q:"Which Indian state is known as the Land of Five Rivers? / पाँच नदियों की भूमि किस राज्य को कहा जाता है?",o:["Haryana / हरियाणा","Punjab / पंजाब","Uttar Pradesh / उत्तर प्रदेश","Bihar / बिहार"],a:1,e:"Punjab is known as the Land of Five Rivers. / पंजाब को पाँच नदियों की भूमि कहा जाता है।"},
+{q:"Which is the highest dam in India? / भारत का सबसे ऊँचा बाँध कौन-सा है?",o:["Bhakra Dam / भाखड़ा बाँध","Tehri Dam / टिहरी बाँध","Hirakud Dam / हीराकुंड बाँध","Sardar Sarovar / सरदार सरोवर"],a:1,e:"Tehri Dam is India's highest major dam. / टिहरी बाँध भारत का सबसे ऊँचा प्रमुख बाँध है।"},
+{q:"Which river flows through a rift valley in central India? / मध्य भारत में कौन-सी नदी भ्रंश घाटी से होकर बहती है?",o:["Ganga / गंगा","Yamuna / यमुना","Narmada / नर्मदा","Brahmaputra / ब्रह्मपुत्र"],a:2,e:"Narmada flows westward through a rift valley. / नर्मदा भ्रंश घाटी से पश्चिम की ओर बहती है।"},
+{q:"Which is the largest freshwater lake in India? / भारत की सबसे बड़ी मीठे पानी की झील कौन-सी है?",o:["Dal Lake / डल झील","Wular Lake / वुलर झील","Chilika Lake / चिलिका झील","Sambhar Lake / सांभर झील"],a:1,e:"Wular Lake is a major freshwater lake in Jammu and Kashmir. / वुलर झील जम्मू-कश्मीर की प्रमुख मीठे पानी की झील है।"},
+{q:"How many Fundamental Duties are currently listed in the Indian Constitution? / भारतीय संविधान में वर्तमान में कितने मौलिक कर्तव्य हैं?",o:["10 / 10","11 / 11","12 / 12","14 / 14"],a:1,e:"There are 11 Fundamental Duties. / वर्तमान में 11 मौलिक कर्तव्य हैं।"},
+{q:"Which part of the Constitution contains Fundamental Rights? / संविधान के किस भाग में मौलिक अधिकार हैं?",o:["Part I / भाग I","Part II / भाग II","Part III / भाग III","Part IV / भाग IV"],a:2,e:"Fundamental Rights are in Part III. / मौलिक अधिकार भाग III में हैं।"},
+{q:"Who presides over a joint sitting of Parliament? / संसद की संयुक्त बैठक की अध्यक्षता कौन करता है?",o:["President / राष्ट्रपति","Vice-President / उपराष्ट्रपति","Speaker of Lok Sabha / लोकसभा अध्यक्ष","Prime Minister / प्रधानमंत्री"],a:2,e:"The Speaker of Lok Sabha presides over a joint sitting. / लोकसभा अध्यक्ष संयुक्त बैठक की अध्यक्षता करते हैं।"},
+{q:"What is the normal term of the Lok Sabha? / लोकसभा का सामान्य कार्यकाल कितना होता है?",o:["4 years / 4 वर्ष","5 years / 5 वर्ष","6 years / 6 वर्ष","7 years / 7 वर्ष"],a:1,e:"The normal term is five years. / सामान्य कार्यकाल पाँच वर्ष है।"},
+{q:"Which constitutional body recommends the distribution of tax revenues between the Union and States? / केंद्र और राज्यों के बीच करों के बँटवारे की सिफारिश कौन करता है?",o:["Election Commission / निर्वाचन आयोग","Finance Commission / वित्त आयोग","UPSC / संघ लोक सेवा आयोग","NITI Aayog / नीति आयोग"],a:1,e:"The Finance Commission makes these recommendations. / वित्त आयोग ये सिफारिशें करता है।"},
+{q:"Which tax is levied on the supply of goods and services in India? / भारत में वस्तुओं और सेवाओं की आपूर्ति पर कौन-सा कर लगाया जाता है?",o:["Income Tax / आयकर","GST / जीएसटी","Wealth Tax / संपत्ति कर","Road Tax / सड़क कर"],a:1,e:"GST is an indirect tax on supply of goods and services. / GST वस्तुओं और सेवाओं की आपूर्ति पर अप्रत्यक्ष कर है।"},
+{q:"Which institution is known as the banker to the Government of India? / भारत सरकार का बैंकर किस संस्था को कहा जाता है?",o:["SBI / एसबीआई","RBI / आरबीआई","SEBI / सेबी","NABARD / नाबार्ड"],a:1,e:"RBI acts as banker to the government. / आरबीआई सरकार के बैंकर के रूप में कार्य करता है।"},
+{q:"Which organisation provides refinance and development support to agriculture and rural development? / कृषि और ग्रामीण विकास के लिए पुनर्वित्त एवं विकास सहायता कौन देता है?",o:["NABARD / नाबार्ड","SEBI / सेबी","IRDAI / इरडाई","SIDBI / सिडबी"],a:0,e:"NABARD supports agriculture and rural development. / नाबार्ड कृषि और ग्रामीण विकास में सहायता करता है।"},
+{q:"Which organ pumps blood throughout the human body? / मानव शरीर में रक्त पंप करने वाला अंग कौन-सा है?",o:["Lungs / फेफड़े","Heart / हृदय","Kidney / गुर्दा","Liver / यकृत"],a:1,e:"The heart pumps blood throughout the body. / हृदय पूरे शरीर में रक्त पंप करता है।"},
+{q:"Which is the largest organ of the human body? / मानव शरीर का सबसे बड़ा अंग कौन-सा है?",o:["Liver / यकृत","Brain / मस्तिष्क","Skin / त्वचा","Lungs / फेफड़े"],a:2,e:"Skin is the largest organ. / त्वचा सबसे बड़ा अंग है।"},
+{q:"Which part of a plant conducts photosynthesis mainly? / पौधे का कौन-सा भाग मुख्य रूप से प्रकाश संश्लेषण करता है?",o:["Root / जड़","Leaf / पत्ती","Flower / फूल","Stem only / केवल तना"],a:1,e:"Leaves contain chlorophyll and carry out most photosynthesis. / पत्तियों में क्लोरोफिल होता है और अधिकांश प्रकाश संश्लेषण वहीं होता है।"},
+{q:"What is the SI unit of force? / बल की SI इकाई क्या है?",o:["Joule / जूल","Watt / वाट","Newton / न्यूटन","Pascal / पास्कल"],a:2,e:"Newton is the SI unit of force. / न्यूटन बल की SI इकाई है।"},
+{q:"Which metal is liquid at room temperature? / कमरे के तापमान पर कौन-सी धातु तरल होती है?",o:["Iron / लोहा","Mercury / पारा","Copper / ताँबा","Aluminium / एल्युमिनियम"],a:1,e:"Mercury is liquid at ordinary room temperature. / पारा सामान्य कमरे के तापमान पर तरल होता है।"},
+{q:"Which instrument measures electric current? / विद्युत धारा मापने का यंत्र कौन-सा है?",o:["Voltmeter / वोल्टमीटर","Ammeter / एमीटर","Barometer / बैरोमीटर","Thermometer / थर्मामीटर"],a:1,e:"An ammeter measures electric current. / एमीटर विद्युत धारा मापता है।"},
+{q:"Which is the nearest star to Earth? / पृथ्वी के सबसे निकट कौन-सा तारा है?",o:["Sirius / सिरियस","Sun / सूर्य","Polaris / ध्रुव तारा","Alpha Centauri / अल्फा सेंटॉरी"],a:1,e:"The Sun is Earth's nearest star. / सूर्य पृथ्वी का सबसे निकट तारा है।"},
+{q:"Which is India's first satellite? / भारत का पहला उपग्रह कौन-सा था?",o:["Rohini / रोहिणी","Aryabhata / आर्यभट्ट","INSAT-1A / इनसैट-1A","Bhaskara / भास्कर"],a:1,e:"Aryabhata was launched in 1975. / आर्यभट्ट 1975 में प्रक्षेपित किया गया था।"},
+{q:"Which is the national animal of India? / भारत का राष्ट्रीय पशु कौन-सा है?",o:["Lion / सिंह","Bengal Tiger / बंगाल टाइगर","Elephant / हाथी","Leopard / तेंदुआ"],a:1,e:"The Bengal Tiger is India's national animal. / बंगाल टाइगर भारत का राष्ट्रीय पशु है।"},
+{q:"Which is the national aquatic animal of India? / भारत का राष्ट्रीय जलीय जीव कौन-सा है?",o:["Blue Whale / नीली व्हेल","Ganges River Dolphin / गंगा नदी डॉल्फिन","Crocodile / मगरमच्छ","Turtle / कछुआ"],a:1,e:"The Ganges River Dolphin is India's national aquatic animal. / गंगा नदी डॉल्फिन भारत का राष्ट्रीय जलीय जीव है।"},
+{q:"Which city is known as the Silk City of Bihar? / बिहार का सिल्क सिटी किस शहर को कहा जाता है?",o:["Patna / पटना","Bhagalpur / भागलपुर","Gaya / गया","Darbhanga / दरभंगा"],a:1,e:"Bhagalpur is famous for silk production. / भागलपुर रेशम उत्पादन के लिए प्रसिद्ध है।"},
+{q:"Which is the official language of Bihar? / बिहार की राजभाषा क्या है?",o:["Bengali / बांग्ला","Hindi / हिंदी","Urdu only / केवल उर्दू","Maithili / मैथिली"],a:1,e:"Hindi is the official language; Urdu is also an additional official language. / हिंदी राजभाषा है और उर्दू को अतिरिक्त राजभाषा का दर्जा प्राप्त है।"}
+],
+[
+{q:"Who was popularly known as Netaji? / नेताजी के नाम से कौन प्रसिद्ध थे?",o:["Bhagat Singh / भगत सिंह","Subhas Chandra Bose / सुभाष चन्द्र बोस","Sardar Patel / सरदार पटेल","Lala Lajpat Rai / लाला लाजपत राय"],a:1,e:"Subhas Chandra Bose was popularly known as Netaji. / सुभाष चन्द्र बोस नेताजी के नाम से प्रसिद्ध थे।"},
+{q:"Who founded the Arya Samaj? / आर्य समाज की स्थापना किसने की?",o:["Swami Vivekananda / स्वामी विवेकानंद","Raja Ram Mohan Roy / राजा राममोहन राय","Swami Dayanand Saraswati / स्वामी दयानंद सरस्वती","Ramkrishna Paramhansa / रामकृष्ण परमहंस"],a:2,e:"Swami Dayanand Saraswati founded Arya Samaj in 1875. / स्वामी दयानंद सरस्वती ने 1875 में आर्य समाज की स्थापना की।"},
+{q:"Who founded the Brahmo Samaj? / ब्रह्म समाज की स्थापना किसने की?",o:["Raja Ram Mohan Roy / राजा राममोहन राय","Ishwar Chandra Vidyasagar / ईश्वरचंद्र विद्यासागर","Swami Dayanand / स्वामी दयानंद","Keshab Chandra Sen / केशव चंद्र सेन"],a:0,e:"Raja Ram Mohan Roy founded Brahmo Samaj in 1828. / राजा राममोहन राय ने 1828 में ब्रह्म समाज की स्थापना की।"},
+{q:"The Jallianwala Bagh massacre took place in which year? / जलियांवाला बाग हत्याकांड किस वर्ष हुआ?",o:["1917 / 1917","1919 / 1919","1921 / 1921","1925 / 1925"],a:1,e:"The massacre took place on 13 April 1919. / यह हत्याकांड 13 अप्रैल 1919 को हुआ।"},
+{q:"Who was the Viceroy of India during the Quit India Movement? / भारत छोड़ो आंदोलन के समय भारत का वायसराय कौन था?",o:["Lord Curzon / लॉर्ड कर्जन","Lord Linlithgow / लॉर्ड लिनलिथगो","Lord Irwin / लॉर्ड इरविन","Lord Mountbatten / लॉर्ड माउंटबेटन"],a:1,e:"Lord Linlithgow was Viceroy in 1942. / 1942 में लॉर्ड लिनलिथगो वायसराय थे।"},
+{q:"Which state has the largest population in India according to Census 2011? / जनगणना 2011 के अनुसार भारत का सर्वाधिक जनसंख्या वाला राज्य कौन-सा है?",o:["Bihar / बिहार","Maharashtra / महाराष्ट्र","Uttar Pradesh / उत्तर प्रदेश","West Bengal / पश्चिम बंगाल"],a:2,e:"Uttar Pradesh had the largest population in Census 2011. / 2011 की जनगणना में उत्तर प्रदेश की जनसंख्या सबसे अधिक थी।"},
+{q:"Which Indian state is famous for tea gardens of Assam? / असम किस कृषि उत्पादन के लिए विशेष रूप से प्रसिद्ध है?",o:["Coffee / कॉफी","Tea / चाय","Rubber / रबर","Saffron / केसर"],a:1,e:"Assam is famous for its tea gardens. / असम अपने चाय बागानों के लिए प्रसिद्ध है।"},
+{q:"Which pass connects Srinagar with Leh? / कौन-सा दर्रा श्रीनगर को लेह से जोड़ता है?",o:["Nathu La / नाथू ला","Zoji La / जोजी ला","Shipki La / शिपकी ला","Bomdi La / बोमडिला"],a:1,e:"Zoji La connects the Kashmir Valley with Ladakh. / जोजी ला कश्मीर घाटी को लद्दाख से जोड़ता है।"},
+{q:"Which is the largest delta in the world? / विश्व का सबसे बड़ा डेल्टा कौन-सा है?",o:["Nile Delta / नील डेल्टा","Sundarbans Delta / सुंदरबन डेल्टा","Amazon Delta / अमेजन डेल्टा","Mekong Delta / मेकांग डेल्टा"],a:1,e:"The Ganga-Brahmaputra-Meghna delta is the world's largest. / गंगा-ब्रह्मपुत्र-मेघना डेल्टा विश्व का सबसे बड़ा डेल्टा है।"},
+{q:"Which Indian state has the highest literacy rate according to Census 2011? / जनगणना 2011 के अनुसार किस राज्य की साक्षरता दर सबसे अधिक थी?",o:["Kerala / केरल","Bihar / बिहार","Rajasthan / राजस्थान","Jharkhand / झारखंड"],a:0,e:"Kerala had the highest literacy rate among states in Census 2011. / 2011 की जनगणना में केरल की साक्षरता दर राज्यों में सबसे अधिक थी।"},
+{q:"Which schedule of the Constitution lists the official languages? / संविधान की किस अनुसूची में मान्यता प्राप्त भाषाएँ सूचीबद्ध हैं?",o:["Fifth / पाँचवीं","Seventh / सातवीं","Eighth / आठवीं","Tenth / दसवीं"],a:2,e:"The Eighth Schedule lists the recognised languages. / आठवीं अनुसूची में मान्यता प्राप्त भाषाएँ हैं।"},
+{q:"Which Article deals with the Right to Constitutional Remedies? / संवैधानिक उपचारों का अधिकार किस अनुच्छेद में है?",o:["Article 19 / अनुच्छेद 19","Article 21 / अनुच्छेद 21","Article 32 / अनुच्छेद 32","Article 44 / अनुच्छेद 44"],a:2,e:"Article 32 provides the Right to Constitutional Remedies. / अनुच्छेद 32 संवैधानिक उपचारों का अधिकार देता है।"},
+{q:"Who appoints the Governor of an Indian state? / किसी भारतीय राज्य के राज्यपाल की नियुक्ति कौन करता है?",o:["Chief Minister / मुख्यमंत्री","President / राष्ट्रपति","Prime Minister alone / केवल प्रधानमंत्री","Chief Justice / मुख्य न्यायाधीश"],a:1,e:"The President appoints the Governor. / राष्ट्रपति राज्यपाल की नियुक्ति करते हैं।"},
+{q:"What is the minimum age to become the President of India? / भारत का राष्ट्रपति बनने की न्यूनतम आयु कितनी है?",o:["25 years / 25 वर्ष","30 years / 30 वर्ष","35 years / 35 वर्ष","40 years / 40 वर्ष"],a:2,e:"The minimum age is 35 years. / न्यूनतम आयु 35 वर्ष है।"},
+{q:"Which body replaced the Planning Commission? / योजना आयोग के स्थान पर किस संस्था का गठन हुआ?",o:["Finance Commission / वित्त आयोग","NITI Aayog / नीति आयोग","RBI / आरबीआई","SEBI / सेबी"],a:1,e:"NITI Aayog was established in 2015. / नीति आयोग की स्थापना 2015 में हुई।"},
+{q:"Which index is commonly used to measure retail inflation in India? / भारत में खुदरा मुद्रास्फीति मापने के लिए सामान्यतः किस सूचकांक का उपयोग होता है?",o:["CPI / उपभोक्ता मूल्य सूचकांक","WPI only / केवल थोक मूल्य सूचकांक","IIP / औद्योगिक उत्पादन सूचकांक","HDI / मानव विकास सूचकांक"],a:0,e:"CPI is the principal measure used for retail inflation targeting. / खुदरा मुद्रास्फीति के लक्ष्य निर्धारण में CPI प्रमुख माप है।"},
+{q:"Which bank is India's largest public sector bank? / भारत का सबसे बड़ा सार्वजनिक क्षेत्र का बैंक कौन-सा है?",o:["Punjab National Bank / पंजाब नेशनल बैंक","Bank of Baroda / बैंक ऑफ बड़ौदा","State Bank of India / भारतीय स्टेट बैंक","Canara Bank / केनरा बैंक"],a:2,e:"State Bank of India is the largest public sector bank. / भारतीय स्टेट बैंक सबसे बड़ा सार्वजनिक क्षेत्र का बैंक है।"},
+{q:"What is the currency of Japan? / जापान की मुद्रा क्या है?",o:["Yuan / युआन","Yen / येन","Won / वॉन","Dollar / डॉलर"],a:1,e:"The currency of Japan is the Yen. / जापान की मुद्रा येन है।"},
+{q:"Which vitamin is essential for blood clotting? / रक्त का थक्का जमने के लिए कौन-सा विटामिन आवश्यक है?",o:["Vitamin A / विटामिन A","Vitamin C / विटामिन C","Vitamin K / विटामिन K","Vitamin D / विटामिन D"],a:2,e:"Vitamin K is essential for normal blood clotting. / सामान्य रक्त का थक्का जमने के लिए विटामिन K आवश्यक है।"},
+{q:"Which organ filters blood and produces urine? / रक्त को छानकर मूत्र बनाने वाला अंग कौन-सा है?",o:["Heart / हृदय","Kidney / गुर्दा","Lungs / फेफड़े","Stomach / पेट"],a:1,e:"Kidneys filter blood and produce urine. / गुर्दे रक्त को छानकर मूत्र बनाते हैं।"},
+{q:"Which gas is most abundant in Earth's atmosphere? / पृथ्वी के वायुमंडल में सबसे अधिक मात्रा में कौन-सी गैस है?",o:["Oxygen / ऑक्सीजन","Carbon dioxide / कार्बन डाइऑक्साइड","Nitrogen / नाइट्रोजन","Hydrogen / हाइड्रोजन"],a:2,e:"Nitrogen makes up about 78% of dry air. / शुष्क वायु में लगभग 78% नाइट्रोजन होती है।"},
+{q:"What is the boiling point of water at sea level? / समुद्र तल पर पानी का क्वथनांक कितना होता है?",o:["0°C / 0°C","50°C / 50°C","100°C / 100°C","150°C / 150°C"],a:2,e:"Water boils at 100°C at standard atmospheric pressure. / मानक वायुदाब पर पानी 100°C पर उबलता है।"},
+{q:"Which instrument records earthquakes? / भूकंप रिकॉर्ड करने वाला यंत्र कौन-सा है?",o:["Seismograph / सीस्मोग्राफ","Barometer / बैरोमीटर","Hygrometer / हाइग्रोमीटर","Altimeter / अल्टीमीटर"],a:0,e:"A seismograph records seismic waves. / सीस्मोग्राफ भूकंपीय तरंगों को रिकॉर्ड करता है।"},
+{q:"Which planet has prominent rings? / किस ग्रह के चारों ओर प्रमुख वलय हैं?",o:["Mars / मंगल","Saturn / शनि","Mercury / बुध","Venus / शुक्र"],a:1,e:"Saturn is famous for its prominent ring system. / शनि अपने प्रमुख वलय तंत्र के लिए प्रसिद्ध है।"},
+{q:"Which mission studies the Sun from a halo orbit around L1? / L1 के आसपास हेलो कक्षा से सूर्य का अध्ययन करने वाला मिशन कौन-सा है?",o:["Chandrayaan-3 / चंद्रयान-3","Aditya-L1 / आदित्य-L1","Mangalyaan / मंगलयान","Astrosat / एस्ट्रोसैट"],a:1,e:"Aditya-L1 is India's solar observatory mission. / आदित्य-L1 भारत का सौर अध्ययन मिशन है।"},
+{q:"Which is the national flower of India? / भारत का राष्ट्रीय फूल कौन-सा है?",o:["Rose / गुलाब","Lotus / कमल","Sunflower / सूरजमुखी","Jasmine / चमेली"],a:1,e:"Lotus is India's national flower. / कमल भारत का राष्ट्रीय फूल है।"},
+{q:"Bihar Diwas is celebrated on which date? / बिहार दिवस किस तारीख को मनाया जाता है?",o:["15 January / 15 जनवरी","22 March / 22 मार्च","26 January / 26 जनवरी","2 October / 2 अक्टूबर"],a:1,e:"Bihar Diwas is celebrated on 22 March. / बिहार दिवस 22 मार्च को मनाया जाता है।"},
+{q:"Which city is famous for the Mahabodhi Temple? / महाबोधि मंदिर किस शहर में स्थित है?",o:["Patna / पटना","Bodh Gaya / बोधगया","Rajgir / राजगीर","Vaishali / वैशाली"],a:1,e:"The Mahabodhi Temple is in Bodh Gaya. / महाबोधि मंदिर बोधगया में है।"},
+{q:"Which river flows through Patna? / पटना के पास से कौन-सी नदी बहती है?",o:["Yamuna / यमुना","Ganga / गंगा","Kosi / कोसी","Narmada / नर्मदा"],a:1,e:"The Ganga flows along Patna. / गंगा पटना के किनारे बहती है।"},
+{q:"Which Bihar personality was the first President of India? / बिहार से संबंधित कौन-सी विभूति भारत के प्रथम राष्ट्रपति बने?",o:["Jayaprakash Narayan / जयप्रकाश नारायण","Dr. Rajendra Prasad / डॉ. राजेन्द्र प्रसाद","Anugrah Narayan Sinha / अनुग्रह नारायण सिन्हा","Sri Krishna Sinha / श्रीकृष्ण सिंह"],a:1,e:"Dr. Rajendra Prasad was India's first President and was born in Bihar. / डॉ. राजेन्द्र प्रसाद भारत के प्रथम राष्ट्रपति थे और उनका जन्म बिहार में हुआ था।"}
+],
+[
+{q:"Who was the founder of the Sikh religion? / सिख धर्म के संस्थापक कौन थे?",o:["Guru Gobind Singh / गुरु गोबिंद सिंह","Guru Nanak Dev / गुरु नानक देव","Guru Arjan Dev / गुरु अर्जन देव","Guru Tegh Bahadur / गुरु तेग बहादुर"],a:1,e:"Guru Nanak Dev founded Sikhism. / गुरु नानक देव ने सिख धर्म की स्थापना की।"},
+{q:"Who built the Red Fort in Delhi? / दिल्ली का लाल किला किसने बनवाया?",o:["Akbar / अकबर","Shah Jahan / शाहजहाँ","Jahangir / जहाँगीर","Aurangzeb / औरंगजेब"],a:1,e:"Shah Jahan commissioned the Red Fort. / शाहजहाँ ने लाल किले का निर्माण करवाया।"},
+{q:"The Dandi March was associated with which movement? / दांडी मार्च किस आंदोलन से संबंधित था?",o:["Quit India Movement / भारत छोड़ो आंदोलन","Civil Disobedience Movement / सविनय अवज्ञा आंदोलन","Non-Cooperation Movement / असहयोग आंदोलन","Swadeshi Movement / स्वदेशी आंदोलन"],a:1,e:"The Dandi March began the Civil Disobedience Movement in 1930. / दांडी मार्च ने 1930 में सविनय अवज्ञा आंदोलन की शुरुआत की।"},
+{q:"Who was the founder of the Vijayanagara Empire? / विजयनगर साम्राज्य के संस्थापक कौन थे?",o:["Harihara and Bukka / हरिहर और बुक्का","Krishnadevaraya / कृष्णदेवराय","Rajaraja Chola / राजराज चोल","Pulakeshin II / पुलकेशिन द्वितीय"],a:0,e:"Harihara and Bukka founded the Vijayanagara Empire in 1336. / हरिहर और बुक्का ने 1336 में विजयनगर साम्राज्य की स्थापना की।"},
+{q:"Who was the first Mughal emperor to introduce a uniform currency system? / एक समान मुद्रा व्यवस्था शुरू करने वाला पहला मुगल सम्राट कौन था?",o:["Babur / बाबर","Humayun / हुमायूँ","Akbar / अकबर","Aurangzeb / औरंगजेब"],a:2,e:"Akbar standardised the Mughal currency system. / अकबर ने मुगल मुद्रा व्यवस्था को मानकीकृत किया।"},
+{q:"Which Indian state has the largest area of forest cover in absolute terms according to recent forest assessments? / हाल के वन आकलनों में कुल वन क्षेत्रफल के आधार पर कौन-सा राज्य सबसे आगे रहा है?",o:["Madhya Pradesh / मध्य प्रदेश","Kerala / केरल","Punjab / पंजाब","Haryana / हरियाणा"],a:0,e:"Madhya Pradesh has the largest forest cover area in absolute terms in recent assessments. / हाल के आकलनों में मध्य प्रदेश का कुल वन क्षेत्रफल सबसे अधिक रहा है।"},
+{q:"Which Indian state is the largest producer of coffee? / भारत में कॉफी का सबसे बड़ा उत्पादक राज्य कौन-सा है?",o:["Kerala / केरल","Karnataka / कर्नाटक","Tamil Nadu / तमिलनाडु","Assam / असम"],a:1,e:"Karnataka is the leading coffee-producing state. / कर्नाटक कॉफी का प्रमुख उत्पादक राज्य है।"},
+{q:"Which soil is commonly found in the Deccan Plateau? / दक्कन के पठार में सामान्यतः कौन-सी मिट्टी पाई जाती है?",o:["Alluvial soil / जलोढ़ मिट्टी","Black soil / काली मिट्टी","Desert soil / मरुस्थलीय मिट्टी","Peaty soil / पीट मिट्टी"],a:1,e:"Black soil is widespread in parts of the Deccan Plateau. / दक्कन के पठार के कुछ भागों में काली मिट्टी व्यापक रूप से पाई जाती है।"},
+{q:"Which is the largest river island in India? / भारत का सबसे बड़ा नदी द्वीप कौन-सा है?",o:["Majuli / माजुली","Diu / दीव","Elephanta / एलीफेंटा","Sagar Island / सागर द्वीप"],a:0,e:"Majuli in the Brahmaputra is widely known as India's largest river island. / ब्रह्मपुत्र में स्थित माजुली भारत का सबसे बड़ा नदी द्वीप माना जाता है।"},
+{q:"Which state is home to the Valley of Flowers National Park? / फूलों की घाटी राष्ट्रीय उद्यान किस राज्य में है?",o:["Himachal Pradesh / हिमाचल प्रदेश","Uttarakhand / उत्तराखंड","Sikkim / सिक्किम","Arunachal Pradesh / अरुणाचल प्रदेश"],a:1,e:"Valley of Flowers is in Uttarakhand. / फूलों की घाटी उत्तराखंड में है।"},
+{q:"Which Article provides for the office of the President of India? / भारत के राष्ट्रपति के पद का प्रावधान किस अनुच्छेद में है?",o:["Article 52 / अनुच्छेद 52","Article 63 / अनुच्छेद 63","Article 74 / अनुच्छेद 74","Article 80 / अनुच्छेद 80"],a:0,e:"Article 52 provides for the President of India. / अनुच्छेद 52 भारत के राष्ट्रपति के पद का प्रावधान करता है।"},
+{q:"Which Article provides for the Council of Ministers to aid and advise the President? / राष्ट्रपति को सहायता और सलाह देने वाली मंत्रिपरिषद का प्रावधान किस अनुच्छेद में है?",o:["Article 72 / अनुच्छेद 72","Article 74 / अनुच्छेद 74","Article 76 / अनुच्छेद 76","Article 78 / अनुच्छेद 78"],a:1,e:"Article 74 deals with the Council of Ministers. / अनुच्छेद 74 मंत्रिपरिषद से संबंधित है।"},
+{q:"Who is the constitutional head of a state in India? / भारत में राज्य का संवैधानिक प्रमुख कौन होता है?",o:["Chief Minister / मुख्यमंत्री","Governor / राज्यपाल","Chief Secretary / मुख्य सचिव","Speaker / अध्यक्ष"],a:1,e:"The Governor is the constitutional head of a state. / राज्यपाल राज्य का संवैधानिक प्रमुख होता है।"},
+{q:"Which amendment lowered the voting age from 21 to 18 years? / किस संशोधन ने मतदान की आयु 21 से घटाकर 18 वर्ष की?",o:["42nd / 42वाँ","44th / 44वाँ","61st / 61वाँ","73rd / 73वाँ"],a:2,e:"The 61st Constitutional Amendment Act, 1988 lowered the voting age. / 61वें संविधान संशोधन अधिनियम, 1988 ने मतदान आयु घटाई।"},
+{q:"Which institution conducts the Civil Services Examination in India? / भारत में सिविल सेवा परीक्षा कौन आयोजित करता है?",o:["SSC / एसएससी","UPSC / यूपीएससी","BPSC / बीपीएससी","NTA / एनटीए"],a:1,e:"UPSC conducts the Civil Services Examination. / यूपीएससी सिविल सेवा परीक्षा आयोजित करता है।"},
+{q:"Which sector includes agriculture, forestry and fishing? / कृषि, वानिकी और मत्स्य पालन किस क्षेत्र में आते हैं?",o:["Primary sector / प्राथमिक क्षेत्र","Secondary sector / द्वितीयक क्षेत्र","Tertiary sector / तृतीयक क्षेत्र","Quaternary sector / चतुर्थक क्षेत्र"],a:0,e:"These activities belong to the primary sector. / ये गतिविधियाँ प्राथमिक क्षेत्र में आती हैं।"},
+{q:"What is the full form of UPI? / UPI का पूरा नाम क्या है?",o:["Unified Payments Interface / यूनिफाइड पेमेंट्स इंटरफेस","Universal Payment Internet / यूनिवर्सल पेमेंट इंटरनेट","United Payments India / यूनाइटेड पेमेंट्स इंडिया","Unified Purchase Interface / यूनिफाइड पर्चेज इंटरफेस"],a:0,e:"UPI stands for Unified Payments Interface. / UPI का पूरा नाम यूनिफाइड पेमेंट्स इंटरफेस है।"},
+{q:"Which organisation operates the UPI platform in India? / भारत में UPI प्लेटफॉर्म का संचालन कौन करता है?",o:["RBI directly / सीधे आरबीआई","NPCI / एनपीसीआई","SEBI / सेबी","SBI alone / केवल एसबीआई"],a:1,e:"NPCI operates UPI. / एनपीसीआई UPI का संचालन करता है।"},
+{q:"Which part of the human eye controls the amount of light entering? / आँख में प्रवेश करने वाले प्रकाश की मात्रा कौन नियंत्रित करता है?",o:["Retina / रेटिना","Iris / आइरिस","Cornea / कॉर्निया","Optic nerve / दृष्टि तंत्रिका"],a:1,e:"The iris controls pupil size and light entry. / आइरिस पुतली का आकार और प्रकाश प्रवेश नियंत्रित करता है।"},
+{q:"Which blood cells help fight infection? / संक्रमण से लड़ने में कौन-सी रक्त कोशिकाएँ मदद करती हैं?",o:["Red blood cells / लाल रक्त कोशिकाएँ","White blood cells / श्वेत रक्त कोशिकाएँ","Platelets / प्लेटलेट्स","Plasma only / केवल प्लाज्मा"],a:1,e:"White blood cells help defend the body against infection. / श्वेत रक्त कोशिकाएँ शरीर को संक्रमण से बचाती हैं।"},
+{q:"Which gas is essential for human respiration? / मानव श्वसन के लिए कौन-सी गैस आवश्यक है?",o:["Carbon dioxide / कार्बन डाइऑक्साइड","Oxygen / ऑक्सीजन","Nitrogen / नाइट्रोजन","Helium / हीलियम"],a:1,e:"Oxygen is used in cellular respiration. / कोशिकीय श्वसन में ऑक्सीजन का उपयोग होता है।"},
+{q:"What is the SI unit of power? / शक्ति की SI इकाई क्या है?",o:["Joule / जूल","Newton / न्यूटन","Watt / वाट","Volt / वोल्ट"],a:2,e:"Watt is the SI unit of power. / वाट शक्ति की SI इकाई है।"},
+{q:"Which lens is used to correct myopia? / निकट दृष्टिदोष को ठीक करने के लिए कौन-सा लेंस उपयोग होता है?",o:["Convex lens / उत्तल लेंस","Concave lens / अवतल लेंस","Cylindrical lens only / केवल बेलनाकार लेंस","Bifocal lens / द्विफोकसी लेंस"],a:1,e:"A concave lens corrects myopia. / अवतल लेंस निकट दृष्टिदोष ठीक करता है।"},
+{q:"Which planet is closest to the Sun? / सूर्य के सबसे निकट कौन-सा ग्रह है?",o:["Venus / शुक्र","Earth / पृथ्वी","Mercury / बुध","Mars / मंगल"],a:2,e:"Mercury is the closest planet to the Sun. / बुध सूर्य के सबसे निकट ग्रह है।"},
+{q:"Which Indian mission was India's first interplanetary mission? / भारत का पहला अंतरग्रहीय मिशन कौन-सा था?",o:["Chandrayaan-1 / चंद्रयान-1","Mars Orbiter Mission / मंगलयान","Aditya-L1 / आदित्य-L1","Chandrayaan-2 / चंद्रयान-2"],a:1,e:"The Mars Orbiter Mission, also called Mangalyaan, was India's first interplanetary mission. / मंगलयान भारत का पहला अंतरग्रहीय मिशन था।"},
+{q:"Which is the national bird of India? / भारत का राष्ट्रीय पक्षी कौन-सा है?",o:["Parrot / तोता","Peacock / मोर","Eagle / गरुड़","Swan / हंस"],a:1,e:"The Indian peacock is the national bird. / भारतीय मोर राष्ट्रीय पक्षी है।"},
+{q:"Which Bihar city is famous for its ancient university ruins? / प्राचीन विश्वविद्यालय के अवशेषों के लिए बिहार का कौन-सा शहर प्रसिद्ध है?",o:["Nalanda / नालंदा","Purnia / पूर्णिया","Buxar / बक्सर","Araria / अररिया"],a:0,e:"Nalanda is famous for its ancient university ruins. / नालंदा प्राचीन विश्वविद्यालय के अवशेषों के लिए प्रसिद्ध है।"},
+{q:"Which festival is widely celebrated in Bihar after the harvest season and dedicated to the Sun? / बिहार में फसल के बाद सूर्य को समर्पित कौन-सा पर्व मनाया जाता है?",o:["Holi / होली","Chhath Puja / छठ पूजा","Eid / ईद","Baisakhi / बैसाखी"],a:1,e:"Chhath Puja is an important festival in Bihar. / छठ पूजा बिहार का प्रमुख पर्व है।"},
+{q:"Which river forms part of the northern boundary of Bihar? / बिहार की उत्तरी सीमा के पास कौन-सी नदी बहती है?",o:["Ganga / गंगा","Gandak / गंडक","Kaveri / कावेरी","Godavari / गोदावरी"],a:1,e:"The Gandak flows along parts of Bihar's northern region. / गंडक बिहार के उत्तरी क्षेत्र के कुछ भागों से होकर बहती है।"},
+{q:"Which Bihar movement was led by Mahatma Gandhi in 1917? / 1917 में महात्मा गांधी ने बिहार में कौन-सा आंदोलन चलाया?",o:["Kheda Satyagraha / खेड़ा सत्याग्रह","Champaran Satyagraha / चंपारण सत्याग्रह","Bardoli Satyagraha / बारडोली सत्याग्रह","Dandi March / दांडी मार्च"],a:1,e:"Champaran Satyagraha was Gandhi's first major movement in India. / चंपारण सत्याग्रह भारत में गांधीजी का पहला प्रमुख आंदोलन था।"}
+],
+
+
+[
+{q:"Who was the first Indian to travel into space? / अंतरिक्ष में जाने वाले पहले भारतीय कौन थे?",o:["Kalpana Chawla / कल्पना चावला","Rakesh Sharma / राकेश शर्मा","Sunita Williams / सुनीता विलियम्स","Vikram Sarabhai / विक्रम साराभाई"],a:1,e:"Rakesh Sharma travelled into space in 1984. / राकेश शर्मा 1984 में अंतरिक्ष गए थे।"},
+
+{q:"Who is known as the Iron Man of India? / भारत का लौह पुरुष किसे कहा जाता है?",o:["Mahatma Gandhi / महात्मा गांधी","Jawaharlal Nehru / जवाहरलाल नेहरू","Sardar Vallabhbhai Patel / सरदार वल्लभभाई पटेल","Subhas Chandra Bose / सुभाष चंद्र बोस"],a:2,e:"Sardar Vallabhbhai Patel is known as the Iron Man of India. / सरदार वल्लभभाई पटेल को भारत का लौह पुरुष कहा जाता है।"},
+
+{q:"Who was the first woman Prime Minister of India? / भारत की पहली महिला प्रधानमंत्री कौन थीं?",o:["Pratibha Patil / प्रतिभा पाटिल","Indira Gandhi / इंदिरा गांधी","Sarojini Naidu / सरोजिनी नायडू","Sushma Swaraj / सुषमा स्वराज"],a:1,e:"Indira Gandhi became India's first woman Prime Minister in 1966. / इंदिरा गांधी 1966 में भारत की पहली महिला प्रधानमंत्री बनीं।"},
+
+{q:"Who founded the Azad Hind Fauj? / आजाद हिंद फौज की स्थापना किसने की?",o:["Mahatma Gandhi / महात्मा गांधी","Subhas Chandra Bose / सुभाष चंद्र बोस","Bhagat Singh / भगत सिंह","Lala Lajpat Rai / लाला लाजपत राय"],a:1,e:"Subhas Chandra Bose led and reorganised the Azad Hind Fauj. / सुभाष चंद्र बोस ने आजाद हिंद फौज का नेतृत्व और पुनर्गठन किया।"},
+
+{q:"In which year did India become independent? / भारत किस वर्ष स्वतंत्र हुआ?",o:["1942 / 1942","1945 / 1945","1947 / 1947","1950 / 1950"],a:2,e:"India became independent on 15 August 1947. / भारत 15 अगस्त 1947 को स्वतंत्र हुआ।"},
+
+{q:"Which is the largest state of India by population according to Census 2011? / जनगणना 2011 के अनुसार भारत का सबसे अधिक जनसंख्या वाला राज्य कौन-सा है?",o:["Bihar / बिहार","Maharashtra / महाराष्ट्र","Uttar Pradesh / उत्तर प्रदेश","Rajasthan / राजस्थान"],a:2,e:"Uttar Pradesh had the largest population among Indian states in Census 2011. / 2011 की जनगणना के अनुसार उत्तर प्रदेश की जनसंख्या सबसे अधिक थी।"},
+
+{q:"Which is the southernmost point of India? / भारत का सबसे दक्षिणी बिंदु कौन-सा है?",o:["Kanyakumari / कन्याकुमारी","Indira Point / इंदिरा पॉइंट","Rameswaram / रामेश्वरम","Kochi / कोच्चि"],a:1,e:"Indira Point is the southernmost point of India. / इंदिरा पॉइंट भारत का सबसे दक्षिणी बिंदु है।"},
+
+{q:"Which Indian state is famous for the Hornbill Festival? / हॉर्नबिल उत्सव किस भारतीय राज्य में प्रसिद्ध है?",o:["Assam / असम","Nagaland / नागालैंड","Manipur / मणिपुर","Meghalaya / मेघालय"],a:1,e:"The Hornbill Festival is celebrated in Nagaland. / हॉर्नबिल उत्सव नागालैंड में मनाया जाता है।"},
+
+{q:"Which river is called the Lifeline of Madhya Pradesh? / किस नदी को मध्य प्रदेश की जीवन रेखा कहा जाता है?",o:["Narmada / नर्मदा","Ganga / गंगा","Yamuna / यमुना","Kosi / कोसी"],a:0,e:"The Narmada is often called the lifeline of Madhya Pradesh. / नर्मदा को अक्सर मध्य प्रदेश की जीवन रेखा कहा जाता है।"},
+
+{q:"Which is the largest inland saltwater lake in India? / भारत की सबसे बड़ी अंतर्देशीय खारे पानी की झील कौन-सी है?",o:["Dal Lake / डल झील","Sambhar Lake / सांभर झील","Wular Lake / वुलर झील","Loktak Lake / लोकटक झील"],a:1,e:"Sambhar Lake in Rajasthan is India's largest inland saltwater lake. / राजस्थान की सांभर झील भारत की सबसे बड़ी अंतर्देशीय खारे पानी की झील है।"},
+
+{q:"Which Article of the Indian Constitution deals with equality before law? / भारतीय संविधान का कौन-सा अनुच्छेद कानून के समक्ष समानता से संबंधित है?",o:["Article 14 / अनुच्छेद 14","Article 17 / अनुच्छेद 17","Article 21 / अनुच्छेद 21","Article 25 / अनुच्छेद 25"],a:0,e:"Article 14 guarantees equality before law. / अनुच्छेद 14 कानून के समक्ष समानता की गारंटी देता है।"},
+
+{q:"Who is the Supreme Commander of the Indian Armed Forces? / भारतीय सशस्त्र बलों का सर्वोच्च कमांडर कौन होता है?",o:["Prime Minister / प्रधानमंत्री","Defence Minister / रक्षा मंत्री","President / राष्ट्रपति","Chief of Defence Staff / चीफ ऑफ डिफेंस स्टाफ"],a:2,e:"The President of India is the Supreme Commander of the Armed Forces. / भारत के राष्ट्रपति सशस्त्र बलों के सर्वोच्च कमांडर होते हैं।"},
+
+{q:"Which amendment gave constitutional status to Panchayati Raj institutions? / किस संविधान संशोधन ने पंचायती राज संस्थाओं को संवैधानिक दर्जा दिया?",o:["42nd Amendment / 42वाँ संशोधन","44th Amendment / 44वाँ संशोधन","73rd Amendment / 73वाँ संशोधन","74th Amendment / 74वाँ संशोधन"],a:2,e:"The 73rd Constitutional Amendment gave constitutional status to Panchayati Raj institutions. / 73वें संविधान संशोधन ने पंचायती राज संस्थाओं को संवैधानिक दर्जा दिया।"},
+
+{q:"Who appoints the Chief Justice of India? / भारत के मुख्य न्यायाधीश की नियुक्ति कौन करता है?",o:["Prime Minister / प्रधानमंत्री","President / राष्ट्रपति","Parliament / संसद","Chief Election Commissioner / मुख्य निर्वाचन आयुक्त"],a:1,e:"The President formally appoints the Chief Justice of India. / राष्ट्रपति भारत के मुख्य न्यायाधीश की औपचारिक नियुक्ति करते हैं।"},
+
+{q:"Which commission recommends the minimum support price for agricultural crops? / कृषि फसलों के न्यूनतम समर्थन मूल्य की सिफारिश कौन-सा आयोग करता है?",o:["UPSC / यूपीएससी","CACP / कृषि लागत एवं मूल्य आयोग","Finance Commission / वित्त आयोग","Election Commission / निर्वाचन आयोग"],a:1,e:"CACP recommends Minimum Support Prices to the government. / कृषि लागत एवं मूल्य आयोग सरकार को न्यूनतम समर्थन मूल्य की सिफारिश करता है।"},
+
+{q:"What is the full form of NABARD? / NABARD का पूरा नाम क्या है?",o:["National Bank for Agriculture and Rural Development / राष्ट्रीय कृषि और ग्रामीण विकास बैंक","National Board for Agricultural Research and Development / राष्ट्रीय कृषि अनुसंधान एवं विकास बोर्ड","National Bank for Asian Rural Development / राष्ट्रीय एशियाई ग्रामीण विकास बैंक","National Authority for Banking and Rural Development / राष्ट्रीय बैंकिंग एवं ग्रामीण विकास प्राधिकरण"],a:0,e:"NABARD stands for National Bank for Agriculture and Rural Development. / NABARD का पूरा नाम राष्ट्रीय कृषि और ग्रामीण विकास बैंक है।"},
+
+{q:"Which organisation regulates insurance companies in India? / भारत में बीमा कंपनियों का नियमन कौन करता है?",o:["RBI / आरबीआई","SEBI / सेबी","IRDAI / आईआरडीएआई","NABARD / नाबार्ड"],a:2,e:"IRDAI regulates the insurance sector in India. / IRDAI भारत में बीमा क्षेत्र का नियमन करता है।"},
+
+{q:"Which is the largest public sector bank in India? / भारत का सबसे बड़ा सार्वजनिक क्षेत्र का बैंक कौन-सा है?",o:["Punjab National Bank / पंजाब नेशनल बैंक","State Bank of India / भारतीय स्टेट बैंक","Bank of Baroda / बैंक ऑफ बड़ौदा","Canara Bank / केनरा बैंक"],a:1,e:"State Bank of India is India's largest public sector bank. / भारतीय स्टेट बैंक भारत का सबसे बड़ा सार्वजनिक क्षेत्र का बैंक है।"},
+
+{q:"Which blood cells carry oxygen in the human body? / मानव शरीर में ऑक्सीजन का परिवहन कौन-सी रक्त कोशिकाएँ करती हैं?",o:["White blood cells / श्वेत रक्त कोशिकाएँ","Red blood cells / लाल रक्त कोशिकाएँ","Platelets / प्लेटलेट्स","Plasma cells / प्लाज्मा कोशिकाएँ"],a:1,e:"Red blood cells contain haemoglobin, which carries oxygen. / लाल रक्त कोशिकाओं में हीमोग्लोबिन होता है, जो ऑक्सीजन का परिवहन करता है।"},
+
+{q:"Which is the largest gland in the human body? / मानव शरीर की सबसे बड़ी ग्रंथि कौन-सी है?",o:["Pancreas / अग्न्याशय","Thyroid / थायरॉयड","Liver / यकृत","Pituitary / पीयूष ग्रंथि"],a:2,e:"The liver is the largest gland in the human body. / यकृत मानव शरीर की सबसे बड़ी ग्रंथि है।"},
+
+{q:"Deficiency of Vitamin C causes which disease? / विटामिन C की कमी से कौन-सा रोग होता है?",o:["Rickets / रिकेट्स","Scurvy / स्कर्वी","Night blindness / रतौंधी","Beriberi / बेरी-बेरी"],a:1,e:"Vitamin C deficiency causes scurvy. / विटामिन C की कमी से स्कर्वी रोग होता है।"},
+
+{q:"Which part of the cell is known as the powerhouse of the cell? / कोशिका का पावरहाउस किसे कहा जाता है?",o:["Nucleus / केंद्रक","Mitochondria / माइटोकॉन्ड्रिया","Ribosome / राइबोसोम","Cell wall / कोशिका भित्ति"],a:1,e:"Mitochondria produce most of the energy used by the cell. / माइटोकॉन्ड्रिया कोशिका के लिए अधिकांश ऊर्जा उत्पन्न करते हैं।"},
+
+{q:"Which is the hardest natural substance? / सबसे कठोर प्राकृतिक पदार्थ कौन-सा है?",o:["Gold / सोना","Iron / लोहा","Diamond / हीरा","Silver / चाँदी"],a:2,e:"Diamond is the hardest naturally occurring material. / हीरा प्राकृतिक रूप से पाया जाने वाला सबसे कठोर पदार्थ है।"},
+
+{q:"What is the SI unit of electric current? / विद्युत धारा की SI इकाई क्या है?",o:["Volt / वोल्ट","Ampere / एम्पियर","Ohm / ओम","Watt / वाट"],a:1,e:"Ampere is the SI unit of electric current. / एम्पियर विद्युत धारा की SI इकाई है।"},
+
+{q:"Which planet is known as the Morning Star or Evening Star? / किस ग्रह को सुबह का तारा या शाम का तारा कहा जाता है?",o:["Mars / मंगल","Venus / शुक्र","Mercury / बुध","Jupiter / बृहस्पति"],a:1,e:"Venus is commonly called the Morning Star or Evening Star. / शुक्र को सामान्यतः सुबह या शाम का तारा कहा जाता है।"},
+
+{q:"Which was the first Indian satellite launched into space? / अंतरिक्ष में प्रक्षेपित किया गया भारत का पहला उपग्रह कौन-सा था?",o:["Rohini / रोहिणी","Aryabhata / आर्यभट्ट","INSAT / इनसैट","Bhaskara / भास्कर"],a:1,e:"Aryabhata was India's first satellite, launched in 1975. / आर्यभट्ट भारत का पहला उपग्रह था, जिसे 1975 में प्रक्षेपित किया गया।"},
+
+{q:"Which is the national tree of India? / भारत का राष्ट्रीय वृक्ष कौन-सा है?",o:["Neem / नीम","Peepal / पीपल","Banyan / बरगद","Mango / आम"],a:2,e:"The Banyan tree is India's national tree. / बरगद भारत का राष्ट्रीय वृक्ष है।"},
+
+{q:"Which district of Bihar is famous for the Vikramshila University ruins? / विक्रमशिला विश्वविद्यालय के अवशेष बिहार के किस जिले में हैं?",o:["Patna / पटना","Bhagalpur / भागलपुर","Gaya / गया","Nalanda / नालंदा"],a:1,e:"Vikramshila University was located in present-day Bhagalpur district. / विक्रमशिला विश्वविद्यालय वर्तमान भागलपुर जिले में स्थित था।"},
+
+{q:"Who was the first Chief Minister of Bihar? / बिहार के प्रथम मुख्यमंत्री कौन थे?",o:["Dr. Rajendra Prasad / डॉ. राजेंद्र प्रसाद","Sri Krishna Sinha / श्रीकृष्ण सिंह","Anugrah Narayan Sinha / अनुग्रह नारायण सिन्हा","Karpoori Thakur / कर्पूरी ठाकुर"],a:1,e:"Sri Krishna Sinha was the first Chief Minister of Bihar. / श्रीकृष्ण सिंह बिहार के प्रथम मुख्यमंत्री थे।"},
+
+{q:"Which city of Bihar is famous for the Mahabodhi Temple? / बिहार का कौन-सा शहर महाबोधि मंदिर के लिए प्रसिद्ध है?",o:["Patna / पटना","Rajgir / राजगीर","Bodh Gaya / बोधगया","Vaishali / वैशाली"],a:2,e:"The Mahabodhi Temple is located at Bodh Gaya. / महाबोधि मंदिर बोधगया में स्थित है।"},
+
+
+],
+
+[
+{q:"Who is known as the Father of the Indian Constitution? / भारतीय संविधान के जनक किसे कहा जाता है?",o:["Mahatma Gandhi / महात्मा गांधी","Dr. B. R. Ambedkar / डॉ. बी. आर. अम्बेडकर","Jawaharlal Nehru / जवाहरलाल नेहरू","Sardar Patel / सरदार पटेल"],a:1,e:"Dr. B. R. Ambedkar chaired the Drafting Committee. / डॉ. बी. आर. अम्बेडकर प्रारूप समिति के अध्यक्ष थे।"},
+{q:"What is the capital of Bihar? / बिहार की राजधानी क्या है?",o:["Gaya / गया","Muzaffarpur / मुजफ्फरपुर","Patna / पटना","Bhagalpur / भागलपुर"],a:2,e:"Patna is the capital of Bihar. / पटना बिहार की राजधानी है।"},
+{q:"Which is the largest planet in our Solar System? / हमारे सौरमंडल का सबसे बड़ा ग्रह कौन-सा है?",o:["Earth / पृथ्वी","Jupiter / बृहस्पति","Saturn / शनि","Mars / मंगल"],a:1,e:"Jupiter is the largest planet. / बृहस्पति सबसे बड़ा ग्रह है।"},
+{q:"Who was the first President of India? / भारत के प्रथम राष्ट्रपति कौन थे?",o:["Dr. Rajendra Prasad / डॉ. राजेंद्र प्रसाद","Dr. S. Radhakrishnan / डॉ. एस. राधाकृष्णन","Zakir Husain / जाकिर हुसैन","V. V. Giri / वी. वी. गिरि"],a:0,e:"Dr. Rajendra Prasad was India's first President. / डॉ. राजेंद्र प्रसाद भारत के प्रथम राष्ट्रपति थे।"},
+{q:"Which river is known as the Sorrow of Bihar? / किस नदी को बिहार का शोक कहा जाता है?",o:["Ganga / गंगा","Kosi / कोसी","Son / सोन","Gandak / गंडक"],a:1,e:"The Kosi River is called the Sorrow of Bihar due to frequent floods. / बार-बार बाढ़ आने के कारण कोसी को बिहार का शोक कहा जाता है।"},
+{q:"Where is the headquarters of UNESCO? / यूनेस्को का मुख्यालय कहाँ है?",o:["London / लंदन","New York / न्यूयॉर्क","Paris / पेरिस","Geneva / जिनेवा"],a:2,e:"UNESCO headquarters is in Paris, France. / यूनेस्को का मुख्यालय पेरिस, फ्रांस में है।"},
+{q:"Which gas is essential for human respiration? / मानव श्वसन के लिए कौन-सी गैस आवश्यक है?",o:["Nitrogen / नाइट्रोजन","Oxygen / ऑक्सीजन","Carbon dioxide / कार्बन डाइऑक्साइड","Hydrogen / हाइड्रोजन"],a:1,e:"Humans need oxygen for respiration. / मनुष्यों को श्वसन के लिए ऑक्सीजन की आवश्यकता होती है।"},
+{q:"Who wrote the national song Vande Mataram? / वंदे मातरम् राष्ट्रीय गीत किसने लिखा?",o:["Rabindranath Tagore / रवीन्द्रनाथ टैगोर","Bankim Chandra Chatterjee / बंकिम चंद्र चट्टोपाध्याय","Sarojini Naidu / सरोजिनी नायडू","Premchand / प्रेमचंद"],a:1,e:"Bankim Chandra Chatterjee wrote Vande Mataram. / वंदे मातरम् की रचना बंकिम चंद्र चट्टोपाध्याय ने की।"},
+{q:"Which is the smallest state of India by area? / क्षेत्रफल की दृष्टि से भारत का सबसे छोटा राज्य कौन-सा है?",o:["Sikkim / सिक्किम","Goa / गोवा","Tripura / त्रिपुरा","Manipur / मणिपुर"],a:1,e:"Goa is the smallest Indian state by area. / क्षेत्रफल के अनुसार गोवा भारत का सबसे छोटा राज्य है।"},
+{q:"Which organ purifies blood in the human body? / मानव शरीर में रक्त को कौन-सा अंग साफ करता है?",o:["Heart / हृदय","Lungs / फेफड़े","Kidney / गुर्दा","Stomach / पेट"],a:2,e:"Kidneys filter waste from the blood. / गुर्दे रक्त से अपशिष्ट पदार्थों को छानते हैं।"},
+{q:"In which year did India become independent? / भारत किस वर्ष स्वतंत्र हुआ?",o:["1942","1945","1947","1950"],a:2,e:"India became independent on 15 August 1947. / भारत 15 अगस्त 1947 को स्वतंत्र हुआ।"},
+{q:"Which is the national animal of India? / भारत का राष्ट्रीय पशु कौन है?",o:["Lion / सिंह","Tiger / बाघ","Elephant / हाथी","Leopard / तेंदुआ"],a:1,e:"The Bengal Tiger is India's national animal. / बंगाल टाइगर भारत का राष्ट्रीय पशु है।"},
+{q:"Which city is known as the Pink City of India? / भारत का गुलाबी शहर किसे कहा जाता है?",o:["Udaipur / उदयपुर","Jaipur / जयपुर","Jodhpur / जोधपुर","Bikaner / बीकानेर"],a:1,e:"Jaipur is popularly known as the Pink City. / जयपुर को गुलाबी शहर कहा जाता है।"},
+{q:"What is the currency of Japan? / जापान की मुद्रा क्या है?",o:["Yuan / युआन","Won / वॉन","Yen / येन","Dollar / डॉलर"],a:2,e:"The currency of Japan is Yen. / जापान की मुद्रा येन है।"},
+{q:"Which vitamin is produced in the skin by sunlight? / सूर्य के प्रकाश से त्वचा में कौन-सा विटामिन बनता है?",o:["Vitamin A / विटामिन A","Vitamin B / विटामिन B","Vitamin C / विटामिन C","Vitamin D / विटामिन D"],a:3,e:"Sunlight helps the skin produce Vitamin D. / सूर्य का प्रकाश त्वचा में विटामिन D बनाने में मदद करता है।"},
+{q:"Who discovered the sea route to India? / भारत के समुद्री मार्ग की खोज किसने की?",o:["Columbus / कोलंबस","Vasco da Gama / वास्को द गामा","Magellan / मैगलन","Marco Polo / मार्को पोलो"],a:1,e:"Vasco da Gama reached India by sea in 1498. / वास्को द गामा 1498 में समुद्री मार्ग से भारत पहुँचा।"},
+{q:"Which is the highest mountain peak in the world? / विश्व की सबसे ऊँची पर्वत चोटी कौन-सी है?",o:["K2 / के2","Kangchenjunga / कंचनजंघा","Mount Everest / माउंट एवरेस्ट","Nanda Devi / नंदा देवी"],a:2,e:"Mount Everest is the world's highest mountain above sea level. / समुद्र तल से माउंट एवरेस्ट विश्व की सबसे ऊँची चोटी है।"},
+{q:"Which part of the plant absorbs water from the soil? / पौधे का कौन-सा भाग मिट्टी से पानी अवशोषित करता है?",o:["Leaf / पत्ती","Stem / तना","Root / जड़","Flower / फूल"],a:2,e:"Roots absorb water and minerals from soil. / जड़ें मिट्टी से पानी और खनिज अवशोषित करती हैं।"},
+{q:"Where is the Gateway of India located? / गेटवे ऑफ इंडिया कहाँ स्थित है?",o:["Delhi / दिल्ली","Mumbai / मुंबई","Kolkata / कोलकाता","Chennai / चेन्नई"],a:1,e:"The Gateway of India is in Mumbai. / गेटवे ऑफ इंडिया मुंबई में है।"},
+{q:"Which is the longest river in India? / भारत की सबसे लंबी नदी कौन-सी है?",o:["Yamuna / यमुना","Ganga / गंगा","Godavari / गोदावरी","Narmada / नर्मदा"],a:1,e:"The Ganga is generally regarded as India's longest river. / गंगा को सामान्यतः भारत की सबसे लंबी नदी माना जाता है।"},
+{q:"Who was the first woman Prime Minister of India? / भारत की पहली महिला प्रधानमंत्री कौन थीं?",o:["Pratibha Patil / प्रतिभा पाटिल","Indira Gandhi / इंदिरा गांधी","Sarojini Naidu / सरोजिनी नायडू","Sushma Swaraj / सुषमा स्वराज"],a:1,e:"Indira Gandhi became India's first woman Prime Minister. / इंदिरा गांधी भारत की पहली महिला प्रधानमंत्री बनीं।"},
+{q:"Which metal is liquid at room temperature? / कमरे के तापमान पर कौन-सी धातु तरल होती है?",o:["Iron / लोहा","Copper / तांबा","Mercury / पारा","Aluminium / एल्युमिनियम"],a:2,e:"Mercury is liquid at ordinary room temperature. / पारा सामान्य कमरे के तापमान पर तरल होता है।"},
+{q:"Where is the Sun Temple located? / सूर्य मंदिर कहाँ स्थित है?",o:["Puri / पुरी","Konark / कोणार्क","Varanasi / वाराणसी","Mathura / मथुरा"],a:1,e:"The famous Sun Temple is located at Konark in Odisha. / प्रसिद्ध सूर्य मंदिर ओडिशा के कोणार्क में स्थित है।"},
+{q:"Which is the national flower of India? / भारत का राष्ट्रीय फूल कौन-सा है?",o:["Rose / गुलाब","Lotus / कमल","Sunflower / सूरजमुखी","Jasmine / चमेली"],a:1,e:"Lotus is India's national flower. / कमल भारत का राष्ट्रीय फूल है।"},
+{q:"Which instrument measures atmospheric pressure? / वायुमंडलीय दबाव मापने वाला यंत्र कौन-सा है?",o:["Thermometer / थर्मामीटर","Barometer / बैरोमीटर","Hygrometer / हाइग्रोमीटर","Ammeter / एमीटर"],a:1,e:"A barometer measures atmospheric pressure. / बैरोमीटर वायुमंडलीय दबाव मापता है।"},
+{q:"Which Indian state is famous for tea production in the Brahmaputra Valley? / ब्रह्मपुत्र घाटी में चाय उत्पादन के लिए कौन-सा भारतीय राज्य प्रसिद्ध है?",o:["Assam / असम","Punjab / पंजाब","Gujarat / गुजरात","Haryana / हरियाणा"],a:0,e:"Assam is famous for its tea gardens. / असम अपने चाय बागानों के लिए प्रसिद्ध है।"},
+{q:"Which is the largest ocean in the world? / विश्व का सबसे बड़ा महासागर कौन-सा है?",o:["Atlantic Ocean / अटलांटिक महासागर","Indian Ocean / हिंद महासागर","Pacific Ocean / प्रशांत महासागर","Arctic Ocean / आर्कटिक महासागर"],a:2,e:"The Pacific Ocean is the largest ocean. / प्रशांत महासागर विश्व का सबसे बड़ा महासागर है।"},
+{q:"Which blood cells help in clotting? / रक्त का थक्का जमाने में कौन-सी रक्त कोशिकाएँ मदद करती हैं?",o:["Red blood cells / लाल रक्त कोशिकाएँ","White blood cells / श्वेत रक्त कोशिकाएँ","Platelets / प्लेटलेट्स","Plasma / प्लाज्मा"],a:2,e:"Platelets help blood clot. / प्लेटलेट्स रक्त का थक्का जमाने में मदद करते हैं।"},
+{q:"Who founded the Maurya Empire? / मौर्य साम्राज्य की स्थापना किसने की?",o:["Ashoka / अशोक","Chandragupta Maurya / चंद्रगुप्त मौर्य","Bindusara / बिंदुसार","Harsha / हर्ष"],a:1,e:"Chandragupta Maurya founded the Maurya Empire. / चंद्रगुप्त मौर्य ने मौर्य साम्राज्य की स्थापना की।"},
+{q:"Which is the national aquatic animal of India? / भारत का राष्ट्रीय जलीय जीव कौन-सा है?",o:["Blue Whale / नीली व्हेल","Ganges River Dolphin / गंगा नदी डॉल्फिन","Crocodile / मगरमच्छ","Turtle / कछुआ"],a:1,e:"The Ganges River Dolphin is India's national aquatic animal. / गंगा नदी डॉल्फिन भारत का राष्ट्रीय जलीय जीव है।"}
+],
+
+[
+{q:"Who founded the Mughal Empire in India? / भारत में मुगल साम्राज्य की स्थापना किसने की?",o:["Akbar / अकबर","Babur / बाबर","Humayun / हुमायूँ","Shah Jahan / शाहजहाँ"],a:1,e:"Babur founded the Mughal Empire in 1526. / बाबर ने 1526 में मुगल साम्राज्य की स्थापना की।"},
+{q:"In which year was the Battle of Plassey fought? / प्लासी का युद्ध किस वर्ष लड़ा गया था?",o:["1757","1764","1857","1773"],a:0,e:"The Battle of Plassey was fought in 1757. / प्लासी का युद्ध 1757 में लड़ा गया था।"},
+{q:"Who gave the slogan 'Do or Die'? / 'करो या मरो' का नारा किसने दिया?",o:["Subhas Chandra Bose / सुभाष चंद्र बोस","Mahatma Gandhi / महात्मा गांधी","Bhagat Singh / भगत सिंह","Bal Gangadhar Tilak / बाल गंगाधर तिलक"],a:1,e:"Mahatma Gandhi gave this slogan during the Quit India Movement. / महात्मा गांधी ने भारत छोड़ो आंदोलन के दौरान यह नारा दिया।"},
+{q:"Where did the Jallianwala Bagh massacre take place? / जलियाँवाला बाग हत्याकांड कहाँ हुआ था?",o:["Delhi / दिल्ली","Amritsar / अमृतसर","Lucknow / लखनऊ","Kanpur / कानपुर"],a:1,e:"The massacre took place in Amritsar in 1919. / यह हत्याकांड 1919 में अमृतसर में हुआ था।"},
+{q:"Who was the first Governor-General of independent India? / स्वतंत्र भारत के प्रथम गवर्नर-जनरल कौन थे?",o:["Lord Mountbatten / लॉर्ड माउंटबेटन","C. Rajagopalachari / सी. राजगोपालाचारी","Warren Hastings / वॉरेन हेस्टिंग्स","Lord Curzon / लॉर्ड कर्जन"],a:0,e:"Lord Mountbatten was the first Governor-General of independent India. / लॉर्ड माउंटबेटन स्वतंत्र भारत के प्रथम गवर्नर-जनरल थे।"},
+{q:"Which movement began in 1942? / 1942 में कौन-सा आंदोलन शुरू हुआ?",o:["Non-Cooperation Movement / असहयोग आंदोलन","Civil Disobedience Movement / सविनय अवज्ञा आंदोलन","Quit India Movement / भारत छोड़ो आंदोलन","Swadeshi Movement / स्वदेशी आंदोलन"],a:2,e:"The Quit India Movement began in August 1942. / भारत छोड़ो आंदोलन अगस्त 1942 में शुरू हुआ।"},
+{q:"Who was known as the Iron Man of India? / भारत के लौह पुरुष किसे कहा जाता है?",o:["Jawaharlal Nehru / जवाहरलाल नेहरू","Sardar Vallabhbhai Patel / सरदार वल्लभभाई पटेल","Lal Bahadur Shastri / लाल बहादुर शास्त्री","B. R. Ambedkar / बी. आर. अम्बेडकर"],a:1,e:"Sardar Patel is known as the Iron Man of India. / सरदार पटेल को भारत का लौह पुरुष कहा जाता है।"},
+{q:"The Great Bath was discovered at which site? / विशाल स्नानागार किस स्थल पर मिला था?",o:["Harappa / हड़प्पा","Mohenjo-daro / मोहनजोदड़ो","Lothal / लोथल","Kalibangan / कालीबंगा"],a:1,e:"The Great Bath was discovered at Mohenjo-daro. / विशाल स्नानागार मोहनजोदड़ो में मिला था।"},
+{q:"Who was the founder of the Indian National Congress? / भारतीय राष्ट्रीय कांग्रेस के संस्थापक कौन थे?",o:["A. O. Hume / ए. ओ. ह्यूम","Mahatma Gandhi / महात्मा गांधी","Dadabhai Naoroji / दादाभाई नौरोजी","Gopal Krishna Gokhale / गोपाल कृष्ण गोखले"],a:0,e:"A. O. Hume played the key role in founding the INC in 1885. / ए. ओ. ह्यूम ने 1885 में कांग्रेस की स्थापना में प्रमुख भूमिका निभाई।"},
+{q:"Who was the first Indian to travel into space? / अंतरिक्ष में जाने वाले प्रथम भारतीय कौन थे?",o:["Kalpana Chawla / कल्पना चावला","Rakesh Sharma / राकेश शर्मा","Sunita Williams / सुनीता विलियम्स","Vikram Sarabhai / विक्रम साराभाई"],a:1,e:"Rakesh Sharma travelled into space in 1984. / राकेश शर्मा 1984 में अंतरिक्ष गए थे।"},
+{q:"Which state has the longest coastline in India? / भारत में सबसे लंबा समुद्री तट किस राज्य का है?",o:["Tamil Nadu / तमिलनाडु","Andhra Pradesh / आंध्र प्रदेश","Gujarat / गुजरात","Maharashtra / महाराष्ट्र"],a:2,e:"Gujarat has the longest coastline among Indian states. / भारतीय राज्यों में गुजरात का समुद्री तट सबसे लंबा है।"},
+{q:"Which is the largest state in India by area? / क्षेत्रफल के अनुसार भारत का सबसे बड़ा राज्य कौन-सा है?",o:["Madhya Pradesh / मध्य प्रदेश","Rajasthan / राजस्थान","Maharashtra / महाराष्ट्र","Uttar Pradesh / उत्तर प्रदेश"],a:1,e:"Rajasthan is India's largest state by area. / राजस्थान क्षेत्रफल के अनुसार भारत का सबसे बड़ा राज्य है।"},
+{q:"Which Indian state is called the Land of Five Rivers? / भारत के किस राज्य को पाँच नदियों की भूमि कहा जाता है?",o:["Haryana / हरियाणा","Punjab / पंजाब","Uttar Pradesh / उत्तर प्रदेश","Bihar / बिहार"],a:1,e:"Punjab is known as the Land of Five Rivers. / पंजाब को पाँच नदियों की भूमि कहा जाता है।"},
+{q:"Which river originates from the Gangotri Glacier? / कौन-सी नदी गंगोत्री हिमनद से निकलती है?",o:["Yamuna / यमुना","Ganga / गंगा","Godavari / गोदावरी","Krishna / कृष्णा"],a:1,e:"The Bhagirathi, a main source stream of the Ganga, originates from the Gangotri Glacier. / गंगा की प्रमुख स्रोत नदी भागीरथी गंगोत्री हिमनद से निकलती है।"},
+{q:"Which desert is located in Rajasthan? / राजस्थान में कौन-सा मरुस्थल स्थित है?",o:["Sahara / सहारा","Gobi / गोबी","Thar / थार","Kalahari / कालाहारी"],a:2,e:"The Thar Desert is located mainly in Rajasthan. / थार मरुस्थल मुख्यतः राजस्थान में स्थित है।"},
+{q:"Which Indian state is famous for the Kaziranga National Park? / काजीरंगा राष्ट्रीय उद्यान किस राज्य में है?",o:["Assam / असम","West Bengal / पश्चिम बंगाल","Odisha / ओडिशा","Kerala / केरल"],a:0,e:"Kaziranga National Park is in Assam. / काजीरंगा राष्ट्रीय उद्यान असम में है।"},
+{q:"Which is the southernmost point of mainland India? / भारत की मुख्य भूमि का सबसे दक्षिणी बिंदु कौन-सा है?",o:["Indira Point / इंदिरा पॉइंट","Kanyakumari / कन्याकुमारी","Rameswaram / रामेश्वरम","Kochi / कोच्चि"],a:1,e:"Kanyakumari is the southernmost point of mainland India. / कन्याकुमारी भारत की मुख्य भूमि का सबसे दक्षिणी बिंदु है।"},
+{q:"Which plateau is known as the mineral storehouse of India? / भारत का खनिज भंडार किस पठार को कहा जाता है?",o:["Malwa Plateau / मालवा का पठार","Deccan Plateau / दक्कन का पठार","Chota Nagpur Plateau / छोटानागपुर का पठार","Meghalaya Plateau / मेघालय का पठार"],a:2,e:"The Chota Nagpur Plateau is rich in mineral resources. / छोटानागपुर का पठार खनिज संसाधनों से समृद्ध है।"},
+{q:"Which state is known as the Spice Garden of India? / भारत का मसालों का बगीचा किस राज्य को कहा जाता है?",o:["Kerala / केरल","Punjab / पंजाब","Bihar / बिहार","Rajasthan / राजस्थान"],a:0,e:"Kerala is famous for its spices. / केरल अपने मसालों के लिए प्रसिद्ध है।"},
+{q:"Which is the largest freshwater lake in India? / भारत की सबसे बड़ी मीठे पानी की झील कौन-सी है?",o:["Dal Lake / डल झील","Wular Lake / वुलर झील","Chilika Lake / चिलिका झील","Sambhar Lake / सांभर झील"],a:1,e:"Wular Lake in Jammu and Kashmir is the largest freshwater lake in India. / जम्मू-कश्मीर की वुलर झील भारत की सबसे बड़ी मीठे पानी की झील है।"},
+{q:"Who was the founder of the Sikh religion? / सिख धर्म के संस्थापक कौन थे?",o:["Guru Gobind Singh / गुरु गोबिंद सिंह","Guru Nanak Dev / गुरु नानक देव","Guru Arjan Dev / गुरु अर्जन देव","Guru Tegh Bahadur / गुरु तेग बहादुर"],a:1,e:"Guru Nanak Dev founded Sikhism. / गुरु नानक देव ने सिख धर्म की स्थापना की।"},
+{q:"Which ruler built the Red Fort in Delhi? / दिल्ली में लाल किले का निर्माण किस शासक ने करवाया?",o:["Akbar / अकबर","Shah Jahan / शाहजहाँ","Aurangzeb / औरंगजेब","Jahangir / जहाँगीर"],a:1,e:"Shah Jahan commissioned the Red Fort. / शाहजहाँ ने लाल किले का निर्माण करवाया।"},
+{q:"Who was the last Mughal emperor? / अंतिम मुगल सम्राट कौन थे?",o:["Akbar II / अकबर द्वितीय","Bahadur Shah Zafar / बहादुर शाह ज़फर","Shah Alam II / शाह आलम द्वितीय","Aurangzeb / औरंगजेब"],a:1,e:"Bahadur Shah Zafar was the last Mughal emperor. / बहादुर शाह ज़फर अंतिम मुगल सम्राट थे।"},
+{q:"Which city is situated on the banks of the Yamuna River? / यमुना नदी के किनारे कौन-सा शहर स्थित है?",o:["Agra / आगरा","Patna / पटना","Kolkata / कोलकाता","Surat / सूरत"],a:0,e:"Agra is situated on the banks of the Yamuna. / आगरा यमुना नदी के किनारे स्थित है।"},
+{q:"Which Indian state has the largest population? / भारत में सबसे अधिक जनसंख्या वाला राज्य कौन-सा है?",o:["Bihar / बिहार","Maharashtra / महाराष्ट्र","Uttar Pradesh / उत्तर प्रदेश","West Bengal / पश्चिम बंगाल"],a:2,e:"Uttar Pradesh is India's most populous state. / उत्तर प्रदेश भारत का सबसे अधिक जनसंख्या वाला राज्य है।"},
+{q:"Who led the Dandi March in 1930? / 1930 में दांडी मार्च का नेतृत्व किसने किया?",o:["Subhas Chandra Bose / सुभाष चंद्र बोस","Mahatma Gandhi / महात्मा गांधी","Jawaharlal Nehru / जवाहरलाल नेहरू","Sardar Patel / सरदार पटेल"],a:1,e:"Mahatma Gandhi led the Dandi March against the salt tax. / महात्मा गांधी ने नमक कर के विरोध में दांडी मार्च का नेतृत्व किया।"},
+{q:"Which is the largest delta in the world? / विश्व का सबसे बड़ा डेल्टा कौन-सा है?",o:["Nile Delta / नील डेल्टा","Sundarbans Delta / सुंदरबन डेल्टा","Amazon Delta / अमेजन डेल्टा","Mekong Delta / मेकांग डेल्टा"],a:1,e:"The Ganga-Brahmaputra delta, including the Sundarbans, is the world's largest delta. / गंगा-ब्रह्मपुत्र डेल्टा, जिसमें सुंदरबन शामिल है, विश्व का सबसे बड़ा डेल्टा है।"},
+{q:"Who was the first woman ruler of the Delhi Sultanate? / दिल्ली सल्तनत की पहली महिला शासक कौन थीं?",o:["Nur Jahan / नूरजहाँ","Razia Sultan / रज़िया सुल्तान","Jahanara / जहाँआरा","Rani Durgavati / रानी दुर्गावती"],a:1,e:"Razia Sultan ruled the Delhi Sultanate in the 13th century. / रज़िया सुल्तान ने 13वीं शताब्दी में दिल्ली सल्तनत पर शासन किया।"},
+{q:"Which Indian state is famous for the Ajanta Caves? / अजंता की गुफाएँ किस राज्य में स्थित हैं?",o:["Maharashtra / महाराष्ट्र","Madhya Pradesh / मध्य प्रदेश","Gujarat / गुजरात","Karnataka / कर्नाटक"],a:0,e:"The Ajanta Caves are located in Maharashtra. / अजंता की गुफाएँ महाराष्ट्र में स्थित हैं।"},
+{q:"Who wrote the book Discovery of India? / 'डिस्कवरी ऑफ इंडिया' पुस्तक किसने लिखी?",o:["Mahatma Gandhi / महात्मा गांधी","Jawaharlal Nehru / जवाहरलाल नेहरू","Rabindranath Tagore / रवीन्द्रनाथ टैगोर","Maulana Azad / मौलाना आज़ाद"],a:1,e:"Jawaharlal Nehru wrote The Discovery of India. / 'डिस्कवरी ऑफ इंडिया' जवाहरलाल नेहरू ने लिखी।"}
+],
+
+[
+{q:"How many fundamental duties are mentioned in the Indian Constitution? / भारतीय संविधान में कितने मौलिक कर्तव्य बताए गए हैं?",o:["10","11","12","9"],a:1,e:"There are 11 Fundamental Duties. / भारतीय संविधान में 11 मौलिक कर्तव्य हैं।"},
+{q:"Which article deals with equality before law? / कानून के समक्ष समानता किस अनुच्छेद में है?",o:["Article 14 / अनुच्छेद 14","Article 19 / अनुच्छेद 19","Article 21 / अनुच्छेद 21","Article 32 / अनुच्छेद 32"],a:0,e:"Article 14 provides equality before law. / अनुच्छेद 14 कानून के समक्ष समानता प्रदान करता है।"},
+{q:"Who appoints the Governor of an Indian state? / भारतीय राज्य के राज्यपाल की नियुक्ति कौन करता है?",o:["Prime Minister / प्रधानमंत्री","Chief Minister / मुख्यमंत्री","President / राष्ट्रपति","Chief Justice / मुख्य न्यायाधीश"],a:2,e:"The President appoints state Governors. / राष्ट्रपति राज्यपालों की नियुक्ति करते हैं।"},
+{q:"What is the minimum age to become a member of Lok Sabha? / लोकसभा का सदस्य बनने की न्यूनतम आयु कितनी है?",o:["18 years / 18 वर्ष","21 years / 21 वर्ष","25 years / 25 वर्ष","30 years / 30 वर्ष"],a:2,e:"The minimum age for Lok Sabha membership is 25 years. / लोकसभा सदस्य बनने की न्यूनतम आयु 25 वर्ष है।"},
+{q:"Who is the constitutional head of India? / भारत का संवैधानिक प्रमुख कौन होता है?",o:["Prime Minister / प्रधानमंत्री","President / राष्ट्रपति","Chief Justice / मुख्य न्यायाधीश","Lok Sabha Speaker / लोकसभा अध्यक्ष"],a:1,e:"The President is the constitutional head of India. / राष्ट्रपति भारत के संवैधानिक प्रमुख होते हैं।"},
+{q:"Which body conducts elections in India? / भारत में चुनाव कौन-सा निकाय करवाता है?",o:["UPSC / यूपीएससी","Election Commission / निर्वाचन आयोग","NITI Aayog / नीति आयोग","Finance Commission / वित्त आयोग"],a:1,e:"The Election Commission of India conducts elections. / भारत निर्वाचन आयोग चुनाव करवाता है।"},
+{q:"What is the full form of GDP? / GDP का पूरा नाम क्या है?",o:["Gross Domestic Product / सकल घरेलू उत्पाद","General Domestic Price / सामान्य घरेलू मूल्य","Gross Development Plan / सकल विकास योजना","General Development Product / सामान्य विकास उत्पाद"],a:0,e:"GDP stands for Gross Domestic Product. / GDP का अर्थ सकल घरेलू उत्पाद है।"},
+{q:"Which institution issues currency notes in India, except the one-rupee note? / भारत में एक रुपये के नोट को छोड़कर अन्य करेंसी नोट कौन जारी करता है?",o:["State Bank of India / भारतीय स्टेट बैंक","Reserve Bank of India / भारतीय रिजर्व बैंक","Finance Ministry / वित्त मंत्रालय","NABARD / नाबार्ड"],a:1,e:"The RBI issues banknotes, except the one-rupee note. / एक रुपये के नोट को छोड़कर अन्य बैंक नोट RBI जारी करता है।"},
+{q:"What is the full form of GST? / GST का पूरा नाम क्या है?",o:["General Sales Tax / सामान्य बिक्री कर","Goods and Services Tax / वस्तु एवं सेवा कर","Government Service Tax / सरकारी सेवा कर","Gross Service Tax / सकल सेवा कर"],a:1,e:"GST means Goods and Services Tax. / GST का अर्थ वस्तु एवं सेवा कर है।"},
+{q:"Which sector includes agriculture? / कृषि किस क्षेत्र में आती है?",o:["Primary Sector / प्राथमिक क्षेत्र","Secondary Sector / द्वितीयक क्षेत्र","Tertiary Sector / तृतीयक क्षेत्र","Service Sector / सेवा क्षेत्र"],a:0,e:"Agriculture belongs to the primary sector. / कृषि प्राथमिक क्षेत्र में आती है।"},
+{q:"What is the SI unit of force? / बल की SI इकाई क्या है?",o:["Joule / जूल","Newton / न्यूटन","Watt / वाट","Pascal / पास्कल"],a:1,e:"The SI unit of force is Newton. / बल की SI इकाई न्यूटन है।"},
+{q:"What is the chemical symbol of gold? / सोने का रासायनिक प्रतीक क्या है?",o:["Ag","Au","Fe","Gd"],a:1,e:"Au is the chemical symbol of gold. / Au सोने का रासायनिक प्रतीक है।"},
+{q:"Which part of the cell is known as the powerhouse of the cell? / कोशिका का पावरहाउस किसे कहा जाता है?",o:["Nucleus / केंद्रक","Mitochondria / माइटोकॉन्ड्रिया","Ribosome / राइबोसोम","Cell wall / कोशिका भित्ति"],a:1,e:"Mitochondria produce most of the usable energy in cells. / माइटोकॉन्ड्रिया कोशिका के लिए अधिकांश उपयोगी ऊर्जा बनाते हैं।"},
+{q:"What is the pH value of pure water at 25°C? / 25°C पर शुद्ध पानी का pH मान कितना होता है?",o:["5","6","7","8"],a:2,e:"Pure water has a pH of approximately 7 at 25°C. / 25°C पर शुद्ध पानी का pH लगभग 7 होता है।"},
+{q:"Which vitamin helps in blood clotting? / रक्त का थक्का जमाने में कौन-सा विटामिन मदद करता है?",o:["Vitamin A / विटामिन A","Vitamin C / विटामिन C","Vitamin K / विटामिन K","Vitamin D / विटामिन D"],a:2,e:"Vitamin K is essential for normal blood clotting. / सामान्य रक्त का थक्का जमने के लिए विटामिन K आवश्यक है।"},
+{q:"Which gas is used by plants during photosynthesis? / प्रकाश संश्लेषण के दौरान पौधे कौन-सी गैस लेते हैं?",o:["Oxygen / ऑक्सीजन","Carbon dioxide / कार्बन डाइऑक्साइड","Nitrogen / नाइट्रोजन","Hydrogen / हाइड्रोजन"],a:1,e:"Plants use carbon dioxide during photosynthesis. / पौधे प्रकाश संश्लेषण में कार्बन डाइऑक्साइड का उपयोग करते हैं।"},
+{q:"Which organ controls the human nervous system? / मानव तंत्रिका तंत्र को कौन नियंत्रित करता है?",o:["Heart / हृदय","Brain / मस्तिष्क","Liver / यकृत","Kidney / गुर्दा"],a:1,e:"The brain is the main control centre of the nervous system. / मस्तिष्क तंत्रिका तंत्र का मुख्य नियंत्रण केंद्र है।"},
+{q:"Which blood group is known as the universal red cell donor? / किस रक्त समूह को सार्वभौमिक लाल रक्त कोशिका दाता माना जाता है?",o:["AB positive / AB पॉजिटिव","O negative / O नेगेटिव","A positive / A पॉजिटिव","B negative / B नेगेटिव"],a:1,e:"O negative is commonly called the universal red cell donor group. / O नेगेटिव को सार्वभौमिक लाल रक्त कोशिका दाता कहा जाता है।"},
+{q:"Which instrument measures electric current? / विद्युत धारा मापने का यंत्र कौन-सा है?",o:["Voltmeter / वोल्टमीटर","Ammeter / एमीटर","Barometer / बैरोमीटर","Thermometer / थर्मामीटर"],a:1,e:"An ammeter measures electric current. / एमीटर विद्युत धारा मापता है।"},
+{q:"What is the speed of light in vacuum approximately? / निर्वात में प्रकाश की गति लगभग कितनी होती है?",o:["3 × 10⁶ m/s","3 × 10⁸ m/s","3 × 10⁵ m/s","3 × 10⁷ m/s"],a:1,e:"Light travels at approximately 3 × 10⁸ metres per second in vacuum. / निर्वात में प्रकाश लगभग 3 × 10⁸ मीटर प्रति सेकंड चलता है।"},
+{q:"Which is the hardest natural substance? / सबसे कठोर प्राकृतिक पदार्थ कौन-सा है?",o:["Iron / लोहा","Diamond / हीरा","Gold / सोना","Quartz / क्वार्ट्ज"],a:1,e:"Diamond is the hardest naturally occurring material. / हीरा प्राकृतिक रूप से पाया जाने वाला सबसे कठोर पदार्थ है।"},
+{q:"Which layer protects Earth from harmful ultraviolet radiation? / कौन-सी परत पृथ्वी को हानिकारक पराबैंगनी किरणों से बचाती है?",o:["Troposphere / क्षोभमंडल","Ozone layer / ओजोन परत","Mesosphere / मध्यमंडल","Ionosphere / आयनमंडल"],a:1,e:"The ozone layer absorbs much of the Sun's harmful ultraviolet radiation. / ओजोन परत सूर्य की अधिकांश हानिकारक पराबैंगनी किरणों को अवशोषित करती है।"},
+{q:"Which disease is caused by deficiency of Vitamin C? / विटामिन C की कमी से कौन-सा रोग होता है?",o:["Rickets / रिकेट्स","Scurvy / स्कर्वी","Beriberi / बेरी-बेरी","Night blindness / रतौंधी"],a:1,e:"Vitamin C deficiency causes scurvy. / विटामिन C की कमी से स्कर्वी होता है।"},
+{q:"Which is the largest organ of the human body? / मानव शरीर का सबसे बड़ा अंग कौन-सा है?",o:["Liver / यकृत","Skin / त्वचा","Heart / हृदय","Lungs / फेफड़े"],a:1,e:"Skin is the largest organ of the human body. / त्वचा मानव शरीर का सबसे बड़ा अंग है।"},
+{q:"Which gas is commonly known as laughing gas? / किस गैस को सामान्यतः हँसाने वाली गैस कहा जाता है?",o:["Nitrous oxide / नाइट्रस ऑक्साइड","Carbon monoxide / कार्बन मोनोऑक्साइड","Sulphur dioxide / सल्फर डाइऑक्साइड","Methane / मीथेन"],a:0,e:"Nitrous oxide is commonly called laughing gas. / नाइट्रस ऑक्साइड को हँसाने वाली गैस कहा जाता है।"},
+{q:"Which planet is known as the Red Planet? / किस ग्रह को लाल ग्रह कहा जाता है?",o:["Venus / शुक्र","Mars / मंगल","Mercury / बुध","Jupiter / बृहस्पति"],a:1,e:"Mars appears reddish due to iron oxide on its surface. / सतह पर आयरन ऑक्साइड के कारण मंगल लाल दिखाई देता है।"},
+{q:"What is the full form of ATM? / ATM का पूरा नाम क्या है?",o:["Automatic Transfer Machine / ऑटोमैटिक ट्रांसफर मशीन","Automated Teller Machine / ऑटोमेटेड टेलर मशीन","Any Time Money / एनी टाइम मनी","Auto Transaction Mode / ऑटो ट्रांजैक्शन मोड"],a:1,e:"ATM stands for Automated Teller Machine. / ATM का अर्थ ऑटोमेटेड टेलर मशीन है।"},
+{q:"Which tax is directly deducted from an individual's income? / व्यक्ति की आय से सीधे कौन-सा कर लिया जाता है?",o:["GST / जीएसटी","Income Tax / आयकर","Customs Duty / सीमा शुल्क","Excise Duty / उत्पाद शुल्क"],a:1,e:"Income tax is a direct tax on income. / आयकर आय पर लगाया जाने वाला प्रत्यक्ष कर है।"},
+{q:"Which institution is known as the central bank of India? / भारत का केंद्रीय बैंक किसे कहा जाता है?",o:["SBI / एसबीआई","RBI / आरबीआई","PNB / पीएनबी","NABARD / नाबार्ड"],a:1,e:"The Reserve Bank of India is India's central bank. / भारतीय रिजर्व बैंक भारत का केंद्रीय बैंक है।"},
+{q:"Which organ produces insulin? / इंसुलिन किस अंग में बनता है?",o:["Liver / यकृत","Pancreas / अग्न्याशय","Kidney / गुर्दा","Stomach / पेट"],a:1,e:"The pancreas produces insulin. / अग्न्याशय इंसुलिन बनाता है।"}
+],
+
+[
+{q:"When was Bihar separated from Bengal Presidency? / बिहार बंगाल प्रेसीडेंसी से कब अलग हुआ?",o:["22 March 1912","15 August 1947","26 January 1950","1 April 1936"],a:0,e:"Bihar was separated from Bengal on 22 March 1912. / बिहार 22 मार्च 1912 को बंगाल से अलग हुआ।"},
+{q:"Which city is known as the birthplace of Guru Gobind Singh? / गुरु गोबिंद सिंह का जन्मस्थान कौन-सा शहर है?",o:["Gaya / गया","Patna / पटना","Nalanda / नालंदा","Ara / आरा"],a:1,e:"Guru Gobind Singh was born in Patna Sahib. / गुरु गोबिंद सिंह का जन्म पटना साहिब में हुआ था।"},
+{q:"Where is the ancient Nalanda University located? / प्राचीन नालंदा विश्वविद्यालय कहाँ स्थित है?",o:["Patna / पटना","Nalanda, Bihar / नालंदा, बिहार","Vaishali / वैशाली","Rajgir / राजगीर"],a:1,e:"The ancient Nalanda University was located in present-day Nalanda district. / प्राचीन नालंदा विश्वविद्यालय वर्तमान नालंदा जिले में स्थित था।"},
+{q:"Which ancient city of Bihar is associated with Lord Mahavira's birth? / बिहार का कौन-सा प्राचीन क्षेत्र भगवान महावीर के जन्म से जुड़ा है?",o:["Vaishali / वैशाली","Patna / पटना","Bodh Gaya / बोधगया","Rajgir / राजगीर"],a:0,e:"Vaishali is traditionally associated with the birth of Lord Mahavira. / वैशाली को परंपरागत रूप से भगवान महावीर का जन्मस्थान माना जाता है।"},
+{q:"Where did Gautama Buddha attain enlightenment? / गौतम बुद्ध को ज्ञान की प्राप्ति कहाँ हुई थी?",o:["Sarnath / सारनाथ","Bodh Gaya / बोधगया","Kushinagar / कुशीनगर","Lumbini / लुम्बिनी"],a:1,e:"Buddha attained enlightenment at Bodh Gaya in Bihar. / बुद्ध को बिहार के बोधगया में ज्ञान प्राप्त हुआ था।"},
+{q:"Which river flows through Patna? / पटना से होकर कौन-सी नदी बहती है?",o:["Yamuna / यमुना","Ganga / गंगा","Narmada / नर्मदा","Tapti / ताप्ती"],a:1,e:"The Ganga flows through Patna. / गंगा नदी पटना से होकर बहती है।"},
+{q:"Which festival is especially famous in Bihar? / बिहार का कौन-सा त्योहार विशेष रूप से प्रसिद्ध है?",o:["Onam / ओणम","Chhath Puja / छठ पूजा","Bihu / बिहू","Pongal / पोंगल"],a:1,e:"Chhath Puja is one of the most important festivals of Bihar. / छठ पूजा बिहार के सबसे महत्वपूर्ण त्योहारों में से एक है।"},
+{q:"Which is the famous silk-producing city of Bihar? / बिहार का प्रसिद्ध रेशम उत्पादक शहर कौन-सा है?",o:["Darbhanga / दरभंगा","Bhagalpur / भागलपुर","Patna / पटना","Purnia / पूर्णिया"],a:1,e:"Bhagalpur is famous for its silk industry. / भागलपुर अपने रेशम उद्योग के लिए प्रसिद्ध है।"},
+{q:"Which place in Bihar is famous for the Mahabodhi Temple? / बिहार में महाबोधि मंदिर कहाँ स्थित है?",o:["Bodh Gaya / बोधगया","Rajgir / राजगीर","Vaishali / वैशाली","Pawapuri / पावापुरी"],a:0,e:"The Mahabodhi Temple is located at Bodh Gaya. / महाबोधि मंदिर बोधगया में स्थित है।"},
+{q:"Which famous ancient university was located in Bihar? / बिहार में कौन-सा प्रसिद्ध प्राचीन विश्वविद्यालय स्थित था?",o:["Taxila / तक्षशिला","Nalanda / नालंदा","Vikramashila / विक्रमशिला","Both Nalanda and Vikramashila / नालंदा और विक्रमशिला दोनों"],a:3,e:"Both Nalanda and Vikramashila were renowned ancient centres of learning in Bihar. / नालंदा और विक्रमशिला दोनों बिहार के प्रसिद्ध प्राचीन शिक्षा केंद्र थे।"},
+{q:"Who was the first Chief Minister of Bihar? / बिहार के प्रथम मुख्यमंत्री कौन थे?",o:["Shri Krishna Sinha / श्रीकृष्ण सिंह","Anugrah Narayan Sinha / अनुग्रह नारायण सिंह","Karpoori Thakur / कर्पूरी ठाकुर","Nitish Kumar / नीतीश कुमार"],a:0,e:"Shri Krishna Sinha was the first Chief Minister of Bihar. / श्रीकृष्ण सिंह बिहार के प्रथम मुख्यमंत्री थे।"},
+{q:"Which district of Bihar is famous for Madhubani painting? / बिहार का कौन-सा जिला मधुबनी चित्रकला के लिए प्रसिद्ध है?",o:["Gaya / गया","Madhubani / मधुबनी","Rohtas / रोहतास","Buxar / बक्सर"],a:1,e:"Madhubani district is famous for Madhubani or Mithila painting. / मधुबनी जिला मधुबनी या मिथिला चित्रकला के लिए प्रसिद्ध है।"},
+{q:"Which place in Bihar is associated with the ancient republic of Licchavi? / बिहार का कौन-सा स्थान प्राचीन लिच्छवि गणराज्य से जुड़ा है?",o:["Vaishali / वैशाली","Patna / पटना","Sasaram / सासाराम","Munger / मुंगेर"],a:0,e:"Vaishali was an important centre of the Licchavi republic. / वैशाली लिच्छवि गणराज्य का एक महत्वपूर्ण केंद्र था।"},
+{q:"Which river forms part of the boundary between Bihar and Uttar Pradesh? / कौन-सी नदी बिहार और उत्तर प्रदेश के बीच सीमा का एक भाग बनाती है?",o:["Ganga / गंगा","Yamuna / यमुना","Kaveri / कावेरी","Mahanadi / महानदी"],a:0,e:"The Ganga forms part of the boundary between Bihar and Uttar Pradesh. / गंगा नदी बिहार और उत्तर प्रदेश के बीच सीमा का एक भाग बनाती है।"},
+{q:"Where is the Vikramshila Gangetic Dolphin Sanctuary located? / विक्रमशिला गंगा डॉल्फिन अभयारण्य कहाँ स्थित है?",o:["Patna / पटना","Bhagalpur / भागलपुर","Gaya / गया","Darbhanga / दरभंगा"],a:1,e:"It is located along the Ganga near Bhagalpur. / यह भागलपुर के पास गंगा नदी में स्थित है।"},
+{q:"Which famous freedom fighter from Bihar is associated with the 1857 revolt? / बिहार के किस प्रसिद्ध स्वतंत्रता सेनानी का संबंध 1857 के विद्रोह से है?",o:["Kunwar Singh / कुँवर सिंह","Rajendra Prasad / राजेंद्र प्रसाद","Jayaprakash Narayan / जयप्रकाश नारायण","Sri Krishna Sinha / श्रीकृष्ण सिंह"],a:0,e:"Kunwar Singh led the revolt in Bihar in 1857. / कुँवर सिंह ने 1857 में बिहार में विद्रोह का नेतृत्व किया।"},
+{q:"Which is the official language of Bihar? / बिहार की राजभाषा क्या है?",o:["Bengali / बंगाली","Hindi / हिंदी","Punjabi / पंजाबी","Marathi / मराठी"],a:1,e:"Hindi is the official language of Bihar. / हिंदी बिहार की राजभाषा है।"},
+{q:"Which national park is located in Bihar? / बिहार में कौन-सा राष्ट्रीय उद्यान स्थित है?",o:["Jim Corbett National Park / जिम कॉर्बेट राष्ट्रीय उद्यान","Valmiki National Park / वाल्मीकि राष्ट्रीय उद्यान","Gir National Park / गिर राष्ट्रीय उद्यान","Kaziranga National Park / काजीरंगा राष्ट्रीय उद्यान"],a:1,e:"Valmiki National Park is located in West Champaran, Bihar. / वाल्मीकि राष्ट्रीय उद्यान बिहार के पश्चिम चंपारण में स्थित है।"},
+{q:"Which district is associated with the ancient ruins of Vikramshila University? / विक्रमशिला विश्वविद्यालय के प्राचीन अवशेष किस जिले में हैं?",o:["Bhagalpur / भागलपुर","Nalanda / नालंदा","Patna / पटना","Gopalganj / गोपालगंज"],a:0,e:"The remains of Vikramshila University are located in Bhagalpur district. / विक्रमशिला विश्वविद्यालय के अवशेष भागलपुर जिले में स्थित हैं।"},
+{q:"Which place in Bihar is famous for the tomb of Sher Shah Suri? / शेरशाह सूरी का मकबरा बिहार में कहाँ स्थित है?",o:["Patna / पटना","Sasaram / सासाराम","Bihar Sharif / बिहार शरीफ","Ara / आरा"],a:1,e:"Sher Shah Suri's tomb is located in Sasaram. / शेरशाह सूरी का मकबरा सासाराम में स्थित है।"},
+{q:"Which river is associated with the city of Gaya? / गया शहर किस नदी के किनारे स्थित है?",o:["Falgu / फल्गु","Ganga / गंगा","Kosi / कोसी","Son / सोन"],a:0,e:"The Falgu River flows through Gaya. / फल्गु नदी गया से होकर बहती है।"},
+{q:"Who was the first President of India, born in Bihar? / बिहार में जन्मे भारत के प्रथम राष्ट्रपति कौन थे?",o:["Dr. Rajendra Prasad / डॉ. राजेंद्र प्रसाद","Dr. Zakir Husain / डॉ. जाकिर हुसैन","Dr. S. Radhakrishnan / डॉ. एस. राधाकृष्णन","V. V. Giri / वी. वी. गिरि"],a:0,e:"Dr. Rajendra Prasad was born in Zeradei, Bihar. / डॉ. राजेंद्र प्रसाद का जन्म बिहार के जीरादेई में हुआ था।"},
+{q:"Which city is famous for the ruins of the ancient city of Pataliputra? / प्राचीन पाटलिपुत्र के अवशेष किस शहर में मिलते हैं?",o:["Patna / पटना","Gaya / गया","Bhagalpur / भागलपुर","Muzaffarpur / मुजफ्फरपुर"],a:0,e:"Ancient Pataliputra is associated with present-day Patna. / प्राचीन पाटलिपुत्र वर्तमान पटना से जुड़ा है।"},
+{q:"Which district of Bihar is famous for litchi production? / बिहार का कौन-सा जिला लीची उत्पादन के लिए प्रसिद्ध है?",o:["Muzaffarpur / मुजफ्फरपुर","Buxar / बक्सर","Jamui / जमुई","Arwal / अरवल"],a:0,e:"Muzaffarpur is famous for Shahi litchi. / मुजफ्फरपुर शाही लीची के लिए प्रसिद्ध है।"},
+{q:"Which movement did Mahatma Gandhi start in Champaran in 1917? / महात्मा गांधी ने 1917 में चंपारण में कौन-सा आंदोलन शुरू किया?",o:["Khilafat Movement / खिलाफत आंदोलन","Champaran Satyagraha / चंपारण सत्याग्रह","Quit India Movement / भारत छोड़ो आंदोलन","Bardoli Satyagraha / बारडोली सत्याग्रह"],a:1,e:"The Champaran Satyagraha was Gandhi's first major Satyagraha in India. / चंपारण सत्याग्रह भारत में गांधीजी का पहला प्रमुख सत्याग्रह था।"},
+{q:"Which city of Bihar is known for its historical connection with the Maurya Empire? / बिहार का कौन-सा शहर मौर्य साम्राज्य से ऐतिहासिक रूप से जुड़ा है?",o:["Patna / पटना","Purnia / पूर्णिया","Bettiah / बेतिया","Saharsa / सहरसा"],a:0,e:"Pataliputra, present-day Patna, was the capital of the Maurya Empire. / मौर्य साम्राज्य की राजधानी पाटलिपुत्र, वर्तमान पटना, थी।"},
+{q:"Which is the major language spoken in the Mithila region of Bihar? / बिहार के मिथिला क्षेत्र में प्रमुख रूप से कौन-सी भाषा बोली जाती है?",o:["Bhojpuri / भोजपुरी","Maithili / मैथिली","Magahi / मगही","Angika / अंगिका"],a:1,e:"Maithili is widely spoken in the Mithila region. / मिथिला क्षेत्र में मैथिली व्यापक रूप से बोली जाती है।"},
+{q:"Which place in Bihar is associated with the Jain pilgrimage site Jal Mandir? / बिहार का कौन-सा स्थान जैन तीर्थस्थल जल मंदिर के लिए प्रसिद्ध है?",o:["Pawapuri / पावापुरी","Bodh Gaya / बोधगया","Rajgir / राजगीर","Vaishali / वैशाली"],a:0,e:"Jal Mandir is located at Pawapuri. / जल मंदिर पावापुरी में स्थित है।"},
+{q:"Which famous leader is associated with the Total Revolution movement? / संपूर्ण क्रांति आंदोलन से कौन-से प्रसिद्ध नेता जुड़े थे?",o:["Jayaprakash Narayan / जयप्रकाश नारायण","Subhas Chandra Bose / सुभाष चंद्र बोस","Bhagat Singh / भगत सिंह","Bal Gangadhar Tilak / बाल गंगाधर तिलक"],a:0,e:"Jayaprakash Narayan led the Total Revolution movement. / जयप्रकाश नारायण ने संपूर्ण क्रांति आंदोलन का नेतृत्व किया।"},
+{q:"Which city is the headquarters of East Central Railway? / पूर्व मध्य रेलवे का मुख्यालय किस शहर में है?",o:["Patna / पटना","Hajipur / हाजीपुर","Gaya / गया","Muzaffarpur / मुजफ्फरपुर"],a:1,e:"East Central Railway has its headquarters at Hajipur, Bihar. / पूर्व मध्य रेलवे का मुख्यालय बिहार के हाजीपुर में है।"}
+]
+
+
+
+];
+
+let currentSet=0,currentQuestion=0,answers=[],marked=[],seconds=1800,timerInterval=null,finished=false;
+
+const grid=document.getElementById("setGrid");
+for(let i=1;i<=10;i++){
+ const c=document.createElement("article");
+ c.className="set-card";
+ c.style.setProperty("--accent",colors[i-1][0]);
+ c.style.setProperty("--soft",colors[i-1][1]);
+ c.innerHTML=`<div class="set-number">0${i}</div>
+ <h3>Test Set ${String(i).padStart(2,"0")}</h3>
+ <p>General Knowledge & Current Affairs<br>सामान्य ज्ञान एवं समसामयिकी</p>
+ <div class="card-info"><span>30 Questions</span><span>30 Marks</span><span>30 Minutes</span></div>
+ <button class="start-btn" onclick="startTest(${i-1})">Start Test 0${i} →</button>`;
+ grid.appendChild(c);
+}
+
+function startTest(setIndex){
+ if(!questionSets[setIndex] || questionSets[setIndex].length!==30){
+  alert("This test set is not ready yet. Please add its 30 questions first.");
+  return;
+ }
+ currentSet=setIndex;currentQuestion=0;
+ answers=Array(30).fill(null);marked=Array(30).fill(false);
+ seconds=1800;finished=false;
+ document.getElementById("homePage").style.display="none";
+ document.getElementById("hero").style.display="none";
+ document.getElementById("testPage").style.display="block";
+ document.getElementById("resultPage").style.display="none";
+ document.getElementById("testTitle").textContent="BLET – Test Set "+String(setIndex+1).padStart(2,"0");
+ renderQuestion();
+ updateTimer();
+ clearInterval(timerInterval);
+ timerInterval=setInterval(updateTimer,1000);
+ window.scrollTo(0,0);
+}
+
+function renderQuestion(){
+ const q=questionSets[currentSet][currentQuestion];
+ document.getElementById("questionCount").textContent=(currentQuestion+1)+"/30";
+ document.getElementById("questionNumber").textContent="Question "+(currentQuestion+1);
+ document.getElementById("questionText").textContent=q.q;
+ const box=document.getElementById("options");box.innerHTML="";
+ q.o.forEach((option,i)=>{
+  const b=document.createElement("button");
+  b.className="option"+(answers[currentQuestion]===i?" selected":"");
+  b.textContent=String.fromCharCode(65+i)+". "+option;
+  b.onclick=()=>{answers[currentQuestion]=i;renderQuestion()};
+  box.appendChild(b);
+ });
+ renderNumbers();
+}
+function renderNumbers(){
+ const box=document.getElementById("numbers");box.innerHTML="";
+ for(let i=0;i<30;i++){
+  const b=document.createElement("button");
+  b.className="num"+(answers[i]!==null?" answered":"")+(marked[i]?" marked":"")+(i===currentQuestion?" current":"");
+  b.textContent=i+1;b.onclick=()=>{currentQuestion=i;renderQuestion()};
+  box.appendChild(b);
+ }
+}
+function nextQuestion(){if(currentQuestion<29){currentQuestion++;renderQuestion()}}
+function previousQuestion(){if(currentQuestion>0){currentQuestion--;renderQuestion()}}
+function clearAnswer(){answers[currentQuestion]=null;renderQuestion()}
+function markQuestion(){marked[currentQuestion]=!marked[currentQuestion];renderNumbers();if(currentQuestion<29)nextQuestion()}
+function updateTimer(){
+ const m=Math.floor(seconds/60),s=seconds%60;
+ document.getElementById("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+ if(seconds<=0){submitTest(true);return}
+ seconds--;
+}
+function submitTest(auto=false){
+ if(finished)return;
+ if(!auto&&!confirm("Are you sure you want to submit your test?"))return;
+ finished=true;clearInterval(timerInterval);
+ const qs=questionSets[currentSet];
+ let correct=0,wrong=0,unanswered=0;
+ qs.forEach((q,i)=>{if(answers[i]===q.a)correct++;else if(answers[i]===null)unanswered++;else wrong++});
+ let completed=JSON.parse(localStorage.getItem("bletCompleted")||"[]");
+ if(!completed.includes(currentSet+1))completed.push(currentSet+1);
+ localStorage.setItem("bletCompleted",JSON.stringify(completed));
+ updateProgress();
+ document.getElementById("testPage").style.display="none";
+ document.getElementById("resultPage").style.display="block";
+ let html=`<h2>Test Completed!</h2><div class="score">${correct} / 30</div>
+ <p>Correct: ${correct} | Wrong: ${wrong} | Unanswered: ${unanswered}</p>
+ <h3 class="review">Answer Review</h3>`;
+ qs.forEach((q,i)=>{
+  html+=`<div class="review-item"><strong>Q${i+1}. ${q.q}</strong><br>
+  Your Answer: ${answers[i]===null?"Not Answered":q.o[answers[i]]}<br>
+  Correct Answer: <span class="correct">${q.o[q.a]}</span><br>
+  <span class="${answers[i]===q.a?"correct":"wrong"}">${answers[i]===q.a?"Correct":"Incorrect"}</span><br>
+  Explanation: ${q.e||"Correct answer shown above."}</div>`;
+ });
+ html+=`<br><button class="btn-primary" onclick="backHome()">Back to Test Sets</button>`;
+ document.getElementById("resultContent").innerHTML=html;
+ window.scrollTo(0,0);
+}
+function updateProgress(){
+ const done=JSON.parse(localStorage.getItem("bletCompleted")||"[]");
+ document.getElementById("progressText").textContent=done.length+" of 10 tests completed";
+ document.getElementById("progressFill").style.width=(done.length*10)+"%";
+}
+function backHome(){
+ document.getElementById("resultPage").style.display="none";
+ document.getElementById("homePage").style.display="block";
+ document.getElementById("hero").style.display="block";
+ window.scrollTo(0,0);
+}
+updateProgress();
+</script>
+</body>
+</html>
+

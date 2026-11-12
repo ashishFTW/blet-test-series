@@ -8,6 +8,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+
 <style>
 :root {
   --navy: #101b42;
@@ -741,11 +742,12 @@ footer strong {
 ========================================== */
 
 const TEST_LINKS = {
-  computer: "./Computer Awareness/index.html",
-  reasoning: "./Reasoning Test/index.html",
-  gk: "#",
-  library: "#"
+    computer: "./Computer-Awareness/index.html",
+    reasoning: "./Reasoning-Test/index.html"
 };
+
+document.getElementById("computerLink").href = TEST_LINKS.computer;
+document.getElementById("reasoningLink").href = TEST_LINKS.reasoning;
 
 /* CONNECT MAIN TEST BUTTONS */
 document.getElementById("computerLink").href = TEST_LINKS.computer;

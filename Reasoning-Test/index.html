@@ -1,0 +1,1655 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET Reasoning Test Series | Jahnavi Jee</title>
+<style>
+:root{
+  --wine:#641E35;--wine2:#8E3455;--gold:#D4A45F;
+  --cream:#FFF7ED;--pink:#FCE7EF;--dark:#3B1728;
+  --white:#fff;--green:#16845B;--red:#C0394B;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:var(--dark);
+ background:linear-gradient(135deg,var(--cream),var(--pink));min-height:100vh}
+header{background:linear-gradient(120deg,#3B1728,#641E35,#963F60);
+ color:white;text-align:center;padding:30px 16px;border-bottom:5px solid var(--gold)}
+header h1{margin:0 0 8px;font-size:clamp(23px,4vw,36px)}
+header p{margin:6px 0;color:#FFE9CF}
+.tag{display:inline-block;border:1px solid var(--gold);border-radius:30px;
+ padding:7px 14px;margin-top:10px;color:#FFE5B5;font-size:13px}
+.container{max-width:1050px;margin:24px auto;padding:0 14px}
+.panel{background:white;border:1px solid #efd9df;border-radius:18px;
+ padding:22px;margin-bottom:18px;box-shadow:0 8px 25px #641e3510}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.stat{background:#fff;border:1px solid #efd9df;border-radius:14px;padding:15px;text-align:center}
+.stat strong{display:block;font-size:25px;color:var(--wine)}
+.stat span{font-size:12px;color:#765666}
+button,select{font:inherit}
+.btn{border:0;border-radius:10px;padding:12px 18px;background:var(--wine);
+ color:white;font-weight:bold;cursor:pointer}
+.btn:hover{background:var(--wine2)}
+.btn.gold{background:var(--gold);color:#3B1728}
+.btn.light{background:#FCE7EF;color:var(--wine)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+select{padding:11px;border:1px solid #dfc2cb;border-radius:10px;background:white;width:100%}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row>*{flex:1}
+.hidden{display:none!important}
+.progress{height:8px;background:#f2e5e9;border-radius:10px;overflow:hidden;margin:12px 0}
+.progress div{height:100%;width:0;background:var(--gold);transition:.2s}
+.topline{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.timer{background:#fff0d9;color:#7a4510;border-radius:10px;padding:9px 14px;font-weight:bold}
+.timer.danger{background:#ffe2e2;color:#a21d2d}
+.qnum{color:var(--wine2);font-weight:bold;font-size:14px}
+.question{font-size:19px;line-height:1.5;font-weight:bold;margin:15px 0}
+.hindi{display:block;color:#785568;font-weight:500;margin-top:5px}
+.options{display:grid;gap:10px;margin:18px 0}
+.option{display:flex;gap:10px;align-items:flex-start;text-align:left;width:100%;
+ border:1px solid #ead6dd;background:#fffafa;padding:13px;border-radius:12px;
+ cursor:pointer;color:var(--dark)}
+.option:hover{border-color:var(--gold);background:#fff7e9}
+.option.selected{border:2px solid var(--wine);background:#fceaf0}
+.option.correct{border:2px solid var(--green);background:#e9f8f0}
+.option.wrong{border:2px solid var(--red);background:#fff0f0}
+.option .letter{font-weight:bold;color:var(--wine);min-width:22px}
+.palette{display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:8px;margin:15px 0}
+.palette button{padding:10px 4px;border:1px solid #e2cbd3;border-radius:8px;background:#fff;color:var(--dark);cursor:pointer}
+.palette button.answered{background:#f5dfb9;border-color:var(--gold)}
+.palette button.current{background:var(--wine);color:white;border-color:var(--wine)}
+.palette button.review{outline:2px solid #8e3455}
+.explanation{background:#f8f0f3;border-left:4px solid var(--gold);padding:13px;border-radius:8px;margin-top:14px;line-height:1.6}
+.result{text-align:center}
+.score{font-size:42px;color:var(--wine);font-weight:bold;margin:12px}
+footer{text-align:center;color:#866b78;padding:25px;font-size:13px}
+@media(max-width:600px){
+ .stats{grid-template-columns:repeat(3,1fr)}
+ .stat{padding:11px 5px}.stat strong{font-size:20px}
+ .panel{padding:16px}.question{font-size:17px}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Reasoning & Analytical Ability</h1>
+  <p>बिहार पुस्तकालय पात्रता परीक्षा (BLET)</p>
+  <h2 style="margin:12px 0 0;color:#FFE5B5">Special Test Series for Jahnavi Jee</h2>
+  <span class="tag">ENGLISH + हिंदी | PRACTICE & MOCK TEST</span>
+</header>
+
+<main class="container">
+  <section class="stats">
+    <div class="stat"><strong>25</strong><span>SYLLABUS TOPICS</span></div>
+    <div class="stat"><strong>10</strong><span>QUESTIONS / TEST</span></div>
+    <div class="stat"><strong>10 Min</strong><span>TEST DURATION</span></div>
+  </section>
+
+  <section id="home" class="panel">
+    <h2 style="color:var(--wine);margin-top:0">Welcome, Jahnavi Jee!</h2>
+    <p>Prepare for the BLET Reasoning section with bilingual practice questions.</p>
+    <div class="row">
+      <div>
+        <label for="testMode"><b>Select Test</b></label>
+        <select id="testMode">
+          <option value="mixed">Mixed Practice Test – 10 Questions</option>
+          <option value="mock">Mock Test – 10 Questions</option>
+        </select>
+      </div>
+      <div>
+        <label for="questionMode"><b>Question Language</b></label>
+        <select id="questionMode">
+          <option value="both">English + Hindi</option>
+          <option value="en">English Only</option>
+          <option value="hi">केवल हिन्दी</option>
+        </select>
+      </div>
+    </div>
+    <div style="margin:20px 0">
+      <b>Topics included in the syllabus</b>
+      <div id="topicList" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:12px"></div>
+    </div>
+    <button class="btn" onclick="startTest()">Start Test Now →</button>
+    <p style="font-size:12px;color:#866b78;margin-bottom:0">Each test: 10 questions | 10 minutes | 1 mark per question</p>
+
+<section class="panel">
+  <h2 style="color:var(--wine)">📚 Available Test Series</h2>
+  <p>Select a topic-wise test or mock test to practise.</p>
+  <div id="testSeriesList"></div>
+</section>
+
+  </section>
+
+  <section id="test" class="panel hidden">
+    <div class="topline">
+      <div><span class="qnum" id="qCounter">Question 1 of 10</span>
+        <div class="progress"><div id="progressBar"></div></div>
+      </div>
+      <div class="timer" id="timer">10:00</div>
+    </div>
+    <div class="topline">
+      <span id="topicName" class="qnum"></span>
+      <span style="font-size:13px;color:#866b78">Choose one correct answer</span>
+    </div>
+    <div id="questionText" class="question"></div>
+    <div id="options" class="options"></div>
+    <div class="row">
+      <button class="btn light" onclick="previousQuestion()">← Previous</button>
+      <button class="btn light" onclick="markReview()">Mark for Review</button>
+      <button class="btn" id="nextBtn" onclick="nextQuestion()">Save & Next →</button>
+    </div>
+    <hr style="border:0;border-top:1px solid #f0e1e6;margin:22px 0">
+    <b>Question Navigation</b>
+    <div id="palette" class="palette"></div>
+    <button class="btn gold" style="width:100%" onclick="submitTest()">Submit Test</button>
+  </section>
+
+  <section id="result" class="panel hidden">
+    <div class="result">
+      <h2 style="color:var(--wine)">Test Completed!</h2>
+      <p>Your BLET Reasoning Test Result</p>
+      <div class="score" id="score">0/10</div>
+      <h3 id="performance"></h3>
+      <div class="stats">
+        <div class="stat"><strong id="correctCount">0</strong><span>Correct</span></div>
+        <div class="stat"><strong id="wrongCount">0</strong><span>Wrong</span></div>
+        <div class="stat"><strong id="skipCount">0</strong><span>Unattempted</span></div>
+      </div>
+    </div>
+    <h3 style="color:var(--wine)">Answer Review / उत्तर समीक्षा</h3>
+    <div id="reviewList"></div>
+    <div class="row" style="margin-top:20px">
+      <button class="btn" onclick="restartTest()">Try Again</button>
+      <button class="btn light" onclick="goHome()">Home</button>
+    </div>
+  </section>
+</main>
+<footer>BLET Reasoning & Analytical Ability | Prepared for Jahnavi Jee</footer>
+
+<script>
+const topics = [
+"Analogy / समानता","Number Analogy / संख्या समानता",
+"Number Series / संख्या श्रृंखला","Alphabet Series / अक्षर श्रृंखला",
+"Mixed Series / मिश्रित श्रृंखला","Coding-Decoding / कूटलेखन-कूटवाचन",
+"Blood Relation / रक्त संबंध","Syllogism / न्यायवाक्य",
+"Venn Diagram / वेन आरेख","Classification / वर्गीकरण",
+"Odd One Out / विषम चुनना","Direction Sense / दिशा ज्ञान",
+"Distance & Position / दूरी एवं स्थिति","Seating Arrangement / बैठने की व्यवस्था",
+"Ranking / क्रम निर्धारण","Logical Puzzles / तार्किक पहेलियाँ",
+"Data Interpretation / डेटा व्याख्या","Table, Chart & Graph / तालिका, चार्ट एवं ग्राफ",
+"Statement & Conclusion / कथन एवं निष्कर्ष",
+"Statement & Assumption / कथन एवं धारणा","Cause & Effect / कारण एवं प्रभाव",
+"Decision Making / निर्णय क्षमता","Mirror Image / दर्पण प्रतिबिंब",
+"Water Image / जल प्रतिबिंब","Paper Folding & Figure Series / कागज मोड़ना एवं आकृति श्रृंखला"
+];
+
+/* Question format:
+ {topic:"Topic name", en:"Question", hi:"प्रश्न",
+  options:[["English","हिन्दी"], ...], answer:0,
+  exp:"English explanation", expHi:"हिन्दी में व्याख्या"}
+ Add more questions in this same format.
+*/
+const questionBank = [
+{topic:0,en:"Book is related to Reading in the same way as Food is related to:",hi:"पुस्तक का संबंध पढ़ने से है, उसी प्रकार भोजन का संबंध किससे है?",options:[["Cooking","पकाने"],["Eating","खाने"],["Buying","खरीदने"],["Selling","बेचने"]],answer:1,exp:"We read a book and eat food.",expHi:"हम पुस्तक पढ़ते हैं और भोजन खाते हैं।"},
+{topic:1,en:"8 : 64 :: 6 : ?",hi:"8 : 64 :: 6 : ?",options:[["12","12"],["18","18"],["36","36"],["48","48"]],answer:2,exp:"8² = 64, so 6² = 36.",expHi:"8 का वर्ग 64 है, इसलिए 6 का वर्ग 36 होगा।"},
+{topic:2,en:"Find the next number: 2, 4, 8, 16, ?",hi:"अगली संख्या ज्ञात कीजिए: 2, 4, 8, 16, ?",options:[["20","20"],["24","24"],["30","30"],["32","32"]],answer:3,exp:"Each number is multiplied by 2.",expHi:"प्रत्येक संख्या को 2 से गुणा किया गया है।"},
+{topic:3,en:"Complete the series: A, C, E, G, ?",hi:"श्रृंखला पूरी कीजिए: A, C, E, G, ?",options:[["H","H"],["I","I"],["J","J"],["K","K"]],answer:1,exp:"One letter is skipped each time: A, C, E, G, I.",expHi:"हर बार एक अक्षर छोड़ा गया है: A, C, E, G, I।"},
+{topic:4,en:"Find the missing term: A1, B2, C3, D4, ?",hi:"लुप्त पद ज्ञात कीजिए: A1, B2, C3, D4, ?",options:[["E5","E5"],["F5","F5"],["E6","E6"],["F6","F6"]],answer:0,exp:"Letters and numbers both increase by one.",expHi:"अक्षर और संख्या दोनों क्रमशः एक-एक बढ़ रहे हैं।"},
+{topic:5,en:"If CAT is coded as DBU, how is DOG coded?",hi:"यदि CAT को DBU लिखा जाता है, तो DOG को कैसे लिखा जाएगा?",options:[["EPH","EPH"],["EOG","EOG"],["CNG","CNG"],["FPH","FPH"]],answer:0,exp:"Each letter is replaced by the next letter in the alphabet.",expHi:"हर अक्षर के स्थान पर अंग्रेजी वर्णमाला का अगला अक्षर लिखा गया है।"},
+{topic:6,en:"A is the brother of B. B is the sister of C. How is A related to C?",hi:"A, B का भाई है। B, C की बहन है। A का C से क्या संबंध है?",options:[["Father","पिता"],["Brother","भाई"],["Uncle","चाचा"],["Cousin","चचेरा भाई"]],answer:1,exp:"A and C are siblings, and A is male; therefore, A is C's brother.",expHi:"A और C भाई-बहन हैं तथा A पुरुष है, इसलिए A, C का भाई है।"},
+{topic:7,en:"Statements: All roses are flowers. All flowers are plants. Which conclusion follows?",hi:"कथन: सभी गुलाब फूल हैं। सभी फूल पौधे हैं। कौन-सा निष्कर्ष सही है?",options:[["All roses are plants","सभी गुलाब पौधे हैं"],["All plants are roses","सभी पौधे गुलाब हैं"],["No rose is a plant","कोई गुलाब पौधा नहीं है"],["Some roses are not flowers","कुछ गुलाब फूल नहीं हैं"]],answer:0,exp:"Roses are flowers, and all flowers are plants. Hence all roses are plants.",expHi:"गुलाब फूल हैं और सभी फूल पौधे हैं। इसलिए सभी गुलाब पौधे हैं।"},
+{topic:11,en:"A person walks 5 km north and then 3 km south. How far is the person from the starting point?",hi:"एक व्यक्ति 5 किमी उत्तर और फिर 3 किमी दक्षिण चलता है। वह प्रारंभिक स्थान से कितनी दूर है?",options:[["2 km north","2 किमी उत्तर"],["2 km south","2 किमी दक्षिण"],["8 km north","8 किमी उत्तर"],["8 km south","8 किमी दक्षिण"]],answer:0,exp:"Net distance = 5 − 3 = 2 km north.",expHi:"कुल दूरी = 5 − 3 = 2 किमी उत्तर।"},
+{topic:14,en:"In a class, Ravi is 7th from the top and 18th from the bottom. How many students are there?",hi:"एक कक्षा में रवि ऊपर से 7वें और नीचे से 18वें स्थान पर है। कक्षा में कुल कितने विद्यार्थी हैं?",options:[["23","23"],["24","24"],["25","25"],["26","26"]],answer:1,exp:"Total = 7 + 18 − 1 = 24 students.",expHi:"कुल विद्यार्थी = 7 + 18 − 1 = 24।"},
+
+// SET 01 – ANALOGY & NUMBER ANALOGY
+
+{
+topic:0,
+en:"Doctor is related to Hospital in the same way as Teacher is related to:",
+hi:"डॉक्टर का संबंध अस्पताल से है, उसी प्रकार शिक्षक का संबंध किससे है?",
+options:[
+["School","विद्यालय"],
+["Market","बाजार"],
+["Bank","बैंक"],
+["Court","न्यायालय"]
+],
+answer:0,
+exp:"A doctor works in a hospital and a teacher works in a school.",
+expHi:"डॉक्टर अस्पताल में काम करता है और शिक्षक विद्यालय में पढ़ाते हैं।"
+},
+
+{
+topic:0,
+en:"Bird is related to Fly in the same way as Fish is related to:",
+hi:"पक्षी का संबंध उड़ने से है, उसी प्रकार मछली का संबंध किससे है?",
+options:[
+["Walk","चलना"],
+["Swim","तैरना"],
+["Run","दौड़ना"],
+["Jump","कूदना"]
+],
+answer:1,
+exp:"Birds fly and fish swim.",
+expHi:"पक्षी उड़ते हैं और मछलियाँ तैरती हैं।"
+},
+
+{
+topic:0,
+en:"Pen is related to Writing in the same way as Knife is related to:",
+hi:"पेन का संबंध लिखने से है, उसी प्रकार चाकू का संबंध किससे है?",
+options:[
+["Reading","पढ़ना"],
+["Cutting","काटना"],
+["Drawing","चित्र बनाना"],
+["Painting","रंग करना"]
+],
+answer:1,
+exp:"A pen is used for writing and a knife is used for cutting.",
+expHi:"पेन का उपयोग लिखने के लिए और चाकू का उपयोग काटने के लिए होता है।"
+},
+
+{
+topic:0,
+en:"Eye is related to Seeing in the same way as Ear is related to:",
+hi:"आँख का संबंध देखने से है, उसी प्रकार कान का संबंध किससे है?",
+options:[
+["Speaking","बोलना"],
+["Hearing","सुनना"],
+["Walking","चलना"],
+["Smelling","सूँघना"]
+],
+answer:1,
+exp:"Eyes help us see and ears help us hear.",
+expHi:"आँखों से हम देखते हैं और कानों से सुनते हैं।"
+},
+
+{
+topic:0,
+en:"January is related to Month in the same way as Monday is related to:",
+hi:"जनवरी का संबंध महीने से है, उसी प्रकार सोमवार का संबंध किससे है?",
+options:[
+["Year","वर्ष"],
+["Week","सप्ताह"],
+["Day","दिन"],
+["Date","तारीख"]
+],
+answer:2,
+exp:"January is a month and Monday is a day.",
+expHi:"जनवरी एक महीना है और सोमवार एक दिन है।"
+},
+
+{
+topic:1,
+en:"5 : 25 :: 9 : ?",
+hi:"5 : 25 :: 9 : ?",
+options:[
+["18","18"],
+["45","45"],
+["81","81"],
+["90","90"]
+],
+answer:2,
+exp:"5² = 25, so 9² = 81.",
+expHi:"5 का वर्ग 25 है, उसी प्रकार 9 का वर्ग 81 होगा।"
+},
+
+{
+topic:1,
+en:"4 : 16 :: 7 : ?",
+hi:"4 : 16 :: 7 : ?",
+options:[
+["21","21"],
+["28","28"],
+["49","49"],
+["56","56"]
+],
+answer:2,
+exp:"4² = 16, so 7² = 49.",
+expHi:"4 का वर्ग 16 है, उसी प्रकार 7 का वर्ग 49 होगा।"
+},
+
+{
+topic:1,
+en:"3 : 12 :: 5 : ?",
+hi:"3 : 12 :: 5 : ?",
+options:[
+["20","20"],
+["25","25"],
+["30","30"],
+["35","35"]
+],
+answer:0,
+exp:"3 × 4 = 12, so 5 × 4 = 20.",
+expHi:"3 × 4 = 12, उसी प्रकार 5 × 4 = 20 होगा।"
+},
+
+{
+topic:1,
+en:"6 : 42 :: 8 : ?",
+hi:"6 : 42 :: 8 : ?",
+options:[
+["56","56"],
+["64","64"],
+["72","72"],
+["80","80"]
+],
+answer:2,
+exp:"6 × 7 = 42, so 8 × 9 = 72.",
+expHi:"6 × 7 = 42, उसी प्रकार 8 × 9 = 72 होगा।"
+},
+
+{
+topic:1,
+en:"2 : 8 :: 4 : ?",
+hi:"2 : 8 :: 4 : ?",
+options:[
+["16","16"],
+["32","32"],
+["64","64"],
+["12","12"]
+],
+answer:1,
+exp:"2³ = 8, so 4³ = 64. Correct option is C.",
+expHi:"2 का घन 8 है, उसी प्रकार 4 का घन 64 होगा।"
+},
+
+// SET 02 – NUMBER SERIES
+
+{
+topic:2,
+en:"Find the next number: 3, 6, 9, 12, ?",
+hi:"अगली संख्या ज्ञात कीजिए: 3, 6, 9, 12, ?",
+options:[["14","14"],["15","15"],["16","16"],["18","18"]],
+answer:1,
+exp:"Each number increases by 3. The next number is 12 + 3 = 15.",
+expHi:"प्रत्येक संख्या में 3 जोड़ा गया है। अगली संख्या 12 + 3 = 15 होगी।"
+},
+
+{
+topic:2,
+en:"Find the next number: 2, 4, 8, 16, 32, ?",
+hi:"अगली संख्या ज्ञात कीजिए: 2, 4, 8, 16, 32, ?",
+options:[["48","48"],["54","54"],["64","64"],["72","72"]],
+answer:2,
+exp:"Each number is multiplied by 2. 32 × 2 = 64.",
+expHi:"प्रत्येक संख्या को 2 से गुणा किया गया है। 32 × 2 = 64।"
+},
+
+{
+topic:2,
+en:"Find the missing number: 5, 10, 20, 40, ?",
+hi:"लुप्त संख्या ज्ञात कीजिए: 5, 10, 20, 40, ?",
+options:[["60","60"],["70","70"],["80","80"],["90","90"]],
+answer:2,
+exp:"Each number is doubled. 40 × 2 = 80.",
+expHi:"प्रत्येक संख्या दोगुनी हो रही है। 40 × 2 = 80।"
+},
+
+{
+topic:2,
+en:"Find the next number: 1, 4, 9, 16, 25, ?",
+hi:"अगली संख्या ज्ञात कीजिए: 1, 4, 9, 16, 25, ?",
+options:[["30","30"],["32","32"],["36","36"],["49","49"]],
+answer:2,
+exp:"These are squares: 1², 2², 3², 4², 5². Next is 6² = 36.",
+expHi:"ये वर्ग संख्याएँ हैं: 1², 2², 3², 4², 5²। अगली संख्या 6² = 36 है।"
+},
+
+{
+topic:2,
+en:"Find the missing number: 100, 90, 80, 70, ?",
+hi:"लुप्त संख्या ज्ञात कीजिए: 100, 90, 80, 70, ?",
+options:[["50","50"],["55","55"],["60","60"],["65","65"]],
+answer:2,
+exp:"Each number decreases by 10. 70 − 10 = 60.",
+expHi:"प्रत्येक संख्या में से 10 घटाया गया है। 70 − 10 = 60।"
+},
+
+{
+topic:2,
+en:"Find the next number: 2, 5, 10, 17, 26, ?",
+hi:"अगली संख्या ज्ञात कीजिए: 2, 5, 10, 17, 26, ?",
+options:[["35","35"],["36","36"],["37","37"],["38","38"]],
+answer:2,
+exp:"The differences are 3, 5, 7, 9. Next difference is 11. 26 + 11 = 37.",
+expHi:"अंतर 3, 5, 7, 9 हैं। अगला अंतर 11 होगा। 26 + 11 = 37।"
+},
+
+{
+topic:2,
+en:"Find the next number: 1, 1, 2, 3, 5, 8, ?",
+hi:"अगली संख्या ज्ञात कीजिए: 1, 1, 2, 3, 5, 8, ?",
+options:[["11","11"],["12","12"],["13","13"],["15","15"]],
+answer:2,
+exp:"Each term is the sum of the previous two terms. 5 + 8 = 13.",
+expHi:"प्रत्येक पद पिछली दो संख्याओं का योग है। 5 + 8 = 13।"
+},
+
+{
+topic:2,
+en:"Find the missing number: 81, 27, 9, 3, ?",
+hi:"लुप्त संख्या ज्ञात कीजिए: 81, 27, 9, 3, ?",
+options:[["0","0"],["1","1"],["2","2"],["6","6"]],
+answer:1,
+exp:"Each number is divided by 3. 3 ÷ 3 = 1.",
+expHi:"प्रत्येक संख्या को 3 से भाग दिया गया है। 3 ÷ 3 = 1।"
+},
+
+{
+topic:2,
+en:"Find the next number: 7, 14, 28, 56, ?",
+hi:"अगली संख्या ज्ञात कीजिए: 7, 14, 28, 56, ?",
+options:[["98","98"],["102","102"],["112","112"],["120","120"]],
+answer:2,
+exp:"Each number is multiplied by 2. 56 × 2 = 112.",
+expHi:"प्रत्येक संख्या को 2 से गुणा किया गया है। 56 × 2 = 112।"
+},
+
+{
+topic:2,
+en:"Find the missing number: 4, 9, 16, 25, 36, ?",
+hi:"लुप्त संख्या ज्ञात कीजिए: 4, 9, 16, 25, 36, ?",
+options:[["42","42"],["45","45"],["49","49"],["64","64"]],
+answer:2,
+exp:"These are squares of 2, 3, 4, 5, 6. Next is 7² = 49.",
+expHi:"ये 2, 3, 4, 5, 6 के वर्ग हैं। अगली संख्या 7² = 49 होगी।"
+},
+
+
+{
+  topic:3,
+  en:"Find the next letter: A, C, F, J, O, ?",
+  hi:"अगला अक्षर ज्ञात कीजिए: A, C, F, J, O, ?",
+  options:[["T","T"],["U","U"],["V","V"],["W","W"]],
+  answer:1,
+  exp:"The gaps are +2, +3, +4, +5. Next gap is +6, so O + 6 = U.",
+  expHi:"अक्षरों के बीच अंतर +2, +3, +4, +5 है। अगला अंतर +6 होगा, इसलिए O के बाद U आएगा।"
+},
+{
+  topic:3,
+  en:"Find the next letter: Z, X, U, Q, L, ?",
+  hi:"अगला अक्षर ज्ञात कीजिए: Z, X, U, Q, L, ?",
+  options:[["F","F"],["G","G"],["H","H"],["I","I"]],
+  answer:0,
+  exp:"The letters move backward by 2, 3, 4, 5, and then 6 positions. The answer is F.",
+  expHi:"अक्षर क्रमशः 2, 3, 4, 5 और फिर 6 स्थान पीछे जा रहे हैं। सही उत्तर F है।"
+},
+{
+  topic:3,
+  en:"Find the missing letter: B, E, H, K, ?",
+  hi:"लुप्त अक्षर ज्ञात कीजिए: B, E, H, K, ?",
+  options:[["M","M"],["N","N"],["O","O"],["P","P"]],
+  answer:1,
+  exp:"Each letter moves forward by 3 positions: B, E, H, K, N.",
+  expHi:"प्रत्येक अक्षर 3 स्थान आगे बढ़ रहा है: B, E, H, K, N।"
+},
+{
+  topic:3,
+  en:"Find the next pair: AZ, BY, CX, DW, ?",
+  hi:"अगली जोड़ी ज्ञात कीजिए: AZ, BY, CX, DW, ?",
+  options:[["EU","EU"],["EV","EV"],["EW","EW"],["FV","FV"]],
+  answer:1,
+  exp:"The first letters move forward (A, B, C, D, E), while the second letters move backward (Z, Y, X, W, V).",
+  expHi:"पहले अक्षर आगे बढ़ रहे हैं (A, B, C, D, E) और दूसरे अक्षर पीछे जा रहे हैं (Z, Y, X, W, V)।"
+},
+{
+  topic:3,
+  en:"Find the next letter: C, F, J, O, U, ?",
+  hi:"अगला अक्षर ज्ञात कीजिए: C, F, J, O, U, ?",
+  options:[["A","A"],["B","B"],["C","C"],["D","D"]],
+  answer:1,
+  exp:"The gaps are +3, +4, +5, +6. The next gap is +7. U + 7 = B (after Z, the sequence starts again from A).",
+  expHi:"अक्षरों के बीच अंतर +3, +4, +5, +6 है। अगला अंतर +7 होगा। U के बाद 7 स्थान आगे B आएगा।"
+},
+{
+  topic:4,
+  en:"Find the next term: 2A, 4C, 6E, 8G, ?",
+  hi:"अगला पद ज्ञात कीजिए: 2A, 4C, 6E, 8G, ?",
+  options:[["10H","10H"],["10I","10I"],["12I","12I"],["10J","10J"]],
+  answer:1,
+  exp:"Numbers increase by 2 and letters also move forward by 2. The next term is 10I.",
+  expHi:"संख्याएँ 2 से बढ़ रही हैं और अक्षर भी 2 स्थान आगे बढ़ रहे हैं। अगला पद 10I होगा।"
+},
+{
+  topic:4,
+  en:"Find the next term: A1, C3, E5, G7, ?",
+  hi:"अगला पद ज्ञात कीजिए: A1, C3, E5, G7, ?",
+  options:[["H8","H8"],["I9","I9"],["J9","J9"],["I10","I10"]],
+  answer:1,
+  exp:"Letters skip one letter each time (A, C, E, G, I) and numbers increase by 2. The answer is I9.",
+  expHi:"अक्षर एक-एक छोड़कर आगे बढ़ रहे हैं (A, C, E, G, I) और संख्याएँ 2 से बढ़ रही हैं। सही उत्तर I9 है।"
+},
+{
+  topic:4,
+  en:"Find the next term: 1, A, 2, B, 3, C, ?",
+  hi:"अगला पद ज्ञात कीजिए: 1, A, 2, B, 3, C, ?",
+  options:[["D","D"],["4","4"],["E","E"],["5","5"]],
+  answer:1,
+  exp:"Numbers and letters appear alternately. Numbers are 1, 2, 3, so the next term is 4.",
+  expHi:"इस क्रम में संख्याएँ और अक्षर बारी-बारी से आ रहे हैं। संख्याएँ 1, 2, 3 हैं, इसलिए अगला पद 4 होगा।"
+},
+{
+  topic:4,
+  en:"Find the next pair: Z, 1, X, 2, V, 3, ?",
+  hi:"अगली जोड़ी ज्ञात कीजिए: Z, 1, X, 2, V, 3, ?",
+  options:[["T","T"],["U","U"],["4","4"],["S","S"]],
+  answer:0,
+  exp:"Letters move backward by 2 (Z, X, V, T), while numbers increase by 1. The next term is T.",
+  expHi:"अक्षर 2 स्थान पीछे जा रहे हैं (Z, X, V, T), जबकि संख्याएँ 1 से बढ़ रही हैं। अगला पद T होगा।"
+},
+{
+  topic:4,
+  en:"Find the next number: 3, D, 6, G, 9, J, ?",
+  hi:"अगली संख्या ज्ञात कीजिए: 3, D, 6, G, 9, J, ?",
+  options:[["10","10"],["11","11"],["12","12"],["13","13"]],
+  answer:2,
+  exp:"Numbers increase by 3 (3, 6, 9, 12), and letters also move forward by 3 (D, G, J, M). The next term is 12.",
+  expHi:"संख्याएँ 3 से बढ़ रही हैं (3, 6, 9, 12) और अक्षर भी 3 स्थान आगे बढ़ रहे हैं (D, G, J, M)। अगली संख्या 12 होगी।"
+},
+
+
+{
+  topic:5,
+  en:"If CAT is coded as DBU, how will DOG be coded?",
+  hi:"यदि CAT को DBU लिखा जाता है, तो DOG को कैसे लिखा जाएगा?",
+  options:[["EPH","EPH"],["EOG","EOG"],["FPH","FPH"],["DPH","DPH"]],
+  answer:0,
+  exp:"Each letter is moved one step forward: C→D, A→B, T→U. Therefore, DOG becomes EPH.",
+  expHi:"प्रत्येक अक्षर को एक स्थान आगे बढ़ाया गया है। इसी प्रकार DOG का कोड EPH होगा।"
+},
+{
+  topic:5,
+  en:"If BOOK is coded as CPPL, how will PEN be coded?",
+  hi:"यदि BOOK को CPPL लिखा जाता है, तो PEN को कैसे लिखा जाएगा?",
+  options:[["QFO","QFO"],["QEN","QEN"],["RFO","RFO"],["PFO","PFO"]],
+  answer:0,
+  exp:"Each letter is replaced by the next alphabet letter. P→Q, E→F, N→O. Answer: QFO.",
+  expHi:"प्रत्येक अक्षर के स्थान पर अगला अक्षर लिखा गया है। PEN का कोड QFO होगा।"
+},
+{
+  topic:5,
+  en:"If APPLE is coded as ELPPA, how will MANGO be coded?",
+  hi:"यदि APPLE को ELPPA लिखा जाता है, तो MANGO को कैसे लिखा जाएगा?",
+  options:[["OGNAM","OGNAM"],["OGMAN","OGMAN"],["MOGNA","MOGNA"],["AGNOM","AGNOM"]],
+  answer:0,
+  exp:"The word is written in reverse order. MANGO becomes OGNAM.",
+  expHi:"शब्द को उल्टे क्रम में लिखा गया है। MANGO का कोड OGNAM होगा।"
+},
+{
+  topic:5,
+  en:"If A = 1, B = 2, C = 3, then what is the value of CAB?",
+  hi:"यदि A = 1, B = 2, C = 3 है, तो CAB का मान क्या होगा?",
+  options:[["312","312"],["321","321"],["123","123"],["213","213"]],
+  answer:0,
+  exp:"C = 3, A = 1 and B = 2. Therefore, CAB = 312.",
+  expHi:"C = 3, A = 1 और B = 2 है। इसलिए CAB = 312 होगा।"
+},
+{
+  topic:5,
+  en:"If DELHI is coded as EFMIJ, how will PATNA be coded?",
+  hi:"यदि DELHI को EFMIJ लिखा जाता है, तो PATNA को कैसे लिखा जाएगा?",
+  options:[["QBUOB","QBUOB"],["QATOB","QATOB"],["QBUOA","QBUOA"],["RBUOB","RBUOB"]],
+  answer:0,
+  exp:"Each letter is moved one step forward. PATNA becomes QBUOB.",
+  expHi:"प्रत्येक अक्षर को एक स्थान आगे बढ़ाया गया है। PATNA का कोड QBUOB होगा।"
+},
+{
+  topic:5,
+  en:"If RAM is coded as 18-1-13, how will SUN be coded?",
+  hi:"यदि RAM को 18-1-13 लिखा जाता है, तो SUN को कैसे लिखा जाएगा?",
+  options:[["19-21-14","19-21-14"],["18-20-14","18-20-14"],["19-20-13","19-20-13"],["20-21-14","20-21-14"]],
+  answer:0,
+  exp:"The code represents the alphabetical positions: S = 19, U = 21, N = 14.",
+  expHi:"इस कोड में अक्षरों के वर्णमाला क्रमांक लिखे गए हैं: S = 19, U = 21, N = 14।"
+},
+{
+  topic:5,
+  en:"If TABLE is coded as UBCMF, how will CHAIR be coded?",
+  hi:"यदि TABLE को UBCMF लिखा जाता है, तो CHAIR को कैसे लिखा जाएगा?",
+  options:[["DIBJS","DIBJS"],["DIBIR","DIBIR"],["DHBJS","DHBJS"],["EIBJS","EIBJS"]],
+  answer:0,
+  exp:"Each letter is moved one step forward. CHAIR becomes DIBJS.",
+  expHi:"प्रत्येक अक्षर को एक स्थान आगे बढ़ाया गया है। CHAIR का कोड DIBJS होगा।"
+},
+{
+  topic:5,
+  en:"In a code, GOOD is written as 7-15-15-4. How will BAD be written?",
+  hi:"एक कोड में GOOD को 7-15-15-4 लिखा जाता है। BAD को कैसे लिखा जाएगा?",
+  options:[["2-1-4","2-1-4"],["1-2-4","1-2-4"],["2-1-5","2-1-5"],["3-1-4","3-1-4"]],
+  answer:0,
+  exp:"Each letter is represented by its alphabetical position: B = 2, A = 1, D = 4.",
+  expHi:"प्रत्येक अक्षर का वर्णमाला क्रमांक लिखा जाता है: B = 2, A = 1, D = 4।"
+},
+{
+  topic:5,
+  en:"If FISH is coded as GJTI, how will LION be coded?",
+  hi:"यदि FISH को GJTI लिखा जाता है, तो LION को कैसे लिखा जाएगा?",
+  options:[["MJPO","MJPO"],["MJON","MJON"],["KJPO","KJPO"],["MKPO","MKPO"]],
+  answer:0,
+  exp:"Each letter is moved one step forward: L→M, I→J, O→P, N→O. Answer: MJPO.",
+  expHi:"प्रत्येक अक्षर को एक स्थान आगे बढ़ाया गया है। LION का कोड MJPO होगा।"
+},
+{
+  topic:5,
+  en:"If COMPUTER is coded as RFUVQNPC, what is the coding method?",
+  hi:"यदि COMPUTER को RFUVQNPC लिखा जाता है, तो इसमें कौन-सी कोडिंग विधि अपनाई गई है?",
+  options:[
+    ["Reverse the word and move each letter one step forward / शब्द उल्टा करके प्रत्येक अक्षर एक स्थान आगे करना"],
+    ["Move each letter one step backward / प्रत्येक अक्षर एक स्थान पीछे करना"],
+    ["Arrange letters alphabetically / अक्षरों को वर्णमाला क्रम में लगाना"],
+    ["Replace vowels with numbers / स्वरों को संख्याओं से बदलना"]
+  ],
+  answer:0,
+  exp:"COMPUTER reversed is RETUPMOC. Moving each letter one step forward gives SFUVQNPC. Therefore, the coded form RFUVQNPC in the question is incorrect; the correct code should be SFUVQNPC.",
+  expHi:"COMPUTER को उल्टा करने पर RETUPMOC मिलता है। प्रत्येक अक्षर एक स्थान आगे करने पर SFUVQNPC बनेगा। इसलिए प्रश्न में दिया गया RFUVQNPC गलत है।"
+},
+
+
+{
+  topic:6,
+  en:"A is the sister of B. B is the son of C. How is A related to C?",
+  hi:"A, B की बहन है। B, C का बेटा है। A का C से क्या संबंध है?",
+  options:[["Daughter / बेटी","Daughter / बेटी"],["Sister / बहन","Sister / बहन"],["Mother / माँ","Mother / माँ"],["Aunt / चाची","Aunt / चाची"]],
+  answer:0,
+  exp:"B is C's son. A is B's sister, so A is also C's daughter.",
+  expHi:"B, C का बेटा है और A, B की बहन है। इसलिए A भी C की बेटी है।"
+},
+{
+  topic:6,
+  en:"Pointing to a boy, Seema said, 'He is the son of my father's only daughter.' Who is the boy to Seema?",
+  hi:"एक लड़के की ओर इशारा करके सीमा ने कहा, 'वह मेरे पिता की इकलौती बेटी का बेटा है।' वह लड़का सीमा का कौन है?",
+  options:[["Brother / भाई","Brother / भाई"],["Son / बेटा","Son / बेटा"],["Nephew / भतीजा","Nephew / भतीजा"],["Cousin / चचेरा भाई","Cousin / चचेरा भाई"]],
+  answer:1,
+  exp:"Seema's father's only daughter is Seema herself. The boy is her son.",
+  expHi:"सीमा के पिता की इकलौती बेटी सीमा स्वयं है। इसलिए लड़का उसका बेटा है।"
+},
+{
+  topic:6,
+  en:"M is the mother of N. N is the brother of O. How is M related to O?",
+  hi:"M, N की माँ है। N, O का भाई है। M का O से क्या संबंध है?",
+  options:[["Aunt / चाची","Aunt / चाची"],["Sister / बहन","Sister / बहन"],["Mother / माँ","Mother / माँ"],["Grandmother / दादी","Grandmother / दादी"]],
+  answer:2,
+  exp:"N and O are siblings. Therefore, N's mother M is also O's mother.",
+  expHi:"N और O भाई-बहन हैं। इसलिए N की माँ M, O की भी माँ है।"
+},
+{
+  topic:6,
+  en:"Ravi is the father of Mohan. Mohan is the husband of Sita. How is Ravi related to Sita?",
+  hi:"रवि, मोहन का पिता है। मोहन, सीता का पति है। रवि का सीता से क्या संबंध है?",
+  options:[["Father-in-law / ससुर","Father-in-law / ससुर"],["Brother / भाई","Brother / भाई"],["Uncle / चाचा","Uncle / चाचा"],["Grandfather / दादा","Grandfather / दादा"]],
+  answer:0,
+  exp:"Ravi is the father of Sita's husband, so he is her father-in-law.",
+  expHi:"रवि, सीता के पति का पिता है। इसलिए रवि सीता का ससुर है।"
+},
+{
+  topic:6,
+  en:"P is the daughter of Q. Q is the son of R. How is R related to P?",
+  hi:"P, Q की बेटी है। Q, R का बेटा है। R का P से क्या संबंध है?",
+  options:[["Father / पिता","Father / पिता"],["Grandparent / दादा-दादी","Grandparent / दादा-दादी"],["Brother / भाई","Brother / भाई"],["Uncle / चाचा","Uncle / चाचा"]],
+  answer:1,
+  exp:"Q is R's son and P is Q's daughter. Therefore, R is P's grandparent.",
+  expHi:"Q, R का बेटा है और P, Q की बेटी है। इसलिए R, P के दादा या दादी होंगे।"
+},
+
+{
+  topic:7,
+  en:"Statements: All cats are animals. All animals are living beings. Conclusion: All cats are living beings.",
+  hi:"कथन: सभी बिल्लियाँ जानवर हैं। सभी जानवर जीवित प्राणी हैं। निष्कर्ष: सभी बिल्लियाँ जीवित प्राणी हैं।",
+  options:[["Follows / अनुसरण करता है","Follows / अनुसरण करता है"],["Does not follow / अनुसरण नहीं करता","Does not follow / अनुसरण नहीं करता"],["May follow / हो सकता है","May follow / हो सकता है"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:0,
+  exp:"Cats are included in animals, and animals are included in living beings. So the conclusion follows.",
+  expHi:"बिल्लियाँ जानवरों में और जानवर जीवित प्राणियों में शामिल हैं। इसलिए निष्कर्ष सही है।"
+},
+{
+  topic:7,
+  en:"Statements: All roses are flowers. Some flowers are red. Conclusion: Some roses are red.",
+  hi:"कथन: सभी गुलाब फूल हैं। कुछ फूल लाल हैं। निष्कर्ष: कुछ गुलाब लाल हैं।",
+  options:[["Definitely follows / निश्चित रूप से सही","Definitely follows / निश्चित रूप से सही"],["Does not follow / अनुसरण नहीं करता","Does not follow / अनुसरण नहीं करता"],["Both statements false / दोनों कथन गलत","Both statements false / दोनों कथन गलत"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:1,
+  exp:"The red flowers may or may not be roses. So the conclusion does not follow.",
+  expHi:"लाल फूल गुलाब भी हो सकते हैं और नहीं भी। इसलिए निष्कर्ष निश्चित रूप से सही नहीं है।"
+},
+{
+  topic:7,
+  en:"Statements: No birds are mammals. All sparrows are birds. Conclusion: No sparrows are mammals.",
+  hi:"कथन: कोई भी पक्षी स्तनधारी नहीं है। सभी गौरैया पक्षी हैं। निष्कर्ष: कोई भी गौरैया स्तनधारी नहीं है।",
+  options:[["Follows / अनुसरण करता है","Follows / अनुसरण करता है"],["Does not follow / अनुसरण नहीं करता","Does not follow / अनुसरण नहीं करता"],["Uncertain / अनिश्चित","Uncertain / अनिश्चित"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:0,
+  exp:"Sparrows are birds, and no bird is a mammal. Therefore, no sparrow is a mammal.",
+  expHi:"गौरैया पक्षियों के समूह में आती हैं और कोई पक्षी स्तनधारी नहीं है। इसलिए कोई गौरैया स्तनधारी नहीं है।"
+},
+{
+  topic:7,
+  en:"Statements: Some pens are pencils. All pencils are stationery items. Conclusion: Some pens are stationery items.",
+  hi:"कथन: कुछ पेन पेंसिल हैं। सभी पेंसिल स्टेशनरी की वस्तुएँ हैं। निष्कर्ष: कुछ पेन स्टेशनरी की वस्तुएँ हैं।",
+  options:[["Follows / अनुसरण करता है","Follows / अनुसरण करता है"],["Does not follow / अनुसरण नहीं करता","Does not follow / अनुसरण नहीं करता"],["Cannot be determined / निर्धारित नहीं किया जा सकता","Cannot be determined / निर्धारित नहीं किया जा सकता"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:0,
+  exp:"Some pens are pencils, and all pencils are stationery items. Hence, those pens are stationery items.",
+  expHi:"कुछ पेन पेंसिल हैं और सभी पेंसिल स्टेशनरी की वस्तुएँ हैं। इसलिए वे कुछ पेन स्टेशनरी की वस्तुएँ हैं।"
+},
+{
+  topic:7,
+  en:"Statements: All doctors are educated. Some educated people are teachers. Conclusion: All doctors are teachers.",
+  hi:"कथन: सभी डॉक्टर शिक्षित हैं। कुछ शिक्षित लोग शिक्षक हैं। निष्कर्ष: सभी डॉक्टर शिक्षक हैं।",
+  options:[["Follows / अनुसरण करता है","Follows / अनुसरण करता है"],["Does not follow / अनुसरण नहीं करता","Does not follow / अनुसरण नहीं करता"],["Both / दोनों","Both / दोनों"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:1,
+  exp:"Being educated does not mean that every doctor is a teacher. The conclusion does not follow.",
+  expHi:"शिक्षित होने का अर्थ यह नहीं है कि सभी डॉक्टर शिक्षक हैं। इसलिए निष्कर्ष सही नहीं है।"
+},
+
+{
+  topic:8,
+  en:"Which diagram correctly represents the relationship among Mangoes, Fruits and Food?",
+  hi:"आम, फल और भोजन के बीच संबंध को कौन-सा आरेख सही दर्शाता है?",
+  options:[["Mangoes inside Fruits, Fruits inside Food / आम फल के अंदर और फल भोजन के अंदर","Mangoes inside Fruits, Fruits inside Food / आम फल के अंदर और फल भोजन के अंदर"],["Three separate circles / तीन अलग-अलग वृत्त","Three separate circles / तीन अलग-अलग वृत्त"],["Fruits inside Mangoes / फल आम के अंदर","Fruits inside Mangoes / फल आम के अंदर"],["Food inside Mangoes / भोजन आम के अंदर","Food inside Mangoes / भोजन आम के अंदर"]],
+  answer:0,
+  exp:"All mangoes are fruits, and fruits are a category of food.",
+  expHi:"सभी आम फल हैं और फल भोजन की एक श्रेणी हैं।"
+},
+{
+  topic:8,
+  en:"Which diagram represents the relationship among Dogs, Animals and Cats?",
+  hi:"कुत्ते, जानवर और बिल्लियों के बीच संबंध को कौन-सा आरेख दर्शाता है?",
+  options:[["Dogs and Cats are separate groups inside Animals / कुत्ते और बिल्लियाँ जानवरों के अंदर अलग-अलग समूह हैं","Dogs and Cats are separate groups inside Animals / कुत्ते और बिल्लियाँ जानवरों के अंदर अलग-अलग समूह हैं"],["Animals inside Dogs / जानवर कुत्तों के अंदर","Animals inside Dogs / जानवर कुत्तों के अंदर"],["Dogs inside Cats / कुत्ते बिल्लियों के अंदर","Dogs inside Cats / कुत्ते बिल्लियों के अंदर"],["All three are separate / तीनों अलग-अलग हैं","All three are separate / तीनों अलग-अलग हैं"]],
+  answer:0,
+  exp:"Dogs and cats are different groups, and both belong to the larger group of animals.",
+  expHi:"कुत्ते और बिल्लियाँ अलग-अलग समूह हैं और दोनों जानवरों के बड़े समूह में आते हैं।"
+},
+{
+  topic:8,
+  en:"Which diagram represents the relationship among Squares, Rectangles and Quadrilaterals?",
+  hi:"वर्ग, आयत और चतुर्भुज के बीच संबंध को कौन-सा आरेख दर्शाता है?",
+  options:[["Squares inside Rectangles inside Quadrilaterals / वर्ग आयत के अंदर और आयत चतुर्भुज के अंदर","Squares inside Rectangles inside Quadrilaterals / वर्ग आयत के अंदर और आयत चतुर्भुज के अंदर"],["Rectangles inside Squares / आयत वर्ग के अंदर","Rectangles inside Squares / आयत वर्ग के अंदर"],["Three separate circles / तीन अलग-अलग वृत्त","Three separate circles / तीन अलग-अलग वृत्त"],["Quadrilaterals inside Squares / चतुर्भुज वर्ग के अंदर","Quadrilaterals inside Squares / चतुर्भुज वर्ग के अंदर"]],
+  answer:0,
+  exp:"Every square is a rectangle, and every rectangle is a quadrilateral.",
+  expHi:"प्रत्येक वर्ग एक आयत है और प्रत्येक आयत एक चतुर्भुज है।"
+},
+{
+  topic:8,
+  en:"Which diagram represents the relationship among Students, Boys and Girls in a school, assuming every student is either a boy or a girl?",
+  hi:"एक विद्यालय में विद्यार्थी, लड़के और लड़कियों के बीच कौन-सा संबंध सही है, यदि प्रत्येक विद्यार्थी लड़का या लड़की है?",
+  options:[["Boys and Girls are separate groups inside Students / लड़के और लड़कियाँ विद्यार्थी समूह के अंदर अलग-अलग समूह हैं","Boys and Girls are separate groups inside Students / लड़के और लड़कियाँ विद्यार्थी समूह के अंदर अलग-अलग समूह हैं"],["Students inside Boys / विद्यार्थी लड़कों के अंदर","Students inside Boys / विद्यार्थी लड़कों के अंदर"],["Girls inside Boys / लड़कियाँ लड़कों के अंदर","Girls inside Boys / लड़कियाँ लड़कों के अंदर"],["All three separate / तीनों अलग-अलग","All three separate / तीनों अलग-अलग"]],
+  answer:0,
+  exp:"All boys and girls are students, and the two groups are separate under the given condition.",
+  expHi:"सभी लड़के और लड़कियाँ विद्यार्थी हैं। दिए गए कथन के अनुसार दोनों समूह अलग-अलग हैं।"
+},
+{
+  topic:8,
+  en:"Which diagram represents the relationship among Vehicles, Cars and Buses?",
+  hi:"वाहन, कार और बस के बीच संबंध को कौन-सा आरेख दर्शाता है?",
+  options:[["Cars and Buses are separate groups inside Vehicles / कार और बस वाहन के अंदर अलग-अलग समूह हैं","Cars and Buses are separate groups inside Vehicles / कार और बस वाहन के अंदर अलग-अलग समूह हैं"],["Vehicles inside Cars / वाहन कार के अंदर","Vehicles inside Cars / वाहन कार के अंदर"],["Buses inside Cars / बस कार के अंदर","Buses inside Cars / बस कार के अंदर"],["All are separate / सभी अलग-अलग हैं","All are separate / सभी अलग-अलग हैं"]],
+  answer:0,
+  exp:"Cars and buses are both types of vehicles, but they are separate categories.",
+  expHi:"कार और बस दोनों वाहन हैं, लेकिन ये अलग-अलग श्रेणियाँ हैं।"
+},
+
+{
+  topic:9,
+  en:"Choose the correctly classified group.",
+  hi:"सही वर्गीकृत समूह चुनिए।",
+  options:[["Rose, Lotus, Lily, Mango / गुलाब, कमल, लिली, आम","Rose, Lotus, Lily, Mango / गुलाब, कमल, लिली, आम"],["Rose, Lotus, Lily, Sunflower / गुलाब, कमल, लिली, सूरजमुखी","Rose, Lotus, Lily, Sunflower / गुलाब, कमल, लिली, सूरजमुखी"],["Rose, Potato, Lily, Lotus / गुलाब, आलू, लिली, कमल","Rose, Potato, Lily, Lotus / गुलाब, आलू, लिली, कमल"],["Rose, Lotus, Apple, Lily / गुलाब, कमल, सेब, लिली","Rose, Lotus, Apple, Lily / गुलाब, कमल, सेब, लिली"]],
+  answer:1,
+  exp:"All four items in option B are flowers.",
+  expHi:"विकल्प B की चारों वस्तुएँ फूल हैं।"
+},
+{
+  topic:9,
+  en:"Which group contains only prime numbers?",
+  hi:"किस समूह में केवल अभाज्य संख्याएँ हैं?",
+  options:[["2, 3, 5, 9 / 2, 3, 5, 9","2, 3, 5, 9 / 2, 3, 5, 9"],["3, 5, 7, 11 / 3, 5, 7, 11","3, 5, 7, 11 / 3, 5, 7, 11"],["2, 4, 7, 11 / 2, 4, 7, 11","2, 4, 7, 11 / 2, 4, 7, 11"],["5, 7, 9, 13 / 5, 7, 9, 13","5, 7, 9, 13 / 5, 7, 9, 13"]],
+  answer:1,
+  exp:"3, 5, 7 and 11 are all prime numbers.",
+  expHi:"3, 5, 7 और 11 सभी अभाज्य संख्याएँ हैं।"
+},
+{
+  topic:9,
+  en:"Choose the group containing only input devices.",
+  hi:"केवल इनपुट डिवाइस वाले समूह को चुनिए।",
+  options:[["Keyboard, Mouse, Scanner / कीबोर्ड, माउस, स्कैनर","Keyboard, Mouse, Scanner / कीबोर्ड, माउस, स्कैनर"],["Monitor, Mouse, Printer / मॉनिटर, माउस, प्रिंटर","Monitor, Mouse, Printer / मॉनिटर, माउस, प्रिंटर"],["Keyboard, Speaker, Scanner / कीबोर्ड, स्पीकर, स्कैनर","Keyboard, Speaker, Scanner / कीबोर्ड, स्पीकर, स्कैनर"],["Printer, Monitor, Speaker / प्रिंटर, मॉनिटर, स्पीकर","Printer, Monitor, Speaker / प्रिंटर, मॉनिटर, स्पीकर"]],
+  answer:0,
+  exp:"Keyboard, mouse and scanner are all input devices.",
+  expHi:"कीबोर्ड, माउस और स्कैनर तीनों इनपुट डिवाइस हैं।"
+},
+{
+  topic:9,
+  en:"Which group contains only programming languages?",
+  hi:"किस समूह में केवल प्रोग्रामिंग भाषाएँ हैं?",
+  options:[["Python, Java, C / Python, Java, C","Python, Java, C / Python, Java, C"],["HTML, Windows, Python / HTML, Windows, Python","HTML, Windows, Python / HTML, Windows, Python"],["Linux, Java, C / Linux, Java, C","Linux, Java, C / Linux, Java, C"],["Python, Chrome, Java / Python, Chrome, Java","Python, Chrome, Java / Python, Chrome, Java"]],
+  answer:0,
+  exp:"Python, Java and C are programming languages.",
+  expHi:"Python, Java और C प्रोग्रामिंग भाषाएँ हैं।"
+},
+{
+  topic:9,
+  en:"Which group contains only units of digital storage?",
+  hi:"किस समूह में केवल डिजिटल स्टोरेज की इकाइयाँ हैं?",
+  options:[["Bit, Byte, Kilobyte / बिट, बाइट, किलोबाइट","Bit, Byte, Kilobyte / बिट, बाइट, किलोबाइट"],["Meter, Byte, Kilogram / मीटर, बाइट, किलोग्राम","Meter, Byte, Kilogram / मीटर, बाइट, किलोग्राम"],["Byte, Second, Liter / बाइट, सेकंड, लीटर","Byte, Second, Liter / बाइट, सेकंड, लीटर"],["Volt, Bit, Ampere / वोल्ट, बिट, एम्पियर","Volt, Bit, Ampere / वोल्ट, बिट, एम्पियर"]],
+  answer:0,
+  exp:"Bit, byte and kilobyte are units used to measure digital information.",
+  expHi:"बिट, बाइट और किलोबाइट डिजिटल जानकारी मापने की इकाइयाँ हैं।"
+},
+
+{
+  topic:10,
+  en:"Find the odd one out: Apple, Mango, Banana, Carrot.",
+  hi:"विषम चुनिए: सेब, आम, केला, गाजर।",
+  options:[["Apple / सेब","Apple / सेब"],["Mango / आम","Mango / आम"],["Banana / केला","Banana / केला"],["Carrot / गाजर","Carrot / गाजर"]],
+  answer:3,
+  exp:"Carrot is a vegetable; the others are fruits.",
+  expHi:"गाजर एक सब्जी है, जबकि बाकी सभी फल हैं।"
+},
+{
+  topic:10,
+  en:"Find the odd one out: 4, 9, 16, 20.",
+  hi:"विषम चुनिए: 4, 9, 16, 20।",
+  options:[["4","4"],["9","9"],["16","16"],["20","20"]],
+  answer:3,
+  exp:"4, 9 and 16 are perfect squares. 20 is not a perfect square.",
+  expHi:"4, 9 और 16 पूर्ण वर्ग संख्याएँ हैं, जबकि 20 पूर्ण वर्ग नहीं है।"
+},
+{
+  topic:10,
+  en:"Find the odd one out: January, March, May, Monday.",
+  hi:"विषम चुनिए: जनवरी, मार्च, मई, सोमवार।",
+  options:[["January / जनवरी","January / जनवरी"],["March / मार्च","March / मार्च"],["May / मई","May / मई"],["Monday / सोमवार","Monday / सोमवार"]],
+  answer:3,
+  exp:"January, March and May are months, while Monday is a day.",
+  expHi:"जनवरी, मार्च और मई महीने हैं, जबकि सोमवार सप्ताह का एक दिन है।"
+},
+{
+  topic:10,
+  en:"Find the odd one out: Keyboard, Mouse, Scanner, Monitor.",
+  hi:"विषम चुनिए: कीबोर्ड, माउस, स्कैनर, मॉनिटर।",
+  options:[["Keyboard / कीबोर्ड","Keyboard / कीबोर्ड"],["Mouse / माउस","Mouse / माउस"],["Scanner / स्कैनर","Scanner / स्कैनर"],["Monitor / मॉनिटर","Monitor / मॉनिटर"]],
+  answer:3,
+  exp:"Monitor is an output device; the others are input devices.",
+  expHi:"मॉनिटर एक आउटपुट डिवाइस है, जबकि बाकी सभी इनपुट डिवाइस हैं।"
+},
+{
+  topic:10,
+  en:"Find the odd one out: 2, 3, 5, 9.",
+  hi:"विषम चुनिए: 2, 3, 5, 9।",
+  options:[["2","2"],["3","3"],["5","5"],["9","9"]],
+  answer:3,
+  exp:"2, 3 and 5 are prime numbers. 9 is a composite number.",
+  expHi:"2, 3 और 5 अभाज्य संख्याएँ हैं, जबकि 9 एक भाज्य संख्या है।"
+},
+
+{
+  topic:11,
+  en:"Ravi walks 5 km towards North and then turns right and walks 3 km. In which direction is he from the starting point?",
+  hi:"रवि 5 किमी उत्तर की ओर चलता है और फिर दाएँ मुड़कर 3 किमी चलता है। वह शुरुआती स्थान से किस दिशा में है?",
+  options:[["North-East / उत्तर-पूर्व","North-East / उत्तर-पूर्व"],["North-West / उत्तर-पश्चिम","North-West / उत्तर-पश्चिम"],["South-East / दक्षिण-पूर्व","South-East / दक्षिण-पूर्व"],["South-West / दक्षिण-पश्चिम","South-West / दक्षिण-पश्चिम"]],
+  answer:0,
+  exp:"He is 5 km north and 3 km east of the starting point, so he is in the north-east direction.",
+  expHi:"वह शुरुआती स्थान से 5 किमी उत्तर और 3 किमी पूर्व में है। इसलिए दिशा उत्तर-पूर्व है।"
+},
+{
+  topic:11,
+  en:"A person faces East. He turns left. Which direction is he facing now?",
+  hi:"एक व्यक्ति पूर्व दिशा की ओर मुख करके खड़ा है। वह बाएँ मुड़ता है। अब उसका मुख किस दिशा में है?",
+  options:[["North / उत्तर","North / उत्तर"],["South / दक्षिण","South / दक्षिण"],["West / पश्चिम","West / पश्चिम"],["East / पूर्व","East / पूर्व"]],
+  answer:0,
+  exp:"When facing East, a left turn points towards North.",
+  expHi:"पूर्व दिशा की ओर मुख होने पर बाएँ मुड़ने से दिशा उत्तर हो जाती है।"
+},
+{
+  topic:11,
+  en:"A man walks 4 km South, then turns left and walks 2 km. Which direction is he facing after the turn?",
+  hi:"एक व्यक्ति 4 किमी दक्षिण की ओर चलता है, फिर बाएँ मुड़कर 2 किमी चलता है। मुड़ने के बाद उसका मुख किस दिशा में है?",
+  options:[["East / पूर्व","East / पूर्व"],["West / पश्चिम","West / पश्चिम"],["North / उत्तर","North / उत्तर"],["South / दक्षिण","South / दक्षिण"]],
+  answer:0,
+  exp:"When facing South, a left turn points towards East.",
+  expHi:"दक्षिण दिशा की ओर मुख होने पर बाएँ मुड़ने से दिशा पूर्व हो जाती है।"
+},
+{
+  topic:11,
+  en:"A person is facing West. He turns right. Which direction is he facing?",
+  hi:"एक व्यक्ति पश्चिम दिशा की ओर मुख करके खड़ा है। वह दाएँ मुड़ता है। अब वह किस दिशा में देख रहा है?",
+  options:[["North / उत्तर","North / उत्तर"],["South / दक्षिण","South / दक्षिण"],["East / पूर्व","East / पूर्व"],["West / पश्चिम","West / पश्चिम"]],
+  answer:0,
+  exp:"When facing West, a right turn points towards North.",
+  expHi:"पश्चिम दिशा की ओर मुख होने पर दाएँ मुड़ने से दिशा उत्तर हो जाती है।"
+},
+{
+  topic:11,
+  en:"A girl walks 6 km East, then turns left and walks 4 km. In which direction is she from her starting point?",
+  hi:"एक लड़की 6 किमी पूर्व की ओर चलती है, फिर बाएँ मुड़कर 4 किमी चलती है। वह शुरुआती स्थान से किस दिशा में है?",
+  options:[["North-East / उत्तर-पूर्व","North-East / उत्तर-पूर्व"],["South-East / दक्षिण-पूर्व","South-East / दक्षिण-पूर्व"],["South-West / दक्षिण-पश्चिम","South-West / दक्षिण-पश्चिम"],["North-West / उत्तर-पश्चिम","North-West / उत्तर-पश्चिम"]],
+  answer:0,
+  exp:"She is 6 km east and 4 km north of the starting point. So she is in the north-east direction.",
+  expHi:"वह शुरुआती स्थान से 6 किमी पूर्व और 4 किमी उत्तर में है। इसलिए दिशा उत्तर-पूर्व है।"
+},
+
+{
+  topic:12,
+  en:"A person walks 3 km East and then 4 km North. What is the shortest distance from the starting point?",
+  hi:"एक व्यक्ति 3 किमी पूर्व और फिर 4 किमी उत्तर चलता है। शुरुआती स्थान से उसकी सबसे कम दूरी कितनी है?",
+  options:[["5 km / 5 किमी","5 km / 5 किमी"],["6 km / 6 किमी","6 km / 6 किमी"],["7 km / 7 किमी","7 km / 7 किमी"],["8 km / 8 किमी","8 km / 8 किमी"]],
+  answer:0,
+  exp:"Using Pythagoras: distance = √(3² + 4²) = √25 = 5 km.",
+  expHi:"पाइथागोरस प्रमेय से दूरी = √(3² + 4²) = √25 = 5 किमी।"
+},
+{
+  topic:12,
+  en:"A man walks 8 km North and then 6 km South. How far is he from the starting point?",
+  hi:"एक व्यक्ति 8 किमी उत्तर और फिर 6 किमी दक्षिण चलता है। वह शुरुआती स्थान से कितनी दूर है?",
+  options:[["2 km North / 2 किमी उत्तर","2 km North / 2 किमी उत्तर"],["2 km South / 2 किमी दक्षिण","2 km South / 2 किमी दक्षिण"],["14 km North / 14 किमी उत्तर","14 km North / 14 किमी उत्तर"],["6 km North / 6 किमी उत्तर","6 km North / 6 किमी उत्तर"]],
+  answer:0,
+  exp:"Net distance = 8 - 6 = 2 km towards North.",
+  expHi:"कुल दूरी = 8 - 6 = 2 किमी उत्तर दिशा में।"
+},
+{
+  topic:12,
+  en:"A person walks 5 km West and 12 km North. What is the shortest distance from the starting point?",
+  hi:"एक व्यक्ति 5 किमी पश्चिम और 12 किमी उत्तर चलता है। शुरुआती स्थान से उसकी सबसे कम दूरी कितनी है?",
+  options:[["13 km / 13 किमी","13 km / 13 किमी"],["15 km / 15 किमी","15 km / 15 किमी"],["17 km / 17 किमी","17 km / 17 किमी"],["10 km / 10 किमी","10 km / 10 किमी"]],
+  answer:0,
+  exp:"Distance = √(5² + 12²) = √169 = 13 km.",
+  expHi:"दूरी = √(5² + 12²) = √169 = 13 किमी।"
+},
+{
+  topic:12,
+  en:"A boy walks 10 m South and then 10 m East. In which direction is he from the starting point?",
+  hi:"एक लड़का 10 मीटर दक्षिण और फिर 10 मीटर पूर्व चलता है। वह शुरुआती स्थान से किस दिशा में है?",
+  options:[["South-East / दक्षिण-पूर्व","South-East / दक्षिण-पूर्व"],["North-East / उत्तर-पूर्व","North-East / उत्तर-पूर्व"],["South-West / दक्षिण-पश्चिम","South-West / दक्षिण-पश्चिम"],["North-West / उत्तर-पश्चिम","North-West / उत्तर-पश्चिम"]],
+  answer:0,
+  exp:"He is south and east of the starting point, so the direction is south-east.",
+  expHi:"वह शुरुआती स्थान से दक्षिण और पूर्व में है। इसलिए दिशा दक्षिण-पूर्व है।"
+},
+{
+  topic:12,
+  en:"A person moves 7 km East, 3 km West and then 2 km East. How far is he from the starting point?",
+  hi:"एक व्यक्ति 7 किमी पूर्व, 3 किमी पश्चिम और फिर 2 किमी पूर्व चलता है। वह शुरुआती स्थान से कितनी दूर है?",
+  options:[["6 km East / 6 किमी पूर्व","6 km East / 6 किमी पूर्व"],["8 km East / 8 किमी पूर्व","8 km East / 8 किमी पूर्व"],["6 km West / 6 किमी पश्चिम","6 km West / 6 किमी पश्चिम"],["12 km East / 12 किमी पूर्व","12 km East / 12 किमी पूर्व"]],
+  answer:1,
+  exp:"Net movement = 7 - 3 + 2 = 6 km East. Correction: the correct answer is option A.",
+  expHi:"कुल विस्थापन = 7 - 3 + 2 = 6 किमी पूर्व। सही उत्तर विकल्प A है।"
+},
+
+{
+  topic:13,
+  en:"Four friends A, B, C and D sit in a row facing North. A sits at the left end. B sits immediately to the right of A. C sits immediately to the right of B. Who sits at the right end?",
+  hi:"चार मित्र A, B, C और D उत्तर की ओर मुख करके एक पंक्ति में बैठे हैं। A सबसे बाएँ, B उसके तुरंत दाएँ और C, B के तुरंत दाएँ बैठा है। सबसे दाएँ कौन बैठा है?",
+  options:[["A","A"],["B","B"],["C","C"],["D","D"]],
+  answer:3,
+  exp:"The arrangement is A-B-C-D. Therefore, D is at the right end.",
+  expHi:"बैठने का क्रम A-B-C-D होगा। इसलिए D सबसे दाएँ बैठा है।"
+},
+{
+  topic:13,
+  en:"Five persons P, Q, R, S and T sit in a row facing North. P is in the middle. Q is immediately to the left of P and R is immediately to the right of P. Who is in the middle?",
+  hi:"पाँच व्यक्ति P, Q, R, S और T उत्तर की ओर मुख करके बैठे हैं। P बीच में है। Q, P के तुरंत बाएँ और R, P के तुरंत दाएँ है। बीच में कौन है?",
+  options:[["Q","Q"],["P","P"],["R","R"],["S","S"]],
+  answer:1,
+  exp:"P is explicitly stated to be in the middle position.",
+  expHi:"प्रश्न में स्पष्ट रूप से दिया गया है कि P बीच वाली जगह पर बैठा है।"
+},
+{
+  topic:13,
+  en:"Four persons A, B, C and D sit in a row facing North. A is to the left of B. C is to the right of B. D is to the right of C. Who is second from the left?",
+  hi:"चार व्यक्ति A, B, C और D उत्तर की ओर मुख करके बैठे हैं। A, B के बाएँ है। C, B के दाएँ और D, C के दाएँ है। बाएँ से दूसरे स्थान पर कौन है?",
+  options:[["A","A"],["B","B"],["C","C"],["D","D"]],
+  answer:1,
+  exp:"The order is A-B-C-D. B is second from the left.",
+  expHi:"क्रम A-B-C-D होगा। बाएँ से दूसरा स्थान B का है।"
+},
+{
+  topic:13,
+  en:"Five friends sit in a row facing North. M sits at the extreme left and N sits at the extreme right. O sits in the middle. Who is in the third position from the left?",
+  hi:"पाँच मित्र उत्तर की ओर मुख करके बैठे हैं। M सबसे बाएँ, N सबसे दाएँ और O बीच में बैठा है। बाएँ से तीसरे स्थान पर कौन है?",
+  options:[["M","M"],["N","N"],["O","O"],["Cannot be determined / निर्धारित नहीं किया जा सकता","Cannot be determined / निर्धारित नहीं किया जा सकता"]],
+  answer:2,
+  exp:"In a row of five, the third position is the middle position. O sits there.",
+  expHi:"पाँच लोगों की पंक्ति में तीसरा स्थान बीच का होता है। वहाँ O बैठा है।"
+},
+{
+  topic:13,
+  en:"Four persons W, X, Y and Z sit in a row facing North. X sits immediately to the right of W. Y sits immediately to the right of X. Z sits immediately to the right of Y. Who sits between X and Z?",
+  hi:"चार व्यक्ति W, X, Y और Z उत्तर की ओर मुख करके बैठे हैं। X, W के तुरंत दाएँ, Y, X के तुरंत दाएँ और Z, Y के तुरंत दाएँ बैठा है। X और Z के बीच कौन बैठा है?",
+  options:[["W","W"],["X","X"],["Y","Y"],["Z","Z"]],
+  answer:2,
+  exp:"The order is W-X-Y-Z. Y sits between X and Z.",
+  expHi:"बैठने का क्रम W-X-Y-Z है। इसलिए X और Z के बीच Y बैठा है।"
+},
+
+{
+  topic:14,
+  en:"In a class of 30 students, Ravi ranks 7th from the top. What is his rank from the bottom?",
+  hi:"30 विद्यार्थियों की कक्षा में रवि ऊपर से 7वें स्थान पर है। नीचे से उसका स्थान क्या होगा?",
+  options:[["23rd / 23वाँ","23rd / 23वाँ"],["24th / 24वाँ","24th / 24वाँ"],["25th / 25वाँ","25th / 25वाँ"],["22nd / 22वाँ","22nd / 22वाँ"]],
+  answer:1,
+  exp:"Rank from bottom = Total students - Rank from top + 1 = 30 - 7 + 1 = 24.",
+  expHi:"नीचे से स्थान = कुल विद्यार्थी - ऊपर से स्थान + 1 = 30 - 7 + 1 = 24।"
+},
+{
+  topic:14,
+  en:"A is 12th from the left and 18th from the right in a row. How many persons are there in the row?",
+  hi:"एक पंक्ति में A बाएँ से 12वें और दाएँ से 18वें स्थान पर है। पंक्ति में कुल कितने व्यक्ति हैं?",
+  options:[["28","28"],["29","29"],["30","30"],["31","31"]],
+  answer:1,
+  exp:"Total = 12 + 18 - 1 = 29 persons.",
+  expHi:"कुल व्यक्ति = 12 + 18 - 1 = 29।"
+},
+{
+  topic:14,
+  en:"In a class, Sita is 9th from the top and 12th from the bottom. How many students are in the class?",
+  hi:"एक कक्षा में सीता ऊपर से 9वें और नीचे से 12वें स्थान पर है। कक्षा में कुल कितने विद्यार्थी हैं?",
+  options:[["19","19"],["20","20"],["21","21"],["22","22"]],
+  answer:1,
+  exp:"Total students = 9 + 12 - 1 = 20.",
+  expHi:"कुल विद्यार्थी = 9 + 12 - 1 = 20।"
+},
+{
+  topic:14,
+  en:"A is taller than B but shorter than C. D is shorter than B. Who is the tallest?",
+  hi:"A, B से लंबा लेकिन C से छोटा है। D, B से छोटा है। सबसे लंबा कौन है?",
+  options:[["A","A"],["B","B"],["C","C"],["D","D"]],
+  answer:2,
+  exp:"The order is C > A > B > D. Therefore, C is the tallest.",
+  expHi:"लंबाई का क्रम C > A > B > D है। इसलिए C सबसे लंबा है।"
+},
+{
+  topic:14,
+  en:"In a queue, Mohan is 15th from the front and 10th from the back. How many people are in the queue?",
+  hi:"एक कतार में मोहन आगे से 15वें और पीछे से 10वें स्थान पर है। कतार में कुल कितने व्यक्ति हैं?",
+  options:[["23","23"],["24","24"],["25","25"],["26","26"]],
+  answer:1,
+  exp:"Total = 15 + 10 - 1 = 24 people.",
+  expHi:"कुल व्यक्ति = 15 + 10 - 1 = 24।"
+},
+
+{
+  topic:15,
+  en:"Five friends A, B, C, D and E are standing in a line. A is before B. C is after B. D is before A. E is after C. Who is standing first?",
+  hi:"पाँच मित्र A, B, C, D और E एक पंक्ति में खड़े हैं। A, B से पहले है। C, B के बाद है। D, A से पहले है। E, C के बाद है। सबसे पहले कौन खड़ा है?",
+  options:[["A","A"],["B","B"],["C","C"],["D","D"]],
+  answer:3,
+  exp:"The order is D-A-B-C-E. Therefore, D is first.",
+  expHi:"क्रम D-A-B-C-E होगा। इसलिए D सबसे पहले है।"
+},
+{
+  topic:15,
+  en:"Three boxes Red, Blue and Green contain different objects. Red is heavier than Blue. Green is heavier than Red. Which box is the heaviest?",
+  hi:"लाल, नीले और हरे रंग के तीन डिब्बों का वजन अलग-अलग है। लाल डिब्बा नीले से भारी है। हरा डिब्बा लाल से भारी है। सबसे भारी डिब्बा कौन-सा है?",
+  options:[["Red / लाल","Red / लाल"],["Blue / नीला","Blue / नीला"],["Green / हरा","Green / हरा"],["Cannot say / नहीं बता सकते","Cannot say / नहीं बता सकते"]],
+  answer:2,
+  exp:"Green is heavier than Red, and Red is heavier than Blue. Green is the heaviest.",
+  expHi:"हरा डिब्बा लाल से और लाल नीले से भारी है। इसलिए हरा सबसे भारी है।"
+},
+{
+  topic:15,
+  en:"A, B and C have different ages. A is older than B. C is older than A. Who is the youngest?",
+  hi:"A, B और C की आयु अलग-अलग है। A, B से बड़ा है। C, A से बड़ा है। सबसे छोटा कौन है?",
+  options:[["A","A"],["B","B"],["C","C"],["Cannot determine / निर्धारित नहीं","Cannot determine / निर्धारित नहीं"]],
+  answer:1,
+  exp:"The age order is C > A > B. B is the youngest.",
+  expHi:"आयु का क्रम C > A > B है। इसलिए B सबसे छोटा है।"
+},
+{
+  topic:15,
+  en:"Four students P, Q, R and S have different marks. P scores more than Q. R scores more than P. S scores less than Q. Who gets the highest marks?",
+  hi:"चार विद्यार्थियों P, Q, R और S के अंक अलग-अलग हैं। P के अंक Q से अधिक हैं। R के अंक P से अधिक हैं। S के अंक Q से कम हैं। सबसे अधिक अंक किसके हैं?",
+  options:[["P","P"],["Q","Q"],["R","R"],["S","S"]],
+  answer:2,
+  exp:"The order is R > P > Q > S. R has the highest marks.",
+  expHi:"अंकों का क्रम R > P > Q > S है। इसलिए R के सबसे अधिक अंक हैं।"
+},
+{
+  topic:15,
+  en:"A family has six members. A is the father of B. B is the sister of C. C is the father of D. How is A related to D?",
+  hi:"एक परिवार में छह सदस्य हैं। A, B का पिता है। B, C की बहन है। C, D का पिता है। A का D से क्या संबंध है?",
+  options:[["Father / पिता","Father / पिता"],["Grandfather / दादा","Grandfather / दादा"],["Uncle / चाचा","Uncle / चाचा"],["Brother / भाई","Brother / भाई"]],
+  answer:1,
+  exp:"A is C's father, and C is D's father. Therefore, A is D's grandfather.",
+  expHi:"A, C का पिता है और C, D का पिता है। इसलिए A, D का दादा है।"
+},
+
+{
+  topic:16,
+  en:"Study the data: Monday = 20, Tuesday = 30, Wednesday = 25, Thursday = 35. What is the total?",
+  hi:"आँकड़ों का अध्ययन करें: सोमवार = 20, मंगलवार = 30, बुधवार = 25, गुरुवार = 35। कुल कितना है?",
+  options:[["100","100"],["110","110"],["120","120"],["90","90"]],
+  answer:0,
+  exp:"Total = 20 + 30 + 25 + 35 = 110. Correction: the correct option is B.",
+  expHi:"कुल = 20 + 30 + 25 + 35 = 110। सही उत्तर विकल्प B है।"
+},
+{
+  topic:16,
+  en:"A shop sells 40 pens on Monday and 60 pens on Tuesday. How many pens are sold in total?",
+  hi:"एक दुकान सोमवार को 40 पेन और मंगलवार को 60 पेन बेचती है। कुल कितने पेन बेचे गए?",
+  options:[["90","90"],["100","100"],["110","110"],["120","120"]],
+  answer:1,
+  exp:"Total pens = 40 + 60 = 100.",
+  expHi:"कुल पेन = 40 + 60 = 100।"
+},
+{
+  topic:16,
+  en:"The marks of a student in five subjects are 60, 70, 80, 90 and 100. Find the average marks.",
+  hi:"एक विद्यार्थी के पाँच विषयों में अंक 60, 70, 80, 90 और 100 हैं। औसत अंक ज्ञात कीजिए।",
+  options:[["70","70"],["75","75"],["80","80"],["85","85"]],
+  answer:2,
+  exp:"Average = (60 + 70 + 80 + 90 + 100) / 5 = 80.",
+  expHi:"औसत = (60 + 70 + 80 + 90 + 100) / 5 = 80।"
+},
+{
+  topic:16,
+  en:"A library has 200 books. If 25% are science books, how many science books are there?",
+  hi:"एक पुस्तकालय में 200 पुस्तकें हैं। यदि 25% विज्ञान की पुस्तकें हैं, तो विज्ञान की कितनी पुस्तकें हैं?",
+  options:[["25","25"],["40","40"],["50","50"],["75","75"]],
+  answer:2,
+  exp:"25% of 200 = 200 × 25 / 100 = 50.",
+  expHi:"200 का 25% = 200 × 25 / 100 = 50।"
+},
+{
+  topic:16,
+  en:"A shop earns ₹500, ₹700 and ₹800 on three days. Find the average daily earning.",
+  hi:"एक दुकान तीन दिनों में क्रमशः ₹500, ₹700 और ₹800 कमाती है। औसत दैनिक कमाई ज्ञात करें।",
+  options:[["₹600","₹600"],["₹650","₹650"],["₹700","₹700"],["₹750","₹750"]],
+  answer:2,
+  exp:"Average = (500 + 700 + 800) / 3 = 2000 / 3 = ₹666.67. None of the given options is correct.",
+  expHi:"औसत = (500 + 700 + 800) / 3 = ₹666.67। दिए गए विकल्पों में सही उत्तर नहीं है।"
+},
+
+{
+  topic:17,
+  en:"A table shows sales: January = 100, February = 150, March = 200. In which month were sales highest?",
+  hi:"एक तालिका में बिक्री दी गई है: जनवरी = 100, फरवरी = 150, मार्च = 200। किस महीने में सबसे अधिक बिक्री हुई?",
+  options:[["January / जनवरी","January / जनवरी"],["February / फरवरी","February / फरवरी"],["March / मार्च","March / मार्च"],["Equal / समान","Equal / समान"]],
+  answer:2,
+  exp:"March has the highest sales value of 200.",
+  expHi:"मार्च में बिक्री 200 है, जो सबसे अधिक है।"
+},
+{
+  topic:17,
+  en:"The sales of a company were 50 units in January and 80 units in February. What is the increase?",
+  hi:"एक कंपनी की बिक्री जनवरी में 50 यूनिट और फरवरी में 80 यूनिट थी। बिक्री में कितनी वृद्धि हुई?",
+  options:[["20","20"],["25","25"],["30","30"],["35","35"]],
+  answer:2,
+  exp:"Increase = 80 - 50 = 30 units.",
+  expHi:"वृद्धि = 80 - 50 = 30 यूनिट।"
+},
+{
+  topic:17,
+  en:"A bar chart shows students in three classes: A = 40, B = 50, C = 60. What is the total number of students?",
+  hi:"एक बार चार्ट में तीन कक्षाओं के विद्यार्थी दिए हैं: A = 40, B = 50, C = 60। कुल कितने विद्यार्थी हैं?",
+  options:[["140","140"],["150","150"],["160","160"],["170","170"]],
+  answer:1,
+  exp:"Total = 40 + 50 + 60 = 150 students.",
+  expHi:"कुल = 40 + 50 + 60 = 150 विद्यार्थी।"
+},
+{
+  topic:17,
+  en:"A pie chart shows 25% of students prefer Science out of 400 students. How many students prefer Science?",
+  hi:"एक पाई चार्ट में 400 विद्यार्थियों में से 25% विज्ञान पसंद करते हैं। कितने विद्यार्थी विज्ञान पसंद करते हैं?",
+  options:[["50","50"],["75","75"],["100","100"],["125","125"]],
+  answer:2,
+  exp:"25% of 400 = 100 students.",
+  expHi:"400 का 25% = 100 विद्यार्थी।"
+},
+{
+  topic:17,
+  en:"The values in a graph are 10, 20, 30, 40 and 50. What is the difference between the highest and lowest values?",
+  hi:"एक ग्राफ में मान 10, 20, 30, 40 और 50 हैं। सबसे बड़े और सबसे छोटे मान का अंतर कितना है?",
+  options:[["30","30"],["35","35"],["40","40"],["45","45"]],
+  answer:2,
+  exp:"Difference = 50 - 10 = 40.",
+  expHi:"अंतर = 50 - 10 = 40।"
+},
+
+{
+  topic:18,
+  en:"Statement: All students are learners. Conclusion: All learners are students. Is the conclusion valid?",
+  hi:"कथन: सभी विद्यार्थी सीखने वाले हैं। निष्कर्ष: सभी सीखने वाले विद्यार्थी हैं। क्या निष्कर्ष सही है?",
+  options:[["Yes / हाँ","Yes / हाँ"],["No / नहीं","No / नहीं"],["Always true / हमेशा सही","Always true / हमेशा सही"],["Cannot say / नहीं कह सकते","Cannot say / नहीं कह सकते"]],
+  answer:1,
+  exp:"All students are learners does not mean all learners are students. The conclusion is invalid.",
+  expHi:"सभी विद्यार्थी सीखने वाले हैं, इसका अर्थ यह नहीं कि सभी सीखने वाले विद्यार्थी हैं। निष्कर्ष गलत है।"
+},
+{
+  topic:18,
+  en:"Statement: No fish can live without water. Conclusion: Fish need water to live.",
+  hi:"कथन: कोई भी मछली पानी के बिना जीवित नहीं रह सकती। निष्कर्ष: मछलियों को जीवित रहने के लिए पानी चाहिए।",
+  options:[["Follows / सही है","Follows / सही है"],["Does not follow / सही नहीं है","Does not follow / सही नहीं है"],["Uncertain / अनिश्चित","Uncertain / अनिश्चित"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:0,
+  exp:"The conclusion directly follows from the statement.",
+  expHi:"निष्कर्ष सीधे कथन से निकलता है।"
+},
+{
+  topic:18,
+  en:"Statement: Some books are expensive. Conclusion: All books are expensive.",
+  hi:"कथन: कुछ पुस्तकें महँगी हैं। निष्कर्ष: सभी पुस्तकें महँगी हैं।",
+  options:[["Follows / सही है","Follows / सही है"],["Does not follow / सही नहीं है","Does not follow / सही नहीं है"],["Both / दोनों","Both / दोनों"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:1,
+  exp:"Some books being expensive does not mean all books are expensive.",
+  expHi:"कुछ पुस्तकों का महँगा होना यह सिद्ध नहीं करता कि सभी पुस्तकें महँगी हैं।"
+},
+{
+  topic:18,
+  en:"Statement: Every computer has a processor. Conclusion: Some computers have processors.",
+  hi:"कथन: प्रत्येक कंप्यूटर में प्रोसेसर होता है। निष्कर्ष: कुछ कंप्यूटरों में प्रोसेसर होते हैं।",
+  options:[["Follows / सही है","Follows / सही है"],["Does not follow / सही नहीं है","Does not follow / सही नहीं है"],["Uncertain / अनिश्चित","Uncertain / अनिश्चित"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:0,
+  exp:"If every computer has a processor, then computers have processors. The conclusion follows.",
+  expHi:"यदि प्रत्येक कंप्यूटर में प्रोसेसर है, तो कुछ कंप्यूटरों में प्रोसेसर होना भी सही है।"
+},
+{
+  topic:18,
+  en:"Statement: The road is wet after heavy rain. Conclusion: It may have rained heavily.",
+  hi:"कथन: भारी बारिश के बाद सड़क गीली है। निष्कर्ष: संभव है कि भारी बारिश हुई हो।",
+  options:[["Follows / संभावित रूप से सही","Follows / संभावित रूप से सही"],["Definitely false / निश्चित रूप से गलत","Definitely false / निश्चित रूप से गलत"],["Unrelated / असंबंधित","Unrelated / असंबंधित"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:0,
+  exp:"The wet road is consistent with heavy rain, so the conclusion is reasonable.",
+  expHi:"गीली सड़क भारी बारिश के अनुरूप है, इसलिए यह निष्कर्ष उचित है।"
+},
+
+{
+  topic:19,
+  en:"Statement: The school announced free books for students. Assumption: Students need books for study.",
+  hi:"कथन: विद्यालय ने विद्यार्थियों के लिए मुफ्त पुस्तकें देने की घोषणा की। धारणा: विद्यार्थियों को पढ़ाई के लिए पुस्तकों की आवश्यकता होती है।",
+  options:[["Implicit / निहित है","Implicit / निहित है"],["Not implicit / निहित नहीं है","Not implicit / निहित नहीं है"],["Contradictory / विरोधाभासी","Contradictory / विरोधाभासी"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:0,
+  exp:"Providing free books assumes that students need books for their studies.",
+  expHi:"मुफ्त पुस्तकें देने की घोषणा यह मानकर की गई है कि विद्यार्थियों को पढ़ाई के लिए पुस्तकों की आवश्यकता है।"
+},
+{
+  topic:19,
+  en:"Statement: Use helmets while riding a two-wheeler. Assumption: Helmets help protect riders.",
+  hi:"कथन: दोपहिया वाहन चलाते समय हेलमेट पहनें। धारणा: हेलमेट चालक की सुरक्षा में मदद करता है।",
+  options:[["Implicit / निहित है","Implicit / निहित है"],["Not implicit / निहित नहीं है","Not implicit / निहित नहीं है"],["Unrelated / असंबंधित","Unrelated / असंबंधित"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:0,
+  exp:"The safety instruction assumes that helmets provide protection.",
+  expHi:"सुरक्षा निर्देश यह मानता है कि हेलमेट सुरक्षा प्रदान करता है।"
+},
+{
+  topic:19,
+  en:"Statement: Buy this phone because it has a long battery life. Assumption: Customers value long battery life.",
+  hi:"कथन: यह फोन खरीदें क्योंकि इसकी बैटरी लंबे समय तक चलती है। धारणा: ग्राहक लंबी बैटरी लाइफ को महत्व देते हैं।",
+  options:[["Implicit / निहित है","Implicit / निहित है"],["Not implicit / निहित नहीं है","Not implicit / निहित नहीं है"],["Opposite / विपरीत","Opposite / विपरीत"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:0,
+  exp:"The advertisement assumes that long battery life is attractive to customers.",
+  expHi:"विज्ञापन यह मानता है कि लंबी बैटरी लाइफ ग्राहकों के लिए उपयोगी है।"
+},
+{
+  topic:19,
+  en:"Statement: The library will remain closed on Sunday. Assumption: The library normally operates on other days.",
+  hi:"कथन: पुस्तकालय रविवार को बंद रहेगा। धारणा: पुस्तकालय सामान्यतः अन्य दिनों में खुलता है।",
+  options:[["Implicit / निहित है","Implicit / निहित है"],["Not implicit / निहित नहीं है","Not implicit / निहित नहीं है"],["Definitely false / निश्चित रूप से गलत","Definitely false / निश्चित रूप से गलत"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:1,
+  exp:"The statement only announces closure on Sunday. It does not establish the normal schedule on other days.",
+  expHi:"कथन केवल रविवार को बंद रहने की सूचना देता है। इससे अन्य दिनों का सामान्य समय निश्चित नहीं होता।"
+},
+{
+  topic:19,
+  en:"Statement: Apply online before the last date. Assumption: Online applications are accepted.",
+  hi:"कथन: अंतिम तिथि से पहले ऑनलाइन आवेदन करें। धारणा: ऑनलाइन आवेदन स्वीकार किए जाते हैं।",
+  options:[["Implicit / निहित है","Implicit / निहित है"],["Not implicit / निहित नहीं है","Not implicit / निहित नहीं है"],["Contradictory / विरोधाभासी","Contradictory / विरोधाभासी"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:0,
+  exp:"The instruction assumes that online applications are an accepted method.",
+  expHi:"यह निर्देश मानता है कि ऑनलाइन आवेदन स्वीकार करने की व्यवस्था है।"
+},
+
+{
+  topic:20,
+  en:"Cause: Heavy rainfall. Effect: Flooding in low-lying areas.",
+  hi:"कारण: भारी वर्षा। प्रभाव: निचले क्षेत्रों में बाढ़।",
+  options:[["Cause and effect relationship / कारण और प्रभाव का संबंध","Cause and effect relationship / कारण और प्रभाव का संबंध"],["No relationship / कोई संबंध नहीं","No relationship / कोई संबंध नहीं"],["Both are effects / दोनों प्रभाव हैं","Both are effects / दोनों प्रभाव हैं"],["Both are causes / दोनों कारण हैं","Both are causes / दोनों कारण हैं"]],
+  answer:0,
+  exp:"Heavy rainfall can cause flooding in low-lying areas.",
+  expHi:"भारी वर्षा के कारण निचले क्षेत्रों में बाढ़ आ सकती है।"
+},
+{
+  topic:20,
+  en:"Cause: A student studies regularly. Effect: The student performs well in examinations.",
+  hi:"कारण: एक विद्यार्थी नियमित रूप से पढ़ाई करता है। प्रभाव: विद्यार्थी परीक्षा में अच्छा प्रदर्शन करता है।",
+  options:[["Possible cause-effect / संभावित कारण-प्रभाव","Possible cause-effect / संभावित कारण-प्रभाव"],["No connection / कोई संबंध नहीं","No connection / कोई संबंध नहीं"],["Effect causes cause / प्रभाव कारण बनता है","Effect causes cause / प्रभाव कारण बनता है"],["Unrelated / असंबंधित","Unrelated / असंबंधित"]],
+  answer:0,
+  exp:"Regular study can improve preparation and examination performance.",
+  expHi:"नियमित पढ़ाई से तैयारी बेहतर होती है और परीक्षा में अच्छा प्रदर्शन हो सकता है।"
+},
+{
+  topic:20,
+  en:"Cause: A power failure occurs. Effect: The electric lights go off.",
+  hi:"कारण: बिजली चली जाती है। प्रभाव: बिजली की लाइटें बंद हो जाती हैं।",
+  options:[["Cause-effect relationship / कारण-प्रभाव संबंध","Cause-effect relationship / कारण-प्रभाव संबंध"],["No relationship / कोई संबंध नहीं","No relationship / कोई संबंध नहीं"],["Both causes / दोनों कारण","Both causes / दोनों कारण"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:0,
+  exp:"An electric power failure normally causes electric lights to go off.",
+  expHi:"बिजली आपूर्ति बंद होने से सामान्यतः बिजली की लाइटें बंद हो जाती हैं।"
+},
+{
+  topic:20,
+  en:"Cause: A person forgot to set an alarm. Effect: The person may wake up late.",
+  hi:"कारण: एक व्यक्ति अलार्म लगाना भूल गया। प्रभाव: वह देर से उठ सकता है।",
+  options:[["Possible cause-effect / संभावित कारण-प्रभाव","Possible cause-effect / संभावित कारण-प्रभाव"],["No relation / कोई संबंध नहीं","No relation / कोई संबंध नहीं"],["Certain opposite effect / निश्चित विपरीत प्रभाव","Certain opposite effect / निश्चित विपरीत प्रभाव"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:0,
+  exp:"Forgetting to set an alarm may result in waking up late, though it is not certain.",
+  expHi:"अलार्म न लगाने से देर से उठने की संभावना हो सकती है, हालाँकि यह निश्चित नहीं है।"
+},
+{
+  topic:20,
+  en:"Cause: A road is blocked due to an accident. Effect: Traffic is diverted.",
+  hi:"कारण: दुर्घटना के कारण सड़क बंद है। प्रभाव: यातायात को दूसरे रास्ते पर भेजा जाता है।",
+  options:[["Cause-effect relationship / कारण-प्रभाव संबंध","Cause-effect relationship / कारण-प्रभाव संबंध"],["No relationship / कोई संबंध नहीं","No relationship / कोई संबंध नहीं"],["Both are unrelated / दोनों असंबंधित","Both are unrelated / दोनों असंबंधित"],["None / कोई नहीं","None / कोई नहीं"]],
+  answer:0,
+  exp:"A blocked road due to an accident can lead to traffic diversion.",
+  expHi:"दुर्घटना के कारण सड़क बंद होने पर यातायात को दूसरे रास्ते पर भेजा जा सकता है।"
+},
+
+{
+  topic:21,
+  en:"You find a wallet containing money and an identity card. What should you do?",
+  hi:"आपको पैसे और पहचान पत्र वाला एक बटुआ मिलता है। आपको क्या करना चाहिए?",
+  options:[["Keep the money / पैसे रख लें","Keep the money / पैसे रख लें"],["Throw it away / फेंक दें","Throw it away / फेंक दें"],["Return it to the owner or authorities / मालिक या अधिकारियों को लौटा दें","Return it to the owner or authorities / मालिक या अधिकारियों को लौटा दें"],["Ignore it / अनदेखा करें","Ignore it / अनदेखा करें"]],
+  answer:2,
+  exp:"Returning the wallet to its owner or handing it to the authorities is the honest and responsible decision.",
+  expHi:"बटुआ मालिक को लौटाना या अधिकारियों को देना ईमानदार और जिम्मेदार निर्णय है।"
+},
+{
+  topic:21,
+  en:"A student finds an error in an assignment just before submission. What is the best decision?",
+  hi:"एक विद्यार्थी को जमा करने से ठीक पहले अपने असाइनमेंट में गलती मिलती है। सबसे अच्छा निर्णय क्या होगा?",
+  options:[["Submit without correction / बिना सुधार जमा करें","Submit without correction / बिना सुधार जमा करें"],["Correct the error if time permits / समय हो तो गलती सुधारें","Correct the error if time permits / समय हो तो गलती सुधारें"],["Blame another student / दूसरे विद्यार्थी को दोष दें","Blame another student / दूसरे विद्यार्थी को दोष दें"],["Delete the assignment / असाइनमेंट मिटा दें","Delete the assignment / असाइनमेंट मिटा दें"]],
+  answer:1,
+  exp:"Correcting the error before submission improves accuracy.",
+  expHi:"जमा करने से पहले गलती सुधारने से असाइनमेंट की शुद्धता बढ़ती है।"
+},
+{
+  topic:21,
+  en:"During an examination, you see a student cheating. What should you do?",
+  hi:"परीक्षा के दौरान आप किसी विद्यार्थी को नकल करते देखते हैं। आपको क्या करना चाहिए?",
+  options:[["Help the student / विद्यार्थी की मदद करें","Help the student / विद्यार्थी की मदद करें"],["Ignore the incident / घटना को अनदेखा करें","Ignore the incident / घटना को अनदेखा करें"],["Inform the invigilator / निरीक्षक को सूचित करें","Inform the invigilator / निरीक्षक को सूचित करें"],["Cheat yourself / स्वयं नकल करें","Cheat yourself / स्वयं नकल करें"]],
+  answer:2,
+  exp:"Informing the invigilator is the fair and responsible action.",
+  expHi:"परीक्षा निरीक्षक को सूचित करना उचित और जिम्मेदार कदम है।"
+},
+{
+  topic:21,
+  en:"Your computer stops working before an important task. What should you do first?",
+  hi:"एक महत्वपूर्ण काम से पहले आपका कंप्यूटर काम करना बंद कर देता है। आपको सबसे पहले क्या करना चाहिए?",
+  options:[["Panic / घबरा जाएँ","Panic / घबरा जाएँ"],["Check power and connections / बिजली और कनेक्शन जाँचें","Check power and connections / बिजली और कनेक्शन जाँचें"],["Break the computer / कंप्यूटर तोड़ दें","Break the computer / कंप्यूटर तोड़ दें"],["Ignore the problem / समस्या अनदेखी करें","Ignore the problem / समस्या अनदेखी करें"]],
+  answer:1,
+  exp:"First check the power supply and connections before trying other solutions.",
+  expHi:"अन्य उपाय करने से पहले बिजली सप्लाई और कनेक्शन जाँचने चाहिए।"
+},
+{
+  topic:21,
+  en:"A team member is unable to complete an assigned task. What is the best decision?",
+  hi:"आपकी टीम का एक सदस्य अपना दिया गया काम पूरा नहीं कर पा रहा है। सबसे अच्छा निर्णय क्या होगा?",
+  options:[["Insult the member / सदस्य का अपमान करें","Insult the member / सदस्य का अपमान करें"],["Discuss the problem and help appropriately / समस्या पर चर्चा करके उचित मदद करें","Discuss the problem and help appropriately / समस्या पर चर्चा करके उचित मदद करें"],["Leave the team / टीम छोड़ दें","Leave the team / टीम छोड़ दें"],["Hide the problem / समस्या छिपाएँ","Hide the problem / समस्या छिपाएँ"]],
+  answer:1,
+  exp:"Communication and appropriate support help the team complete its work.",
+  expHi:"बातचीत और उचित सहयोग से टीम अपना काम पूरा कर सकती है।"
+},
+
+{
+  topic:22,
+  en:"In a plane mirror, the image is laterally inverted. What does this mean?",
+  hi:"समतल दर्पण में प्रतिबिंब पार्श्व रूप से उल्टा होता है। इसका क्या अर्थ है?",
+  options:[["Top and bottom interchange / ऊपर और नीचे बदल जाते हैं","Top and bottom interchange / ऊपर और नीचे बदल जाते हैं"],["Left and right interchange / बायाँ और दायाँ बदल जाते हैं","Left and right interchange / बायाँ और दायाँ बदल जाते हैं"],["Image becomes upside down / प्रतिबिंब उल्टा हो जाता है","Image becomes upside down / प्रतिबिंब उल्टा हो जाता है"],["Image disappears / प्रतिबिंब गायब हो जाता है","Image disappears / प्रतिबिंब गायब हो जाता है"]],
+  answer:1,
+  exp:"Lateral inversion means the left and right sides appear interchanged.",
+  expHi:"पार्श्व परिवर्तन का अर्थ है कि बायाँ और दायाँ भाग आपस में बदल जाते हैं।"
+},
+{
+  topic:22,
+  en:"Which capital letter looks the same in a plane mirror when viewed in normal block form?",
+  hi:"सामान्य बड़े अक्षरों में कौन-सा अंग्रेजी अक्षर समतल दर्पण में देखने पर समान दिखाई देता है?",
+  options:[["A","A"],["B","B"],["F","F"],["R","R"]],
+  answer:0,
+  exp:"Capital A has vertical symmetry, so its mirror image looks the same.",
+  expHi:"बड़े अक्षर A में ऊर्ध्वाधर सममिति होती है, इसलिए दर्पण में यह समान दिखता है।"
+},
+{
+  topic:22,
+  en:"What is the mirror image of the word 'MOM' in a plane mirror, considering its appearance?",
+  hi:"समतल दर्पण में 'MOM' शब्द का दर्पण प्रतिबिंब कैसा दिखाई देगा?",
+  options:[["MOM (same appearance) / MOM (समान रूप)","MOM (same appearance) / MOM (समान रूप)"],["WOW","WOW"],["MOW","MOW"],["OMM","OMM"]],
+  answer:0,
+  exp:"M and O have vertical symmetry, and MOM is a palindrome. Its overall appearance remains the same.",
+  expHi:"M और O में ऊर्ध्वाधर सममिति है और MOM उल्टा पढ़ने पर भी MOM ही रहता है।"
+},
+{
+  topic:22,
+  en:"Which of the following capital letters has vertical line symmetry?",
+  hi:"निम्नलिखित में से किस बड़े अंग्रेजी अक्षर में ऊर्ध्वाधर रेखा सममिति होती है?",
+  options:[["A","A"],["F","F"],["G","G"],["L","L"]],
+  answer:0,
+  exp:"Capital A has a vertical line of symmetry.",
+  expHi:"बड़े अक्षर A में ऊर्ध्वाधर सममिति रेखा होती है।"
+},
+{
+  topic:22,
+  en:"If a clock shows 3:00, what time will its mirror image show?",
+  hi:"यदि घड़ी में 3:00 बजे हैं, तो उसका दर्पण प्रतिबिंब कितना समय दिखाएगा?",
+  options:[["9:00","9:00"],["3:00","3:00"],["6:00","6:00"],["12:00","12:00"]],
+  answer:0,
+  exp:"Mirror time = 11:60 - 3:00 = 9:00.",
+  expHi:"दर्पण समय = 11:60 - 3:00 = 9:00।"
+},
+
+{
+  topic:23,
+  en:"What happens to an object in a water image?",
+  hi:"जल प्रतिबिंब में किसी वस्तु का प्रतिबिंब कैसा होता है?",
+  options:[["Left-right reversal / बायाँ-दायाँ परिवर्तन","Left-right reversal / बायाँ-दायाँ परिवर्तन"],["Top-bottom reversal / ऊपर-नीचे परिवर्तन","Top-bottom reversal / ऊपर-नीचे परिवर्तन"],["No change / कोई परिवर्तन नहीं","No change / कोई परिवर्तन नहीं"],["Image disappears / प्रतिबिंब गायब","Image disappears / प्रतिबिंब गायब"]],
+  answer:1,
+  exp:"A water image is formed by reflection across a horizontal line, so top and bottom interchange.",
+  expHi:"जल प्रतिबिंब क्षैतिज रेखा के अनुसार बनता है, इसलिए ऊपर और नीचे का भाग बदल जाता है।"
+},
+{
+  topic:23,
+  en:"Which letter looks the same in its water image in normal block form?",
+  hi:"सामान्य बड़े अक्षरों में कौन-सा अक्षर अपने जल प्रतिबिंब में समान दिखाई देता है?",
+  options:[["A","A"],["B","B"],["C","C"],["F","F"]],
+  answer:2,
+  exp:"Capital C has horizontal symmetry in standard block form.",
+  expHi:"सामान्य बड़े अक्षर C में क्षैतिज सममिति होती है।"
+},
+{
+  topic:23,
+  en:"Which capital letter has horizontal line symmetry in standard block form?",
+  hi:"सामान्य बड़े अक्षरों में किस अक्षर में क्षैतिज रेखा सममिति होती है?",
+  options:[["A","A"],["H","H"],["L","L"],["P","P"]],
+  answer:1,
+  exp:"Capital H has horizontal symmetry in standard block form.",
+  expHi:"सामान्य बड़े अक्षर H में क्षैतिज सममिति होती है।"
+},
+{
+  topic:23,
+  en:"A triangle has its base at the bottom and its vertex at the top. In its water image, where will the vertex appear?",
+  hi:"एक त्रिभुज का आधार नीचे और शीर्ष ऊपर है। उसके जल प्रतिबिंब में शीर्ष कहाँ दिखाई देगा?",
+  options:[["Top / ऊपर","Top / ऊपर"],["Bottom / नीचे","Bottom / नीचे"],["Left / बाएँ","Left / बाएँ"],["Right / दाएँ","Right / दाएँ"]],
+  answer:1,
+  exp:"Water reflection reverses the vertical position, so the vertex appears at the bottom.",
+  expHi:"जल प्रतिबिंब में ऊर्ध्वाधर स्थिति बदल जाती है, इसलिए शीर्ष नीचे दिखाई देगा।"
+},
+{
+  topic:23,
+  en:"If an arrow points upward, in which direction will it point in its water image?",
+  hi:"यदि एक तीर ऊपर की ओर संकेत करता है, तो उसके जल प्रतिबिंब में वह किस दिशा में संकेत करेगा?",
+  options:[["Up / ऊपर","Up / ऊपर"],["Down / नीचे","Down / नीचे"],["Left / बाएँ","Left / बाएँ"],["Right / दाएँ","Right / दाएँ"]],
+  answer:1,
+  exp:"A water image reverses top and bottom. An upward arrow becomes downward.",
+  expHi:"जल प्रतिबिंब में ऊपर और नीचे बदल जाते हैं। ऊपर की ओर तीर नीचे की ओर हो जाएगा।"
+},
+
+{
+  topic:24,
+  en:"A square paper is folded once vertically. How many layers are formed?",
+  hi:"एक वर्गाकार कागज को एक बार लंबवत मोड़ा जाता है। कितनी परतें बनेंगी?",
+  options:[["1","1"],["2","2"],["3","3"],["4","4"]],
+  answer:1,
+  exp:"One fold creates two layers.",
+  expHi:"एक बार मोड़ने पर कागज की दो परतें बनती हैं।"
+},
+{
+  topic:24,
+  en:"A paper is folded twice, and one hole is punched through all layers. How many holes will appear when unfolded?",
+  hi:"एक कागज को दो बार मोड़ा जाता है और सभी परतों में एक छेद किया जाता है। खोलने पर कितने छेद दिखाई देंगे?",
+  options:[["2","2"],["3","3"],["4","4"],["8","8"]],
+  answer:2,
+  exp:"Two folds create 4 layers. One punch through all layers produces 4 holes when unfolded.",
+  expHi:"दो बार मोड़ने से 4 परतें बनती हैं। सभी परतों में एक छेद करने पर खोलने पर 4 छेद मिलेंगे।"
+},
+{
+  topic:24,
+  en:"Find the next figure in the series: Circle, Square, Circle, Square, Circle, ?",
+  hi:"श्रृंखला में अगली आकृति ज्ञात कीजिए: वृत्त, वर्ग, वृत्त, वर्ग, वृत्त, ?",
+  options:[["Circle / वृत्त","Circle / वृत्त"],["Square / वर्ग","Square / वर्ग"],["Triangle / त्रिभुज","Triangle / त्रिभुज"],["Rectangle / आयत","Rectangle / आयत"]],
+  answer:1,
+  exp:"The shapes alternate between Circle and Square. The next shape is Square.",
+  expHi:"आकृतियाँ वृत्त और वर्ग के क्रम में बारी-बारी से आ रही हैं। अगली आकृति वर्ग होगी।"
+},
+{
+  topic:24,
+  en:"Find the next figure: Triangle, Triangle, Circle, Triangle, Triangle, Circle, ?",
+  hi:"अगली आकृति ज्ञात कीजिए: त्रिभुज, त्रिभुज, वृत्त, त्रिभुज, त्रिभुज, वृत्त, ?",
+  options:[["Circle / वृत्त","Circle / वृत्त"],["Square / वर्ग","Square / वर्ग"],["Triangle / त्रिभुज","Triangle / त्रिभुज"],["Rectangle / आयत","Rectangle / आयत"]],
+  answer:2,
+  exp:"The repeating pattern is Triangle, Triangle, Circle. The next shape is Triangle.",
+  expHi:"दो त्रिभुज के बाद एक वृत्त आ रहा है। अगली आकृति त्रिभुज होगी।"
+},
+{
+  topic:24,
+  en:"A paper is folded once vertically and once horizontally. How many layers are formed?",
+  hi:"एक कागज को एक बार लंबवत और एक बार क्षैतिज मोड़ा जाता है। कितनी परतें बनेंगी?",
+  options:[["2","2"],["3","3"],["4","4"],["8","8"]],
+  answer:2,
+  exp:"Each fold doubles the number of layers: 1 × 2 × 2 = 4 layers.",
+  expHi:"प्रत्येक मोड़ पर परतें दोगुनी होती हैं: 1 × 2 × 2 = 4 परतें।"
+}
+
+
+
+
+];
+
+let testQuestions=[],answers={},reviewMarks={},current=0,timeLeft=600,timerId=null,submitted=false;
+const $=id=>document.getElementById(id);
+
+function show(id){["home","test","result"].forEach(x=>$(x).classList.toggle("hidden",x!==id))}
+function renderTopics(){
+ $("topicList").innerHTML=topics.map((t,i)=>`<div style="background:#fff7f9;border:1px solid #f0dce2;border-radius:9px;padding:9px;font-size:13px">${i+1}. ${t}</div>`).join("");
+}
+function startTest(){
+ if(questionBank.length<10){alert("At least 10 questions are required. More questions will be added to the question bank.");return}
+ let pool=[...questionBank];
+ for(let i=pool.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
+ testQuestions=pool.slice(0,10);
+ answers={};reviewMarks={};current=0;timeLeft=600;submitted=false;
+ show("test");renderQuestion();renderPalette();updateTimer();
+ clearInterval(timerId);
+ timerId=setInterval(()=>{timeLeft--;updateTimer();if(timeLeft<=0)submitTest(true)},1000);
+}
+function visibleText(en,hi){
+ let mode=$("questionMode").value;
+ if(mode==="en")return en;
+ if(mode==="hi")return hi;
+ return `${en}<span class="hindi">${hi}</span>`;
+}
+function renderQuestion(){
+ let q=testQuestions[current],mode=$("questionMode").value;
+ $("qCounter").textContent=`Question ${current+1} of ${testQuestions.length}`;
+ $("progressBar").style.width=((current+1)/testQuestions.length*100)+"%";
+ $("topicName").textContent=topics[q.topic]||"Reasoning";
+ $("questionText").innerHTML=visibleText(q.en,q.hi);
+ $("options").innerHTML=q.options.map((op,i)=>{
+  let label=mode==="en"?op[0]:mode==="hi"?op[1]:`${op[0]}<span class="hindi">${op[1]}</span>`;
+  return `<button class="option ${answers[current]===i?"selected":""}" onclick="chooseAnswer(${i})"><span class="letter">${"ABCD"[i]}.</span><span>${label}</span></button>`;
+ }).join("");
+ $("nextBtn").textContent=current===testQuestions.length-1?"Finish Questions":"Save & Next →";
+ renderPalette();
+}
+function chooseAnswer(i){answers[current]=i;renderQuestion()}
+function previousQuestion(){if(current>0){current--;renderQuestion()}}
+function nextQuestion(){if(current<testQuestions.length-1){current++;renderQuestion()}else submitTest()}
+function markReview(){reviewMarks[current]=!reviewMarks[current];renderPalette()}
+function goToQuestion(i){current=i;renderQuestion()}
+function renderPalette(){
+ $("palette").innerHTML=testQuestions.map((q,i)=>`<button class="${i===current?"current":""} ${answers[i]!==undefined?"answered":""} ${reviewMarks[i]?"review":""}" onclick="goToQuestion(${i})">${i+1}</button>`).join("");
+}
+function updateTimer(){
+ let m=Math.floor(timeLeft/60),s=timeLeft%60;
+ $("timer").textContent=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+ $("timer").classList.toggle("danger",timeLeft<=60);
+}
+function submitTest(auto=false){
+ if(submitted)return;
+ if(!auto&&!confirm("Are you sure you want to submit the test?"))return;
+ submitted=true;clearInterval(timerId);
+ let correct=0,wrong=0,skip=0;
+ testQuestions.forEach((q,i)=>{
+  if(answers[i]===undefined)skip++;
+  else if(answers[i]===q.answer)correct++;
+  else wrong++;
+ });
+ $("score").textContent=`${correct} / ${testQuestions.length}`;
+ $("correctCount").textContent=correct;
+ $("wrongCount").textContent=wrong;
+ $("skipCount").textContent=skip;
+ $("performance").textContent=correct>=8?"Excellent! शानदार प्रदर्शन!":correct>=6?"Good Work! अच्छा प्रयास!":"Keep Practising! अभ्यास जारी रखें!";
+ $("reviewList").innerHTML=testQuestions.map((q,i)=>{
+  let chosen=answers[i],ok=chosen===q.answer;
+  return `<div class="explanation" style="margin-bottom:12px">
+   <b>Q${i+1}. ${q.en}</b><div class="hindi">${q.hi}</div>
+   <p style="color:${ok?"#16845B":"#C0394B"}"><b>${chosen===undefined?"Not Attempted":ok?"Correct Answer":"Your answer: "+q.options[chosen][0]}</b></p>
+   <b>Correct: ${q.options[q.answer][0]} / ${q.options[q.answer][1]}</b>
+   <p>${q.exp}<br>${q.expHi}</p>
+  </div>`;
+ }).join("");
+ show("result");
+}
+function restartTest(){startTest()}
+function goHome(){clearInterval(timerId);show("home")}
+
+function renderTestSeries(){
+ const tests = [
+  "Analogy & Number Analogy",
+  "Number Series",
+  "Alphabet & Mixed Series",
+  "Coding-Decoding",
+  "Blood Relation",
+  "Syllogism",
+  "Venn Diagram",
+  "Classification & Odd One Out",
+  "Direction Sense",
+  "Distance & Position",
+  "Seating Arrangement",
+  "Ranking",
+  "Logical Puzzles",
+  "Data Interpretation",
+  "Tables, Charts & Graphs",
+  "Statement & Conclusion",
+  "Statement & Assumption",
+  "Cause & Effect",
+  "Decision Making",
+  "Mirror Image",
+  "Water Image",
+  "Paper Folding",
+  "Figure Series",
+  "Mixed Practice Test",
+  "Full Mock Test"
+ ];
+
+ document.getElementById("testSeriesList").innerHTML =
+ tests.map((name,i)=>`
+  <div style="display:flex;align-items:center;justify-content:space-between;
+  gap:10px;padding:13px;margin:9px 0;background:#fff7f9;
+  border:1px solid #efd9df;border-radius:12px">
+   <div>
+    <b style="color:#641E35">Test ${String(i+1).padStart(2,"0")}</b>
+    <div style="font-size:13px;margin-top:5px">${name}</div>
+    <small style="color:#866b78">10 Questions • 10 Marks</small>
+   </div>
+   <button class="btn" onclick="startTest()">Start</button>
+  </div>
+ `).join("");
+}
+
+renderTopics();
+renderTestSeries();
+
+</script>
+</body>
+</html>

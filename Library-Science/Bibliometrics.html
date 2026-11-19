@@ -1,1 +1,570 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET | Bibliometrics Test</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f0f4ff;color:#25213a;font-family:'Poppins','Noto Sans Devanagari',sans-serif}
+header{background:linear-gradient(135deg,#172554,#2563eb,#7c3aed);color:white;text-align:center;padding:28px 15px}
+header h1{margin:0;font-size:25px}
+header p{margin:7px 0 0;font-size:14px}
+.top-actions{max-width:1100px;margin:15px auto 0;padding:0 15px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.home-btn{display:inline-block;background:#e0e7ff;color:#1d4ed8;padding:11px 18px;border-radius:9px;text-decoration:none;font-weight:700;font-size:13px}
+.container{max-width:1100px;margin:20px auto;padding:0 15px}
+.topic-title{background:linear-gradient(120deg,#fff,#eef2ff);padding:22px;border-radius:15px;box-shadow:0 4px 15px #00000008;border-left:5px solid #6366f1;margin-bottom:18px}
+.topic-title h2{margin:0;color:#4338ca;font-size:23px}
+.topic-title p{margin:5px 0 0;color:#666}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.info-card{background:white;padding:16px;border-radius:13px;text-align:center;box-shadow:0 4px 14px #00000008;border-bottom:4px solid #818cf8}
+.info-card:nth-child(2){border-color:#22c55e}
+.info-card:nth-child(3){border-color:#f59e0b}
+.info-card strong{display:block;color:#4338ca;font-size:22px}
+.info-card span{font-size:12px;color:#666}
+.timer-warning{color:#dc2626!important}
+.layout{display:grid;grid-template-columns:1fr 280px;gap:18px;align-items:start}
+.question-card,.side-card,.result-card{background:white;padding:23px;border-radius:15px;box-shadow:0 5px 18px #0000000c}
+.question-card{border-top:5px solid #6366f1}
+.side-card{border-top:5px solid #f59e0b}
+.question-number{display:inline-block;background:#ede9fe;color:#6d28d9;padding:7px 13px;border-radius:20px;font-weight:700;font-size:13px}
+.question-text{font-size:17px;font-weight:600;margin:17px 0 6px;line-height:1.6}
+.hindi-text{font-family:'Noto Sans Devanagari',sans-serif;color:#555;margin:0 0 20px;line-height:1.8}
+.option{display:flex;align-items:flex-start;gap:11px;border:1px solid #dbe3f5;padding:14px;border-radius:11px;margin:11px 0;cursor:pointer;transition:.2s;background:#fbfcff}
+.option:hover{border-color:#818cf8;background:#eef2ff}
+.option.selected{border:2px solid #4f46e5;background:#e0e7ff}
+.option input{margin-top:5px;accent-color:#4f46e5}
+.option span{font-size:14px;line-height:1.6}
+.nav-buttons{display:flex;justify-content:space-between;gap:10px;margin-top:23px;flex-wrap:wrap}
+button{border:0;padding:11px 18px;border-radius:9px;cursor:pointer;font-family:inherit;font-weight:600}
+.btn-primary{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white}
+.btn-light{background:#e0e7ff;color:#3730a3}
+.btn-submit{background:linear-gradient(135deg,#dc2626,#f43f5e);color:white}
+button:disabled{opacity:.4;cursor:not-allowed}
+.side-card h3{margin:0 0 15px;color:#3730a3;font-size:17px}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:17px}
+.legend span{display:flex;align-items:center;font-size:11px;color:#555}
+.dot{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;flex-shrink:0}
+.question-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
+.qn{padding:10px 0;background:#fef3c7;color:#92400e;border:1px solid #fbbf24;border-radius:8px;font-size:13px;font-weight:700;transition:.2s}
+.qn.answered{background:#22c55e;color:white;border-color:#16a34a}
+.qn.not-answered{background:#fee2e2;color:#b91c1c;border-color:#ef4444}
+.qn.not-visited{background:#fef3c7;color:#92400e;border-color:#f59e0b}
+.qn.current{background:#2563eb;color:white;border:2px solid #1d4ed8;outline:3px solid #bfdbfe}
+.progress-text{font-size:12px;color:#555;margin-top:17px}
+.progress-bar{height:9px;background:#e5e7eb;border-radius:10px;overflow:hidden;margin-top:8px}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#22c55e,#2563eb);transition:.2s}
+.result-card{display:none;margin-top:20px;border-top:5px solid #22c55e}
+.result-card h2{color:#2563eb;margin-top:0}
+.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+.score-box{background:#eff6ff;padding:15px 8px;text-align:center;border-radius:11px}
+.score-box:nth-child(1){background:#ede9fe}
+.score-box:nth-child(2){background:#dcfce7}
+.score-box:nth-child(3){background:#fee2e2}
+.score-box:nth-child(4){background:#fef3c7}
+.score-box strong{display:block;font-size:22px;color:#1d4ed8}
+.score-box span{font-size:12px;color:#555}
+.review-item{border-top:1px solid #eee;padding:16px 0}
+.review-item p{margin:6px 0;font-size:14px;line-height:1.6}
+.correct-text{color:#15803d;font-weight:600}
+.wrong-text{color:#dc2626;font-weight:600}
+.explanation{color:#555;background:#f1f5ff;padding:12px;border-radius:9px;font-size:13px;line-height:1.7}
+footer{text-align:center;padding:25px 10px;color:#777;font-size:12px}
+@media(max-width:750px){
+.layout{grid-template-columns:1fr}
+.info{gap:7px}
+.info-card{padding:12px 5px}
+.info-card strong{font-size:18px}
+.question-card,.side-card{padding:16px}
+.score-grid{grid-template-columns:repeat(2,1fr)}
+header h1{font-size:20px}
+}
+</style>
+</head>
+
+<body>
+<header>
+<h1>BIHAR LIBRARY ELIGIBILITY TEST</h1>
+<p>Library & Information Science | Topic 11</p>
+</header>
+
+<div class="top-actions">
+<a class="home-btn" href="../index.html">← Go to Home</a>
+<span style="font-size:12px;color:#666">Prepared for Jahnavi Jee</span>
+</div>
+
+<div class="container">
+
+<div class="topic-title">
+<h2>Bibliometrics</h2>
+<p>ग्रंथिमिति</p>
+</div>
+
+<div class="info">
+<div class="info-card"><strong>15</strong><span>Total Questions / कुल प्रश्न</span></div>
+<div class="info-card"><strong>15</strong><span>Total Marks / कुल अंक</span></div>
+<div class="info-card"><strong id="timer">15:00</strong><span>Time Left / शेष समय</span></div>
+</div>
+
+<div class="layout" id="testLayout">
+
+<main class="question-card">
+<div class="question-number" id="questionNumber"></div>
+<div class="question-text" id="questionText"></div>
+<div class="hindi-text" id="questionHindi"></div>
+<div id="options"></div>
+
+<div class="nav-buttons">
+<button class="btn-light" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+<button class="btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">Submit Test</button>
+</div>
+</main>
+
+<aside class="side-card">
+<h3>Question Navigator</h3>
+
+<div class="legend">
+<span><i class="dot" style="background:#22c55e"></i>Answered</span>
+<span><i class="dot" style="background:#ef4444"></i>Not Answered</span>
+<span><i class="dot" style="background:#f59e0b"></i>Not Visited</span>
+<span><i class="dot" style="background:#2563eb"></i>Current</span>
+</div>
+
+<div class="question-grid" id="questionGrid"></div>
+<div class="progress-text" id="progressText">Answered: 0 / 15</div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+</aside>
+</div>
+
+<div class="result-card" id="resultCard">
+<h2>Test Result / परीक्षा परिणाम</h2>
+<p id="resultMessage"></p>
+
+<div class="score-grid">
+<div class="score-box"><strong id="score">0</strong><span>Score / अंक</span></div>
+<div class="score-box"><strong id="correct">0</strong><span>Correct / सही</span></div>
+<div class="score-box"><strong id="wrong">0</strong><span>Wrong / गलत</span></div>
+<div class="score-box"><strong id="skipped">0</strong><span>Skipped / छोड़े</span></div>
+</div>
+
+<h3>Answer Review / उत्तर समीक्षा</h3>
+<div id="review"></div>
+
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+<button class="btn-primary" onclick="restartTest()">Restart Test / दोबारा टेस्ट दें</button>
+<a class="home-btn" href="../index.html">← Go to Home</a>
+</div>
+</div>
+
+</div>
+
+<footer>
+Bihar Library Eligibility Test (BLET)<br>
+Prepared for Jahnavi Jee<br>
+Mentor: Ashish Kumar Lucky
+</footer>
+
+<script>
+const questions = [
+
+{
+q:"Who coined the term Bibliometrics?",
+h:"Bibliometrics शब्द किसने दिया था?",
+o:[
+"Alan Pritchard / एलन प्रिचार्ड",
+"S. R. Ranganathan / एस. आर. रंगनाथन",
+"Bradford / ब्रैडफोर्ड",
+"Eugene Garfield / यूजीन गारफील्ड"
+],
+a:0,
+e:"Alan Pritchard introduced the term Bibliometrics in 1969. / एलन प्रिचार्ड ने 1969 में Bibliometrics शब्द प्रस्तुत किया था।"
+},
+
+{
+q:"What is Bibliometrics?",
+h:"Bibliometrics क्या है?",
+o:[
+"Quantitative study of books and other documents / पुस्तकों एवं अन्य दस्तावेजों का मात्रात्मक अध्ययन",
+"Study of library buildings / पुस्तकालय भवनों का अध्ययन",
+"Study of book binding / पुस्तक बंधाई का अध्ययन",
+"Study of library furniture / पुस्तकालय फर्नीचर का अध्ययन"
+],
+a:0,
+e:"Bibliometrics uses statistical and mathematical methods to study publications and documents. / Bibliometrics में प्रकाशनों एवं दस्तावेजों का अध्ययन करने के लिए सांख्यिकीय और गणितीय विधियों का उपयोग किया जाता है।"
+},
+
+{
+q:"Who introduced the term Scientometrics?",
+h:"Scientometrics शब्द किसने प्रस्तुत किया?",
+o:[
+"V. V. Nalimov and Z. M. Mulchenko / वी. वी. नालिमोव एवं जेड. एम. मुलचेंको",
+"Alan Pritchard / एलन प्रिचार्ड",
+"Samuel C. Bradford / सैमुअल सी. ब्रैडफोर्ड",
+"S. R. Ranganathan / एस. आर. रंगनाथन"
+],
+a:0,
+e:"The term Scientometrics is associated with V. V. Nalimov and Z. M. Mulchenko. / Scientometrics शब्द वी. वी. नालिमोव एवं जेड. एम. मुलचेंको से संबंधित है।"
+},
+
+{
+q:"What does Webometrics measure?",
+h:"Webometrics किसका मापन करता है?",
+o:[
+"Quantitative aspects of the Web and web-based resources / वेब एवं वेब आधारित संसाधनों के मात्रात्मक पहलुओं का मापन",
+"Only printed books / केवल मुद्रित पुस्तकें",
+"Library furniture / पुस्तकालय फर्नीचर",
+"Book circulation only / केवल पुस्तक निर्गमन"
+],
+a:0,
+e:"Webometrics studies the quantitative aspects of the Web, including websites, links and online information. / Webometrics में वेबसाइट, लिंक एवं ऑनलाइन सूचना के मात्रात्मक पहलुओं का अध्ययन किया जाता है।"
+},
+
+{
+q:"What is Citation Analysis?",
+h:"Citation Analysis (उद्धरण विश्लेषण) क्या है?",
+o:[
+"Study of references and citations in publications / प्रकाशनों में संदर्भों एवं उद्धरणों का अध्ययन",
+"Study of book covers / पुस्तक के कवर का अध्ययन",
+"Study of library furniture / पुस्तकालय फर्नीचर का अध्ययन",
+"Study of book prices / पुस्तकों की कीमतों का अध्ययन"
+],
+a:0,
+e:"Citation analysis examines citation patterns to understand the influence and relationships of scholarly publications. / उद्धरण विश्लेषण शोध प्रकाशनों के प्रभाव एवं आपसी संबंधों को समझने के लिए उद्धरणों के पैटर्न का अध्ययन करता है।"
+},
+
+{
+q:"Who is widely known as the father of Citation Indexing?",
+h:"Citation Indexing के जनक के रूप में किसे जाना जाता है?",
+o:[
+"Eugene Garfield / यूजीन गारफील्ड",
+"Alan Pritchard / एलन प्रिचार्ड",
+"Bradford / ब्रैडफोर्ड",
+"Lotka / लोटका"
+],
+a:0,
+e:"Eugene Garfield is widely recognized for developing citation indexing and the Science Citation Index. / यूजीन गारफील्ड Citation Indexing एवं Science Citation Index के विकास के लिए प्रसिद्ध हैं।"
+},
+
+{
+q:"Which law is related to the scattering of articles among journals?",
+h:"पत्रिकाओं में लेखों के बिखराव से कौन-सा नियम संबंधित है?",
+o:[
+"Bradford's Law / ब्रैडफोर्ड का नियम",
+"Lotka's Law / लोटका का नियम",
+"Zipf's Law / जिप्फ का नियम",
+"Five Laws of Library Science / पुस्तकालय विज्ञान के पाँच नियम"
+],
+a:0,
+e:"Bradford's Law describes the scattering of articles on a subject across different journals. / Bradford का नियम किसी विषय के लेखों के विभिन्न पत्रिकाओं में बिखराव का वर्णन करता है।"
+},
+
+{
+q:"Lotka's Law is related to which aspect of scientific literature?",
+h:"Lotka का नियम वैज्ञानिक साहित्य के किस पहलू से संबंधित है?",
+o:[
+"Scientific productivity of authors / लेखकों की वैज्ञानिक उत्पादकता",
+"Scattering of journal articles / पत्रिका लेखों का बिखराव",
+"Word frequency / शब्दों की आवृत्ति",
+"Library classification / पुस्तकालय वर्गीकरण"
+],
+a:0,
+e:"Lotka's Law describes the frequency distribution of scientific productivity among authors. / Lotka का नियम लेखकों के बीच वैज्ञानिक उत्पादकता के आवृत्ति वितरण का वर्णन करता है।"
+},
+
+{
+q:"Zipf's Law is mainly associated with:",
+h:"Zipf का नियम मुख्य रूप से किससे संबंधित है?",
+o:[
+"Word frequency in a text / किसी पाठ में शब्दों की आवृत्ति",
+"Author productivity / लेखक उत्पादकता",
+"Journal scattering / पत्रिकाओं का बिखराव",
+"Book acquisition / पुस्तक अधिग्रहण"
+],
+a:0,
+e:"Zipf's Law describes the relationship between the rank of a word and its frequency in a text. / Zipf का नियम किसी पाठ में शब्द की रैंक एवं उसकी आवृत्ति के बीच संबंध बताता है।"
+},
+
+{
+q:"What is an Impact Factor?",
+h:"Impact Factor क्या है?",
+o:[
+"A measure based on citations received by a journal's recent articles / किसी पत्रिका के हाल के लेखों को मिले उद्धरणों पर आधारित माप",
+"Number of books in a library / पुस्तकालय में पुस्तकों की संख्या",
+"Number of library members / पुस्तकालय सदस्यों की संख्या",
+"Price of a journal / पत्रिका की कीमत"
+],
+a:0,
+e:"Journal Impact Factor is a citation-based journal-level metric, traditionally calculated using citations to recent articles over a defined period. / जर्नल Impact Factor उद्धरणों पर आधारित पत्रिका-स्तरीय माप है, जिसकी गणना निर्धारित अवधि में हाल के लेखों को मिले उद्धरणों के आधार पर की जाती है।"
+},
+
+{
+q:"What does the h-index measure?",
+h:"h-index किसका मापन करता है?",
+o:[
+"Researcher's productivity and citation impact / शोधकर्ता की उत्पादकता एवं उद्धरण प्रभाव",
+"Number of books owned by a researcher / शोधकर्ता के पास पुस्तकों की संख्या",
+"Number of library visitors / पुस्तकालय आगंतुकों की संख्या",
+"Number of journals in a library / पुस्तकालय में पत्रिकाओं की संख्या"
+],
+a:0,
+e:"A researcher has an h-index of h if h publications have each received at least h citations. / किसी शोधकर्ता का h-index h होता है यदि उसके h प्रकाशनों को कम-से-कम h उद्धरण प्राप्त हुए हों।"
+},
+
+{
+q:"Which metric is used to measure the online attention received by research outputs?",
+h:"शोध कार्यों को ऑनलाइन मिलने वाले ध्यान को मापने के लिए किस मेट्रिक का उपयोग होता है?",
+o:[
+"Altmetrics / अल्टमेट्रिक्स",
+"Bradford's Law / ब्रैडफोर्ड का नियम",
+"Lotka's Law / लोटका का नियम",
+"DDC / डीडीसी"
+],
+a:0,
+e:"Altmetrics tracks online attention such as mentions in social media, news, blogs and policy documents. / Altmetrics सोशल मीडिया, समाचार, ब्लॉग एवं नीति दस्तावेजों में शोध कार्यों के उल्लेख जैसे ऑनलाइन ध्यान को मापता है।"
+},
+
+{
+q:"What is Informetrics?",
+h:"Informetrics क्या है?",
+o:[
+"Quantitative study of information in various forms / विभिन्न रूपों में सूचना का मात्रात्मक अध्ययन",
+"Study of library furniture / पुस्तकालय फर्नीचर का अध्ययन",
+"Study of book binding / पुस्तक बंधाई का अध्ययन",
+"Study of library buildings / पुस्तकालय भवनों का अध्ययन"
+],
+a:0,
+e:"Informetrics is the quantitative study of information, information processes and related communication. / Informetrics सूचना, सूचना प्रक्रियाओं एवं संबंधित संचार का मात्रात्मक अध्ययन है।"
+},
+
+{
+q:"Which of the following is an important use of Bibliometrics?",
+h:"निम्नलिखित में से Bibliometrics का एक महत्वपूर्ण उपयोग क्या है?",
+o:[
+"Evaluating publication and citation patterns / प्रकाशन एवं उद्धरण पैटर्न का मूल्यांकन",
+"Repairing library furniture / पुस्तकालय फर्नीचर की मरम्मत",
+"Printing identity cards / पहचान पत्र छापना",
+"Book shelving only / केवल पुस्तकें रखना"
+],
+a:0,
+e:"Bibliometrics helps analyse research productivity, publication trends, citation patterns and scholarly impact. / Bibliometrics शोध उत्पादकता, प्रकाशन प्रवृत्तियों, उद्धरण पैटर्न एवं शैक्षणिक प्रभाव का विश्लेषण करने में मदद करता है।"
+},
+
+{
+q:"Which database is widely used for citation indexing and citation analysis?",
+h:"Citation Indexing एवं Citation Analysis के लिए किस डेटाबेस का व्यापक उपयोग होता है?",
+o:[
+"Web of Science / वेब ऑफ साइंस",
+"Paint / पेंट",
+"Notepad / नोटपैड",
+"Calculator / कैलकुलेटर"
+],
+a:0,
+e:"Web of Science is a major citation database used for citation searching and research analysis. / Web of Science एक प्रमुख उद्धरण डेटाबेस है जिसका उपयोग उद्धरण खोज एवं शोध विश्लेषण में होता है।"
+}
+
+];
+
+let current=0;
+let answers=Array(questions.length).fill(null);
+let visited=Array(questions.length).fill(false);
+let timeLeft=15*60;
+let submitted=false;
+let timerInterval;
+
+function renderQuestion(){
+ if(submitted)return;
+
+ const q=questions[current];
+ visited[current]=true;
+
+ document.getElementById("questionNumber").textContent=
+ `Question ${current+1} of ${questions.length}`;
+ document.getElementById("questionText").textContent=q.q;
+ document.getElementById("questionHindi").textContent=q.h;
+
+ const options=document.getElementById("options");
+ options.innerHTML="";
+
+ q.o.forEach((option,index)=>{
+  const label=document.createElement("label");
+  label.className="option"+(answers[current]===index?" selected":"");
+
+  const radio=document.createElement("input");
+  radio.type="radio";
+  radio.name="answer";
+  radio.checked=answers[current]===index;
+
+  radio.addEventListener("change",()=>{
+   answers[current]=index;
+   renderQuestion();
+  });
+
+  const span=document.createElement("span");
+  span.textContent=String.fromCharCode(65+index)+". "+option;
+
+  label.appendChild(radio);
+  label.appendChild(span);
+  options.appendChild(label);
+ });
+
+ document.getElementById("prevBtn").disabled=current===0;
+ document.getElementById("nextBtn").style.display=
+ current===questions.length-1?"none":"inline-block";
+ document.getElementById("submitBtn").style.display=
+ current===questions.length-1?"inline-block":"none";
+
+ renderNavigator();
+}
+
+function renderNavigator(){
+ const grid=document.getElementById("questionGrid");
+ grid.innerHTML="";
+
+ questions.forEach((q,index)=>{
+  const btn=document.createElement("button");
+  btn.className="qn";
+  btn.textContent=index+1;
+
+  if(index===current)btn.classList.add("current");
+  else if(answers[index]!==null)btn.classList.add("answered");
+  else if(visited[index])btn.classList.add("not-answered");
+  else btn.classList.add("not-visited");
+
+  btn.addEventListener("click",()=>{
+   current=index;
+   renderQuestion();
+  });
+
+  grid.appendChild(btn);
+ });
+
+ const answered=answers.filter(a=>a!==null).length;
+ document.getElementById("progressText").textContent=
+ `Answered: ${answered} / ${questions.length}`;
+ document.getElementById("progressFill").style.width=
+ (answered/questions.length*100)+"%";
+}
+
+function previousQuestion(){
+ if(current>0){current--;renderQuestion();}
+}
+
+function nextQuestion(){
+ if(current<questions.length-1){current++;renderQuestion();}
+}
+
+function updateTimer(){
+ const minutes=Math.floor(timeLeft/60);
+ const seconds=timeLeft%60;
+ const timer=document.getElementById("timer");
+
+ timer.textContent=
+ String(minutes).padStart(2,"0")+":"+
+ String(seconds).padStart(2,"0");
+
+ if(timeLeft<=60)timer.classList.add("timer-warning");
+
+ if(timeLeft<=0){
+  clearInterval(timerInterval);
+  finishTest(true);
+  return;
+ }
+ timeLeft--;
+}
+
+function submitTest(){
+ const unanswered=answers.filter(a=>a===null).length;
+ let message="Are you sure you want to submit the test?";
+
+ if(unanswered>0){
+  message+=`\n${unanswered} question(s) are unanswered.`;
+ }
+
+ if(confirm(message))finishTest(false);
+}
+
+function finishTest(autoSubmitted){
+ if(submitted)return;
+ submitted=true;
+ clearInterval(timerInterval);
+
+ let correct=0,wrong=0,skipped=0,reviewHTML="";
+
+ questions.forEach((q,index)=>{
+  const userAnswer=answers[index];
+  const isCorrect=userAnswer===q.a;
+
+  if(userAnswer===null)skipped++;
+  else if(isCorrect)correct++;
+  else wrong++;
+
+  const userText=userAnswer===null?
+  "Not Answered / उत्तर नहीं दिया":q.o[userAnswer];
+
+  reviewHTML+=`
+  <div class="review-item">
+   <p><strong>Q${index+1}. ${q.q}</strong></p>
+   <p>${q.h}</p>
+   <p class="${isCorrect?'correct-text':userAnswer===null?'':'wrong-text'}">
+   Your Answer: ${userText}</p>
+   <p class="correct-text">Correct Answer: ${q.o[q.a]}</p>
+   <div class="explanation">${q.e}</div>
+  </div>`;
+ });
+
+ const percentage=Math.round(correct/questions.length*100);
+
+ document.getElementById("score").textContent=
+ correct+"/"+questions.length;
+ document.getElementById("correct").textContent=correct;
+ document.getElementById("wrong").textContent=wrong;
+ document.getElementById("skipped").textContent=skipped;
+ document.getElementById("review").innerHTML=reviewHTML;
+
+ let message=`Your percentage: ${percentage}%`;
+
+ if(autoSubmitted)message+=" | Test auto-submitted because time is over.";
+ if(percentage>=80)message+=" Excellent performance!";
+ else if(percentage>=60)message+=" Good effort! Keep practising.";
+ else message+=" Keep practising and improve your score.";
+
+ document.getElementById("resultMessage").textContent=message;
+ document.getElementById("testLayout").style.display="none";
+ document.querySelector(".info").style.display="none";
+ document.getElementById("resultCard").style.display="block";
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function restartTest(){
+ if(!confirm("Restart the test? All previous answers will be cleared."))return;
+
+ current=0;
+ answers=Array(questions.length).fill(null);
+ visited=Array(questions.length).fill(false);
+ timeLeft=15*60;
+ submitted=false;
+
+ document.getElementById("resultCard").style.display="none";
+ document.getElementById("testLayout").style.display="grid";
+ document.querySelector(".info").style.display="grid";
+ document.getElementById("timer").classList.remove("timer-warning");
+
+ renderQuestion();
+ updateTimer();
+ timerInterval=setInterval(updateTimer,1000);
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+renderQuestion();
+updateTimer();
+timerInterval=setInterval(updateTimer,1000);
+</script>
+</body>
+</html>
+

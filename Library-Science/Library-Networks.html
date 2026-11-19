@@ -1,1 +1,850 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET | Library Networks Test</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#2563eb;
+  --secondary:#7c3aed;
+  --green:#16a34a;
+  --red:#dc2626;
+  --yellow:#f59e0b;
+  --blue:#2563eb;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#f0f4ff;
+  color:#25213a;
+  font-family:'Poppins','Noto Sans Devanagari',sans-serif;
+}
+header{
+  background:linear-gradient(135deg,#172554,#2563eb,#7c3aed);
+  color:white;
+  text-align:center;
+  padding:28px 15px;
+}
+header h1{margin:0;font-size:25px}
+header p{margin:7px 0 0;font-size:14px}
+.top-actions{
+  max-width:1100px;
+  margin:15px auto 0;
+  padding:0 15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.home-btn{
+  display:inline-block;
+  background:linear-gradient(135deg,#ffffff,#e0e7ff);
+  color:#1d4ed8;
+  padding:11px 18px;
+  border-radius:9px;
+  text-decoration:none;
+  font-weight:700;
+  font-size:13px;
+  box-shadow:0 3px 12px #00000012;
+}
+.home-btn:hover{background:#dbeafe}
+.container{max-width:1100px;margin:20px auto;padding:0 15px}
+.topic-title{
+  background:linear-gradient(120deg,#fff,#eef2ff);
+  padding:22px;
+  border-radius:15px;
+  box-shadow:0 4px 15px #00000008;
+  border-left:5px solid #6366f1;
+  margin-bottom:18px;
+}
+.topic-title h2{margin:0;color:#4338ca;font-size:23px}
+.topic-title p{margin:5px 0 0;color:#666}
+.info{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:18px;
+}
+.info-card{
+  background:white;
+  padding:16px;
+  border-radius:13px;
+  text-align:center;
+  box-shadow:0 4px 14px #00000008;
+  border-bottom:4px solid #818cf8;
+}
+.info-card:nth-child(2){border-color:#22c55e}
+.info-card:nth-child(3){border-color:#f59e0b}
+.info-card strong{display:block;color:#4338ca;font-size:22px}
+.info-card span{font-size:12px;color:#666}
+.timer-warning{color:#dc2626!important}
+.layout{
+  display:grid;
+  grid-template-columns:1fr 280px;
+  gap:18px;
+  align-items:start;
+}
+.question-card,.side-card,.result-card{
+  background:white;
+  padding:23px;
+  border-radius:15px;
+  box-shadow:0 5px 18px #0000000c;
+}
+.question-card{border-top:5px solid #6366f1}
+.side-card{border-top:5px solid #f59e0b}
+.question-number{
+  display:inline-block;
+  background:#ede9fe;
+  color:#6d28d9;
+  padding:7px 13px;
+  border-radius:20px;
+  font-weight:700;
+  font-size:13px;
+}
+.question-text{
+  font-size:17px;
+  font-weight:600;
+  margin:17px 0 6px;
+  line-height:1.6;
+}
+.hindi-text{
+  font-family:'Noto Sans Devanagari',sans-serif;
+  color:#555;
+  margin:0 0 20px;
+  line-height:1.8;
+}
+.option{
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  border:1px solid #dbe3f5;
+  padding:14px;
+  border-radius:11px;
+  margin:11px 0;
+  cursor:pointer;
+  transition:.2s;
+  background:#fbfcff;
+}
+.option:hover{
+  border-color:#818cf8;
+  background:#eef2ff;
+}
+.option.selected{
+  border:2px solid #4f46e5;
+  background:#e0e7ff;
+}
+.option input{
+  margin-top:5px;
+  accent-color:#4f46e5;
+}
+.option span{font-size:14px;line-height:1.6}
+.nav-buttons{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:23px;
+  flex-wrap:wrap;
+}
+button{
+  border:0;
+  padding:11px 18px;
+  border-radius:9px;
+  cursor:pointer;
+  font-family:inherit;
+  font-weight:600;
+}
+.btn-primary{
+  background:linear-gradient(135deg,#2563eb,#4f46e5);
+  color:white;
+}
+.btn-primary:hover{background:#1d4ed8}
+.btn-light{background:#e0e7ff;color:#3730a3}
+.btn-submit{background:linear-gradient(135deg,#dc2626,#f43f5e);color:white}
+button:disabled{opacity:.4;cursor:not-allowed}
+
+.side-card h3{margin:0 0 15px;color:#3730a3;font-size:17px}
+.legend{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:17px;
+}
+.legend span{
+  display:flex;
+  align-items:center;
+  font-size:11px;
+  color:#555;
+}
+.dot{
+  display:inline-block;
+  width:12px;
+  height:12px;
+  border-radius:4px;
+  margin-right:6px;
+  flex-shrink:0;
+}
+.question-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:9px;
+}
+.qn{
+  padding:10px 0;
+  background:#fef3c7;
+  color:#92400e;
+  border:1px solid #fbbf24;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:700;
+  transition:.2s;
+}
+.qn:hover{transform:scale(1.05)}
+.qn.answered{
+  background:#22c55e;
+  color:white;
+  border-color:#16a34a;
+}
+.qn.not-answered{
+  background:#fee2e2;
+  color:#b91c1c;
+  border-color:#ef4444;
+}
+.qn.not-visited{
+  background:#fef3c7;
+  color:#92400e;
+  border-color:#f59e0b;
+}
+.qn.current{
+  background:#2563eb;
+  color:white;
+  border:2px solid #1d4ed8;
+  outline:3px solid #bfdbfe;
+}
+.progress-text{font-size:12px;color:#555;margin-top:17px}
+.progress-bar{
+  height:9px;
+  background:#e5e7eb;
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:8px;
+}
+.progress-fill{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#22c55e,#2563eb);
+  transition:.2s;
+}
+.result-card{display:none;margin-top:20px;border-top:5px solid #22c55e}
+.result-card h2{color:#2563eb;margin-top:0}
+.score-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin:18px 0;
+}
+.score-box{
+  background:#eff6ff;
+  padding:15px 8px;
+  text-align:center;
+  border-radius:11px;
+}
+.score-box:nth-child(1){background:#ede9fe}
+.score-box:nth-child(2){background:#dcfce7}
+.score-box:nth-child(3){background:#fee2e2}
+.score-box:nth-child(4){background:#fef3c7}
+.score-box strong{display:block;font-size:22px;color:#1d4ed8}
+.score-box span{font-size:12px;color:#555}
+.review-item{border-top:1px solid #eee;padding:16px 0}
+.review-item p{margin:6px 0;font-size:14px;line-height:1.6}
+.correct-text{color:#15803d;font-weight:600}
+.wrong-text{color:#dc2626;font-weight:600}
+.explanation{
+  color:#555;
+  background:#f1f5ff;
+  padding:12px;
+  border-radius:9px;
+  font-size:13px;
+  line-height:1.7;
+}
+footer{text-align:center;padding:25px 10px;color:#777;font-size:12px}
+@media(max-width:750px){
+  .layout{grid-template-columns:1fr}
+  .info{gap:7px}
+  .info-card{padding:12px 5px}
+  .info-card strong{font-size:18px}
+  .question-card,.side-card{padding:16px}
+  .score-grid{grid-template-columns:repeat(2,1fr)}
+  header h1{font-size:20px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>BIHAR LIBRARY ELIGIBILITY TEST</h1>
+  <p>Library & Information Science | Topic 09</p>
+</header>
+
+<div class="top-actions">
+  <a class="home-btn" href="../index.html">← Go to Home</a>
+  <span style="font-size:12px;color:#666">Prepared for Jahnavi Jee</span>
+</div>
+
+<div class="container">
+
+  <div class="topic-title">
+    <h2>Library Networks</h2>
+    <p>पुस्तकालय नेटवर्क</p>
+  </div>
+
+  <div class="info">
+    <div class="info-card">
+      <strong>15</strong>
+      <span>Total Questions / कुल प्रश्न</span>
+    </div>
+    <div class="info-card">
+      <strong>15</strong>
+      <span>Total Marks / कुल अंक</span>
+    </div>
+    <div class="info-card">
+      <strong id="timer">15:00</strong>
+      <span>Time Left / शेष समय</span>
+    </div>
+  </div>
+
+  <div class="layout" id="testLayout">
+
+    <main class="question-card">
+      <div class="question-number" id="questionNumber"></div>
+      <div class="question-text" id="questionText"></div>
+      <div class="hindi-text" id="questionHindi"></div>
+      <div id="options"></div>
+
+      <div class="nav-buttons">
+        <button class="btn-light" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+        <button class="btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+        <button class="btn-submit" id="submitBtn" onclick="submitTest()">Submit Test</button>
+      </div>
+    </main>
+
+    <aside class="side-card">
+      <h3>Question Navigator</h3>
+
+      <div class="legend">
+        <span><i class="dot" style="background:#22c55e"></i>Answered</span>
+        <span><i class="dot" style="background:#ef4444"></i>Not Answered</span>
+        <span><i class="dot" style="background:#f59e0b"></i>Not Visited</span>
+        <span><i class="dot" style="background:#2563eb"></i>Current</span>
+      </div>
+
+      <div class="question-grid" id="questionGrid"></div>
+
+      <div class="progress-text" id="progressText">Answered: 0 / 15</div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </aside>
+
+  </div>
+
+  <div class="result-card" id="resultCard">
+    <h2>Test Result / परीक्षा परिणाम</h2>
+    <p id="resultMessage"></p>
+
+    <div class="score-grid">
+      <div class="score-box">
+        <strong id="score">0</strong>
+        <span>Score / अंक</span>
+      </div>
+      <div class="score-box">
+        <strong id="correct">0</strong>
+        <span>Correct / सही</span>
+      </div>
+      <div class="score-box">
+        <strong id="wrong">0</strong>
+        <span>Wrong / गलत</span>
+      </div>
+      <div class="score-box">
+        <strong id="skipped">0</strong>
+        <span>Skipped / छोड़े</span>
+      </div>
+    </div>
+
+    <h3>Answer Review / उत्तर समीक्षा</h3>
+    <div id="review"></div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+      <button class="btn-primary" onclick="restartTest()">Restart Test / दोबारा टेस्ट दें</button>
+      <a class="home-btn" href="../index.html">← Go to Home</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Bihar Library Eligibility Test (BLET)<br>
+  Prepared for Jahnavi Jee<br>
+  Mentor: Ashish Kumar Lucky
+</footer>
+
+<script>
+const questions = [
+
+{
+q:"What is the full form of INFLIBNET?",
+h:"INFLIBNET का पूर्ण रूप क्या है?",
+o:[
+"Information and Library Network / इन्फॉर्मेशन एंड लाइब्रेरी नेटवर्क",
+"Indian National Library Board",
+"International Library Network",
+"Information Link for Books"
+],
+a:0,
+e:"INFLIBNET stands for Information and Library Network. It is an Inter-University Centre of UGC. / INFLIBNET का पूर्ण रूप Information and Library Network है। यह UGC का Inter-University Centre है।"
+},
+
+{
+q:"Where is the INFLIBNET Centre located?",
+h:"INFLIBNET Centre कहाँ स्थित है?",
+o:[
+"New Delhi / नई दिल्ली",
+"Gandhinagar, Gujarat / गांधीनगर, गुजरात",
+"Mumbai / मुंबई",
+"Kolkata / कोलकाता"
+],
+a:1,
+e:"The INFLIBNET Centre is located at Gandhinagar, Gujarat. / INFLIBNET Centre गांधीनगर, गुजरात में स्थित है।"
+},
+
+{
+q:"Which organization established INFLIBNET as an Inter-University Centre?",
+h:"INFLIBNET को Inter-University Centre के रूप में किस संस्था ने स्थापित किया?",
+o:[
+"UGC / विश्वविद्यालय अनुदान आयोग",
+"AICTE / एआईसीटीई",
+"NCERT / एनसीईआरटी",
+"NCTE / एनसीटीई"
+],
+a:0,
+e:"INFLIBNET is an Inter-University Centre of the University Grants Commission (UGC). / INFLIBNET, UGC का Inter-University Centre है।"
+},
+
+{
+q:"What is the full form of DELNET?",
+h:"DELNET का पूर्ण रूप क्या है?",
+o:[
+"Developing Library Network / डेवलपिंग लाइब्रेरी नेटवर्क",
+"Digital Education Library Network",
+"Delhi Electronic Library Network",
+"Department of Library Education"
+],
+a:0,
+e:"DELNET stands for Developing Library Network. / DELNET का पूर्ण रूप Developing Library Network है।"
+},
+
+{
+q:"Where is DELNET headquartered?",
+h:"DELNET का मुख्यालय कहाँ है?",
+o:[
+"New Delhi / नई दिल्ली",
+"Chennai / चेन्नई",
+"Gandhinagar / गांधीनगर",
+"Hyderabad / हैदराबाद"
+],
+a:0,
+e:"DELNET is headquartered in New Delhi. / DELNET का मुख्यालय नई दिल्ली में है।"
+},
+
+{
+q:"What is the primary objective of DELNET?",
+h:"DELNET का प्रमुख उद्देश्य क्या है?",
+o:[
+"Promoting resource sharing among libraries / पुस्तकालयों के बीच संसाधन साझाकरण को बढ़ावा देना",
+"Publishing newspapers / समाचार पत्र प्रकाशित करना",
+"Conducting school examinations / विद्यालय परीक्षा आयोजित करना",
+"Manufacturing computers / कंप्यूटर बनाना"
+],
+a:0,
+e:"DELNET promotes resource sharing, inter-library cooperation and access to library resources. / DELNET संसाधन साझाकरण, अंतर-पुस्तकालय सहयोग एवं पुस्तकालय संसाधनों तक पहुँच को बढ़ावा देता है।"
+},
+
+{
+q:"What does OCLC stand for?",
+h:"OCLC का पूर्ण रूप क्या है?",
+o:[
+"Online Computer Library Center / ऑनलाइन कंप्यूटर लाइब्रेरी सेंटर",
+"Open Catalogue Library Council",
+"Official Computer Learning Centre",
+"Online Collection Link Centre"
+],
+a:0,
+e:"OCLC originally stood for Ohio College Library Center and is now known as OCLC. / OCLC का मूल नाम Ohio College Library Center था।"
+},
+
+{
+q:"In which country was OCLC established?",
+h:"OCLC की स्थापना किस देश में हुई थी?",
+o:[
+"India / भारत",
+"United States of America / संयुक्त राज्य अमेरिका",
+"United Kingdom / यूनाइटेड किंगडम",
+"Australia / ऑस्ट्रेलिया"
+],
+a:1,
+e:"OCLC was established in the United States in 1967. / OCLC की स्थापना 1967 में संयुक्त राज्य अमेरिका में हुई थी।"
+},
+
+{
+q:"Which online service is associated with OCLC for shared cataloguing?",
+h:"साझा सूचीकरण के लिए OCLC से कौन-सी ऑनलाइन सेवा संबंधित है?",
+o:[
+"WorldCat / वर्ल्डकैट",
+"Shodhganga / शोधगंगा",
+"INDEST / इंडेस्ट",
+"e-ShodhSindhu / ई-शोधसिंधु"
+],
+a:0,
+e:"WorldCat is a global library catalogue maintained by OCLC. / WorldCat, OCLC द्वारा संचालित एक वैश्विक पुस्तकालय कैटलॉग है।"
+},
+
+{
+q:"What is Resource Sharing in libraries?",
+h:"पुस्तकालयों में Resource Sharing का क्या अर्थ है?",
+o:[
+"Sharing library resources among institutions / संस्थानों के बीच पुस्तकालय संसाधनों को साझा करना",
+"Keeping all books private / सभी पुस्तकों को निजी रखना",
+"Removing library collections / पुस्तकालय संग्रह हटाना",
+"Stopping inter-library services / अंतर-पुस्तकालय सेवाएँ बंद करना"
+],
+a:0,
+e:"Resource sharing enables libraries to provide access to each other's collections and services. / संसाधन साझाकरण से पुस्तकालय एक-दूसरे के संग्रह एवं सेवाओं तक पहुँच प्रदान करते हैं।"
+},
+
+{
+q:"What is Inter-Library Loan (ILL)?",
+h:"Inter-Library Loan (ILL) क्या है?",
+o:[
+"Borrowing materials from another library / दूसरे पुस्तकालय से सामग्री उधार लेना",
+"Buying furniture for libraries / पुस्तकालय के लिए फर्नीचर खरीदना",
+"Issuing library identity cards / पुस्तकालय पहचान पत्र जारी करना",
+"Preparing library budgets / पुस्तकालय बजट बनाना"
+],
+a:0,
+e:"ILL allows one library to borrow books or other materials from another library for its users. / ILL में एक पुस्तकालय अपने उपयोगकर्ताओं के लिए दूसरे पुस्तकालय से पुस्तकें या अन्य सामग्री उधार लेता है।"
+},
+
+{
+q:"What is Library Networking?",
+h:"Library Networking क्या है?",
+o:[
+"Connecting libraries through communication networks / संचार नेटवर्क के माध्यम से पुस्तकालयों को जोड़ना",
+"Building new library rooms / नए पुस्तकालय कक्ष बनाना",
+"Classifying printed books only / केवल मुद्रित पुस्तकों का वर्गीकरण करना",
+"Removing old books / पुरानी पुस्तकें हटाना"
+],
+a:0,
+e:"Library networking connects libraries to exchange information, resources and services. / पुस्तकालय नेटवर्किंग पुस्तकालयों को सूचना, संसाधन एवं सेवाओं के आदान-प्रदान के लिए जोड़ती है।"
+},
+
+{
+q:"What is a Library Consortium?",
+h:"Library Consortium क्या है?",
+o:[
+"A group of libraries working together for common benefits / सामान्य लाभ के लिए मिलकर कार्य करने वाले पुस्तकालयों का समूह",
+"A single library building / एक पुस्तकालय भवन",
+"A book classification system / पुस्तक वर्गीकरण प्रणाली",
+"A type of library furniture / पुस्तकालय फर्नीचर का प्रकार"
+],
+a:0,
+e:"A library consortium is a group of libraries that cooperate to share resources and negotiate access to information. / पुस्तकालय कंसोर्टियम ऐसे पुस्तकालयों का समूह है जो संसाधन साझा करने एवं सूचना तक पहुँच के लिए सहयोग करते हैं।"
+},
+
+{
+q:"What is a major benefit of a Library Consortium?",
+h:"Library Consortium का एक प्रमुख लाभ क्या है?",
+o:[
+"Reduced subscription cost through collective negotiation / सामूहिक बातचीत से सदस्यता लागत में कमी",
+"Complete isolation of libraries / पुस्तकालयों का पूर्ण अलगाव",
+"Stopping access to e-journals / ई-जर्नल तक पहुँच बंद करना",
+"Increasing duplicate purchases / दोहरी खरीद बढ़ाना"
+],
+a:0,
+e:"Consortia can negotiate better subscription terms and provide wider access to electronic resources. / कंसोर्टियम बेहतर सदस्यता शर्तों पर बातचीत कर सकते हैं और इलेक्ट्रॉनिक संसाधनों तक व्यापक पहुँच प्रदान करते हैं।"
+},
+
+{
+q:"Which of the following is an important advantage of library networking?",
+h:"पुस्तकालय नेटवर्किंग का महत्वपूर्ण लाभ कौन-सा है?",
+o:[
+"Access to resources beyond one's own library / अपने पुस्तकालय से बाहर के संसाधनों तक पहुँच",
+"Complete restriction on information / सूचना पर पूर्ण प्रतिबंध",
+"Increased duplication of all books / सभी पुस्तकों की दोहरी खरीद",
+"Elimination of cooperation / सहयोग समाप्त करना"
+],
+a:0,
+e:"Networking improves access to information, cooperation and resource sharing among libraries. / नेटवर्किंग से सूचना तक पहुँच, सहयोग एवं पुस्तकालयों के बीच संसाधन साझाकरण बेहतर होता है।"
+}
+
+];
+
+let current=0;
+let answers=Array(questions.length).fill(null);
+let visited=Array(questions.length).fill(false);
+let timeLeft=15*60;
+let submitted=false;
+let timerInterval;
+
+function renderQuestion(){
+ if(submitted)return;
+
+ const q=questions[current];
+ visited[current]=true;
+
+ document.getElementById("questionNumber").textContent=
+ `Question ${current+1} of ${questions.length}`;
+
+ document.getElementById("questionText").textContent=q.q;
+ document.getElementById("questionHindi").textContent=q.h;
+
+ const options=document.getElementById("options");
+ options.innerHTML="";
+
+ q.o.forEach((option,index)=>{
+  const label=document.createElement("label");
+  label.className="option"+(answers[current]===index?" selected":"");
+
+  const radio=document.createElement("input");
+  radio.type="radio";
+  radio.name="answer";
+  radio.checked=answers[current]===index;
+
+  radio.addEventListener("change",()=>{
+   answers[current]=index;
+   renderQuestion();
+  });
+
+  const span=document.createElement("span");
+  span.textContent=String.fromCharCode(65+index)+". "+option;
+
+  label.appendChild(radio);
+  label.appendChild(span);
+  options.appendChild(label);
+ });
+
+ document.getElementById("prevBtn").disabled=current===0;
+
+ document.getElementById("nextBtn").style.display=
+ current===questions.length-1?"none":"inline-block";
+
+ document.getElementById("submitBtn").style.display=
+ current===questions.length-1?"inline-block":"none";
+
+ renderNavigator();
+}
+
+function renderNavigator(){
+ const grid=document.getElementById("questionGrid");
+ grid.innerHTML="";
+
+ questions.forEach((q,index)=>{
+  const btn=document.createElement("button");
+  btn.className="qn";
+  btn.textContent=index+1;
+
+  if(index===current){
+   btn.classList.add("current");
+  }
+  else if(answers[index]!==null){
+   btn.classList.add("answered");
+  }
+  else if(visited[index]){
+   btn.classList.add("not-answered");
+  }
+  else{
+   btn.classList.add("not-visited");
+  }
+
+  btn.addEventListener("click",()=>{
+   current=index;
+   renderQuestion();
+  });
+
+  grid.appendChild(btn);
+ });
+
+ const answered=answers.filter(a=>a!==null).length;
+
+ document.getElementById("progressText").textContent=
+ `Answered: ${answered} / ${questions.length}`;
+
+ document.getElementById("progressFill").style.width=
+ (answered/questions.length*100)+"%";
+}
+
+function previousQuestion(){
+ if(current>0){
+  current--;
+  renderQuestion();
+ }
+}
+
+function nextQuestion(){
+ if(current<questions.length-1){
+  current++;
+  renderQuestion();
+ }
+}
+
+function updateTimer(){
+ const minutes=Math.floor(timeLeft/60);
+ const seconds=timeLeft%60;
+ const timer=document.getElementById("timer");
+
+ timer.textContent=
+ String(minutes).padStart(2,"0")+":"+
+ String(seconds).padStart(2,"0");
+
+ if(timeLeft<=60){
+  timer.classList.add("timer-warning");
+ }
+
+ if(timeLeft<=0){
+  clearInterval(timerInterval);
+  finishTest(true);
+  return;
+ }
+
+ timeLeft--;
+}
+
+function submitTest(){
+ const unanswered=answers.filter(a=>a===null).length;
+
+ let message="Are you sure you want to submit the test?";
+
+ if(unanswered>0){
+  message+=`\n${unanswered} question(s) are unanswered.`;
+ }
+
+ if(confirm(message)){
+  finishTest(false);
+ }
+}
+
+function finishTest(autoSubmitted){
+ if(submitted)return;
+
+ submitted=true;
+ clearInterval(timerInterval);
+
+ let correct=0;
+ let wrong=0;
+ let skipped=0;
+ let reviewHTML="";
+
+ questions.forEach((q,index)=>{
+  const userAnswer=answers[index];
+  const isCorrect=userAnswer===q.a;
+
+  if(userAnswer===null){
+   skipped++;
+  }
+  else if(isCorrect){
+   correct++;
+  }
+  else{
+   wrong++;
+  }
+
+  const userText=userAnswer===null
+   ?"Not Answered / उत्तर नहीं दिया"
+   :q.o[userAnswer];
+
+  reviewHTML+=`
+   <div class="review-item">
+    <p><strong>Q${index+1}. ${q.q}</strong></p>
+    <p>${q.h}</p>
+    <p class="${isCorrect?'correct-text':userAnswer===null?'':'wrong-text'}">
+     Your Answer: ${userText}
+    </p>
+    <p class="correct-text">
+     Correct Answer: ${q.o[q.a]}
+    </p>
+    <div class="explanation">${q.e}</div>
+   </div>`;
+ });
+
+ const percentage=Math.round((correct/questions.length)*100);
+
+ document.getElementById("score").textContent=
+ correct+"/"+questions.length;
+
+ document.getElementById("correct").textContent=correct;
+ document.getElementById("wrong").textContent=wrong;
+ document.getElementById("skipped").textContent=skipped;
+ document.getElementById("review").innerHTML=reviewHTML;
+
+ let resultMessage=`Your percentage: ${percentage}%`;
+
+ if(autoSubmitted){
+  resultMessage+=" | Test auto-submitted because time is over.";
+ }
+
+ if(percentage>=80){
+  resultMessage+=" Excellent performance!";
+ }
+ else if(percentage>=60){
+  resultMessage+=" Good effort! Keep practising.";
+ }
+ else{
+  resultMessage+=" Keep practising and improve your score.";
+ }
+
+ document.getElementById("resultMessage").textContent=resultMessage;
+
+ document.getElementById("testLayout").style.display="none";
+ document.querySelector(".info").style.display="none";
+ document.getElementById("resultCard").style.display="block";
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function restartTest(){
+ if(!confirm("Restart the test? All previous answers will be cleared.")){
+  return;
+ }
+
+ current=0;
+ answers=Array(questions.length).fill(null);
+ visited=Array(questions.length).fill(false);
+ timeLeft=15*60;
+ submitted=false;
+
+ document.getElementById("resultCard").style.display="none";
+ document.getElementById("testLayout").style.display="grid";
+ document.querySelector(".info").style.display="grid";
+ document.getElementById("timer").classList.remove("timer-warning");
+
+ renderQuestion();
+ updateTimer();
+
+ timerInterval=setInterval(updateTimer,1000);
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+renderQuestion();
+updateTimer();
+timerInterval=setInterval(updateTimer,1000);
+</script>
+
+</body>
+</html>
+

@@ -1,1 +1,516 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET | Legal & Ethical Issues Test</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ font-family:'Poppins','Noto Sans Devanagari',sans-serif;
+ background:linear-gradient(135deg,#eef2ff,#fdf2f8,#ecfeff);
+ color:#243047;min-height:100vh;padding:20px
+}
+.container{max-width:1150px;margin:auto}
+header{
+ background:linear-gradient(120deg,#312e81,#6d28d9,#db2777);
+ color:white;padding:28px;border-radius:20px;text-align:center;
+ box-shadow:0 10px 30px #312e8130;margin-bottom:20px
+}
+header h1{font-size:25px;font-weight:800}
+header p{margin-top:7px;font-size:14px;opacity:.95}
+.topic{font-size:21px;font-weight:700;margin-top:12px}
+.hindi{font-family:'Noto Sans Devanagari',sans-serif}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.info-card{
+ background:white;padding:15px;border-radius:14px;text-align:center;
+ box-shadow:0 4px 15px #0000000c
+}
+.info-card strong{display:block;font-size:22px;color:#6d28d9}
+.info-card span{font-size:12px;color:#64748b}
+.layout{display:grid;grid-template-columns:1fr 280px;gap:18px}
+.card{
+ background:white;padding:24px;border-radius:18px;
+ box-shadow:0 5px 20px #0000000c
+}
+.topline{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.tag{background:#ede9fe;color:#6d28d9;padding:7px 12px;border-radius:20px;font-size:12px;font-weight:700}
+.timer{background:#fee2e2;color:#dc2626;padding:7px 14px;border-radius:20px;font-weight:700}
+#question{font-size:18px;font-weight:700;line-height:1.6;margin-bottom:8px}
+#hindiQuestion{font-size:16px;color:#475569;line-height:1.7;margin-bottom:22px}
+.option{
+ display:flex;gap:12px;align-items:flex-start;padding:13px 14px;
+ border:2px solid #e2e8f0;border-radius:12px;margin:10px 0;
+ cursor:pointer;transition:.2s;font-size:14px
+}
+.option:hover{border-color:#a78bfa;background:#faf5ff}
+.option.selected{border-color:#7c3aed;background:#f3e8ff;color:#5b21b6;font-weight:600}
+.option input{margin-top:5px;accent-color:#7c3aed}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+button{
+ border:0;border-radius:10px;padding:11px 18px;font-weight:700;
+ font-family:inherit;cursor:pointer;transition:.2s
+}
+button:hover{transform:translateY(-2px);filter:brightness(.96)}
+.prev{background:#e2e8f0;color:#334155}
+.next{background:#6d28d9;color:white}
+.submit{background:#e11d48;color:white;margin-left:auto}
+.sidebar h3{margin-bottom:15px;font-size:17px}
+.navigator{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.qn{
+ height:39px;border-radius:9px;background:#fef3c7;color:#92400e;
+ font-weight:700;border:1px solid #f59e0b;padding:0
+}
+.qn.answered{background:#dcfce7;color:#166534;border-color:#22c55e}
+.qn.not-answered{background:#fee2e2;color:#b91c1c;border-color:#ef4444}
+.qn.current{outline:3px solid #7c3aed;outline-offset:2px}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px;font-size:11px;color:#475569}
+.legend span{display:flex;align-items:center;gap:6px}
+.dot{width:12px;height:12px;border-radius:4px;display:inline-block}
+.green{background:#22c55e}.red{background:#ef4444}
+.yellow{background:#f59e0b}.purple{background:#7c3aed}
+.progress{height:8px;background:#e2e8f0;border-radius:10px;margin:15px 0 20px;overflow:hidden}
+#progressBar{height:100%;width:0;background:linear-gradient(90deg,#7c3aed,#ec4899);transition:.3s}
+#result{display:none;margin-top:20px}
+.result-score{
+ background:linear-gradient(120deg,#312e81,#7c3aed);
+ color:white;padding:25px;border-radius:16px;text-align:center;margin-bottom:18px
+}
+.result-score h2{font-size:25px}
+.result-score .big{font-size:42px;font-weight:800;margin:8px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}
+.stat{padding:14px;border-radius:12px;text-align:center;background:#f1f5f9}
+.stat strong{display:block;font-size:22px}
+.review-item{padding:16px;border:1px solid #e2e8f0;border-radius:12px;margin:12px 0}
+.review-item h4{line-height:1.6;margin-bottom:8px}
+.correct{color:#15803d;font-weight:700}
+.wrong{color:#dc2626;font-weight:700}
+.explanation{font-size:13px;color:#475569;margin-top:8px;line-height:1.7}
+.home{display:inline-block;text-decoration:none;background:#0f172a;color:white;padding:11px 18px;border-radius:10px;margin-top:18px}
+footer{text-align:center;padding:22px;color:#64748b;font-size:12px}
+@media(max-width:800px){
+ .layout{grid-template-columns:1fr}
+ .sidebar{order:-1}
+ .navigator{grid-template-columns:repeat(8,1fr)}
+}
+@media(max-width:500px){
+ body{padding:10px}
+ header{padding:20px 12px}
+ header h1{font-size:19px}
+ .topic{font-size:17px}
+ .info-card{padding:11px 5px}
+ .card{padding:17px}
+ .navigator{grid-template-columns:repeat(5,1fr)}
+ .stats{grid-template-columns:1fr 1fr 1fr}
+ .actions button{padding:10px 12px;font-size:12px}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+ <h1>BIHAR LIBRARY ELIGIBILITY TEST</h1>
+ <p>Library & Information Science | Topic 14</p>
+ <div class="topic">Legal & Ethical Issues</div>
+ <div class="topic hindi">कानूनी एवं नैतिक मुद्दे</div>
+ <p>Practice Test Series | Prepared for Jahnavi Jee</p>
+</header>
+
+<div class="info">
+ <div class="info-card"><strong>15</strong><span>Total Questions</span></div>
+ <div class="info-card"><strong>15</strong><span>Total Marks</span></div>
+ <div class="info-card"><strong id="timeDisplay">15:00</strong><span>Time Remaining</span></div>
+</div>
+
+<div class="layout">
+ <main class="card" id="testCard">
+  <div class="topline">
+   <span class="tag" id="questionCount">Question 1 of 15</span>
+   <span class="timer" id="timer">15:00</span>
+  </div>
+
+  <div class="progress"><div id="progressBar"></div></div>
+
+  <div id="question"></div>
+  <div id="hindiQuestion" class="hindi"></div>
+  <div id="options"></div>
+
+  <div class="actions">
+   <button class="prev" onclick="previousQuestion()">← Previous</button>
+   <button class="next" onclick="nextQuestion()">Next →</button>
+   <button class="submit" onclick="submitTest(false)">Submit Test</button>
+  </div>
+ </main>
+
+ <aside class="card sidebar">
+  <h3>Question Navigator</h3>
+  <div class="navigator" id="navigator"></div>
+  <div class="legend">
+   <span><i class="dot green"></i> Answered</span>
+   <span><i class="dot red"></i> Not Answered</span>
+   <span><i class="dot yellow"></i> Not Visited</span>
+   <span><i class="dot purple"></i> Current</span>
+  </div>
+  <p style="font-size:12px;color:#64748b;margin-top:18px;line-height:1.7">
+   Select any question number to visit it directly.
+  </p>
+ </aside>
+</div>
+
+<section id="result" class="card">
+ <div class="result-score">
+  <h2>Test Completed!</h2>
+  <p>Your Performance</p>
+  <div class="big" id="scoreText">0/15</div>
+  <p id="percentage"></p>
+  <p id="resultMessage"></p>
+ </div>
+
+ <div class="stats">
+  <div class="stat"><strong id="correctCount" style="color:#16a34a">0</strong><span>Correct</span></div>
+  <div class="stat"><strong id="wrongCount" style="color:#dc2626">0</strong><span>Wrong</span></div>
+  <div class="stat"><strong id="skippedCount" style="color:#d97706">0</strong><span>Skipped</span></div>
+ </div>
+
+ <h3 style="margin:20px 0 12px">Answer Review & Explanations</h3>
+ <div id="review"></div>
+
+ <button class="next" onclick="restartTest()">Restart Test</button>
+ <a href="../index.html" class="home">← Back to Home</a>
+</section>
+
+<footer>
+ Prepared for Jahnavi Jee<br>
+ Mentor: Ashish Kumar Lucky
+</footer>
+</div>
+
+<script>
+const questions = [
+{
+ q:"What is Copyright?",
+ h:"कॉपीराइट क्या है?",
+ o:["A tax on books","A legal right protecting original creative works","A library classification system","A method of book binding"],
+ a:1,
+ e:"Copyright is a legal protection given to creators for original literary, artistic, musical and other eligible works."
+},
+{
+ q:"Which Indian law primarily governs copyright?",
+ h:"भारत में कॉपीराइट को मुख्य रूप से कौन-सा कानून नियंत्रित करता है?",
+ o:["Indian Contract Act, 1872","Information Technology Act, 2000","Copyright Act, 1957","Companies Act, 2013"],
+ a:2,
+ e:"The Copyright Act, 1957 is the principal legislation governing copyright in India, as amended from time to time."
+},
+{
+ q:"Which of the following is generally protected by copyright?",
+ h:"निम्नलिखित में से कौन सामान्यतः कॉपीराइट द्वारा संरक्षित है?",
+ o:["An original literary book","A mathematical fact","A simple idea","A common historical date"],
+ a:0,
+ e:"Original literary works such as books are protected by copyright. Copyright generally protects expression, not mere ideas, facts or concepts."
+},
+{
+ q:"What does IPR stand for?",
+ h:"IPR का पूरा नाम क्या है?",
+ o:["International Publication Record","Indian Patent Regulation","Information Processing Rules","Intellectual Property Rights"],
+ a:3,
+ e:"IPR stands for Intellectual Property Rights. These rights protect creations of the human mind."
+},
+{
+ q:"Which of the following is a form of Intellectual Property Right?",
+ h:"निम्नलिखित में से कौन बौद्धिक संपदा अधिकार का एक प्रकार है?",
+ o:["Library membership","Patent","Book accession number","Shelf number"],
+ a:1,
+ e:"A patent is an intellectual property right that protects qualifying inventions for a limited period under applicable law."
+},
+{
+ q:"Which IPR protects a brand name, logo or symbol used to identify goods or services?",
+ h:"कौन-सा IPR वस्तुओं या सेवाओं की पहचान करने वाले ब्रांड नाम, लोगो या चिह्न की रक्षा करता है?",
+ o:["Copyright","Patent","Trademark","ISBN"],
+ a:2,
+ e:"A trademark distinguishes the goods or services of one enterprise from those of others."
+},
+{
+ q:"Which intellectual property right is mainly concerned with inventions?",
+ h:"कौन-सा बौद्धिक संपदा अधिकार मुख्य रूप से आविष्कारों से संबंधित है?",
+ o:["Patent","Trademark","Copyright","Geographical indication"],
+ a:0,
+ e:"A patent protects an invention that meets the legal requirements, such as novelty, inventive step and industrial applicability in India."
+},
+{
+ q:"What is the main purpose of professional ethics in librarianship?",
+ h:"पुस्तकालयाध्यक्षता में व्यावसायिक नैतिकता का मुख्य उद्देश्य क्या है?",
+ o:["To increase book prices","To restrict all users","To promote only popular books","To guide responsible and fair professional conduct"],
+ a:3,
+ e:"Professional ethics guide librarians in providing fair, responsible, unbiased and respectful services to users."
+},
+{
+ q:"Which principle is important for maintaining user privacy in a library?",
+ h:"पुस्तकालय में उपयोगकर्ता की गोपनीयता बनाए रखने के लिए कौन-सा सिद्धांत महत्वपूर्ण है?",
+ o:["Publicly displaying borrowing history","Keeping users' personal and reading records confidential","Sharing user data with everyone","Publishing user passwords"],
+ a:1,
+ e:"Librarians should protect users' personal information and reading records, subject to applicable law and legitimate obligations."
+},
+{
+ q:"What does Fair Use generally refer to?",
+ h:"Fair Use का सामान्य अर्थ क्या है?",
+ o:["Using every book without permission","Copying an entire book for sale","Limited use of copyrighted material under legally permitted conditions","Removing the author's name"],
+ a:2,
+ e:"Fair Use is a legal doctrine in some jurisdictions that permits certain limited uses of copyrighted material without permission, subject to conditions."
+},
+{
+ q:"Which term is commonly used in Indian copyright law for certain permitted uses without the owner's permission?",
+ h:"भारतीय कॉपीराइट कानून में कुछ अनुमत उपयोगों के लिए कौन-सा शब्द प्रयोग होता है?",
+ o:["Fair dealing","Patent dealing","Open branding","Public ownership"],
+ a:0,
+ e:"Indian copyright law uses the term Fair Dealing for specified permitted uses under Section 52. It is not identical to the broader US Fair Use doctrine."
+},
+{
+ q:"Which section of the Indian Copyright Act, 1957 deals with certain acts that do not constitute infringement?",
+ h:"भारतीय कॉपीराइट अधिनियम, 1957 की कौन-सी धारा कुछ ऐसे कार्यों से संबंधित है जिन्हें उल्लंघन नहीं माना जाता?",
+ o:["Section 10","Section 52","Section 80","Section 100"],
+ a:1,
+ e:"Section 52 lists certain acts that do not constitute infringement of copyright, subject to the conditions specified in the law."
+},
+{
+ q:"Which of the following is an example of ethical behaviour by a librarian?",
+ h:"निम्नलिखित में से कौन पुस्तकालयाध्यक्ष का नैतिक व्यवहार है?",
+ o:["Discriminating between users","Sharing confidential user records","Providing equal access to information","Hiding relevant information from selected users"],
+ a:2,
+ e:"Providing equal and fair access to information without unjust discrimination is an important professional ethical principle."
+},
+{
+ q:"What is plagiarism?",
+ h:"साहित्यिक चोरी (Plagiarism) क्या है?",
+ o:["Giving proper credit to an author","Buying books for a library","Classifying books by subject","Presenting another person's work or ideas as one's own without proper acknowledgement"],
+ a:3,
+ e:"Plagiarism means using another person's words, ideas or work without proper acknowledgement and presenting them as one's own."
+},
+{
+ q:"Which action best respects copyright when using a copyrighted book in academic work?",
+ h:"शैक्षणिक कार्य में कॉपीराइट वाली पुस्तक का उपयोग करते समय कौन-सा कार्य कॉपीराइट का सम्मान करता है?",
+ o:["Copying the entire book and selling it","Citing the source and following applicable copyright exceptions or permissions","Removing the author's name","Uploading the full book publicly without permission"],
+ a:1,
+ e:"Proper citation acknowledges the creator. Users must also follow copyright law, licence terms and applicable exceptions or obtain permission where required."
+}
+];
+
+let answers = Array(questions.length).fill(null);
+let visited = Array(questions.length).fill(false);
+let current = 0;
+let timeLeft = 15 * 60;
+let submitted = false;
+let timerInterval;
+
+function renderQuestion(){
+ if(submitted) return;
+
+ visited[current] = true;
+ const q = questions[current];
+
+ document.getElementById("questionCount").textContent =
+  `Question ${current+1} of ${questions.length}`;
+
+ document.getElementById("question").textContent =
+  `${current+1}. ${q.q}`;
+
+ document.getElementById("hindiQuestion").textContent = q.h;
+
+ const options = document.getElementById("options");
+ options.innerHTML = "";
+
+ q.o.forEach((option,index)=>{
+  const label = document.createElement("label");
+  label.className = "option" + (answers[current]===index ? " selected" : "");
+
+  const radio = document.createElement("input");
+  radio.type = "radio";
+  radio.name = "answer";
+  radio.checked = answers[current]===index;
+
+  radio.addEventListener("change",()=>{
+   answers[current] = index;
+   renderQuestion();
+  });
+
+  const text = document.createElement("span");
+  text.textContent = `${String.fromCharCode(65+index)}. ${option}`;
+
+  label.appendChild(radio);
+  label.appendChild(text);
+  options.appendChild(label);
+ });
+
+ document.getElementById("progressBar").style.width =
+  `${((current+1)/questions.length)*100}%`;
+
+ renderNavigator();
+}
+
+function renderNavigator(){
+ const nav = document.getElementById("navigator");
+ nav.innerHTML = "";
+
+ questions.forEach((q,index)=>{
+  const btn = document.createElement("button");
+  btn.textContent = index+1;
+  btn.className = "qn";
+
+  if(answers[index] !== null) btn.classList.add("answered");
+  else if(visited[index]) btn.classList.add("not-answered");
+  else btn.classList.add("not-visited");
+
+  if(index===current) btn.classList.add("current");
+
+  btn.onclick = ()=>{
+   current=index;
+   renderQuestion();
+  };
+
+  nav.appendChild(btn);
+ });
+}
+
+function previousQuestion(){
+ if(current>0){
+  current--;
+  renderQuestion();
+ }
+}
+
+function nextQuestion(){
+ if(current<questions.length-1){
+  current++;
+  renderQuestion();
+ }
+}
+
+function updateTimer(){
+ const min = Math.floor(timeLeft/60);
+ const sec = timeLeft%60;
+ const formatted = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+
+ document.getElementById("timer").textContent = formatted;
+ document.getElementById("timeDisplay").textContent = formatted;
+
+ if(timeLeft<=60){
+  document.getElementById("timer").style.background="#fecaca";
+ }
+
+ if(timeLeft<=0){
+  submitTest(true);
+  return;
+ }
+
+ timeLeft--;
+}
+
+function submitTest(auto=false){
+ if(submitted) return;
+
+ if(!auto){
+  const unanswered = answers.filter(a=>a===null).length;
+  const message = unanswered
+   ? `You have ${unanswered} unanswered question(s). Submit anyway?`
+   : "Are you sure you want to submit the test?";
+
+  if(!confirm(message)) return;
+ }
+
+ submitted = true;
+ clearInterval(timerInterval);
+
+ let correct=0,wrong=0,skipped=0;
+ let reviewHTML="";
+
+ questions.forEach((q,index)=>{
+  const userAnswer = answers[index];
+
+  if(userAnswer===null) skipped++;
+  else if(userAnswer===q.a) correct++;
+  else wrong++;
+
+  let answerText = userAnswer===null
+   ? "Not Answered"
+   : `${String.fromCharCode(65+userAnswer)}. ${q.o[userAnswer]}`;
+
+  const status = userAnswer===null
+   ? '<span class="wrong">Skipped</span>'
+   : userAnswer===q.a
+   ? '<span class="correct">Correct</span>'
+   : '<span class="wrong">Incorrect</span>';
+
+  reviewHTML += `
+   <div class="review-item">
+    <h4>Q${index+1}. ${q.q}<br>
+    <span class="hindi">${q.h}</span></h4>
+    <p><b>Your Answer:</b> ${answerText}</p>
+    <p><b>Correct Answer:</b>
+     <span class="correct">${String.fromCharCode(65+q.a)}. ${q.o[q.a]}</span>
+    </p>
+    <p>${status}</p>
+    <p class="explanation"><b>Explanation:</b> ${q.e}</p>
+   </div>`;
+ });
+
+ const percentage = Math.round((correct/questions.length)*100);
+
+ document.getElementById("scoreText").textContent =
+  `${correct}/${questions.length}`;
+
+ document.getElementById("percentage").textContent =
+  `Percentage: ${percentage}%`;
+
+ document.getElementById("resultMessage").textContent =
+  percentage>=80 ? "Excellent Performance!" :
+  percentage>=60 ? "Good Work! Keep Practising." :
+  percentage>=40 ? "Keep Improving. Practice More!" :
+  "Don't Give Up! Revise and Try Again.";
+
+ document.getElementById("correctCount").textContent=correct;
+ document.getElementById("wrongCount").textContent=wrong;
+ document.getElementById("skippedCount").textContent=skipped;
+ document.getElementById("review").innerHTML=reviewHTML;
+
+ document.getElementById("testCard").style.display="none";
+ document.querySelector(".sidebar").style.display="none";
+ document.getElementById("result").style.display="block";
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function restartTest(){
+ if(!confirm("Do you want to restart the test?")) return;
+
+ answers = Array(questions.length).fill(null);
+ visited = Array(questions.length).fill(false);
+ current = 0;
+ timeLeft = 15*60;
+ submitted = false;
+
+ document.getElementById("testCard").style.display="block";
+ document.querySelector(".sidebar").style.display="block";
+ document.getElementById("result").style.display="none";
+ document.getElementById("timer").style.background="#fee2e2";
+
+ renderQuestion();
+ updateTimer();
+
+ clearInterval(timerInterval);
+ timerInterval = setInterval(updateTimer,1000);
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+renderQuestion();
+updateTimer();
+timerInterval = setInterval(updateTimer,1000);
+</script>
+</body>
+</html>
+

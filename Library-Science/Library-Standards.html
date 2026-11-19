@@ -1,1 +1,518 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET | Library Standards Test</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ font-family:'Poppins','Noto Sans Devanagari',sans-serif;
+ background:linear-gradient(135deg,#eef2ff,#fdf2f8,#ecfeff);
+ color:#243047;min-height:100vh;padding:20px
+}
+.container{max-width:1150px;margin:auto}
+header{
+ background:linear-gradient(120deg,#312e81,#6d28d9,#db2777);
+ color:white;padding:28px;border-radius:20px;text-align:center;
+ box-shadow:0 10px 30px #312e8130;margin-bottom:20px
+}
+header h1{font-size:25px;font-weight:800}
+header p{margin-top:7px;font-size:14px;opacity:.95}
+.topic{font-size:21px;font-weight:700;margin-top:12px}
+.hindi{font-family:'Noto Sans Devanagari',sans-serif}
+.info{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px
+}
+.info-card{
+ background:white;padding:15px;border-radius:14px;text-align:center;
+ box-shadow:0 4px 15px #0000000c
+}
+.info-card strong{display:block;font-size:22px;color:#6d28d9}
+.info-card span{font-size:12px;color:#64748b}
+.layout{display:grid;grid-template-columns:1fr 280px;gap:18px}
+.card{
+ background:white;padding:24px;border-radius:18px;
+ box-shadow:0 5px 20px #0000000c
+}
+.topline{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.tag{background:#ede9fe;color:#6d28d9;padding:7px 12px;border-radius:20px;font-size:12px;font-weight:700}
+.timer{background:#fee2e2;color:#dc2626;padding:7px 14px;border-radius:20px;font-weight:700}
+#question{font-size:18px;font-weight:700;line-height:1.6;margin-bottom:8px}
+#hindiQuestion{font-size:16px;color:#475569;line-height:1.7;margin-bottom:22px}
+.option{
+ display:flex;gap:12px;align-items:flex-start;padding:13px 14px;
+ border:2px solid #e2e8f0;border-radius:12px;margin:10px 0;
+ cursor:pointer;transition:.2s;font-size:14px
+}
+.option:hover{border-color:#a78bfa;background:#faf5ff}
+.option.selected{border-color:#7c3aed;background:#f3e8ff;color:#5b21b6;font-weight:600}
+.option input{margin-top:5px;accent-color:#7c3aed}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+button{
+ border:0;border-radius:10px;padding:11px 18px;font-weight:700;
+ font-family:inherit;cursor:pointer;transition:.2s
+}
+button:hover{transform:translateY(-2px);filter:brightness(.96)}
+.prev{background:#e2e8f0;color:#334155}
+.next{background:#6d28d9;color:white}
+.submit{background:#e11d48;color:white;margin-left:auto}
+.sidebar h3{margin-bottom:15px;font-size:17px}
+.navigator{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.qn{
+ height:39px;border-radius:9px;background:#fef3c7;color:#92400e;
+ font-weight:700;border:1px solid #f59e0b;padding:0
+}
+.qn.answered{background:#dcfce7;color:#166534;border-color:#22c55e}
+.qn.not-answered{background:#fee2e2;color:#b91c1c;border-color:#ef4444}
+.qn.current{outline:3px solid #7c3aed;outline-offset:2px}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px;font-size:11px;color:#475569}
+.legend span{display:flex;align-items:center;gap:6px}
+.dot{width:12px;height:12px;border-radius:4px;display:inline-block}
+.green{background:#22c55e}.red{background:#ef4444}
+.yellow{background:#f59e0b}.purple{background:#7c3aed}
+.progress{height:8px;background:#e2e8f0;border-radius:10px;margin:15px 0 20px;overflow:hidden}
+#progressBar{height:100%;width:0;background:linear-gradient(90deg,#7c3aed,#ec4899);transition:.3s}
+#result{display:none;margin-top:20px}
+.result-score{
+ background:linear-gradient(120deg,#312e81,#7c3aed);
+ color:white;padding:25px;border-radius:16px;text-align:center;margin-bottom:18px
+}
+.result-score h2{font-size:25px}
+.result-score .big{font-size:42px;font-weight:800;margin:8px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}
+.stat{padding:14px;border-radius:12px;text-align:center;background:#f1f5f9}
+.stat strong{display:block;font-size:22px}
+.review-item{padding:16px;border:1px solid #e2e8f0;border-radius:12px;margin:12px 0}
+.review-item h4{line-height:1.6;margin-bottom:8px}
+.correct{color:#15803d;font-weight:700}
+.wrong{color:#dc2626;font-weight:700}
+.explanation{font-size:13px;color:#475569;margin-top:8px;line-height:1.7}
+.home{display:inline-block;text-decoration:none;background:#0f172a;color:white;padding:11px 18px;border-radius:10px;margin-top:18px}
+footer{text-align:center;padding:22px;color:#64748b;font-size:12px}
+@media(max-width:800px){
+ .layout{grid-template-columns:1fr}
+ .sidebar{order:-1}
+ .navigator{grid-template-columns:repeat(8,1fr)}
+}
+@media(max-width:500px){
+ body{padding:10px}
+ header{padding:20px 12px}
+ header h1{font-size:19px}
+ .topic{font-size:17px}
+ .info-card{padding:11px 5px}
+ .card{padding:17px}
+ .navigator{grid-template-columns:repeat(5,1fr)}
+ .stats{grid-template-columns:1fr 1fr 1fr}
+ .actions button{padding:10px 12px;font-size:12px}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+ <h1>BIHAR LIBRARY ELIGIBILITY TEST</h1>
+ <p>Library & Information Science | Topic 13</p>
+ <div class="topic">Library Standards</div>
+ <div class="topic hindi">पुस्तकालय मानक</div>
+ <p>Practice Test Series | Prepared for Jahnavi Jee</p>
+</header>
+
+<div class="info">
+ <div class="info-card"><strong>15</strong><span>Total Questions</span></div>
+ <div class="info-card"><strong>15</strong><span>Total Marks</span></div>
+ <div class="info-card"><strong id="timeDisplay">15:00</strong><span>Time Remaining</span></div>
+</div>
+
+<div class="layout">
+ <main class="card" id="testCard">
+  <div class="topline">
+   <span class="tag" id="questionCount">Question 1 of 15</span>
+   <span class="timer" id="timer">15:00</span>
+  </div>
+
+  <div class="progress"><div id="progressBar"></div></div>
+
+  <div id="question"></div>
+  <div id="hindiQuestion" class="hindi"></div>
+  <div id="options"></div>
+
+  <div class="actions">
+   <button class="prev" onclick="previousQuestion()">← Previous</button>
+   <button class="next" onclick="nextQuestion()">Next →</button>
+   <button class="submit" onclick="submitTest(false)">Submit Test</button>
+  </div>
+ </main>
+
+ <aside class="card sidebar">
+  <h3>Question Navigator</h3>
+  <div class="navigator" id="navigator"></div>
+  <div class="legend">
+   <span><i class="dot green"></i> Answered</span>
+   <span><i class="dot red"></i> Not Answered</span>
+   <span><i class="dot yellow"></i> Not Visited</span>
+   <span><i class="dot purple"></i> Current</span>
+  </div>
+  <p style="font-size:12px;color:#64748b;margin-top:18px;line-height:1.7">
+   Select any question number to visit it directly.
+  </p>
+ </aside>
+</div>
+
+<section id="result" class="card">
+ <div class="result-score">
+  <h2>Test Completed!</h2>
+  <p>Your Performance</p>
+  <div class="big" id="scoreText">0/15</div>
+  <p id="percentage"></p>
+  <p id="resultMessage"></p>
+ </div>
+
+ <div class="stats">
+  <div class="stat"><strong id="correctCount" style="color:#16a34a">0</strong><span>Correct</span></div>
+  <div class="stat"><strong id="wrongCount" style="color:#dc2626">0</strong><span>Wrong</span></div>
+  <div class="stat"><strong id="skippedCount" style="color:#d97706">0</strong><span>Skipped</span></div>
+ </div>
+
+ <h3 style="margin:20px 0 12px">Answer Review & Explanations</h3>
+ <div id="review"></div>
+
+ <button class="next" onclick="restartTest()">Restart Test</button>
+ <a href="../index.html" class="home">← Back to Home</a>
+</section>
+
+<footer>
+ Prepared for Jahnavi Jee<br>
+ Mentor: Ashish Kumar Lucky
+</footer>
+</div>
+
+<script>
+const questions = [
+{
+ q:"What is the full form of ISBN?",
+ h:"ISBN का पूरा नाम क्या है?",
+ o:["International Standard Book Number","Indian Standard Book Number","International Serial Book Number","International System Book Name"],
+ a:0,
+ e:"ISBN stands for International Standard Book Number. It is used to identify books and specific editions or formats."
+},
+{
+ q:"How many digits are there in the current ISBN system?",
+ h:"वर्तमान ISBN प्रणाली में कितने अंक होते हैं?",
+ o:["10 digits","12 digits","13 digits","15 digits"],
+ a:2,
+ e:"Since 1 January 2007, ISBNs have consisted of 13 digits. The older ISBN-10 system was used before this change."
+},
+{
+ q:"Which organization is responsible for coordinating the ISBN system internationally?",
+ h:"अंतरराष्ट्रीय स्तर पर ISBN प्रणाली का समन्वय कौन करता है?",
+ o:["UNESCO","International ISBN Agency","IFLA","OCLC"],
+ a:1,
+ e:"The International ISBN Agency coordinates the ISBN system worldwide and oversees its administration."
+},
+{
+ q:"What does ISSN stand for?",
+ h:"ISSN का पूरा नाम क्या है?",
+ o:["International Standard Serial Number","Indian Standard Serial Number","International System of Serial Names","International Standard Subject Number"],
+ a:0,
+ e:"ISSN means International Standard Serial Number. It identifies continuing publications such as journals and magazines."
+},
+{
+ q:"How many digits are present in an ISSN?",
+ h:"एक ISSN में कितने अंक होते हैं?",
+ o:["10 digits","13 digits","6 digits","8 digits"],
+ a:3,
+ e:"An ISSN contains eight characters, usually displayed as two groups of four separated by a hyphen."
+},
+{
+ q:"Which type of publication is generally identified by ISSN?",
+ h:"ISSN द्वारा सामान्यतः किस प्रकार के प्रकाशन की पहचान की जाती है?",
+ o:["A single textbook","Serial publications","A dictionary only","A single map"],
+ a:1,
+ e:"ISSN identifies serial publications such as journals, magazines, newspapers and continuing resources."
+},
+{
+ q:"What is the full form of MARC?",
+ h:"MARC का पूरा नाम क्या है?",
+ o:["Machine-Readable Cataloging","Modern Automated Reading Code","Manual Record Classification","Machine Record Collection"],
+ a:0,
+ e:"MARC stands for Machine-Readable Cataloging. It provides a standard format for storing and exchanging bibliographic data."
+},
+{
+ q:"What is the main purpose of the MARC format?",
+ h:"MARC प्रारूप का मुख्य उद्देश्य क्या है?",
+ o:["To assign book prices","To number library shelves","To store and exchange bibliographic records in machine-readable form","To print library membership cards"],
+ a:2,
+ e:"MARC enables computers to read, store, process and exchange bibliographic records between library systems."
+},
+{
+ q:"Which institution developed the original MARC project?",
+ h:"मूल MARC परियोजना किस संस्था ने विकसित की थी?",
+ o:["British Library","Library of Congress","UNESCO","National Library of India"],
+ a:1,
+ e:"The Library of Congress in the United States developed the original MARC project during the 1960s."
+},
+{
+ q:"What is MARC 21?",
+ h:"MARC 21 क्या है?",
+ o:["A library building design","A book classification scheme","A library membership system","A standard format for bibliographic and related data"],
+ a:3,
+ e:"MARC 21 is a widely used standard format for representing bibliographic and related information in machine-readable form."
+},
+{
+ q:"Which MARC field is commonly used for the title statement?",
+ h:"MARC में शीर्षक विवरण के लिए सामान्यतः कौन-सा field उपयोग होता है?",
+ o:["245","100","650","020"],
+ a:0,
+ e:"Field 245 is used for the title statement in MARC bibliographic records."
+},
+{
+ q:"Which MARC field is commonly used for the ISBN?",
+ h:"MARC में ISBN के लिए सामान्यतः कौन-सा field उपयोग होता है?",
+ o:["022","100","020","245"],
+ a:2,
+ e:"MARC field 020 is used for the International Standard Book Number (ISBN)."
+},
+{
+ q:"Which MARC field is commonly used for the ISSN?",
+ h:"MARC में ISSN के लिए सामान्यतः कौन-सा field उपयोग होता है?",
+ o:["650","022","245","100"],
+ a:1,
+ e:"MARC field 022 is used for the International Standard Serial Number (ISSN)."
+},
+{
+ q:"In a MARC record, what does a field tag generally identify?",
+ h:"MARC रिकॉर्ड में Field Tag सामान्यतः क्या बताता है?",
+ o:["The physical size of a book","The book's purchase price","The reader's membership number","The type of bibliographic information in a field"],
+ a:3,
+ e:"A MARC field tag identifies the type of information represented, such as title, author, subject or publication details."
+},
+{
+ q:"Which MARC field is commonly used for a personal author's main entry?",
+ h:"व्यक्तिगत लेखक की मुख्य प्रविष्टि के लिए MARC में कौन-सा field सामान्यतः उपयोग होता है?",
+ o:["100","020","022","650"],
+ a:0,
+ e:"MARC field 100 is commonly used for a personal name main entry. Field 650 is commonly used for topical subject access."
+}
+];
+
+let answers = Array(questions.length).fill(null);
+let visited = Array(questions.length).fill(false);
+let current = 0;
+let timeLeft = 15 * 60;
+let submitted = false;
+let timerInterval;
+
+function renderQuestion(){
+ if(submitted) return;
+
+ visited[current] = true;
+ const q = questions[current];
+
+ document.getElementById("questionCount").textContent =
+  `Question ${current+1} of ${questions.length}`;
+
+ document.getElementById("question").textContent =
+  `${current+1}. ${q.q}`;
+
+ document.getElementById("hindiQuestion").textContent = q.h;
+
+ const options = document.getElementById("options");
+ options.innerHTML = "";
+
+ q.o.forEach((option,index)=>{
+  const label = document.createElement("label");
+  label.className = "option" + (answers[current]===index ? " selected" : "");
+
+  const radio = document.createElement("input");
+  radio.type = "radio";
+  radio.name = "answer";
+  radio.checked = answers[current]===index;
+
+  radio.addEventListener("change",()=>{
+   answers[current] = index;
+   renderQuestion();
+  });
+
+  const text = document.createElement("span");
+  text.textContent = `${String.fromCharCode(65+index)}. ${option}`;
+
+  label.appendChild(radio);
+  label.appendChild(text);
+  options.appendChild(label);
+ });
+
+ document.getElementById("progressBar").style.width =
+  `${((current+1)/questions.length)*100}%`;
+
+ renderNavigator();
+}
+
+function renderNavigator(){
+ const nav = document.getElementById("navigator");
+ nav.innerHTML = "";
+
+ questions.forEach((q,index)=>{
+  const btn = document.createElement("button");
+  btn.textContent = index+1;
+  btn.className = "qn";
+
+  if(answers[index] !== null) btn.classList.add("answered");
+  else if(visited[index]) btn.classList.add("not-answered");
+  else btn.classList.add("not-visited");
+
+  if(index===current) btn.classList.add("current");
+
+  btn.onclick = ()=>{
+   current=index;
+   renderQuestion();
+  };
+
+  nav.appendChild(btn);
+ });
+}
+
+function previousQuestion(){
+ if(current>0){
+  current--;
+  renderQuestion();
+ }
+}
+
+function nextQuestion(){
+ if(current<questions.length-1){
+  current++;
+  renderQuestion();
+ }
+}
+
+function updateTimer(){
+ const min = Math.floor(timeLeft/60);
+ const sec = timeLeft%60;
+ const formatted = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+
+ document.getElementById("timer").textContent = formatted;
+ document.getElementById("timeDisplay").textContent = formatted;
+
+ if(timeLeft<=60){
+  document.getElementById("timer").style.background="#fecaca";
+ }
+
+ if(timeLeft<=0){
+  submitTest(true);
+  return;
+ }
+
+ timeLeft--;
+}
+
+function submitTest(auto=false){
+ if(submitted) return;
+
+ if(!auto){
+  const unanswered = answers.filter(a=>a===null).length;
+  const message = unanswered
+   ? `You have ${unanswered} unanswered question(s). Submit anyway?`
+   : "Are you sure you want to submit the test?";
+
+  if(!confirm(message)) return;
+ }
+
+ submitted = true;
+ clearInterval(timerInterval);
+
+ let correct=0,wrong=0,skipped=0;
+ let reviewHTML="";
+
+ questions.forEach((q,index)=>{
+  const userAnswer = answers[index];
+
+  if(userAnswer===null) skipped++;
+  else if(userAnswer===q.a) correct++;
+  else wrong++;
+
+  let answerText = userAnswer===null
+   ? "Not Answered"
+   : `${String.fromCharCode(65+userAnswer)}. ${q.o[userAnswer]}`;
+
+  const status = userAnswer===null
+   ? '<span class="wrong">Skipped</span>'
+   : userAnswer===q.a
+   ? '<span class="correct">Correct</span>'
+   : '<span class="wrong">Incorrect</span>';
+
+  reviewHTML += `
+   <div class="review-item">
+    <h4>Q${index+1}. ${q.q}<br>
+    <span class="hindi">${q.h}</span></h4>
+    <p><b>Your Answer:</b> ${answerText}</p>
+    <p><b>Correct Answer:</b>
+     <span class="correct">${String.fromCharCode(65+q.a)}. ${q.o[q.a]}</span>
+    </p>
+    <p>${status}</p>
+    <p class="explanation"><b>Explanation:</b> ${q.e}</p>
+   </div>`;
+ });
+
+ const percentage = Math.round((correct/questions.length)*100);
+
+ document.getElementById("scoreText").textContent =
+  `${correct}/${questions.length}`;
+
+ document.getElementById("percentage").textContent =
+  `Percentage: ${percentage}%`;
+
+ document.getElementById("resultMessage").textContent =
+  percentage>=80 ? "Excellent Performance!" :
+  percentage>=60 ? "Good Work! Keep Practising." :
+  percentage>=40 ? "Keep Improving. Practice More!" :
+  "Don't Give Up! Revise and Try Again.";
+
+ document.getElementById("correctCount").textContent=correct;
+ document.getElementById("wrongCount").textContent=wrong;
+ document.getElementById("skippedCount").textContent=skipped;
+ document.getElementById("review").innerHTML=reviewHTML;
+
+ document.getElementById("testCard").style.display="none";
+ document.querySelector(".sidebar").style.display="none";
+ document.getElementById("result").style.display="block";
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function restartTest(){
+ if(!confirm("Do you want to restart the test?")) return;
+
+ answers = Array(questions.length).fill(null);
+ visited = Array(questions.length).fill(false);
+ current = 0;
+ timeLeft = 15*60;
+ submitted = false;
+
+ document.getElementById("testCard").style.display="block";
+ document.querySelector(".sidebar").style.display="block";
+ document.getElementById("result").style.display="none";
+ document.getElementById("timer").style.background="#fee2e2";
+
+ renderQuestion();
+ updateTimer();
+
+ clearInterval(timerInterval);
+ timerInterval = setInterval(updateTimer,1000);
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+renderQuestion();
+updateTimer();
+timerInterval = setInterval(updateTimer,1000);
+</script>
+</body>
+</html>
+

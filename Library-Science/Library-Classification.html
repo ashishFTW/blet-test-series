@@ -1,1 +1,529 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET | Library Classification Test - 03</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:'Poppins','Noto Sans Devanagari',sans-serif;
+    background:#f1f5f9;color:#1e293b;
+}
+header{
+    background:linear-gradient(120deg,#312e81,#6d28d9,#9333ea);
+    color:white;text-align:center;padding:30px 15px;
+}
+header h1{font-size:27px;margin-bottom:7px}
+header p{font-size:14px;opacity:.95}
+.container{max-width:1050px;margin:25px auto;padding:0 15px}
+.info{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:12px;margin-bottom:20px;
+}
+.info div{
+    background:white;padding:15px;border-radius:12px;
+    text-align:center;box-shadow:0 3px 12px #0000000c;
+    font-weight:600;
+}
+.info span{display:block;color:#6d28d9;font-size:21px}
+.layout{display:grid;grid-template-columns:1fr 260px;gap:20px}
+.card{
+    background:white;border-radius:15px;padding:22px;
+    box-shadow:0 4px 18px #0000000c;
+}
+.topline{
+    display:flex;justify-content:space-between;
+    gap:10px;align-items:center;margin-bottom:18px;
+}
+.progress{
+    height:8px;background:#e2e8f0;border-radius:10px;
+    overflow:hidden;margin-bottom:22px;
+}
+.progress-bar{
+    height:100%;width:0;background:#7c3aed;
+    transition:.3s;
+}
+.question-number{color:#7c3aed;font-weight:700;font-size:14px}
+.question{font-size:18px;font-weight:700;margin-bottom:8px}
+.hindi{font-family:'Noto Sans Devanagari',sans-serif}
+.options{display:grid;gap:12px;margin-top:20px}
+.option{
+    padding:13px 15px;border:1.5px solid #e2e8f0;
+    border-radius:10px;cursor:pointer;transition:.2s;
+    font-size:14px;
+}
+.option:hover{border-color:#7c3aed;background:#f5f3ff}
+.option.selected{border-color:#7c3aed;background:#ede9fe}
+.option.correct{border-color:#16a34a;background:#dcfce7}
+.option.wrong{border-color:#dc2626;background:#fee2e2}
+.buttons{
+    display:flex;justify-content:space-between;
+    gap:10px;margin-top:25px;flex-wrap:wrap;
+}
+button{
+    border:0;padding:11px 20px;border-radius:9px;
+    font-family:inherit;font-weight:600;cursor:pointer;
+}
+.primary{background:#6d28d9;color:white}
+.secondary{background:#e2e8f0;color:#334155}
+.danger{background:#dc2626;color:white}
+button:disabled{opacity:.45;cursor:not-allowed}
+.sidebar h3{margin-bottom:15px}
+.number-grid{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:8px;
+}
+.number-grid button{
+    padding:9px 0;background:#e2e8f0;color:#334155;
+}
+.number-grid button.answered{background:#7c3aed;color:white}
+.number-grid button.current{outline:3px solid #c4b5fd}
+.legend{font-size:12px;margin-top:15px;line-height:2}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+#result{display:none}
+.score{
+    font-size:38px;font-weight:800;color:#6d28d9;
+    text-align:center;margin:15px 0;
+}
+.result-stats{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:10px;margin:20px 0;
+}
+.result-stats div{
+    padding:15px;background:#f8fafc;border-radius:10px;text-align:center;
+}
+.result-stats strong{display:block;font-size:22px}
+.review-item{
+    border:1px solid #e2e8f0;border-radius:10px;
+    padding:15px;margin:12px 0;
+}
+.review-item p{margin:6px 0;font-size:14px}
+.explanation{color:#475569;font-size:13px}
+footer{text-align:center;padding:25px;color:#64748b;font-size:13px}
+@media(max-width:750px){
+    .layout{grid-template-columns:1fr}
+    .sidebar{order:-1}
+    .number-grid{grid-template-columns:repeat(10,1fr)}
+    header h1{font-size:21px}
+}
+@media(max-width:450px){
+    .info{grid-template-columns:1fr}
+    .card{padding:15px}
+    .number-grid{grid-template-columns:repeat(5,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>BIHAR LIBRARY ELIGIBILITY TEST</h1>
+    <p>Library & Information Science | Topic 03</p>
+    <h2 style="margin-top:12px;font-size:21px">Library Classification</h2>
+    <p class="hindi">पुस्तकालय वर्गीकरण</p>
+</header>
+
+<div class="container">
+
+    <div class="info">
+        <div>Total Questions<span>15</span></div>
+        <div>Total Marks<span>15</span></div>
+        <div>Time<span id="timer">15:00</span></div>
+    </div>
+
+    <div class="layout">
+        <main class="card" id="quiz">
+            <div class="topline">
+                <span class="question-number" id="qCount">Question 1 of 15</span>
+                <span style="font-size:13px;color:#64748b">1 Mark Each</span>
+            </div>
+
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div id="questionArea"></div>
+
+            <div class="buttons">
+                <button class="secondary" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+                <button class="primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+                <button class="danger" id="submitBtn" onclick="confirmSubmit()">Submit Test</button>
+            </div>
+        </main>
+
+        <aside class="card sidebar">
+            <h3>Question Navigator</h3>
+            <div class="number-grid" id="numberGrid"></div>
+            <div class="legend">
+                <p><span class="dot" style="background:#7c3aed"></span> Answered</p>
+                <p><span class="dot" style="background:#e2e8f0"></span> Not Answered</p>
+            </div>
+        </aside>
+    </div>
+
+    <section class="card" id="result">
+        <h2 style="text-align:center">Test Completed!</h2>
+        <p style="text-align:center">Your Library Classification Test Result</p>
+        <div class="score" id="score"></div>
+        <div style="text-align:center" id="percentage"></div>
+
+        <div class="result-stats">
+            <div>Correct<strong id="correctCount" style="color:#16a34a"></strong></div>
+            <div>Wrong<strong id="wrongCount" style="color:#dc2626"></strong></div>
+            <div>Skipped<strong id="skippedCount" style="color:#d97706"></strong></div>
+        </div>
+
+        <h3 style="margin:20px 0">Answer Review & Explanations</h3>
+        <div id="reviewArea"></div>
+
+        <div style="text-align:center;margin-top:20px">
+            <button class="primary" onclick="restartTest()">Restart Test</button>
+            <button class="secondary" onclick="location.href='../index.html'">Back to Home</button>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    Bihar Library Eligibility Test (BLET)<br>
+    Prepared for Jahnavi Jee<br>
+    Mentor: Ashish Kumar Lucky
+</footer>
+
+<script>
+const questions = [
+{
+q:"What is the primary meaning of library classification?",
+h:"पुस्तकालय वर्गीकरण का मुख्य अर्थ क्या है?",
+o:[
+"Arranging books according to a systematic order / पुस्तकों को व्यवस्थित क्रम में रखना",
+"Repairing damaged books / क्षतिग्रस्त पुस्तकों की मरम्मत करना",
+"Issuing books to readers / पाठकों को पुस्तकें जारी करना",
+"Preparing library budget / पुस्तकालय का बजट बनाना"
+],
+a:0,
+e:"Library classification organizes documents according to their subjects and systematic relationships. / पुस्तकालय वर्गीकरण में दस्तावेजों को उनके विषयों के अनुसार व्यवस्थित किया जाता है।"
+},
+{
+q:"Who is known as the Father of Library Classification in India?",
+h:"भारत में पुस्तकालय वर्गीकरण का जनक किसे माना जाता है?",
+o:[
+"Melvil Dewey / मेलविल ड्यूई",
+"S. R. Ranganathan / एस. आर. रंगनाथन",
+"Charles Cutter / चार्ल्स कटर",
+"Paul Otlet / पॉल ओटलेट"
+],
+a:1,
+e:"Dr. S. R. Ranganathan made major contributions to library classification in India. / डॉ. एस. आर. रंगनाथन ने भारत में पुस्तकालय वर्गीकरण में महत्वपूर्ण योगदान दिया।"
+},
+{
+q:"Who developed the Dewey Decimal Classification (DDC)?",
+h:"ड्यूई दशमलव वर्गीकरण (DDC) का विकास किसने किया?",
+o:[
+"S. R. Ranganathan / एस. आर. रंगनाथन",
+"Charles Ammi Cutter / चार्ल्स एमी कटर",
+"Melvil Dewey / मेलविल ड्यूई",
+"Paul Otlet / पॉल ओटलेट"
+],
+a:2,
+e:"Melvil Dewey developed DDC in 1876. / मेलविल ड्यूई ने 1876 में DDC का विकास किया।"
+},
+{
+q:"In which year was the first edition of DDC published?",
+h:"DDC का पहला संस्करण किस वर्ष प्रकाशित हुआ था?",
+o:[
+"1876",
+"1905",
+"1933",
+"1895"
+],
+a:0,
+e:"The first edition of Dewey Decimal Classification was published in 1876. / ड्यूई दशमलव वर्गीकरण का पहला संस्करण 1876 में प्रकाशित हुआ था।"
+},
+{
+q:"How many main classes are there in DDC?",
+h:"DDC में कितने मुख्य वर्ग होते हैं?",
+o:[
+"5",
+"10",
+"20",
+"100"
+],
+a:1,
+e:"DDC has 10 main classes, numbered from 000 to 900. / DDC में 000 से 900 तक कुल 10 मुख्य वर्ग होते हैं।"
+},
+{
+q:"Which number represents Philosophy and Psychology in DDC?",
+h:"DDC में दर्शनशास्त्र और मनोविज्ञान को कौन-सी संख्या दर्शाती है?",
+o:[
+"000",
+"100",
+"200",
+"300"
+],
+a:1,
+e:"Class 100 represents Philosophy and Psychology in DDC. / DDC में 100 वर्ग दर्शनशास्त्र और मनोविज्ञान के लिए है।"
+},
+{
+q:"Which DDC class represents Social Sciences?",
+h:"DDC में सामाजिक विज्ञान किस वर्ग में आता है?",
+o:[
+"200",
+"300",
+"400",
+"500"
+],
+a:1,
+e:"Class 300 is assigned to Social Sciences. / 300 वर्ग सामाजिक विज्ञान के लिए निर्धारित है।"
+},
+{
+q:"What does UDC stand for?",
+h:"UDC का पूरा नाम क्या है?",
+o:[
+"Universal Decimal Classification / यूनिवर्सल डेसिमल क्लासिफिकेशन",
+"United Document Catalogue / यूनाइटेड डॉक्यूमेंट कैटलॉग",
+"Universal Data Code / यूनिवर्सल डेटा कोड",
+"Unified Dewey Classification / यूनिफाइड ड्यूई क्लासिफिकेशन"
+],
+a:0,
+e:"UDC stands for Universal Decimal Classification. / UDC का पूरा नाम यूनिवर्सल डेसिमल क्लासिफिकेशन है।"
+},
+{
+q:"Who were the main developers of UDC?",
+h:"UDC के मुख्य विकासकर्ता कौन थे?",
+o:[
+"Melvil Dewey and Charles Cutter / मेलविल ड्यूई और चार्ल्स कटर",
+"Paul Otlet and Henri La Fontaine / पॉल ओटलेट और हेनरी ला फोंटेन",
+"S. R. Ranganathan and Dewey / एस. आर. रंगनाथन और ड्यूई",
+"James Duff Brown and Cutter / जेम्स डफ ब्राउन और कटर"
+],
+a:1,
+e:"UDC was developed by Paul Otlet and Henri La Fontaine, based on DDC. / UDC का विकास पॉल ओटलेट और हेनरी ला फोंटेन ने DDC के आधार पर किया था।"
+},
+{
+q:"Which classification scheme was developed by S. R. Ranganathan?",
+h:"एस. आर. रंगनाथन ने किस वर्गीकरण पद्धति का विकास किया?",
+o:[
+"DDC",
+"UDC",
+"Colon Classification",
+"Library of Congress Classification"
+],
+a:2,
+e:"Colon Classification (CC) was developed by S. R. Ranganathan and first published in 1933. / कोलन क्लासिफिकेशन का विकास एस. आर. रंगनाथन ने किया था और यह पहली बार 1933 में प्रकाशित हुआ।"
+},
+{
+q:"In which year was the first edition of Colon Classification published?",
+h:"कोलन क्लासिफिकेशन का पहला संस्करण किस वर्ष प्रकाशित हुआ?",
+o:[
+"1876",
+"1905",
+"1933",
+"1950"
+],
+a:2,
+e:"The first edition of Colon Classification was published in 1933. / कोलन क्लासिफिकेशन का पहला संस्करण 1933 में प्रकाशित हुआ था।"
+},
+{
+q:"How many fundamental categories are used in Colon Classification?",
+h:"कोलन क्लासिफिकेशन में कितनी मूलभूत श्रेणियों का प्रयोग होता है?",
+o:[
+"Three / तीन",
+"Four / चार",
+"Five / पाँच",
+"Ten / दस"
+],
+a:2,
+e:"Colon Classification uses five fundamental categories: Personality, Matter, Energy, Space and Time (PMEST). / इसमें पाँच मूलभूत श्रेणियाँ हैं: व्यक्तित्व, पदार्थ, ऊर्जा, स्थान और समय (PMEST)।"
+},
+{
+q:"What is the full form of PMEST?",
+h:"PMEST का पूरा नाम क्या है?",
+o:[
+"Personality, Matter, Energy, Space, Time",
+"Place, Method, Energy, Subject, Type",
+"Person, Material, Education, Space, Topic",
+"Personality, Method, Environment, Subject, Time"
+],
+a:0,
+e:"PMEST stands for Personality, Matter, Energy, Space and Time. / PMEST का अर्थ व्यक्तित्व, पदार्थ, ऊर्जा, स्थान और समय है।"
+},
+{
+q:"Which symbol is used as the connecting symbol in Colon Classification?",
+h:"कोलन क्लासिफिकेशन में जोड़ने वाले प्रतीक के रूप में किस चिह्न का उपयोग होता है?",
+o:[
+"Comma (,)",
+"Colon (:)",
+"Full stop (.)",
+"Semicolon (;)"
+],
+a:1,
+e:"The colon symbol (:) is used in Colon Classification to connect facets. / कोलन क्लासिफिकेशन में विभिन्न पहलुओं को जोड़ने के लिए कोलन (:) चिह्न का उपयोग किया जाता है।"
+},
+{
+q:"What is the main purpose of library classification?",
+h:"पुस्तकालय वर्गीकरण का मुख्य उद्देश्य क्या है?",
+o:[
+"To increase book prices / पुस्तकों की कीमत बढ़ाना",
+"To arrange documents systematically and help users find them / दस्तावेजों को व्यवस्थित करना और पाठकों को खोजने में सहायता देना",
+"To reduce library staff / पुस्तकालय कर्मचारियों को कम करना",
+"To replace the library catalogue / पुस्तकालय सूची को हटाना"
+],
+a:1,
+e:"Classification provides systematic arrangement of documents and helps users locate related materials. / वर्गीकरण दस्तावेजों को व्यवस्थित करता है और संबंधित सामग्री खोजने में सहायता करता है।"
+}
+];
+
+let current=0;
+let answers=Array(questions.length).fill(null);
+let timeLeft=15*60;
+let timerInterval=null;
+let submitted=false;
+
+function renderQuestion(){
+    const q=questions[current];
+    document.getElementById("qCount").textContent=`Question ${current+1} of ${questions.length}`;
+    document.getElementById("progressBar").style.width=((current+1)/questions.length*100)+"%";
+
+    let html=`
+    <div class="question">${q.q}</div>
+    <div class="question hindi" style="font-size:16px;color:#475569">${q.h}</div>
+    <div class="options">
+    `;
+    q.o.forEach((option,index)=>{
+        html+=`<div class="option ${answers[current]===index?'selected':''}" onclick="selectAnswer(${index})">
+        <strong>${String.fromCharCode(65+index)}.</strong> ${option}
+        </div>`;
+    });
+    html+="</div>";
+    document.getElementById("questionArea").innerHTML=html;
+
+    document.getElementById("prevBtn").disabled=current===0;
+    document.getElementById("nextBtn").disabled=current===questions.length-1;
+    updateNavigator();
+}
+
+function selectAnswer(index){
+    if(submitted)return;
+    answers[current]=index;
+    renderQuestion();
+}
+
+function nextQuestion(){
+    if(current<questions.length-1){current++;renderQuestion();}
+}
+function previousQuestion(){
+    if(current>0){current--;renderQuestion();}
+}
+function goToQuestion(index){
+    current=index;renderQuestion();
+}
+
+function updateNavigator(){
+    const grid=document.getElementById("numberGrid");
+    grid.innerHTML="";
+    questions.forEach((q,index)=>{
+        const btn=document.createElement("button");
+        btn.textContent=index+1;
+        if(answers[index]!==null)btn.classList.add("answered");
+        if(index===current)btn.classList.add("current");
+        btn.onclick=()=>goToQuestion(index);
+        grid.appendChild(btn);
+    });
+}
+
+function startTimer(){
+    timerInterval=setInterval(()=>{
+        if(submitted)return;
+        timeLeft--;
+        let min=Math.floor(timeLeft/60);
+        let sec=timeLeft%60;
+        document.getElementById("timer").textContent=
+            String(min).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+
+        if(timeLeft<=0){
+            clearInterval(timerInterval);
+            submitTest();
+        }
+    },1000);
+}
+
+function confirmSubmit(){
+    const unanswered=answers.filter(a=>a===null).length;
+    if(confirm("Are you sure you want to submit the test? Unanswered questions: "+unanswered)){
+        submitTest();
+    }
+}
+
+function submitTest(){
+    if(submitted)return;
+    submitted=true;
+    clearInterval(timerInterval);
+
+    let correct=0,wrong=0,skipped=0;
+    questions.forEach((q,index)=>{
+        if(answers[index]===null)skipped++;
+        else if(answers[index]===q.a)correct++;
+        else wrong++;
+    });
+
+    const percentage=(correct/questions.length*100).toFixed(2);
+
+    document.getElementById("quiz").style.display="none";
+    document.querySelector(".layout .sidebar").style.display="none";
+    document.getElementById("result").style.display="block";
+
+    document.getElementById("score").textContent=correct+" / "+questions.length;
+    document.getElementById("percentage").textContent="Percentage: "+percentage+"%";
+    document.getElementById("correctCount").textContent=correct;
+    document.getElementById("wrongCount").textContent=wrong;
+    document.getElementById("skippedCount").textContent=skipped;
+
+    let review="";
+    questions.forEach((q,index)=>{
+        const userAnswer=answers[index];
+        const isCorrect=userAnswer===q.a;
+        let status=userAnswer===null?"Skipped":(isCorrect?"Correct":"Wrong");
+        let statusColor=userAnswer===null?"#d97706":(isCorrect?"#16a34a":"#dc2626");
+
+        review+=`
+        <div class="review-item">
+            <p><strong>Q${index+1}. ${q.q}</strong></p>
+            <p class="hindi">${q.h}</p>
+            <p style="color:${statusColor};font-weight:700">${status}</p>
+            <p>Your Answer: ${userAnswer===null?"Not Answered":q.o[userAnswer]}</p>
+            <p style="color:#16a34a;font-weight:600">Correct Answer: ${q.o[q.a]}</p>
+            <p class="explanation"><strong>Explanation:</strong> ${q.e}</p>
+        </div>`;
+    });
+    document.getElementById("reviewArea").innerHTML=review;
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function restartTest(){
+    current=0;
+    answers=Array(questions.length).fill(null);
+    timeLeft=15*60;
+    submitted=false;
+
+    document.getElementById("timer").textContent="15:00";
+    document.getElementById("quiz").style.display="block";
+    document.querySelector(".layout .sidebar").style.display="block";
+    document.getElementById("result").style.display="none";
+
+    renderQuestion();
+    startTimer();
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+renderQuestion();
+startTimer();
+</script>
+
+</body>
+</html>
+

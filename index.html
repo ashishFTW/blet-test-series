@@ -735,10 +735,9 @@ footer strong {
 </footer>
 
 <script>
+
 /* ==========================================
    WEBSITE LINKS
-   Replace these four links with your actual
-   GitHub Pages website URLs.
 ========================================== */
 
 const TEST_LINKS = {
@@ -747,57 +746,128 @@ const TEST_LINKS = {
     gk: "./GK%20Test/index.html"
 };
 
-document.getElementById("computerLink").href = TEST_LINKS.computer;
-document.getElementById("reasoningLink").href = TEST_LINKS.reasoning;
-
 /* CONNECT MAIN TEST BUTTONS */
+
 document.getElementById("computerLink").href = TEST_LINKS.computer;
 document.getElementById("computerLink").target = "_blank";
 
 document.getElementById("reasoningLink").href = TEST_LINKS.reasoning;
 document.getElementById("reasoningLink").target = "_blank";
+
 document.getElementById("gkLink").href = TEST_LINKS.gk;
 document.getElementById("gkLink").target = "_blank";
-document.getElementById("libraryLink").href = "#library";
-document.getElementById("fullLibraryTest").href = TEST_LINKS.library;
 
-/* LIBRARY TOPICS */
+document.getElementById("libraryLink").href = "#library";
+
+/* ==========================================
+   LIBRARY SCIENCE - 14 TOPICS
+========================================== */
+
 const libraryTopics = [
-  ["Foundation & Organisation of Library", "पुस्तकालय की नींव एवं संगठन"],
-  ["Library Management", "पुस्तकालय प्रबंधन"],
-  ["Library Classification", "पुस्तकालय वर्गीकरण"],
-  ["Cataloguing", "सूचीकरण"],
-  ["Reference & Information Services", "संदर्भ एवं सूचना सेवाएँ"],
-  ["Reference Sources", "संदर्भ स्रोत"],
-  ["Library Automation", "पुस्तकालय स्वचालन"],
-  ["Library Software", "पुस्तकालय सॉफ्टवेयर"],
-  ["Library Networks", "पुस्तकालय नेटवर्क"],
-  ["Research Methods", "शोध विधियाँ"],
-  ["Bibliometrics", "ग्रंथमिति"],
-  ["Library Associations", "पुस्तकालय संघ"],
-  ["Library Standards", "पुस्तकालय मानक"],
-  ["Legal & Ethical Issues", "कानूनी एवं नैतिक मुद्दे"]
+    {
+        name: "Foundation & Organisation of Library",
+        hindi: "पुस्तकालय की नींव एवं संगठन",
+        file: "Foundation-and-Organisation-of-Library.html"
+    },
+    {
+        name: "Library Management",
+        hindi: "पुस्तकालय प्रबंधन",
+        file: "Library-Management.html"
+    },
+    {
+        name: "Library Classification",
+        hindi: "पुस्तकालय वर्गीकरण",
+        file: "Library-Classification.html"
+    },
+    {
+        name: "Cataloguing",
+        hindi: "सूचीकरण",
+        file: "Cataloguing.html"
+    },
+    {
+        name: "Reference & Information Services",
+        hindi: "संदर्भ एवं सूचना सेवाएँ",
+        file: "Reference-and-Information-Services.html"
+    },
+    {
+        name: "Reference Sources",
+        hindi: "संदर्भ स्रोत",
+        file: "Reference-Sources.html"
+    },
+    {
+        name: "Library Automation",
+        hindi: "पुस्तकालय स्वचालन",
+        file: "Library-Automation.html"
+    },
+    {
+        name: "Library Software",
+        hindi: "पुस्तकालय सॉफ्टवेयर",
+        file: "Library-Software.html"
+    },
+    {
+        name: "Library Networks",
+        hindi: "पुस्तकालय नेटवर्क",
+        file: "Library-Networks.html"
+    },
+    {
+        name: "Research Methods",
+        hindi: "शोध विधियाँ",
+        file: "Research-Methods.html"
+    },
+    {
+        name: "Bibliometrics",
+        hindi: "ग्रंथमिति",
+        file: "Bibliometrics.html"
+    },
+    {
+        name: "Library Associations",
+        hindi: "पुस्तकालय संघ",
+        file: "Library-Associations.html"
+    },
+    {
+        name: "Library Standards",
+        hindi: "पुस्तकालय मानक",
+        file: "Library-Standards.html"
+    },
+    {
+        name: "Legal & Ethical Issues",
+        hindi: "कानूनी एवं नैतिक मुद्दे",
+        file: "Legal-and-Ethical-Issues.html"
+    }
 ];
+
+/* DISPLAY TOPICS AND CONNECT TEST WEBPAGES */
 
 const topicGrid = document.getElementById("topicGrid");
 
 libraryTopics.forEach((topic, index) => {
-  const topicNumber = index + 1;
 
-  const item = document.createElement("a");
-  item.className = "topic";
-  item.href = TEST_LINKS.library + "?topic=" + topicNumber;
+    const topicNumber = index + 1;
 
-  item.innerHTML = `
-    <div class="topic-number">${String(topicNumber).padStart(2, "0")}</div>
-    <div class="topic-name">
-      ${topic[0]}
-      <small>${topic[1]}</small>
-    </div>
-  `;
+    const item = document.createElement("a");
+    item.className = "topic";
 
-  topicGrid.appendChild(item);
+    item.href = "./Library-Science/" + topic.file;
+    item.target = "_blank";
+
+    item.innerHTML = `
+        <div class="topic-number">
+            ${String(topicNumber).padStart(2, "0")}
+        </div>
+
+        <div class="topic-name">
+            ${topic.name}
+            <small>${topic.hindi}</small>
+        </div>
+    `;
+
+    topicGrid.appendChild(item);
 });
+
+/* FULL LIBRARY TEST - LINK TO BE ADDED LATER */
+
+document.getElementById("fullLibraryTest").href = "#library";
+
 </script>
 
 

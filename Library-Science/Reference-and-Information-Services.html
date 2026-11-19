@@ -1,1 +1,448 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET | Reference & Information Services - 05</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins','Noto Sans Devanagari',sans-serif;background:#f1f5f9;color:#1e293b}
+header{background:linear-gradient(120deg,#134e4a,#0f766e,#14b8a6);color:white;text-align:center;padding:30px 15px}
+header h1{font-size:27px;margin-bottom:7px}
+header p{font-size:14px;opacity:.95}
+.container{max-width:1050px;margin:25px auto;padding:0 15px}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.info div{background:white;padding:15px;border-radius:12px;text-align:center;box-shadow:0 3px 12px #0000000c;font-weight:600}
+.info span{display:block;color:#0f766e;font-size:21px}
+.layout{display:grid;grid-template-columns:1fr 260px;gap:20px}
+.card{background:white;border-radius:15px;padding:22px;box-shadow:0 4px 18px #0000000c}
+.topline{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:18px}
+.progress{height:8px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin-bottom:22px}
+.progress-bar{height:100%;width:0;background:#0f766e;transition:.3s}
+.question-number{color:#0f766e;font-weight:700;font-size:14px}
+.question{font-size:18px;font-weight:700;margin-bottom:8px}
+.hindi{font-family:'Noto Sans Devanagari',sans-serif}
+.options{display:grid;gap:12px;margin-top:20px}
+.option{padding:13px 15px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;transition:.2s;font-size:14px}
+.option:hover{border-color:#0f766e;background:#f0fdfa}
+.option.selected{border-color:#0f766e;background:#ccfbf1}
+.buttons{display:flex;justify-content:space-between;gap:10px;margin-top:25px;flex-wrap:wrap}
+button{border:0;padding:11px 20px;border-radius:9px;font-family:inherit;font-weight:600;cursor:pointer}
+.primary{background:#0f766e;color:white}
+.secondary{background:#e2e8f0;color:#334155}
+.danger{background:#dc2626;color:white}
+button:disabled{opacity:.45;cursor:not-allowed}
+.sidebar h3{margin-bottom:15px}
+.number-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.number-grid button{padding:9px 0;background:#e2e8f0;color:#334155}
+.number-grid button.answered{background:#0f766e;color:white}
+.number-grid button.current{outline:3px solid #99f6e4}
+.legend{font-size:12px;margin-top:15px;line-height:2}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+#result{display:none}
+.score{font-size:38px;font-weight:800;color:#0f766e;text-align:center;margin:15px 0}
+.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+.result-stats div{padding:15px;background:#f8fafc;border-radius:10px;text-align:center}
+.result-stats strong{display:block;font-size:22px}
+.review-item{border:1px solid #e2e8f0;border-radius:10px;padding:15px;margin:12px 0}
+.review-item p{margin:6px 0;font-size:14px}
+.explanation{color:#475569;font-size:13px}
+footer{text-align:center;padding:25px;color:#64748b;font-size:13px}
+@media(max-width:750px){.layout{grid-template-columns:1fr}.sidebar{order:-1}.number-grid{grid-template-columns:repeat(10,1fr)}header h1{font-size:21px}}
+@media(max-width:450px){.info{grid-template-columns:1fr}.card{padding:15px}.number-grid{grid-template-columns:repeat(5,1fr)}}
+</style>
+</head>
+
+<body>
+<header>
+    <h1>BIHAR LIBRARY ELIGIBILITY TEST</h1>
+    <p>Library & Information Science | Topic 05</p>
+    <h2 style="margin-top:12px;font-size:21px">Reference & Information Services</h2>
+    <p class="hindi">संदर्भ एवं सूचना सेवाएँ</p>
+</header>
+
+<div class="container">
+    <div class="info">
+        <div>Total Questions<span>15</span></div>
+        <div>Total Marks<span>15</span></div>
+        <div>Time<span id="timer">15:00</span></div>
+    </div>
+
+    <div class="layout">
+        <main class="card" id="quiz">
+            <div class="topline">
+                <span class="question-number" id="qCount">Question 1 of 15</span>
+                <span style="font-size:13px;color:#64748b">1 Mark Each</span>
+            </div>
+            <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+            <div id="questionArea"></div>
+            <div class="buttons">
+                <button class="secondary" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+                <button class="primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+                <button class="danger" onclick="confirmSubmit()">Submit Test</button>
+            </div>
+        </main>
+
+        <aside class="card sidebar">
+            <h3>Question Navigator</h3>
+            <div class="number-grid" id="numberGrid"></div>
+            <div class="legend">
+                <p><span class="dot" style="background:#0f766e"></span> Answered</p>
+                <p><span class="dot" style="background:#e2e8f0"></span> Not Answered</p>
+            </div>
+        </aside>
+    </div>
+
+    <section class="card" id="result">
+        <h2 style="text-align:center">Test Completed!</h2>
+        <p style="text-align:center">Your Reference & Information Services Result</p>
+        <div class="score" id="score"></div>
+        <div style="text-align:center" id="percentage"></div>
+
+        <div class="result-stats">
+            <div>Correct<strong id="correctCount" style="color:#16a34a"></strong></div>
+            <div>Wrong<strong id="wrongCount" style="color:#dc2626"></strong></div>
+            <div>Skipped<strong id="skippedCount" style="color:#d97706"></strong></div>
+        </div>
+
+        <h3 style="margin:20px 0">Answer Review & Explanations</h3>
+        <div id="reviewArea"></div>
+
+        <div style="text-align:center;margin-top:20px">
+            <button class="primary" onclick="restartTest()">Restart Test</button>
+            <button class="secondary" onclick="location.href='../index.html'">Back to Home</button>
+        </div>
+    </section>
+</div>
+
+<footer>
+    Bihar Library Eligibility Test (BLET)<br>
+    Prepared for Jahnavi Jee<br>
+    Mentor: Ashish Kumar Lucky
+</footer>
+
+<script>
+const questions = [
+{
+q:"What is Reference Service in a library?",
+h:"पुस्तकालय में संदर्भ सेवा क्या है?",
+o:[
+"Helping users find required information / उपयोगकर्ताओं को आवश्यक सूचना खोजने में सहायता देना",
+"Repairing books / पुस्तकों की मरम्मत करना",
+"Purchasing furniture / फर्नीचर खरीदना",
+"Preparing staff salary / कर्मचारियों का वेतन तैयार करना"
+],
+a:0,
+e:"Reference service provides personal assistance to users in finding and using information resources. / संदर्भ सेवा उपयोगकर्ताओं को सूचना संसाधन खोजने और उपयोग करने में व्यक्तिगत सहायता देती है।"
+},
+{
+q:"Who is known for defining reference service as personal assistance to readers?",
+h:"पाठकों को व्यक्तिगत सहायता के रूप में संदर्भ सेवा की परिभाषा किसने दी?",
+o:[
+"Melvil Dewey / मेलविल ड्यूई",
+"Samuel Swett Green / सैमुअल स्वेट ग्रीन",
+"S. R. Ranganathan / एस. आर. रंगनाथन",
+"Charles Cutter / चार्ल्स कटर"
+],
+a:1,
+e:"Samuel Swett Green is widely associated with the early development of modern reference service. / सैमुअल स्वेट ग्रीन आधुनिक संदर्भ सेवा के प्रारंभिक विकास से जुड़े हैं।"
+},
+{
+q:"What is the main objective of Information Service?",
+h:"सूचना सेवा का मुख्य उद्देश्य क्या है?",
+o:[
+"Providing relevant and timely information / प्रासंगिक और समय पर सूचना प्रदान करना",
+"Maintaining library furniture / पुस्तकालय के फर्नीचर का रख-रखाव",
+"Collecting membership fees / सदस्यता शुल्क एकत्र करना",
+"Decorating reading rooms / वाचन कक्ष सजाना"
+],
+a:0,
+e:"Information services aim to provide useful, relevant and timely information to users. / सूचना सेवाओं का उद्देश्य उपयोगकर्ताओं को उपयोगी, प्रासंगिक और समय पर सूचना देना है।"
+},
+{
+q:"What does Information Literacy mean?",
+h:"सूचना साक्षरता का क्या अर्थ है?",
+o:[
+"Ability to identify, find, evaluate and use information / सूचना की पहचान, खोज, मूल्यांकन और उपयोग करने की क्षमता",
+"Ability to write only books / केवल पुस्तकें लिखने की क्षमता",
+"Ability to operate a printer / प्रिंटर चलाने की क्षमता",
+"Ability to arrange furniture / फर्नीचर व्यवस्थित करने की क्षमता"
+],
+a:0,
+e:"Information literacy enables a person to recognize information needs and find, evaluate and use information effectively. / सूचना साक्षरता व्यक्ति को सूचना की आवश्यकता पहचानने तथा सूचना का प्रभावी मूल्यांकन और उपयोग करने में सक्षम बनाती है।"
+},
+{
+q:"Which organization has developed an important Information Literacy framework for higher education?",
+h:"उच्च शिक्षा के लिए महत्वपूर्ण सूचना साक्षरता फ्रेमवर्क किस संस्था ने विकसित किया है?",
+o:[
+"ACRL / एसोसिएशन ऑफ कॉलेज एंड रिसर्च लाइब्रेरीज़",
+"WHO / विश्व स्वास्थ्य संगठन",
+"ILO / अंतरराष्ट्रीय श्रम संगठन",
+"WTO / विश्व व्यापार संगठन"
+],
+a:0,
+e:"ACRL, a division of the American Library Association, developed the Framework for Information Literacy for Higher Education. / ACRL ने उच्च शिक्षा के लिए सूचना साक्षरता फ्रेमवर्क विकसित किया।"
+},
+{
+q:"What is User Education in a library?",
+h:"पुस्तकालय में उपयोगकर्ता शिक्षा क्या है?",
+o:[
+"Training users to use library resources and services / उपयोगकर्ताओं को पुस्तकालय संसाधनों और सेवाओं के उपयोग का प्रशिक्षण देना",
+"Training only library guards / केवल सुरक्षा कर्मचारियों को प्रशिक्षण देना",
+"Teaching book printing / पुस्तक छपाई सिखाना",
+"Collecting library fines / पुस्तकालय जुर्माना वसूलना"
+],
+a:0,
+e:"User education helps readers understand library facilities, catalogues, databases and information services. / उपयोगकर्ता शिक्षा पाठकों को पुस्तकालय सुविधाओं, सूची, डेटाबेस और सूचना सेवाओं का उपयोग सिखाती है।"
+},
+{
+q:"What is Document Delivery Service?",
+h:"दस्तावेज वितरण सेवा क्या है?",
+o:[
+"Supplying copies of required documents to users / उपयोगकर्ताओं को आवश्यक दस्तावेजों की प्रतियाँ उपलब्ध कराना",
+"Cleaning library documents / पुस्तकालय दस्तावेजों की सफाई करना",
+"Preparing book covers / पुस्तक कवर तैयार करना",
+"Classifying library furniture / पुस्तकालय फर्नीचर का वर्गीकरण करना"
+],
+a:0,
+e:"Document Delivery Service provides requested documents or copies of documents to users, subject to applicable copyright and access rules. / दस्तावेज वितरण सेवा उपयोगकर्ताओं को माँगे गए दस्तावेज या उनकी प्रतियाँ उपलब्ध कराती है।"
+},
+{
+q:"What is the full form of ILL in library services?",
+h:"पुस्तकालय सेवाओं में ILL का पूरा नाम क्या है?",
+o:[
+"International Library List / इंटरनेशनल लाइब्रेरी लिस्ट",
+"Inter-Library Loan / इंटर-लाइब्रेरी लोन",
+"Information Literature Link / इन्फॉर्मेशन लिटरेचर लिंक",
+"Internal Library Ledger / इंटरनल लाइब्रेरी लेजर"
+],
+a:1,
+e:"ILL stands for Inter-Library Loan. It allows one library to borrow materials from another library for its users. / ILL के माध्यम से एक पुस्तकालय दूसरे पुस्तकालय से सामग्री उधार लेता है।"
+},
+{
+q:"What is the main purpose of Inter-Library Loan?",
+h:"अंतर-पुस्तकालय ऋण (ILL) का मुख्य उद्देश्य क्या है?",
+o:[
+"Sharing resources among libraries / पुस्तकालयों के बीच संसाधनों को साझा करना",
+"Closing small libraries / छोटे पुस्तकालयों को बंद करना",
+"Reducing the number of books / पुस्तकों की संख्या कम करना",
+"Replacing library staff / पुस्तकालय कर्मचारियों को बदलना"
+],
+a:0,
+e:"ILL improves access to resources by allowing libraries to share materials with one another. / ILL पुस्तकालयों के बीच सामग्री साझा करके संसाधनों तक पहुँच बढ़ाता है।"
+},
+{
+q:"What is Current Awareness Service (CAS)?",
+h:"Current Awareness Service (CAS) क्या है?",
+o:[
+"Informing users about newly available information / उपयोगकर्ताओं को नई उपलब्ध सूचना से अवगत कराना",
+"Providing old examination papers only / केवल पुराने परीक्षा प्रश्नपत्र देना",
+"Repairing books / पुस्तकों की मरम्मत करना",
+"Preparing library accounts / पुस्तकालय लेखा तैयार करना"
+],
+a:0,
+e:"CAS keeps users informed about recent publications, developments and information in their fields of interest. / CAS उपयोगकर्ताओं को उनके रुचि क्षेत्रों में नए प्रकाशनों और घटनाक्रमों की जानकारी देती है।"
+},
+{
+q:"What is the full form of SDI?",
+h:"SDI का पूरा नाम क्या है?",
+o:[
+"Selective Dissemination of Information / सेलेक्टिव डिसेमिनेशन ऑफ इन्फॉर्मेशन",
+"Systematic Data Information / सिस्टमैटिक डेटा इन्फॉर्मेशन",
+"Standard Document Index / स्टैंडर्ड डॉक्यूमेंट इंडेक्स",
+"Special Digital Interface / स्पेशल डिजिटल इंटरफेस"
+],
+a:0,
+e:"SDI stands for Selective Dissemination of Information. / SDI का पूरा नाम सेलेक्टिव डिसेमिनेशन ऑफ इन्फॉर्मेशन है।"
+},
+{
+q:"Who is widely credited with developing the SDI concept?",
+h:"SDI की अवधारणा के विकास का श्रेय सामान्यतः किसे दिया जाता है?",
+o:[
+"H. P. Luhn / एच. पी. लून",
+"Melvil Dewey / मेलविल ड्यूई",
+"Charles Cutter / चार्ल्स कटर",
+"Paul Otlet / पॉल ओटलेट"
+],
+a:0,
+e:"H. P. Luhn of IBM is widely credited with developing the Selective Dissemination of Information concept. / IBM के एच. पी. लून को SDI अवधारणा के विकास का श्रेय दिया जाता है।"
+},
+{
+q:"What is the major difference between CAS and SDI?",
+h:"CAS और SDI के बीच मुख्य अंतर क्या है?",
+o:[
+"CAS is general, while SDI is tailored to individual user interests / CAS सामान्य होती है, जबकि SDI व्यक्तिगत रुचि के अनुसार होती है",
+"Both are book repair services / दोनों पुस्तक मरम्मत सेवाएँ हैं",
+"CAS is only for children / CAS केवल बच्चों के लिए है",
+"SDI is a type of classification / SDI एक प्रकार का वर्गीकरण है"
+],
+a:0,
+e:"CAS provides general updates to a group of users, whereas SDI delivers information selected according to an individual user's profile. / CAS सामान्य जानकारी देती है, जबकि SDI उपयोगकर्ता की व्यक्तिगत रुचि के अनुसार सूचना देती है।"
+},
+{
+q:"Which service helps users learn how to search library catalogues and databases?",
+h:"कौन-सी सेवा उपयोगकर्ताओं को पुस्तकालय सूची और डेटाबेस में खोज करना सिखाती है?",
+o:[
+"User Education / उपयोगकर्ता शिक्षा",
+"Stock Verification / स्टॉक सत्यापन",
+"Book Binding / पुस्तक बंधाई",
+"Accessioning / अभिग्रहण"
+],
+a:0,
+e:"User education includes guidance on searching catalogues, databases and other information resources. / उपयोगकर्ता शिक्षा में पुस्तकालय सूची और डेटाबेस में खोज करने का प्रशिक्षण शामिल है।"
+},
+{
+q:"Which of the following is an example of a reference service?",
+h:"निम्नलिखित में से कौन-सा संदर्भ सेवा का उदाहरण है?",
+o:[
+"Answering a reader's query using reference sources / संदर्भ स्रोतों की सहायता से पाठक के प्रश्न का उत्तर देना",
+"Painting library walls / पुस्तकालय की दीवारों पर रंग करना",
+"Buying chairs / कुर्सियाँ खरीदना",
+"Preparing staff attendance / कर्मचारियों की उपस्थिति तैयार करना"
+],
+a:0,
+e:"A reference librarian answers users' queries by using suitable reference tools and information sources. / संदर्भ पुस्तकालयाध्यक्ष उपयुक्त संदर्भ साधनों और सूचना स्रोतों से पाठकों के प्रश्नों का उत्तर देता है।"
+}
+];
+
+let current=0;
+let answers=Array(questions.length).fill(null);
+let timeLeft=15*60;
+let timerInterval=null;
+let submitted=false;
+
+function renderQuestion(){
+    const q=questions[current];
+    document.getElementById("qCount").textContent=`Question ${current+1} of ${questions.length}`;
+    document.getElementById("progressBar").style.width=((current+1)/questions.length*100)+"%";
+
+    let html=`
+    <div class="question">${q.q}</div>
+    <div class="question hindi" style="font-size:16px;color:#475569">${q.h}</div>
+    <div class="options">`;
+
+    q.o.forEach((option,index)=>{
+        html+=`<div class="option ${answers[current]===index?'selected':''}" onclick="selectAnswer(${index})">
+        <strong>${String.fromCharCode(65+index)}.</strong> ${option}
+        </div>`;
+    });
+    html+="</div>";
+    document.getElementById("questionArea").innerHTML=html;
+    document.getElementById("prevBtn").disabled=current===0;
+    document.getElementById("nextBtn").disabled=current===questions.length-1;
+    updateNavigator();
+}
+
+function selectAnswer(index){
+    if(submitted)return;
+    answers[current]=index;
+    renderQuestion();
+}
+function nextQuestion(){if(current<questions.length-1){current++;renderQuestion();}}
+function previousQuestion(){if(current>0){current--;renderQuestion();}}
+function goToQuestion(index){current=index;renderQuestion();}
+
+function updateNavigator(){
+    const grid=document.getElementById("numberGrid");
+    grid.innerHTML="";
+    questions.forEach((q,index)=>{
+        const btn=document.createElement("button");
+        btn.textContent=index+1;
+        if(answers[index]!==null)btn.classList.add("answered");
+        if(index===current)btn.classList.add("current");
+        btn.onclick=()=>goToQuestion(index);
+        grid.appendChild(btn);
+    });
+}
+
+function startTimer(){
+    clearInterval(timerInterval);
+    timerInterval=setInterval(()=>{
+        if(submitted)return;
+        timeLeft--;
+        let min=Math.floor(timeLeft/60);
+        let sec=timeLeft%60;
+        document.getElementById("timer").textContent=
+            String(min).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+        if(timeLeft<=0){
+            clearInterval(timerInterval);
+            submitTest();
+        }
+    },1000);
+}
+
+function confirmSubmit(){
+    const unanswered=answers.filter(a=>a===null).length;
+    if(confirm("Are you sure you want to submit the test? Unanswered questions: "+unanswered)){
+        submitTest();
+    }
+}
+
+function submitTest(){
+    if(submitted)return;
+    submitted=true;
+    clearInterval(timerInterval);
+
+    let correct=0,wrong=0,skipped=0;
+    questions.forEach((q,index)=>{
+        if(answers[index]===null)skipped++;
+        else if(answers[index]===q.a)correct++;
+        else wrong++;
+    });
+
+    const percentage=(correct/questions.length*100).toFixed(2);
+    document.getElementById("quiz").style.display="none";
+    document.querySelector(".layout .sidebar").style.display="none";
+    document.getElementById("result").style.display="block";
+
+    document.getElementById("score").textContent=correct+" / "+questions.length;
+    document.getElementById("percentage").textContent="Percentage: "+percentage+"%";
+    document.getElementById("correctCount").textContent=correct;
+    document.getElementById("wrongCount").textContent=wrong;
+    document.getElementById("skippedCount").textContent=skipped;
+
+    let review="";
+    questions.forEach((q,index)=>{
+        const userAnswer=answers[index];
+        const isCorrect=userAnswer===q.a;
+        let status=userAnswer===null?"Skipped":(isCorrect?"Correct":"Wrong");
+        let statusColor=userAnswer===null?"#d97706":(isCorrect?"#16a34a":"#dc2626");
+
+        review+=`
+        <div class="review-item">
+            <p><strong>Q${index+1}. ${q.q}</strong></p>
+            <p class="hindi">${q.h}</p>
+            <p style="color:${statusColor};font-weight:700">${status}</p>
+            <p>Your Answer: ${userAnswer===null?"Not Answered":q.o[userAnswer]}</p>
+            <p style="color:#16a34a;font-weight:600">Correct Answer: ${q.o[q.a]}</p>
+            <p class="explanation"><strong>Explanation:</strong> ${q.e}</p>
+        </div>`;
+    });
+    document.getElementById("reviewArea").innerHTML=review;
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function restartTest(){
+    current=0;
+    answers=Array(questions.length).fill(null);
+    timeLeft=15*60;
+    submitted=false;
+    document.getElementById("timer").textContent="15:00";
+    document.getElementById("quiz").style.display="block";
+    document.querySelector(".layout .sidebar").style.display="block";
+    document.getElementById("result").style.display="none";
+    renderQuestion();
+    startTimer();
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+renderQuestion();
+startTimer();
+</script>
+</body>
+</html>
+

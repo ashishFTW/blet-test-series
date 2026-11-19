@@ -1,1 +1,1226 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET | Foundation & Organisation of Library</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --navy: #101b42;
+    --blue: #3157d5;
+    --purple: #7439c6;
+    --green: #079b78;
+    --light: #f3f5ff;
+    --white: #ffffff;
+    --text: #263453;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+    background: var(--light);
+    color: var(--text);
+}
+
+.header {
+    background: linear-gradient(120deg, #101b42, #3157d5, #7439c6);
+    color: white;
+    padding: 30px 7%;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: #ffcb72;
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.5);
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.header h1 {
+    font-size: clamp(25px, 4vw, 38px);
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.hindi {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+.header .hindi {
+    color: #ffcb72;
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+.header p {
+    color: #e1e7ff;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.container {
+    max-width: 1150px;
+    margin: 35px auto;
+    padding: 0 18px 50px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.info-box {
+    background: white;
+    padding: 18px;
+    text-align: center;
+    border-radius: 13px;
+    box-shadow: 0 5px 20px rgba(25,45,100,.07);
+}
+
+.info-box h2 {
+    color: var(--blue);
+    font-size: 23px;
+}
+
+.info-box p {
+    color: #7b849e;
+    font-size: 11px;
+}
+
+.test-layout {
+    display: grid;
+    grid-template-columns: 1fr 270px;
+    gap: 22px;
+    align-items: start;
+}
+
+.question-panel,
+.sidebar {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 5px 25px rgba(25,45,100,.07);
+}
+
+.question-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+}
+
+.question-count {
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.timer {
+    background: #fff0e9;
+    color: #d65a22;
+    padding: 9px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.timer.warning {
+    background: #ffe1e1;
+    color: #d00000;
+}
+
+.progress-track {
+    height: 7px;
+    background: #edf0fa;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3157d5, #7439c6);
+    width: 0%;
+    transition: .3s;
+}
+
+.question {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+
+.question-hindi {
+    font-size: 15px;
+    color: #65718f;
+    line-height: 1.8;
+    margin-bottom: 23px;
+}
+
+.options {
+    display: grid;
+    gap: 12px;
+}
+
+.option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border: 1px solid #e5e9f5;
+    background: #f9faff;
+    padding: 14px;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.option:hover {
+    border-color: #9eafff;
+    background: #f0f3ff;
+}
+
+.option.selected {
+    background: #eaf0ff;
+    border-color: var(--blue);
+}
+
+.option.correct {
+    background: #e6f8f1;
+    border-color: #079b78;
+}
+
+.option.incorrect {
+    background: #fff0f0;
+    border-color: #df4545;
+}
+
+.option-letter {
+    min-width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    background: #e8ecff;
+    color: var(--blue);
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.option-text {
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.option-text small {
+    display: block;
+    color: #77819b;
+    font-size: 12px;
+    margin-top: 3px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+.question-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.btn {
+    border: none;
+    padding: 12px 21px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: var(--blue);
+    color: white;
+}
+
+.btn-secondary {
+    background: #edf0fa;
+    color: #34415e;
+}
+
+.btn-submit {
+    background: var(--green);
+    color: white;
+}
+
+.sidebar h3 {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.sidebar p {
+    font-size: 11px;
+    color: #818ba3;
+    margin-bottom: 18px;
+}
+
+.number-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 9px;
+}
+
+.number-btn {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid #e1e6f3;
+    background: #f5f6fb;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #56617c;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.number-btn.active {
+    background: var(--blue);
+    color: white;
+    border-color: var(--blue);
+}
+
+.number-btn.answered {
+    background: #dff6ed;
+    color: #078568;
+    border-color: #a5e2cd;
+}
+
+.number-btn.active.answered {
+    background: var(--blue);
+    color: white;
+}
+
+.legend {
+    display: grid;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 11px;
+    color: #65718f;
+}
+
+.legend-color {
+    width: 13px;
+    height: 13px;
+    border-radius: 4px;
+}
+
+.submit-full {
+    width: 100%;
+    margin-top: 23px;
+}
+
+.result-panel {
+    display: none;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(25,45,100,.07);
+}
+
+.result-heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.result-heading h2 {
+    color: var(--blue);
+    font-size: 28px;
+}
+
+.result-score {
+    font-size: 45px;
+    color: var(--green);
+    font-weight: 800;
+    margin: 15px 0;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.result-stat {
+    background: #f5f7ff;
+    padding: 17px 8px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.result-stat h3 {
+    font-size: 22px;
+    color: var(--blue);
+}
+
+.result-stat p {
+    font-size: 10px;
+    color: #75809a;
+}
+
+.review-heading {
+    margin: 30px 0 15px;
+    font-size: 19px;
+}
+
+.review-item {
+    border: 1px solid #e8ebf4;
+    border-radius: 11px;
+    padding: 17px;
+    margin-bottom: 12px;
+}
+
+.review-item h4 {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+
+.review-item p {
+    font-size: 12px;
+    line-height: 1.8;
+    margin-top: 5px;
+}
+
+.review-correct {
+    color: #078568;
+}
+
+.review-wrong {
+    color: #d44242;
+}
+
+.explanation {
+    color: #65718f;
+    background: #f6f7fc;
+    padding: 11px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.result-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+footer {
+    background: var(--navy);
+    color: #d5dcf4;
+    text-align: center;
+    padding: 25px 15px;
+    font-size: 11px;
+    line-height: 2;
+}
+
+footer strong {
+    color: #ffbd59;
+}
+
+@media(max-width:800px) {
+    .test-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: -1;
+    }
+
+    .number-grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}
+
+@media(max-width:500px) {
+    .info-grid {
+        gap: 7px;
+    }
+
+    .info-box {
+        padding: 12px 5px;
+    }
+
+    .info-box h2 {
+        font-size: 18px;
+    }
+
+    .info-box p {
+        font-size: 9px;
+    }
+
+    .question-panel {
+        padding: 17px;
+    }
+
+    .number-grid {
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    .result-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .question-actions .btn {
+        padding: 11px 13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-top">
+        <div class="logo">BLET <span>PREPARATION</span></div>
+        <a href="../index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <h1>Foundation & Organisation of Library</h1>
+    <div class="hindi">पुस्तकालय की नींव एवं संगठन</div>
+
+    <p>
+        Bihar Library Eligibility Test (BLET) – Topic-wise Practice Test.
+        Test your knowledge with important bilingual MCQs.
+    </p>
+</header>
+
+<main class="container">
+
+    <section class="info-grid">
+        <div class="info-box">
+            <h2>15</h2>
+            <p>Total Questions</p>
+        </div>
+        <div class="info-box">
+            <h2>15</h2>
+            <p>Total Marks</p>
+        </div>
+        <div class="info-box">
+            <h2>15 Min</h2>
+            <p>Time Duration</p>
+        </div>
+    </section>
+
+    <div class="test-layout" id="testLayout">
+
+        <section class="question-panel">
+
+            <div class="question-top">
+                <div class="question-count" id="questionCount">
+                    Question 1 of 15
+                </div>
+                <div class="timer" id="timer">15:00</div>
+            </div>
+
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div id="questionArea"></div>
+
+            <div class="question-actions">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()">
+                    ← Previous
+                </button>
+
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+                    Next →
+                </button>
+            </div>
+
+        </section>
+
+        <aside class="sidebar">
+
+            <h3>Question Navigator</h3>
+            <p>Click any number to visit that question.</p>
+
+            <div class="number-grid" id="numberGrid"></div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background:#3157d5"></span>
+                    Current Question
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background:#dff6ed"></span>
+                    Answered
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background:#f5f6fb"></span>
+                    Not Answered
+                </div>
+            </div>
+
+            <button class="btn btn-submit submit-full" onclick="submitTest()">
+                Submit Test
+            </button>
+
+        </aside>
+
+    </div>
+
+    <section class="result-panel" id="resultPanel"></section>
+
+</main>
+
+<footer>
+    <strong>BLET Online Test Series</strong><br>
+    Specially Designed for Jahnavi Jee<br>
+    Learn • Practice • Improve • Succeed<br>
+    © 2026 | Mentor: Ashish Kumar Lucky
+</footer>
+
+<script>
+
+/* ======================================
+   QUESTION BANK - 15 MCQs
+====================================== */
+
+const questions = [
+
+{
+    q: "What is the primary meaning of a library?",
+    h: "पुस्तकालय का प्राथमिक अर्थ क्या है?",
+    options: [
+        ["A place for storing and organising information resources", "सूचना संसाधनों के संग्रह एवं संगठन का स्थान"],
+        ["A place only for selling books", "केवल पुस्तकें बेचने का स्थान"],
+        ["A place for entertainment only", "केवल मनोरंजन का स्थान"],
+        ["A place for manufacturing books", "पुस्तकें बनाने का स्थान"]
+    ],
+    answer: 0,
+    explanation: "A library collects, organises, preserves and provides access to information resources."
+},
+
+{
+    q: "Which of the following is a major objective of a library?",
+    h: "निम्नलिखित में से पुस्तकालय का प्रमुख उद्देश्य क्या है?",
+    options: [
+        ["To restrict access to information", "सूचना तक पहुँच को सीमित करना"],
+        ["To provide information and promote education", "सूचना उपलब्ध कराना एवं शिक्षा को बढ़ावा देना"],
+        ["To sell stationery products", "स्टेशनरी उत्पाद बेचना"],
+        ["To publish newspapers only", "केवल समाचार पत्र प्रकाशित करना"]
+    ],
+    answer: 1,
+    explanation: "Libraries support education, research, reading habits and access to information."
+},
+
+{
+    q: "Which type of library primarily serves the general public?",
+    h: "किस प्रकार का पुस्तकालय मुख्य रूप से आम जनता की सेवा करता है?",
+    options: [
+        ["Academic Library", "शैक्षणिक पुस्तकालय"],
+        ["Special Library", "विशेष पुस्तकालय"],
+        ["Public Library", "सार्वजनिक पुस्तकालय"],
+        ["Private Library", "निजी पुस्तकालय"]
+    ],
+    answer: 2,
+    explanation: "A public library provides library services to people of the community without discrimination."
+},
+
+{
+    q: "An academic library is mainly established to serve:",
+    h: "शैक्षणिक पुस्तकालय मुख्य रूप से किसकी सेवा के लिए स्थापित किया जाता है?",
+    options: [
+        ["Farmers only", "केवल किसानों की"],
+        ["Students, teachers and researchers", "विद्यार्थियों, शिक्षकों एवं शोधकर्ताओं की"],
+        ["Businessmen only", "केवल व्यापारियों की"],
+        ["Tourists only", "केवल पर्यटकों की"]
+    ],
+    answer: 1,
+    explanation: "Academic libraries support teaching, learning and research in educational institutions."
+},
+
+{
+    q: "Which library provides information to a particular organisation or specialised field?",
+    h: "कौन-सा पुस्तकालय किसी विशेष संस्था या विशेषज्ञता के क्षेत्र को सूचना प्रदान करता है?",
+    options: [
+        ["Public Library", "सार्वजनिक पुस्तकालय"],
+        ["National Library", "राष्ट्रीय पुस्तकालय"],
+        ["Special Library", "विशेष पुस्तकालय"],
+        ["School Library", "विद्यालय पुस्तकालय"]
+    ],
+    answer: 2,
+    explanation: "Special libraries focus on a particular subject, organisation or professional field."
+},
+
+{
+    q: "Which is the National Library of India?",
+    h: "भारत का राष्ट्रीय पुस्तकालय कौन-सा है?",
+    options: [
+        ["Delhi Public Library", "दिल्ली सार्वजनिक पुस्तकालय"],
+        ["National Library of India, Kolkata", "राष्ट्रीय पुस्तकालय, कोलकाता"],
+        ["Khuda Bakhsh Oriental Public Library, Patna", "खुदा बख्श ओरिएंटल पब्लिक लाइब्रेरी, पटना"],
+        ["Connemara Public Library, Chennai", "कन्नेमारा सार्वजनिक पुस्तकालय, चेन्नई"]
+    ],
+    answer: 1,
+    explanation: "The National Library of India is located in Kolkata, West Bengal."
+},
+
+{
+    q: "Which of the following is an important function of a library?",
+    h: "निम्नलिखित में से पुस्तकालय का एक महत्वपूर्ण कार्य कौन-सा है?",
+    options: [
+        ["Collection and organisation of information resources", "सूचना संसाधनों का संग्रह एवं संगठन"],
+        ["Manufacturing electronic devices", "इलेक्ट्रॉनिक उपकरण बनाना"],
+        ["Construction of roads", "सड़कों का निर्माण"],
+        ["Conducting commercial banking", "व्यावसायिक बैंकिंग करना"]
+    ],
+    answer: 0,
+    explanation: "Collection, organisation, preservation and dissemination of information are major library functions."
+},
+
+{
+    q: "A school library mainly supports:",
+    h: "विद्यालय पुस्तकालय मुख्य रूप से किसका समर्थन करता है?",
+    options: [
+        ["Industrial production", "औद्योगिक उत्पादन"],
+        ["Teaching and learning activities", "शिक्षण एवं सीखने की गतिविधियाँ"],
+        ["Commercial activities", "व्यावसायिक गतिविधियाँ"],
+        ["Political campaigns", "राजनीतिक अभियान"]
+    ],
+    answer: 1,
+    explanation: "A school library supports students and teachers through educational reading materials."
+},
+
+{
+    q: "Which library is generally responsible for collecting and preserving a country's published documents?",
+    h: "कौन-सा पुस्तकालय सामान्यतः देश में प्रकाशित दस्तावेजों के संग्रह एवं संरक्षण के लिए जिम्मेदार होता है?",
+    options: [
+        ["Special Library", "विशेष पुस्तकालय"],
+        ["School Library", "विद्यालय पुस्तकालय"],
+        ["National Library", "राष्ट्रीय पुस्तकालय"],
+        ["College Library", "महाविद्यालय पुस्तकालय"]
+    ],
+    answer: 2,
+    explanation: "A national library generally has responsibilities related to national documentary heritage and preservation."
+},
+
+{
+    q: "Who is widely known as the Father of Library Science in India?",
+    h: "भारत में पुस्तकालय विज्ञान के जनक के रूप में किसे जाना जाता है?",
+    options: [
+        ["Melvil Dewey", "मेलविल डेवी"],
+        ["S. R. Ranganathan", "एस. आर. रंगनाथन"],
+        ["Charles Cutter", "चार्ल्स कटर"],
+        ["Paul Otlet", "पॉल ओटलेट"]
+    ],
+    answer: 1,
+    explanation: "Dr. S. R. Ranganathan is widely regarded as the Father of Library Science in India."
+},
+
+{
+    q: "How many laws of Library Science were formulated by S. R. Ranganathan?",
+    h: "एस. आर. रंगनाथन द्वारा पुस्तकालय विज्ञान के कितने नियम प्रतिपादित किए गए?",
+    options: [
+        ["Three", "तीन"],
+        ["Four", "चार"],
+        ["Five", "पाँच"],
+        ["Six", "छह"]
+    ],
+    answer: 2,
+    explanation: "S. R. Ranganathan formulated the Five Laws of Library Science in 1931."
+},
+
+{
+    q: "Which of the following best describes the social role of a public library?",
+    h: "निम्नलिखित में से कौन सार्वजनिक पुस्तकालय की सामाजिक भूमिका का सर्वोत्तम वर्णन करता है?",
+    options: [
+        ["Providing equal access to information for the community", "समुदाय को सूचना तक समान पहुँच प्रदान करना"],
+        ["Serving only wealthy people", "केवल धनी लोगों की सेवा करना"],
+        ["Restricting educational opportunities", "शैक्षणिक अवसरों को सीमित करना"],
+        ["Providing information to one organisation only", "केवल एक संस्था को सूचना देना"]
+    ],
+    answer: 0,
+    explanation: "Public libraries promote social inclusion, lifelong learning and equal access to information."
+},
+
+{
+    q: "Which service helps users locate information according to their specific needs?",
+    h: "कौन-सी सेवा उपयोगकर्ताओं को उनकी विशेष आवश्यकताओं के अनुसार सूचना खोजने में सहायता करती है?",
+    options: [
+        ["Binding Service", "बाइंडिंग सेवा"],
+        ["Reference Service", "संदर्भ सेवा"],
+        ["Printing Service", "मुद्रण सेवा"],
+        ["Maintenance Service", "रखरखाव सेवा"]
+    ],
+    answer: 1,
+    explanation: "Reference service helps users find relevant information and use library resources effectively."
+},
+
+{
+    q: "The Delivery of Books and Newspapers (Public Libraries) Act was enacted in which year in India?",
+    h: "भारत में डिलीवरी ऑफ बुक्स एंड न्यूजपेपर्स (पब्लिक लाइब्रेरीज़) अधिनियम किस वर्ष लागू किया गया था?",
+    options: [
+        ["1948", "1948"],
+        ["1952", "1952"],
+        ["1954", "1954"],
+        ["1960", "1960"]
+    ],
+    answer: 2,
+    explanation: "The Delivery of Books and Newspapers (Public Libraries) Act was enacted in 1954."
+},
+
+{
+    q: "Which of the following is an important educational role of a library?",
+    h: "निम्नलिखित में से पुस्तकालय की एक महत्वपूर्ण शैक्षणिक भूमिका कौन-सी है?",
+    options: [
+        ["Promoting reading habits and lifelong learning", "पठन आदतों एवं आजीवन सीखने को बढ़ावा देना"],
+        ["Preventing access to books", "पुस्तकों तक पहुँच रोकना"],
+        ["Replacing all educational institutions", "सभी शैक्षणिक संस्थानों का स्थान लेना"],
+        ["Providing only entertainment", "केवल मनोरंजन प्रदान करना"]
+    ],
+    answer: 0,
+    explanation: "Libraries encourage reading, self-learning, education and lifelong learning."
+}
+
+];
+
+/* ======================================
+   TEST VARIABLES
+====================================== */
+
+let currentQuestion = 0;
+let answers = new Array(questions.length).fill(null);
+let timeLeft = 15 * 60;
+let timerInterval = null;
+let submitted = false;
+
+/* ======================================
+   DISPLAY QUESTION
+====================================== */
+
+function renderQuestion() {
+
+    if (submitted) return;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionCount").textContent =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
+
+    document.getElementById("progressFill").style.width =
+        ((currentQuestion + 1) / questions.length * 100) + "%";
+
+    let html = `
+        <div class="question">
+            Q${currentQuestion + 1}. ${q.q}
+        </div>
+
+        <div class="question-hindi hindi">
+            ${q.h}
+        </div>
+
+        <div class="options">
+    `;
+
+    q.options.forEach((option, index) => {
+
+        let selected = answers[currentQuestion] === index ? "selected" : "";
+
+        html += `
+            <div class="option ${selected}"
+                 onclick="selectAnswer(${index})">
+
+                <div class="option-letter">
+                    ${String.fromCharCode(65 + index)}
+                </div>
+
+                <div class="option-text">
+                    ${option[0]}
+                    <small>${option[1]}</small>
+                </div>
+
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+
+    document.getElementById("questionArea").innerHTML = html;
+
+    document.getElementById("prevBtn").disabled =
+        currentQuestion === 0;
+
+    document.getElementById("prevBtn").style.opacity =
+        currentQuestion === 0 ? ".5" : "1";
+
+    document.getElementById("nextBtn").textContent =
+        currentQuestion === questions.length - 1
+        ? "Finish →"
+        : "Next →";
+
+    renderNavigator();
+}
+
+/* ======================================
+   SELECT ANSWER
+====================================== */
+
+function selectAnswer(index) {
+
+    if (submitted) return;
+
+    answers[currentQuestion] = index;
+    renderQuestion();
+}
+
+/* ======================================
+   QUESTION NAVIGATOR
+====================================== */
+
+function renderNavigator() {
+
+    let html = "";
+
+    questions.forEach((q, index) => {
+
+        let classes = "number-btn";
+
+        if (answers[index] !== null) {
+            classes += " answered";
+        }
+
+        if (index === currentQuestion) {
+            classes += " active";
+        }
+
+        html += `
+            <button class="${classes}"
+                onclick="goToQuestion(${index})">
+                ${index + 1}
+            </button>
+        `;
+    });
+
+    document.getElementById("numberGrid").innerHTML = html;
+}
+
+function goToQuestion(index) {
+    if (submitted) return;
+
+    currentQuestion = index;
+    renderQuestion();
+}
+
+/* ======================================
+   NEXT / PREVIOUS
+====================================== */
+
+function nextQuestion() {
+
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion();
+    } else {
+        submitTest();
+    }
+}
+
+function previousQuestion() {
+
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion();
+    }
+}
+
+/* ======================================
+   TIMER
+====================================== */
+
+function updateTimer() {
+
+    if (submitted) return;
+
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+
+    let formatted =
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+
+    document.getElementById("timer").textContent = formatted;
+
+    if (timeLeft <= 60) {
+        document.getElementById("timer").classList.add("warning");
+    }
+
+    if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        alert("Time is over! Your test will be submitted automatically.");
+        submitTest(true);
+        return;
+    }
+
+    timeLeft--;
+}
+
+timerInterval = setInterval(updateTimer, 1000);
+updateTimer();
+
+/* ======================================
+   SUBMIT TEST
+====================================== */
+
+function submitTest(autoSubmit = false) {
+
+    if (submitted) return;
+
+    let answered = answers.filter(a => a !== null).length;
+
+    if (!autoSubmit) {
+
+        let confirmSubmit = confirm(
+            "Are you sure you want to submit the test?\n\n" +
+            "Answered: " + answered + " / " + questions.length
+        );
+
+        if (!confirmSubmit) return;
+    }
+
+    submitted = true;
+
+    clearInterval(timerInterval);
+
+    let correct = 0;
+    let wrong = 0;
+    let skipped = 0;
+
+    questions.forEach((q, index) => {
+
+        if (answers[index] === null) {
+            skipped++;
+        }
+        else if (answers[index] === q.answer) {
+            correct++;
+        }
+        else {
+            wrong++;
+        }
+
+    });
+
+    let percentage = Math.round(
+        (correct / questions.length) * 100
+    );
+
+    document.getElementById("testLayout").style.display = "none";
+
+    let resultHTML = `
+        <div class="result-heading">
+
+            <h2>Test Completed!</h2>
+
+            <p class="hindi">
+                परीक्षा पूरी हुई! आपका परिणाम नीचे दिया गया है।
+            </p>
+
+            <div class="result-score">
+                ${correct} / ${questions.length}
+            </div>
+
+            <p>Your Score: ${percentage}%</p>
+
+        </div>
+
+        <div class="result-grid">
+
+            <div class="result-stat">
+                <h3>${correct}</h3>
+                <p>Correct Answers</p>
+            </div>
+
+            <div class="result-stat">
+                <h3>${wrong}</h3>
+                <p>Wrong Answers</p>
+            </div>
+
+            <div class="result-stat">
+                <h3>${skipped}</h3>
+                <p>Skipped</p>
+            </div>
+
+            <div class="result-stat">
+                <h3>${percentage}%</h3>
+                <p>Percentage</p>
+            </div>
+
+        </div>
+
+        <h3 class="review-heading">Answer Review & Explanations</h3>
+    `;
+
+    questions.forEach((q, index) => {
+
+        let isCorrect = answers[index] === q.answer;
+
+        let status = answers[index] === null
+            ? "Not Attempted"
+            : isCorrect
+            ? "Correct"
+            : "Incorrect";
+
+        let statusClass = isCorrect
+            ? "review-correct"
+            : "review-wrong";
+
+        let selectedAnswer = answers[index] === null
+            ? "Not Answered"
+            : q.options[answers[index]][0] +
+              " / " + q.options[answers[index]][1];
+
+        let correctAnswer =
+            q.options[q.answer][0] +
+            " / " + q.options[q.answer][1];
+
+        resultHTML += `
+
+            <div class="review-item">
+
+                <h4>
+                    Q${index + 1}. ${q.q}
+                    <br>
+                    <span class="hindi">${q.h}</span>
+                </h4>
+
+                <p class="${statusClass}">
+                    <strong>Status: ${status}</strong>
+                </p>
+
+                <p>
+                    <strong>Your Answer:</strong> ${selectedAnswer}
+                </p>
+
+                <p class="review-correct">
+                    <strong>Correct Answer:</strong> ${correctAnswer}
+                </p>
+
+                <p class="explanation">
+                    <strong>Explanation:</strong> ${q.explanation}
+                </p>
+
+            </div>
+
+        `;
+    });
+
+    resultHTML += `
+        <div class="result-buttons">
+
+            <button class="btn btn-primary" onclick="restartTest()">
+                Restart Test
+            </button>
+
+            <a href="../index.html" class="btn btn-secondary"
+               style="text-decoration:none">
+                Back to Home
+            </a>
+
+        </div>
+    `;
+
+    const resultPanel = document.getElementById("resultPanel");
+
+    resultPanel.innerHTML = resultHTML;
+    resultPanel.style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+/* ======================================
+   RESTART TEST
+====================================== */
+
+function restartTest() {
+
+    currentQuestion = 0;
+    answers = new Array(questions.length).fill(null);
+    timeLeft = 15 * 60;
+    submitted = false;
+
+    document.getElementById("testLayout").style.display = "grid";
+
+    document.getElementById("resultPanel").style.display = "none";
+
+    document.getElementById("timer").classList.remove("warning");
+
+    renderQuestion();
+
+    updateTimer();
+
+    timerInterval = setInterval(updateTimer, 1000);
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+/* ======================================
+   INITIALIZE TEST
+====================================== */
+
+renderQuestion();
+
+</script>
+
+</body>
+</html>
+

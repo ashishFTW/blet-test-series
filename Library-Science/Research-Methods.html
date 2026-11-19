@@ -1,1 +1,442 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET | Research Methods Test</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f0f4ff;color:#25213a;font-family:'Poppins','Noto Sans Devanagari',sans-serif}
+header{background:linear-gradient(135deg,#172554,#2563eb,#7c3aed);color:white;text-align:center;padding:28px 15px}
+header h1{margin:0;font-size:25px}
+header p{margin:7px 0 0;font-size:14px}
+.top-actions{max-width:1100px;margin:15px auto 0;padding:0 15px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.home-btn{display:inline-block;background:#e0e7ff;color:#1d4ed8;padding:11px 18px;border-radius:9px;text-decoration:none;font-weight:700;font-size:13px}
+.container{max-width:1100px;margin:20px auto;padding:0 15px}
+.topic-title{background:linear-gradient(120deg,#fff,#eef2ff);padding:22px;border-radius:15px;box-shadow:0 4px 15px #00000008;border-left:5px solid #6366f1;margin-bottom:18px}
+.topic-title h2{margin:0;color:#4338ca;font-size:23px}
+.topic-title p{margin:5px 0 0;color:#666}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.info-card{background:white;padding:16px;border-radius:13px;text-align:center;box-shadow:0 4px 14px #00000008;border-bottom:4px solid #818cf8}
+.info-card:nth-child(2){border-color:#22c55e}
+.info-card:nth-child(3){border-color:#f59e0b}
+.info-card strong{display:block;color:#4338ca;font-size:22px}
+.info-card span{font-size:12px;color:#666}
+.timer-warning{color:#dc2626!important}
+.layout{display:grid;grid-template-columns:1fr 280px;gap:18px;align-items:start}
+.question-card,.side-card,.result-card{background:white;padding:23px;border-radius:15px;box-shadow:0 5px 18px #0000000c}
+.question-card{border-top:5px solid #6366f1}
+.side-card{border-top:5px solid #f59e0b}
+.question-number{display:inline-block;background:#ede9fe;color:#6d28d9;padding:7px 13px;border-radius:20px;font-weight:700;font-size:13px}
+.question-text{font-size:17px;font-weight:600;margin:17px 0 6px;line-height:1.6}
+.hindi-text{font-family:'Noto Sans Devanagari',sans-serif;color:#555;margin:0 0 20px;line-height:1.8}
+.option{display:flex;align-items:flex-start;gap:11px;border:1px solid #dbe3f5;padding:14px;border-radius:11px;margin:11px 0;cursor:pointer;transition:.2s;background:#fbfcff}
+.option:hover{border-color:#818cf8;background:#eef2ff}
+.option.selected{border:2px solid #4f46e5;background:#e0e7ff}
+.option input{margin-top:5px;accent-color:#4f46e5}
+.option span{font-size:14px;line-height:1.6}
+.nav-buttons{display:flex;justify-content:space-between;gap:10px;margin-top:23px;flex-wrap:wrap}
+button{border:0;padding:11px 18px;border-radius:9px;cursor:pointer;font-family:inherit;font-weight:600}
+.btn-primary{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white}
+.btn-light{background:#e0e7ff;color:#3730a3}
+.btn-submit{background:linear-gradient(135deg,#dc2626,#f43f5e);color:white}
+button:disabled{opacity:.4;cursor:not-allowed}
+.side-card h3{margin:0 0 15px;color:#3730a3;font-size:17px}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:17px}
+.legend span{display:flex;align-items:center;font-size:11px;color:#555}
+.dot{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;flex-shrink:0}
+.question-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
+.qn{padding:10px 0;background:#fef3c7;color:#92400e;border:1px solid #fbbf24;border-radius:8px;font-size:13px;font-weight:700;transition:.2s}
+.qn.answered{background:#22c55e;color:white;border-color:#16a34a}
+.qn.not-answered{background:#fee2e2;color:#b91c1c;border-color:#ef4444}
+.qn.not-visited{background:#fef3c7;color:#92400e;border-color:#f59e0b}
+.qn.current{background:#2563eb;color:white;border:2px solid #1d4ed8;outline:3px solid #bfdbfe}
+.progress-text{font-size:12px;color:#555;margin-top:17px}
+.progress-bar{height:9px;background:#e5e7eb;border-radius:10px;overflow:hidden;margin-top:8px}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#22c55e,#2563eb);transition:.2s}
+.result-card{display:none;margin-top:20px;border-top:5px solid #22c55e}
+.result-card h2{color:#2563eb;margin-top:0}
+.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+.score-box{background:#eff6ff;padding:15px 8px;text-align:center;border-radius:11px}
+.score-box:nth-child(1){background:#ede9fe}
+.score-box:nth-child(2){background:#dcfce7}
+.score-box:nth-child(3){background:#fee2e2}
+.score-box:nth-child(4){background:#fef3c7}
+.score-box strong{display:block;font-size:22px;color:#1d4ed8}
+.score-box span{font-size:12px;color:#555}
+.review-item{border-top:1px solid #eee;padding:16px 0}
+.review-item p{margin:6px 0;font-size:14px;line-height:1.6}
+.correct-text{color:#15803d;font-weight:600}
+.wrong-text{color:#dc2626;font-weight:600}
+.explanation{color:#555;background:#f1f5ff;padding:12px;border-radius:9px;font-size:13px;line-height:1.7}
+footer{text-align:center;padding:25px 10px;color:#777;font-size:12px}
+@media(max-width:750px){
+.layout{grid-template-columns:1fr}
+.info{gap:7px}
+.info-card{padding:12px 5px}
+.info-card strong{font-size:18px}
+.question-card,.side-card{padding:16px}
+.score-grid{grid-template-columns:repeat(2,1fr)}
+header h1{font-size:20px}
+}
+</style>
+</head>
+
+<body>
+<header>
+<h1>BIHAR LIBRARY ELIGIBILITY TEST</h1>
+<p>Library & Information Science | Topic 10</p>
+</header>
+
+<div class="top-actions">
+<a class="home-btn" href="../index.html">← Go to Home</a>
+<span style="font-size:12px;color:#666">Prepared for Jahnavi Jee</span>
+</div>
+
+<div class="container">
+<div class="topic-title">
+<h2>Research Methods</h2>
+<p>शोध विधियाँ</p>
+</div>
+
+<div class="info">
+<div class="info-card"><strong>15</strong><span>Total Questions / कुल प्रश्न</span></div>
+<div class="info-card"><strong>15</strong><span>Total Marks / कुल अंक</span></div>
+<div class="info-card"><strong id="timer">15:00</strong><span>Time Left / शेष समय</span></div>
+</div>
+
+<div class="layout" id="testLayout">
+<main class="question-card">
+<div class="question-number" id="questionNumber"></div>
+<div class="question-text" id="questionText"></div>
+<div class="hindi-text" id="questionHindi"></div>
+<div id="options"></div>
+<div class="nav-buttons">
+<button class="btn-light" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+<button class="btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">Submit Test</button>
+</div>
+</main>
+
+<aside class="side-card">
+<h3>Question Navigator</h3>
+<div class="legend">
+<span><i class="dot" style="background:#22c55e"></i>Answered</span>
+<span><i class="dot" style="background:#ef4444"></i>Not Answered</span>
+<span><i class="dot" style="background:#f59e0b"></i>Not Visited</span>
+<span><i class="dot" style="background:#2563eb"></i>Current</span>
+</div>
+<div class="question-grid" id="questionGrid"></div>
+<div class="progress-text" id="progressText">Answered: 0 / 15</div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+</aside>
+</div>
+
+<div class="result-card" id="resultCard">
+<h2>Test Result / परीक्षा परिणाम</h2>
+<p id="resultMessage"></p>
+<div class="score-grid">
+<div class="score-box"><strong id="score">0</strong><span>Score / अंक</span></div>
+<div class="score-box"><strong id="correct">0</strong><span>Correct / सही</span></div>
+<div class="score-box"><strong id="wrong">0</strong><span>Wrong / गलत</span></div>
+<div class="score-box"><strong id="skipped">0</strong><span>Skipped / छोड़े</span></div>
+</div>
+<h3>Answer Review / उत्तर समीक्षा</h3>
+<div id="review"></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+<button class="btn-primary" onclick="restartTest()">Restart Test / दोबारा टेस्ट दें</button>
+<a class="home-btn" href="../index.html">← Go to Home</a>
+</div>
+</div>
+</div>
+
+<footer>
+Bihar Library Eligibility Test (BLET)<br>
+Prepared for Jahnavi Jee<br>
+Mentor: Ashish Kumar Lucky
+</footer>
+
+<script>
+const questions = [
+{
+q:"What is the meaning of Research?",
+h:"Research का अर्थ क्या है?",
+o:["Systematic investigation to discover new facts / नए तथ्यों की खोज के लिए व्यवस्थित जाँच","Only reading books / केवल पुस्तकें पढ़ना","Writing stories / कहानियाँ लिखना","Collecting money / धन एकत्र करना"],
+a:0,
+e:"Research is a systematic and scientific investigation to discover, verify or interpret knowledge. / शोध ज्ञान की खोज, सत्यापन या व्याख्या के लिए व्यवस्थित एवं वैज्ञानिक जाँच है।"
+},
+{
+q:"What is the primary objective of research?",
+h:"शोध का प्राथमिक उद्देश्य क्या है?",
+o:["To generate new knowledge / नया ज्ञान उत्पन्न करना","To waste time / समय नष्ट करना","To avoid investigation / जाँच से बचना","To repeat information without analysis / बिना विश्लेषण जानकारी दोहराना"],
+a:0,
+e:"The main objective of research is to discover new facts, test existing knowledge and solve problems. / शोध का मुख्य उद्देश्य नए तथ्यों की खोज, मौजूदा ज्ञान का परीक्षण और समस्याओं का समाधान करना है।"
+},
+{
+q:"Which research approach deals mainly with numerical data?",
+h:"कौन-सा शोध दृष्टिकोण मुख्य रूप से संख्यात्मक डेटा से संबंधित है?",
+o:["Qualitative Research / गुणात्मक शोध","Quantitative Research / मात्रात्मक शोध","Historical Research / ऐतिहासिक शोध","Descriptive Writing / वर्णनात्मक लेखन"],
+a:1,
+e:"Quantitative research uses numerical data and statistical methods for analysis. / मात्रात्मक शोध में संख्यात्मक डेटा एवं सांख्यिकीय विधियों का उपयोग किया जाता है।"
+},
+{
+q:"Which research approach focuses on experiences, opinions and behaviour?",
+h:"कौन-सा शोध दृष्टिकोण अनुभवों, विचारों और व्यवहार पर ध्यान देता है?",
+o:["Quantitative Research / मात्रात्मक शोध","Qualitative Research / गुणात्मक शोध","Experimental Measurement / प्रयोगात्मक मापन","Statistical Sampling / सांख्यिकीय नमूनाकरण"],
+a:1,
+e:"Qualitative research explores experiences, opinions, attitudes and human behaviour. / गुणात्मक शोध अनुभवों, विचारों, दृष्टिकोणों एवं मानव व्यवहार का अध्ययन करता है।"
+},
+{
+q:"Which of the following is a common method of qualitative data collection?",
+h:"निम्नलिखित में से गुणात्मक डेटा संग्रह की सामान्य विधि कौन-सी है?",
+o:["In-depth Interview / गहन साक्षात्कार","Numerical calculation / संख्यात्मक गणना","Statistical table only / केवल सांख्यिकीय तालिका","Mathematical formula / गणितीय सूत्र"],
+a:0,
+e:"Interviews are commonly used to collect detailed qualitative information. / विस्तृत गुणात्मक जानकारी एकत्र करने के लिए साक्षात्कार का उपयोग किया जाता है।"
+},
+{
+q:"What is generally the first step in the research process?",
+h:"शोध प्रक्रिया में सामान्यतः पहला चरण क्या है?",
+o:["Identification of research problem / शोध समस्या की पहचान","Writing the final report / अंतिम रिपोर्ट लिखना","Data analysis / डेटा विश्लेषण","Publication of results / परिणाम प्रकाशित करना"],
+a:0,
+e:"The research process generally begins with identifying and defining the research problem. / शोध प्रक्रिया सामान्यतः शोध समस्या की पहचान एवं परिभाषा से शुरू होती है।"
+},
+{
+q:"What is a hypothesis in research?",
+h:"शोध में परिकल्पना (Hypothesis) क्या है?",
+o:["A tentative statement to be tested / परीक्षण किया जाने वाला अस्थायी कथन","Final research report / अंतिम शोध रिपोर्ट","A list of books / पुस्तकों की सूची","A data collection instrument only / केवल डेटा संग्रह उपकरण"],
+a:0,
+e:"A hypothesis is a tentative, testable statement about a relationship between variables. / परिकल्पना चरों के बीच संबंध के बारे में एक अस्थायी एवं परीक्षण योग्य कथन है।"
+},
+{
+q:"Which of the following is a primary source of data?",
+h:"निम्नलिखित में से डेटा का प्राथमिक स्रोत कौन-सा है?",
+o:["Direct interview / प्रत्यक्ष साक्षात्कार","Published textbook / प्रकाशित पाठ्यपुस्तक","Encyclopedia / विश्वकोश","Previously published report / पहले से प्रकाशित रिपोर्ट"],
+a:0,
+e:"An interview conducted directly by the researcher is a primary data collection method. / शोधकर्ता द्वारा सीधे किया गया साक्षात्कार प्राथमिक डेटा संग्रह विधि है।"
+},
+{
+q:"Which of the following is a secondary source of data?",
+h:"निम्नलिखित में से डेटा का द्वितीयक स्रोत कौन-सा है?",
+o:["Original field observation / मूल क्षेत्रीय अवलोकन","Published research report / प्रकाशित शोध रिपोर्ट","Direct experiment / प्रत्यक्ष प्रयोग","Personal interview / व्यक्तिगत साक्षात्कार"],
+a:1,
+e:"Published reports and previously collected information are commonly used as secondary sources. / प्रकाशित रिपोर्ट एवं पहले से एकत्र जानकारी सामान्यतः द्वितीयक स्रोत होते हैं।"
+},
+{
+q:"Which method is commonly used to collect data from a large number of people?",
+h:"बड़ी संख्या में लोगों से डेटा एकत्र करने के लिए सामान्यतः किस विधि का उपयोग होता है?",
+o:["Questionnaire / प्रश्नावली","Personal diary only / केवल व्यक्तिगत डायरी","Case study of one person / एक व्यक्ति का केस अध्ययन","Library classification / पुस्तकालय वर्गीकरण"],
+a:0,
+e:"A questionnaire can collect standardized information from many respondents. / प्रश्नावली अनेक उत्तरदाताओं से एक समान प्रारूप में जानकारी एकत्र कर सकती है।"
+},
+{
+q:"What is sampling in research?",
+h:"शोध में नमूनाकरण (Sampling) क्या है?",
+o:["Selecting a representative part of a population / समग्र जनसंख्या के प्रतिनिधि भाग का चयन","Studying every book in a library / पुस्तकालय की हर पुस्तक पढ़ना","Writing a bibliography / ग्रंथ सूची लिखना","Publishing research / शोध प्रकाशित करना"],
+a:0,
+e:"Sampling means selecting a subset of a population to study and draw conclusions about the whole population. / नमूनाकरण में पूरी जनसंख्या के अध्ययन हेतु उसके एक प्रतिनिधि भाग का चयन किया जाता है।"
+},
+{
+q:"What is the purpose of a literature review?",
+h:"साहित्य समीक्षा (Literature Review) का उद्देश्य क्या है?",
+o:["To understand existing research and identify research gaps / मौजूदा शोध को समझना एवं शोध अंतराल पहचानना","To avoid reading previous studies / पुराने अध्ययनों को पढ़ने से बचना","To collect library fines / पुस्तकालय जुर्माना एकत्र करना","To prepare book labels / पुस्तक लेबल बनाना"],
+a:0,
+e:"A literature review examines existing studies, identifies gaps and provides a foundation for new research. / साहित्य समीक्षा मौजूदा अध्ययनों का परीक्षण करती है, शोध अंतराल पहचानती है और नए शोध का आधार प्रदान करती है।"
+},
+{
+q:"Which technique is used to search an exact phrase in many search engines?",
+h:"कई सर्च इंजन में किसी सटीक वाक्यांश को खोजने के लिए किस तकनीक का उपयोग किया जाता है?",
+o:["Quotation marks / उद्धरण चिह्न","Random typing / अनियमित टाइपिंग","Deleting keywords / कीवर्ड हटाना","Using only numbers / केवल संख्याओं का उपयोग"],
+a:0,
+e:"Quotation marks around a phrase are commonly used to search for that exact phrase. / किसी वाक्यांश को उद्धरण चिह्नों में लिखने से सामान्यतः उसी सटीक वाक्यांश की खोज होती है।"
+},
+{
+q:"Which Boolean operator is used to retrieve records containing both search terms?",
+h:"दोनों खोज शब्दों वाले रिकॉर्ड प्राप्त करने के लिए कौन-सा Boolean Operator उपयोग होता है?",
+o:["AND / एंड","OR / ओर","NOT / नॉट","NEAR only / केवल नियर"],
+a:0,
+e:"AND retrieves results that contain both specified search terms, generally narrowing the search. / AND दोनों खोज शब्दों वाले परिणाम प्राप्त करता है और सामान्यतः खोज को सीमित करता है।"
+},
+{
+q:"Which Boolean operator is used to exclude a particular term from search results?",
+h:"खोज परिणामों से किसी विशेष शब्द को हटाने के लिए कौन-सा Boolean Operator उपयोग होता है?",
+o:["AND / एंड","OR / ओर","NOT / नॉट","WITH / विथ"],
+a:2,
+e:"NOT excludes records containing the specified term from the search results. / NOT दिए गए शब्द वाले रिकॉर्ड को खोज परिणामों से बाहर करता है।"
+}
+];
+
+let current=0;
+let answers=Array(questions.length).fill(null);
+let visited=Array(questions.length).fill(false);
+let timeLeft=15*60;
+let submitted=false;
+let timerInterval;
+
+function renderQuestion(){
+ if(submitted)return;
+ const q=questions[current];
+ visited[current]=true;
+
+ document.getElementById("questionNumber").textContent=`Question ${current+1} of ${questions.length}`;
+ document.getElementById("questionText").textContent=q.q;
+ document.getElementById("questionHindi").textContent=q.h;
+
+ const options=document.getElementById("options");
+ options.innerHTML="";
+
+ q.o.forEach((option,index)=>{
+  const label=document.createElement("label");
+  label.className="option"+(answers[current]===index?" selected":"");
+  const radio=document.createElement("input");
+  radio.type="radio";
+  radio.name="answer";
+  radio.checked=answers[current]===index;
+  radio.addEventListener("change",()=>{
+   answers[current]=index;
+   renderQuestion();
+  });
+  const span=document.createElement("span");
+  span.textContent=String.fromCharCode(65+index)+". "+option;
+  label.appendChild(radio);
+  label.appendChild(span);
+  options.appendChild(label);
+ });
+
+ document.getElementById("prevBtn").disabled=current===0;
+ document.getElementById("nextBtn").style.display=current===questions.length-1?"none":"inline-block";
+ document.getElementById("submitBtn").style.display=current===questions.length-1?"inline-block":"none";
+ renderNavigator();
+}
+
+function renderNavigator(){
+ const grid=document.getElementById("questionGrid");
+ grid.innerHTML="";
+
+ questions.forEach((q,index)=>{
+  const btn=document.createElement("button");
+  btn.className="qn";
+  btn.textContent=index+1;
+
+  if(index===current)btn.classList.add("current");
+  else if(answers[index]!==null)btn.classList.add("answered");
+  else if(visited[index])btn.classList.add("not-answered");
+  else btn.classList.add("not-visited");
+
+  btn.addEventListener("click",()=>{
+   current=index;
+   renderQuestion();
+  });
+  grid.appendChild(btn);
+ });
+
+ const answered=answers.filter(a=>a!==null).length;
+ document.getElementById("progressText").textContent=`Answered: ${answered} / ${questions.length}`;
+ document.getElementById("progressFill").style.width=(answered/questions.length*100)+"%";
+}
+
+function previousQuestion(){
+ if(current>0){current--;renderQuestion();}
+}
+function nextQuestion(){
+ if(current<questions.length-1){current++;renderQuestion();}
+}
+
+function updateTimer(){
+ const minutes=Math.floor(timeLeft/60);
+ const seconds=timeLeft%60;
+ const timer=document.getElementById("timer");
+ timer.textContent=String(minutes).padStart(2,"0")+":"+String(seconds).padStart(2,"0");
+ if(timeLeft<=60)timer.classList.add("timer-warning");
+ if(timeLeft<=0){
+  clearInterval(timerInterval);
+  finishTest(true);
+  return;
+ }
+ timeLeft--;
+}
+
+function submitTest(){
+ const unanswered=answers.filter(a=>a===null).length;
+ let message="Are you sure you want to submit the test?";
+ if(unanswered>0)message+=`\n${unanswered} question(s) are unanswered.`;
+ if(confirm(message))finishTest(false);
+}
+
+function finishTest(autoSubmitted){
+ if(submitted)return;
+ submitted=true;
+ clearInterval(timerInterval);
+
+ let correct=0,wrong=0,skipped=0,reviewHTML="";
+
+ questions.forEach((q,index)=>{
+  const userAnswer=answers[index];
+  const isCorrect=userAnswer===q.a;
+
+  if(userAnswer===null)skipped++;
+  else if(isCorrect)correct++;
+  else wrong++;
+
+  const userText=userAnswer===null?"Not Answered / उत्तर नहीं दिया":q.o[userAnswer];
+
+  reviewHTML+=`
+  <div class="review-item">
+   <p><strong>Q${index+1}. ${q.q}</strong></p>
+   <p>${q.h}</p>
+   <p class="${isCorrect?'correct-text':userAnswer===null?'':'wrong-text'}">Your Answer: ${userText}</p>
+   <p class="correct-text">Correct Answer: ${q.o[q.a]}</p>
+   <div class="explanation">${q.e}</div>
+  </div>`;
+ });
+
+ const percentage=Math.round(correct/questions.length*100);
+ document.getElementById("score").textContent=correct+"/"+questions.length;
+ document.getElementById("correct").textContent=correct;
+ document.getElementById("wrong").textContent=wrong;
+ document.getElementById("skipped").textContent=skipped;
+ document.getElementById("review").innerHTML=reviewHTML;
+
+ let message=`Your percentage: ${percentage}%`;
+ if(autoSubmitted)message+=" | Test auto-submitted because time is over.";
+ if(percentage>=80)message+=" Excellent performance!";
+ else if(percentage>=60)message+=" Good effort! Keep practising.";
+ else message+=" Keep practising and improve your score.";
+
+ document.getElementById("resultMessage").textContent=message;
+ document.getElementById("testLayout").style.display="none";
+ document.querySelector(".info").style.display="none";
+ document.getElementById("resultCard").style.display="block";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function restartTest(){
+ if(!confirm("Restart the test? All previous answers will be cleared."))return;
+
+ current=0;
+ answers=Array(questions.length).fill(null);
+ visited=Array(questions.length).fill(false);
+ timeLeft=15*60;
+ submitted=false;
+
+ document.getElementById("resultCard").style.display="none";
+ document.getElementById("testLayout").style.display="grid";
+ document.querySelector(".info").style.display="grid";
+ document.getElementById("timer").classList.remove("timer-warning");
+
+ renderQuestion();
+ updateTimer();
+ timerInterval=setInterval(updateTimer,1000);
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+renderQuestion();
+updateTimer();
+timerInterval=setInterval(updateTimer,1000);
+</script>
+</body>
+</html>
+

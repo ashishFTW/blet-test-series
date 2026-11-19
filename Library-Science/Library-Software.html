@@ -1,1 +1,371 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET | Library Software Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#0f766e;--secondary:#14b8a6;--light:#f0fdfa}
+*{box-sizing:border-box}
+body{margin:0;background:#f4f7fb;color:#25213a;font-family:'Poppins','Noto Sans Devanagari',sans-serif}
+header{background:linear-gradient(135deg,#064e3b,#0f766e,#14b8a6);color:white;text-align:center;padding:25px 15px}
+header h1{margin:0;font-size:25px}
+header p{margin:7px 0 0;font-size:14px}
+.top-actions{max-width:1100px;margin:15px auto 0;padding:0 15px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.home-btn{display:inline-block;background:white;color:#0f766e;padding:10px 17px;border-radius:9px;text-decoration:none;font-weight:700;font-size:13px;box-shadow:0 3px 10px #00000012}
+.container{max-width:1100px;margin:20px auto;padding:0 15px}
+.topic-title{background:white;padding:20px;border-radius:14px;box-shadow:0 4px 15px #00000008;margin-bottom:18px}
+.topic-title h2{margin:0;color:#0f766e;font-size:22px}
+.topic-title p{margin:5px 0 0;color:#666}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.info-card{background:white;padding:15px;border-radius:12px;text-align:center;box-shadow:0 3px 12px #00000008}
+.info-card strong{display:block;color:#0f766e;font-size:21px}
+.info-card span{font-size:12px;color:#666}
+.timer-warning{color:#dc2626!important}
+.layout{display:grid;grid-template-columns:1fr 270px;gap:18px;align-items:start}
+.question-card,.side-card,.result-card{background:white;padding:22px;border-radius:14px;box-shadow:0 4px 15px #00000008}
+.question-number{color:#0f766e;font-weight:700;font-size:14px}
+.question-text{font-size:17px;font-weight:600;margin:13px 0 5px}
+.hindi-text{font-family:'Noto Sans Devanagari',sans-serif;color:#555;margin:0 0 18px}
+.option{display:flex;align-items:flex-start;gap:10px;border:1px solid #e5e1ed;padding:13px;border-radius:10px;margin:10px 0;cursor:pointer;transition:.2s}
+.option:hover{border-color:#14b8a6;background:#f0fdfa}
+.option.selected{border:2px solid #0f766e;background:#f0fdfa}
+.option input{margin-top:5px;accent-color:#0f766e}
+.option span{font-size:14px}
+.nav-buttons{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+button{border:0;padding:11px 18px;border-radius:9px;cursor:pointer;font-family:inherit;font-weight:600}
+.btn-primary{background:#0f766e;color:white}
+.btn-primary:hover{background:#064e3b}
+.btn-light{background:#ccfbf1;color:#115e59}
+.btn-submit{background:#dc2626;color:white}
+button:disabled{opacity:.4;cursor:not-allowed}
+.side-card h3{margin:0 0 13px;color:#0f766e;font-size:17px}
+.legend{font-size:12px;color:#666;margin-bottom:13px}
+.legend span{display:inline-block;margin:3px 8px 3px 0}
+.dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px}
+.question-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.qn{padding:9px 0;background:#f1f0f5;color:#333;border-radius:7px;font-size:13px}
+.qn.answered{background:#dcfce7;color:#166534}
+.qn.current{outline:2px solid #0f766e}
+.progress-text{font-size:12px;color:#666;margin-top:15px}
+.progress-bar{height:8px;background:#eee;border-radius:10px;overflow:hidden;margin-top:7px}
+.progress-fill{height:100%;width:0;background:#0f766e;transition:.2s}
+.result-card{display:none;margin-top:20px}
+.result-card h2{color:#0f766e;margin-top:0}
+.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+.score-box{background:#f0fdfa;padding:14px 8px;text-align:center;border-radius:10px}
+.score-box strong{display:block;font-size:22px;color:#0f766e}
+.score-box span{font-size:12px;color:#666}
+.review-item{border-top:1px solid #eee;padding:15px 0}
+.review-item p{margin:5px 0;font-size:14px}
+.correct-text{color:#15803d;font-weight:600}
+.wrong-text{color:#dc2626;font-weight:600}
+.explanation{color:#555;background:#f8f7fc;padding:10px;border-radius:8px;font-size:13px}
+footer{text-align:center;padding:25px 10px;color:#777;font-size:12px}
+@media(max-width:750px){.layout{grid-template-columns:1fr}.info{gap:7px}.info-card{padding:12px 5px}.info-card strong{font-size:18px}.question-card,.side-card{padding:16px}.score-grid{grid-template-columns:repeat(2,1fr)}header h1{font-size:20px}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>BIHAR LIBRARY ELIGIBILITY TEST</h1>
+<p>Library & Information Science | Topic 08</p>
+</header>
+
+<div class="top-actions">
+<a class="home-btn" href="../index.html">← Go to Home</a>
+<span style="font-size:12px;color:#666">Prepared for Jahnavi Jee</span>
+</div>
+
+<div class="container">
+<div class="topic-title">
+<h2>Library Software</h2>
+<p>पुस्तकालय सॉफ्टवेयर</p>
+</div>
+
+<div class="info">
+<div class="info-card"><strong>15</strong><span>Total Questions / कुल प्रश्न</span></div>
+<div class="info-card"><strong>15</strong><span>Total Marks / कुल अंक</span></div>
+<div class="info-card"><strong id="timer">15:00</strong><span>Time Left / शेष समय</span></div>
+</div>
+
+<div class="layout" id="testLayout">
+<main class="question-card">
+<div class="question-number" id="questionNumber"></div>
+<div class="question-text" id="questionText"></div>
+<div class="hindi-text" id="questionHindi"></div>
+<div id="options"></div>
+<div class="nav-buttons">
+<button class="btn-light" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+<button class="btn-primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">Submit Test</button>
+</div>
+</main>
+
+<aside class="side-card">
+<h3>Question Navigator</h3>
+<div class="legend">
+<span><i class="dot" style="background:#dcfce7"></i>Answered</span>
+<span><i class="dot" style="background:#f1f0f5"></i>Not Answered</span>
+</div>
+<div class="question-grid" id="questionGrid"></div>
+<div class="progress-text" id="progressText">Answered: 0 / 15</div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+</aside>
+</div>
+
+<div class="result-card" id="resultCard">
+<h2>Test Result / परीक्षा परिणाम</h2>
+<p id="resultMessage"></p>
+<div class="score-grid">
+<div class="score-box"><strong id="score">0</strong><span>Score / अंक</span></div>
+<div class="score-box"><strong id="correct">0</strong><span>Correct / सही</span></div>
+<div class="score-box"><strong id="wrong">0</strong><span>Wrong / गलत</span></div>
+<div class="score-box"><strong id="skipped">0</strong><span>Skipped / छोड़े</span></div>
+</div>
+<h3>Answer Review / उत्तर समीक्षा</h3>
+<div id="review"></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+<button class="btn-primary" onclick="restartTest()">Restart Test / दोबारा टेस्ट दें</button>
+<a class="home-btn" href="../index.html">← Go to Home</a>
+</div>
+</div>
+</div>
+
+<footer>
+Bihar Library Eligibility Test (BLET)<br>
+Prepared for Jahnavi Jee<br>
+Mentor: Ashish Kumar Lucky
+</footer>
+
+<script>
+const questions=[
+{
+q:"Which of the following is an open-source Integrated Library System (ILS)?",
+h:"निम्नलिखित में से कौन-सा ओपन-सोर्स Integrated Library System (ILS) है?",
+o:["KOHA / कोहा","SOUL / सोल","MS Word / एमएस वर्ड","PowerPoint / पावरपॉइंट"],
+a:0,
+e:"KOHA is a widely used open-source Integrated Library System. / KOHA एक लोकप्रिय ओपन-सोर्स Integrated Library System है।"
+},
+{
+q:"KOHA was originally developed in which country?",
+h:"KOHA का मूल विकास किस देश में हुआ था?",
+o:["India / भारत","New Zealand / न्यूजीलैंड","USA / अमेरिका","United Kingdom / यूनाइटेड किंगडम"],
+a:1,
+e:"KOHA was originally developed in New Zealand in 1999. / KOHA का मूल विकास 1999 में न्यूजीलैंड में हुआ था।"
+},
+{
+q:"Which organization developed SOUL Library Management Software?",
+h:"SOUL Library Management Software का विकास किस संस्था ने किया?",
+o:["UNESCO / यूनेस्को","INFLIBNET Centre / इन्फ्लिबनेट केंद्र","NISSAT / निस्सैट","DELNET / डेलनेट"],
+a:1,
+e:"SOUL (Software for University Libraries) was developed by INFLIBNET Centre. / SOUL का विकास INFLIBNET Centre द्वारा किया गया।"
+},
+{
+q:"What is the full form of SOUL?",
+h:"SOUL का पूर्ण रूप क्या है?",
+o:["Software for University Libraries / सॉफ्टवेयर फॉर यूनिवर्सिटी लाइब्रेरीज","System of Universal Learning","Software of Unified Libraries","Service of University Literature"],
+a:0,
+e:"SOUL stands for Software for University Libraries. / SOUL का पूर्ण रूप Software for University Libraries है।"
+},
+{
+q:"Which organization developed e-Granthalaya?",
+h:"e-Granthalaya का विकास किस संस्था ने किया?",
+o:["NIC / राष्ट्रीय सूचना विज्ञान केंद्र","INFLIBNET / इन्फ्लिबनेट","UGC / विश्वविद्यालय अनुदान आयोग","AICTE / अखिल भारतीय तकनीकी शिक्षा परिषद"],
+a:0,
+e:"e-Granthalaya is a library automation software developed by the National Informatics Centre (NIC). / e-Granthalaya का विकास National Informatics Centre (NIC) ने किया है।"
+},
+{
+q:"e-Granthalaya is primarily designed for which type of institutions?",
+h:"e-Granthalaya मुख्य रूप से किस प्रकार की संस्थाओं के लिए बनाया गया है?",
+o:["Government libraries / सरकारी पुस्तकालय","Banks only / केवल बैंक","Hospitals only / केवल अस्पताल","Private shops / निजी दुकानें"],
+a:0,
+e:"e-Granthalaya is designed to support automation and networking of government libraries. / e-Granthalaya सरकारी पुस्तकालयों के स्वचालन एवं नेटवर्किंग में सहायता करता है।"
+},
+{
+q:"Which of the following is a major module of Library Management Software?",
+h:"निम्नलिखित में से कौन Library Management Software का प्रमुख मॉड्यूल है?",
+o:["Circulation / पुस्तक निर्गमन एवं वापसी","Video Editing / वीडियो संपादन","Gaming / गेमिंग","Photo Designing / फोटो डिजाइनिंग"],
+a:0,
+e:"Circulation manages issue, return and renewal of library materials. / Circulation मॉड्यूल पुस्तकों के निर्गमन, वापसी एवं नवीनीकरण का प्रबंधन करता है।"
+},
+{
+q:"Which module is used to record newly acquired books in library software?",
+h:"पुस्तकालय सॉफ्टवेयर में नई खरीदी गई पुस्तकों का रिकॉर्ड किस मॉड्यूल में रखा जाता है?",
+o:["Acquisition Module / अधिग्रहण मॉड्यूल","Circulation Module / निर्गमन मॉड्यूल","OPAC Module / ओपैक मॉड्यूल","Serial Control Module / धारावाहिक नियंत्रण मॉड्यूल"],
+a:0,
+e:"The Acquisition Module manages the ordering, receiving and recording of library materials. / Acquisition मॉड्यूल पुस्तकालय सामग्री के आदेश, प्राप्ति एवं रिकॉर्ड का प्रबंधन करता है।"
+},
+{
+q:"What is OPAC?",
+h:"OPAC क्या है?",
+o:["Online Public Access Catalogue / ऑनलाइन पब्लिक एक्सेस कैटलॉग","Open Printed Access Card","Online Private Account Code","Official Public Archive Centre"],
+a:0,
+e:"OPAC allows users to search the library catalogue online. / OPAC उपयोगकर्ताओं को ऑनलाइन पुस्तकालय सूची खोजने की सुविधा देता है।"
+},
+{
+q:"Which module is generally used to manage journals and periodicals?",
+h:"जर्नल एवं पत्रिकाओं के प्रबंधन के लिए सामान्यतः किस मॉड्यूल का उपयोग किया जाता है?",
+o:["Serial Control Module / धारावाहिक नियंत्रण मॉड्यूल","Acquisition Module only / केवल अधिग्रहण मॉड्यूल","User Login Module / यूजर लॉगिन मॉड्यूल","Printing Module / प्रिंटिंग मॉड्यूल"],
+a:0,
+e:"The Serial Control Module manages subscriptions, issues and records of periodicals. / Serial Control मॉड्यूल पत्रिकाओं की सदस्यता, अंक एवं रिकॉर्ड का प्रबंधन करता है।"
+},
+{
+q:"Which standard is commonly used for bibliographic data exchange in library systems?",
+h:"पुस्तकालय प्रणालियों में ग्रंथसूची डेटा के आदान-प्रदान के लिए सामान्यतः किस मानक का उपयोग होता है?",
+o:["MARC 21 / मारक 21","HTML only / केवल HTML","JPEG / जेपीईजी","MP3 / एमपी3"],
+a:0,
+e:"MARC 21 is a widely used standard for representing and exchanging bibliographic and related information. / MARC 21 ग्रंथसूची एवं संबंधित सूचनाओं के प्रस्तुतीकरण और आदान-प्रदान का प्रचलित मानक है।"
+},
+{
+q:"What is the main purpose of the Cataloguing Module?",
+h:"Cataloguing Module का मुख्य उद्देश्य क्या है?",
+o:["Creating and managing bibliographic records / ग्रंथसूची रिकॉर्ड बनाना एवं प्रबंधित करना","Issuing identity cards only / केवल पहचान पत्र जारी करना","Managing electricity bills / बिजली बिल प्रबंधन","Playing audio files / ऑडियो फाइल चलाना"],
+a:0,
+e:"The Cataloguing Module creates, stores and manages bibliographic records of library resources. / Cataloguing मॉड्यूल पुस्तकालय संसाधनों के ग्रंथसूची रिकॉर्ड बनाता एवं प्रबंधित करता है।"
+},
+{
+q:"Which of the following is an important advantage of Library Management Software?",
+h:"Library Management Software का एक महत्वपूर्ण लाभ क्या है?",
+o:["Reduces repetitive manual work / बार-बार होने वाले मैनुअल कार्य को कम करता है","Increases paperwork / कागजी कार्य बढ़ाता है","Stops information retrieval / सूचना खोज बंद करता है","Removes all library records / सभी पुस्तकालय रिकॉर्ड हटाता है"],
+a:0,
+e:"Library software saves time, reduces repetitive work and improves accuracy. / पुस्तकालय सॉफ्टवेयर समय बचाता है, दोहराए जाने वाले कार्य कम करता है एवं शुद्धता बढ़ाता है।"
+},
+{
+q:"Which of the following is a common feature of modern Library Management Software?",
+h:"आधुनिक Library Management Software की सामान्य विशेषता कौन-सी है?",
+o:["Report generation / रिपोर्ट तैयार करना","Only manual searching / केवल मैनुअल खोज","No user records / कोई उपयोगकर्ता रिकॉर्ड नहीं","No catalogue facility / कैटलॉग सुविधा नहीं"],
+a:0,
+e:"Modern library software supports reports, catalogue searching, circulation and user management. / आधुनिक पुस्तकालय सॉफ्टवेयर रिपोर्ट, कैटलॉग खोज, निर्गमन एवं उपयोगकर्ता प्रबंधन की सुविधा देता है।"
+},
+{
+q:"Which software among the following is associated with INFLIBNET Centre?",
+h:"निम्नलिखित में से कौन-सा सॉफ्टवेयर INFLIBNET Centre से संबंधित है?",
+o:["SOUL / सोल","e-Granthalaya / ई-ग्रंथालय","KOHA / कोहा","Tally / टैली"],
+a:0,
+e:"SOUL is developed by INFLIBNET Centre, an autonomous Inter-University Centre of UGC. / SOUL का विकास UGC के स्वायत्त Inter-University Centre, INFLIBNET Centre द्वारा किया गया है।"
+}
+];
+
+let current=0;
+let answers=Array(questions.length).fill(null);
+let timeLeft=15*60;
+let submitted=false;
+let timerInterval;
+
+function renderQuestion(){
+ if(submitted)return;
+ const q=questions[current];
+ document.getElementById("questionNumber").textContent=`Question ${current+1} of ${questions.length}`;
+ document.getElementById("questionText").textContent=q.q;
+ document.getElementById("questionHindi").textContent=q.h;
+ const options=document.getElementById("options");
+ options.innerHTML="";
+ q.o.forEach((option,index)=>{
+  const label=document.createElement("label");
+  label.className="option"+(answers[current]===index?" selected":"");
+  const radio=document.createElement("input");
+  radio.type="radio";radio.name="answer";radio.checked=answers[current]===index;
+  radio.addEventListener("change",()=>{answers[current]=index;renderQuestion();});
+  const span=document.createElement("span");
+  span.textContent=String.fromCharCode(65+index)+". "+option;
+  label.appendChild(radio);label.appendChild(span);options.appendChild(label);
+ });
+ document.getElementById("prevBtn").disabled=current===0;
+ document.getElementById("nextBtn").style.display=current===questions.length-1?"none":"inline-block";
+ document.getElementById("submitBtn").style.display=current===questions.length-1?"inline-block":"none";
+ renderNavigator();
+}
+
+function renderNavigator(){
+ const grid=document.getElementById("questionGrid");grid.innerHTML="";
+ questions.forEach((q,index)=>{
+  const btn=document.createElement("button");
+  btn.className="qn";btn.textContent=index+1;
+  if(answers[index]!==null)btn.classList.add("answered");
+  if(index===current)btn.classList.add("current");
+  btn.addEventListener("click",()=>{current=index;renderQuestion();});
+  grid.appendChild(btn);
+ });
+ const answered=answers.filter(a=>a!==null).length;
+ document.getElementById("progressText").textContent=`Answered: ${answered} / ${questions.length}`;
+ document.getElementById("progressFill").style.width=(answered/questions.length*100)+"%";
+}
+
+function previousQuestion(){if(current>0){current--;renderQuestion();}}
+function nextQuestion(){if(current<questions.length-1){current++;renderQuestion();}}
+
+function updateTimer(){
+ const minutes=Math.floor(timeLeft/60),seconds=timeLeft%60;
+ const timer=document.getElementById("timer");
+ timer.textContent=String(minutes).padStart(2,"0")+":"+String(seconds).padStart(2,"0");
+ if(timeLeft<=60)timer.classList.add("timer-warning");
+ if(timeLeft<=0){clearInterval(timerInterval);finishTest(true);return;}
+ timeLeft--;
+}
+
+function submitTest(){
+ const unanswered=answers.filter(a=>a===null).length;
+ let message="Are you sure you want to submit the test?";
+ if(unanswered>0)message+=`\n${unanswered} question(s) are unanswered.`;
+ if(confirm(message))finishTest(false);
+}
+
+function finishTest(autoSubmitted){
+ if(submitted)return;
+ submitted=true;clearInterval(timerInterval);
+ let correct=0,wrong=0,skipped=0,reviewHTML="";
+ questions.forEach((q,index)=>{
+  const userAnswer=answers[index],isCorrect=userAnswer===q.a;
+  if(userAnswer===null)skipped++;
+  else if(isCorrect)correct++;
+  else wrong++;
+  const userText=userAnswer===null?"Not Answered / उत्तर नहीं दिया":q.o[userAnswer];
+  reviewHTML+=`
+  <div class="review-item">
+   <p><strong>Q${index+1}. ${q.q}</strong></p>
+   <p>${q.h}</p>
+   <p class="${isCorrect?'correct-text':userAnswer===null?'':'wrong-text'}">Your Answer: ${userText}</p>
+   <p class="correct-text">Correct Answer: ${q.o[q.a]}</p>
+   <div class="explanation">${q.e}</div>
+  </div>`;
+ });
+ const percentage=Math.round(correct/questions.length*100);
+ document.getElementById("score").textContent=correct+"/"+questions.length;
+ document.getElementById("correct").textContent=correct;
+ document.getElementById("wrong").textContent=wrong;
+ document.getElementById("skipped").textContent=skipped;
+ document.getElementById("review").innerHTML=reviewHTML;
+ let resultMessage=`Your percentage: ${percentage}%`;
+ if(autoSubmitted)resultMessage+=" | Test auto-submitted because time is over.";
+ if(percentage>=80)resultMessage+=" Excellent performance!";
+ else if(percentage>=60)resultMessage+=" Good effort! Keep practising.";
+ else resultMessage+=" Keep practising and improve your score.";
+ document.getElementById("resultMessage").textContent=resultMessage;
+ document.getElementById("testLayout").style.display="none";
+ document.querySelector(".info").style.display="none";
+ document.getElementById("resultCard").style.display="block";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function restartTest(){
+ if(!confirm("Restart the test? All previous answers will be cleared."))return;
+ current=0;answers=Array(questions.length).fill(null);timeLeft=15*60;submitted=false;
+ document.getElementById("resultCard").style.display="none";
+ document.getElementById("testLayout").style.display="grid";
+ document.querySelector(".info").style.display="grid";
+ document.getElementById("timer").classList.remove("timer-warning");
+ renderQuestion();updateTimer();
+ timerInterval=setInterval(updateTimer,1000);
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+renderQuestion();
+updateTimer();
+timerInterval=setInterval(updateTimer,1000);
+</script>
+</body>
+</html>
+

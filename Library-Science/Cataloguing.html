@@ -1,1 +1,444 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET | Cataloguing Test - 04</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins','Noto Sans Devanagari',sans-serif;background:#f1f5f9;color:#1e293b}
+header{background:linear-gradient(120deg,#0f172a,#0369a1,#0891b2);color:white;text-align:center;padding:30px 15px}
+header h1{font-size:27px;margin-bottom:7px}
+header p{font-size:14px;opacity:.95}
+.container{max-width:1050px;margin:25px auto;padding:0 15px}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.info div{background:white;padding:15px;border-radius:12px;text-align:center;box-shadow:0 3px 12px #0000000c;font-weight:600}
+.info span{display:block;color:#0284c7;font-size:21px}
+.layout{display:grid;grid-template-columns:1fr 260px;gap:20px}
+.card{background:white;border-radius:15px;padding:22px;box-shadow:0 4px 18px #0000000c}
+.topline{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:18px}
+.progress{height:8px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin-bottom:22px}
+.progress-bar{height:100%;width:0;background:#0284c7;transition:.3s}
+.question-number{color:#0284c7;font-weight:700;font-size:14px}
+.question{font-size:18px;font-weight:700;margin-bottom:8px}
+.hindi{font-family:'Noto Sans Devanagari',sans-serif}
+.options{display:grid;gap:12px;margin-top:20px}
+.option{padding:13px 15px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;transition:.2s;font-size:14px}
+.option:hover{border-color:#0284c7;background:#f0f9ff}
+.option.selected{border-color:#0284c7;background:#e0f2fe}
+.buttons{display:flex;justify-content:space-between;gap:10px;margin-top:25px;flex-wrap:wrap}
+button{border:0;padding:11px 20px;border-radius:9px;font-family:inherit;font-weight:600;cursor:pointer}
+.primary{background:#0284c7;color:white}
+.secondary{background:#e2e8f0;color:#334155}
+.danger{background:#dc2626;color:white}
+button:disabled{opacity:.45;cursor:not-allowed}
+.sidebar h3{margin-bottom:15px}
+.number-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.number-grid button{padding:9px 0;background:#e2e8f0;color:#334155}
+.number-grid button.answered{background:#0284c7;color:white}
+.number-grid button.current{outline:3px solid #bae6fd}
+.legend{font-size:12px;margin-top:15px;line-height:2}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+#result{display:none}
+.score{font-size:38px;font-weight:800;color:#0284c7;text-align:center;margin:15px 0}
+.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+.result-stats div{padding:15px;background:#f8fafc;border-radius:10px;text-align:center}
+.result-stats strong{display:block;font-size:22px}
+.review-item{border:1px solid #e2e8f0;border-radius:10px;padding:15px;margin:12px 0}
+.review-item p{margin:6px 0;font-size:14px}
+.explanation{color:#475569;font-size:13px}
+footer{text-align:center;padding:25px;color:#64748b;font-size:13px}
+@media(max-width:750px){.layout{grid-template-columns:1fr}.sidebar{order:-1}.number-grid{grid-template-columns:repeat(10,1fr)}header h1{font-size:21px}}
+@media(max-width:450px){.info{grid-template-columns:1fr}.card{padding:15px}.number-grid{grid-template-columns:repeat(5,1fr)}}
+</style>
+</head>
+
+<body>
+<header>
+    <h1>BIHAR LIBRARY ELIGIBILITY TEST</h1>
+    <p>Library & Information Science | Topic 04</p>
+    <h2 style="margin-top:12px;font-size:21px">Cataloguing</h2>
+    <p class="hindi">सूचीकरण</p>
+</header>
+
+<div class="container">
+    <div class="info">
+        <div>Total Questions<span>15</span></div>
+        <div>Total Marks<span>15</span></div>
+        <div>Time<span id="timer">15:00</span></div>
+    </div>
+
+    <div class="layout">
+        <main class="card" id="quiz">
+            <div class="topline">
+                <span class="question-number" id="qCount">Question 1 of 15</span>
+                <span style="font-size:13px;color:#64748b">1 Mark Each</span>
+            </div>
+            <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+            <div id="questionArea"></div>
+            <div class="buttons">
+                <button class="secondary" id="prevBtn" onclick="previousQuestion()">← Previous</button>
+                <button class="primary" id="nextBtn" onclick="nextQuestion()">Next →</button>
+                <button class="danger" onclick="confirmSubmit()">Submit Test</button>
+            </div>
+        </main>
+
+        <aside class="card sidebar">
+            <h3>Question Navigator</h3>
+            <div class="number-grid" id="numberGrid"></div>
+            <div class="legend">
+                <p><span class="dot" style="background:#0284c7"></span> Answered</p>
+                <p><span class="dot" style="background:#e2e8f0"></span> Not Answered</p>
+            </div>
+        </aside>
+    </div>
+
+    <section class="card" id="result">
+        <h2 style="text-align:center">Test Completed!</h2>
+        <p style="text-align:center">Your Cataloguing Test Result</p>
+        <div class="score" id="score"></div>
+        <div style="text-align:center" id="percentage"></div>
+        <div class="result-stats">
+            <div>Correct<strong id="correctCount" style="color:#16a34a"></strong></div>
+            <div>Wrong<strong id="wrongCount" style="color:#dc2626"></strong></div>
+            <div>Skipped<strong id="skippedCount" style="color:#d97706"></strong></div>
+        </div>
+        <h3 style="margin:20px 0">Answer Review & Explanations</h3>
+        <div id="reviewArea"></div>
+        <div style="text-align:center;margin-top:20px">
+            <button class="primary" onclick="restartTest()">Restart Test</button>
+            <button class="secondary" onclick="location.href='../index.html'">Back to Home</button>
+        </div>
+    </section>
+</div>
+
+<footer>
+    Bihar Library Eligibility Test (BLET)<br>
+    Prepared for Jahnavi Jee<br>
+    Mentor: Ashish Kumar Lucky
+</footer>
+
+<script>
+const questions = [
+{
+q:"What is the meaning of cataloguing in a library?",
+h:"पुस्तकालय में सूचीकरण का क्या अर्थ है?",
+o:[
+"Preparing bibliographic records of documents / दस्तावेजों का ग्रंथसूची विवरण तैयार करना",
+"Repairing books / पुस्तकों की मरम्मत करना",
+"Issuing books / पुस्तकें जारी करना",
+"Purchasing furniture / फर्नीचर खरीदना"
+],
+a:0,
+e:"Cataloguing is the process of creating bibliographic records to identify and locate library materials. / सूचीकरण में पुस्तकालय सामग्री की पहचान और खोज के लिए ग्रंथसूची विवरण तैयार किए जाते हैं।"
+},
+{
+q:"What is the primary objective of a library catalogue?",
+h:"पुस्तकालय सूची का मुख्य उद्देश्य क्या है?",
+o:[
+"To decorate the library / पुस्तकालय को सजाना",
+"To help users find library resources / पाठकों को पुस्तकालय सामग्री खोजने में सहायता करना",
+"To prepare staff salary / कर्मचारियों का वेतन तैयार करना",
+"To count library furniture / पुस्तकालय के फर्नीचर की गिनती करना"
+],
+a:1,
+e:"A catalogue helps users identify, select and locate library resources. / पुस्तकालय सूची पाठकों को सामग्री की पहचान, चयन और खोज में सहायता करती है।"
+},
+{
+q:"Which catalogue arranges entries alphabetically by authors' names?",
+h:"किस सूची में प्रविष्टियाँ लेखकों के नाम के वर्णानुक्रम में व्यवस्थित होती हैं?",
+o:[
+"Classified Catalogue / वर्गीकृत सूची",
+"Dictionary Catalogue / शब्दकोश सूची",
+"Chronological Catalogue / कालानुक्रमिक सूची",
+"Subject Catalogue / विषय सूची"
+],
+a:1,
+e:"A dictionary catalogue combines entries and arranges them alphabetically, like a dictionary. / शब्दकोश सूची में प्रविष्टियाँ शब्दकोश की तरह वर्णानुक्रम में रखी जाती हैं।"
+},
+{
+q:"Which catalogue arranges books according to their subjects and class numbers?",
+h:"कौन-सी सूची पुस्तकों को उनके विषय और वर्ग संख्या के अनुसार व्यवस्थित करती है?",
+o:[
+"Classified Catalogue / वर्गीकृत सूची",
+"Author Catalogue / लेखक सूची",
+"Title Catalogue / शीर्षक सूची",
+"Chronological Catalogue / कालानुक्रमिक सूची"
+],
+a:0,
+e:"A classified catalogue arranges entries according to a classification scheme and class numbers. / वर्गीकृत सूची में प्रविष्टियाँ वर्गीकरण पद्धति और वर्ग संख्या के अनुसार व्यवस्थित होती हैं।"
+},
+{
+q:"What is AACR2?",
+h:"AACR2 क्या है?",
+o:[
+"Anglo-American Cataloguing Rules, Second Edition / एंग्लो-अमेरिकन कैटलॉगिंग रूल्स, सेकंड एडिशन",
+"Advanced Academic Classification Rules / एडवांस्ड एकेडमिक क्लासिफिकेशन रूल्स",
+"American Association of Catalogues / अमेरिकन एसोसिएशन ऑफ कैटलॉग्स",
+"Automated Access and Catalogue Record / ऑटोमेटेड एक्सेस एंड कैटलॉग रिकॉर्ड"
+],
+a:0,
+e:"AACR2 stands for Anglo-American Cataloguing Rules, Second Edition. It provides rules for describing and accessing library materials. / AACR2 सूचीकरण के नियमों का एक महत्वपूर्ण मानक है।"
+},
+{
+q:"Which organization published AACR2 in 1978?",
+h:"AACR2 का प्रकाशन 1978 में किस संस्था द्वारा किया गया था?",
+o:[
+"Library of Congress alone / केवल लाइब्रेरी ऑफ कांग्रेस",
+"American Library Association, Canadian Library Association and CILIP's predecessor, the Library Association / अमेरिकन लाइब्रेरी एसोसिएशन, कैनेडियन लाइब्रेरी एसोसिएशन और लाइब्रेरी एसोसिएशन",
+"UNESCO alone / केवल यूनेस्को",
+"IFLA alone / केवल IFLA"
+],
+a:1,
+e:"AACR2 was published in 1978 through the work of the American Library Association, Canadian Library Association and the Library Association (UK). / AACR2 का प्रकाशन इन तीन पुस्तकालय संघों के सहयोग से हुआ था।"
+},
+{
+q:"What is the full form of RDA?",
+h:"RDA का पूरा नाम क्या है?",
+o:[
+"Resource Description and Access / रिसोर्स डिस्क्रिप्शन एंड एक्सेस",
+"Reference Data Arrangement / रेफरेंस डेटा अरेंजमेंट",
+"Research Document Access / रिसर्च डॉक्यूमेंट एक्सेस",
+"Record Description Application / रिकॉर्ड डिस्क्रिप्शन एप्लीकेशन"
+],
+a:0,
+e:"RDA stands for Resource Description and Access. / RDA का पूरा नाम रिसोर्स डिस्क्रिप्शन एंड एक्सेस है।"
+},
+{
+q:"RDA is primarily designed for which purpose?",
+h:"RDA मुख्य रूप से किस उद्देश्य के लिए बनाया गया है?",
+o:[
+"Library building construction / पुस्तकालय भवन निर्माण",
+"Describing and providing access to resources / संसाधनों का विवरण और उन तक पहुँच प्रदान करना",
+"Book binding / पुस्तक बंधाई",
+"Library budgeting / पुस्तकालय बजट"
+],
+a:1,
+e:"RDA provides guidelines for describing and providing access to resources in different formats and environments. / RDA विभिन्न प्रारूपों में उपलब्ध संसाधनों का विवरण और उन तक पहुँच प्रदान करने के दिशा-निर्देश देता है।"
+},
+{
+q:"Which organization is closely associated with the development of RDA?",
+h:"RDA के विकास से कौन-सी संस्था निकट रूप से जुड़ी है?",
+o:[
+"Joint Steering Committee for Development of RDA (JSC) / RDA विकास हेतु संयुक्त संचालन समिति",
+"World Health Organization / विश्व स्वास्थ्य संगठन",
+"International Labour Organization / अंतरराष्ट्रीय श्रम संगठन",
+"World Trade Organization / विश्व व्यापार संगठन"
+],
+a:0,
+e:"RDA was developed through the work of the Joint Steering Committee, now succeeded by the RDA Steering Committee. / RDA का विकास संयुक्त संचालन समिति के कार्य से हुआ, जिसे बाद में RDA Steering Committee ने आगे बढ़ाया।"
+},
+{
+q:"Which of the following is an important function of a catalogue?",
+h:"निम्नलिखित में से कौन-सा पुस्तकालय सूची का महत्वपूर्ण कार्य है?",
+o:[
+"Identifying a document / दस्तावेज की पहचान करना",
+"Finding a document by subject / विषय के आधार पर दस्तावेज खोजना",
+"Showing available editions / उपलब्ध संस्करणों की जानकारी देना",
+"All of the above / उपर्युक्त सभी"
+],
+a:3,
+e:"A catalogue helps identify documents, find them by subject and distinguish editions. / सूची दस्तावेजों की पहचान, विषय के आधार पर खोज और संस्करणों में अंतर करने में सहायता करती है।"
+},
+{
+q:"What is an author entry in a catalogue?",
+h:"पुस्तकालय सूची में लेखक प्रविष्टि क्या होती है?",
+o:[
+"Entry under the name of the author / लेखक के नाम के अंतर्गत प्रविष्टि",
+"Entry under the price of a book / पुस्तक की कीमत के अंतर्गत प्रविष्टि",
+"Entry under the publisher's address / प्रकाशक के पते के अंतर्गत प्रविष्टि",
+"Entry under the book's weight / पुस्तक के वजन के अंतर्गत प्रविष्टि"
+],
+a:0,
+e:"An author entry provides access to a work through the name of its author. / लेखक प्रविष्टि के माध्यम से पाठक लेखक के नाम से पुस्तक खोज सकता है।"
+},
+{
+q:"Which principle ensures consistency in cataloguing records?",
+h:"सूचीकरण अभिलेखों में एकरूपता सुनिश्चित करने वाला सिद्धांत कौन-सा है?",
+o:[
+"Standardization / मानकीकरण",
+"Random arrangement / अनियमित व्यवस्था",
+"Decoration / सजावट",
+"Price comparison / मूल्य तुलना"
+],
+a:0,
+e:"Standardization ensures that cataloguing records follow consistent rules and formats. / मानकीकरण से सूचीकरण अभिलेखों में समान नियमों और प्रारूपों का पालन होता है।"
+},
+{
+q:"What is a subject heading?",
+h:"विषय शीर्षक क्या होता है?",
+o:[
+"A term used to represent the subject of a document / दस्तावेज के विषय को दर्शाने वाला शब्द या पद",
+"The name of a library building / पुस्तकालय भवन का नाम",
+"The price of a book / पुस्तक की कीमत",
+"The name of the book binder / पुस्तक बाइंडर का नाम"
+],
+a:0,
+e:"Subject headings provide controlled terms for searching documents by subject. / विषय शीर्षक नियंत्रित शब्द होते हैं जिनसे विषय के आधार पर दस्तावेज खोजे जाते हैं।"
+},
+{
+q:"Which principle is important for choosing a preferred title or authorized access point?",
+h:"पसंदीदा शीर्षक या अधिकृत प्रवेश बिंदु चुनने में कौन-सा सिद्धांत महत्वपूर्ण है?",
+o:[
+"Consistency and authority control / एकरूपता और प्राधिकरण नियंत्रण",
+"Random selection / अनियमित चयन",
+"Book colour / पुस्तक का रंग",
+"Physical size / भौतिक आकार"
+],
+a:0,
+e:"Authority control helps maintain consistent forms of names and access points in a catalogue. / प्राधिकरण नियंत्रण से नामों और प्रवेश बिंदुओं के रूप में एकरूपता बनी रहती है।"
+},
+{
+q:"Which of the following is a basic principle of good cataloguing?",
+h:"निम्नलिखित में से कौन-सा अच्छे सूचीकरण का मूल सिद्धांत है?",
+o:[
+"Accuracy / शुद्धता",
+"Consistency / एकरूपता",
+"User convenience / उपयोगकर्ता की सुविधा",
+"All of the above / उपर्युक्त सभी"
+],
+a:3,
+e:"Good cataloguing should be accurate, consistent and convenient for users. / अच्छा सूचीकरण शुद्ध, एकरूप और उपयोगकर्ताओं के लिए सुविधाजनक होना चाहिए।"
+}
+];
+
+let current=0;
+let answers=Array(questions.length).fill(null);
+let timeLeft=15*60;
+let timerInterval=null;
+let submitted=false;
+
+function renderQuestion(){
+    const q=questions[current];
+    document.getElementById("qCount").textContent=`Question ${current+1} of ${questions.length}`;
+    document.getElementById("progressBar").style.width=((current+1)/questions.length*100)+"%";
+
+    let html=`
+    <div class="question">${q.q}</div>
+    <div class="question hindi" style="font-size:16px;color:#475569">${q.h}</div>
+    <div class="options">`;
+
+    q.o.forEach((option,index)=>{
+        html+=`<div class="option ${answers[current]===index?'selected':''}" onclick="selectAnswer(${index})">
+        <strong>${String.fromCharCode(65+index)}.</strong> ${option}
+        </div>`;
+    });
+    html+="</div>";
+    document.getElementById("questionArea").innerHTML=html;
+    document.getElementById("prevBtn").disabled=current===0;
+    document.getElementById("nextBtn").disabled=current===questions.length-1;
+    updateNavigator();
+}
+
+function selectAnswer(index){
+    if(submitted)return;
+    answers[current]=index;
+    renderQuestion();
+}
+function nextQuestion(){if(current<questions.length-1){current++;renderQuestion();}}
+function previousQuestion(){if(current>0){current--;renderQuestion();}}
+function goToQuestion(index){current=index;renderQuestion();}
+
+function updateNavigator(){
+    const grid=document.getElementById("numberGrid");
+    grid.innerHTML="";
+    questions.forEach((q,index)=>{
+        const btn=document.createElement("button");
+        btn.textContent=index+1;
+        if(answers[index]!==null)btn.classList.add("answered");
+        if(index===current)btn.classList.add("current");
+        btn.onclick=()=>goToQuestion(index);
+        grid.appendChild(btn);
+    });
+}
+
+function startTimer(){
+    clearInterval(timerInterval);
+    timerInterval=setInterval(()=>{
+        if(submitted)return;
+        timeLeft--;
+        let min=Math.floor(timeLeft/60);
+        let sec=timeLeft%60;
+        document.getElementById("timer").textContent=
+            String(min).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+        if(timeLeft<=0){
+            clearInterval(timerInterval);
+            submitTest();
+        }
+    },1000);
+}
+
+function confirmSubmit(){
+    const unanswered=answers.filter(a=>a===null).length;
+    if(confirm("Are you sure you want to submit the test? Unanswered questions: "+unanswered)){
+        submitTest();
+    }
+}
+
+function submitTest(){
+    if(submitted)return;
+    submitted=true;
+    clearInterval(timerInterval);
+
+    let correct=0,wrong=0,skipped=0;
+    questions.forEach((q,index)=>{
+        if(answers[index]===null)skipped++;
+        else if(answers[index]===q.a)correct++;
+        else wrong++;
+    });
+
+    const percentage=(correct/questions.length*100).toFixed(2);
+    document.getElementById("quiz").style.display="none";
+    document.querySelector(".layout .sidebar").style.display="none";
+    document.getElementById("result").style.display="block";
+
+    document.getElementById("score").textContent=correct+" / "+questions.length;
+    document.getElementById("percentage").textContent="Percentage: "+percentage+"%";
+    document.getElementById("correctCount").textContent=correct;
+    document.getElementById("wrongCount").textContent=wrong;
+    document.getElementById("skippedCount").textContent=skipped;
+
+    let review="";
+    questions.forEach((q,index)=>{
+        const userAnswer=answers[index];
+        const isCorrect=userAnswer===q.a;
+        let status=userAnswer===null?"Skipped":(isCorrect?"Correct":"Wrong");
+        let statusColor=userAnswer===null?"#d97706":(isCorrect?"#16a34a":"#dc2626");
+
+        review+=`
+        <div class="review-item">
+            <p><strong>Q${index+1}. ${q.q}</strong></p>
+            <p class="hindi">${q.h}</p>
+            <p style="color:${statusColor};font-weight:700">${status}</p>
+            <p>Your Answer: ${userAnswer===null?"Not Answered":q.o[userAnswer]}</p>
+            <p style="color:#16a34a;font-weight:600">Correct Answer: ${q.o[q.a]}</p>
+            <p class="explanation"><strong>Explanation:</strong> ${q.e}</p>
+        </div>`;
+    });
+    document.getElementById("reviewArea").innerHTML=review;
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function restartTest(){
+    current=0;
+    answers=Array(questions.length).fill(null);
+    timeLeft=15*60;
+    submitted=false;
+    document.getElementById("timer").textContent="15:00";
+    document.getElementById("quiz").style.display="block";
+    document.querySelector(".layout .sidebar").style.display="block";
+    document.getElementById("result").style.display="none";
+    renderQuestion();
+    startTimer();
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+renderQuestion();
+startTimer();
+</script>
+</body>
+</html>
+

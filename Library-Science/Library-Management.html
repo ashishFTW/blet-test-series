@@ -1,1 +1,1217 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLET | Library Management</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --navy: #101b42;
+    --blue: #3157d5;
+    --purple: #7439c6;
+    --green: #079b78;
+    --light: #f3f5ff;
+    --white: #ffffff;
+    --text: #263453;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+    background: var(--light);
+    color: var(--text);
+}
+
+.header {
+    background: linear-gradient(120deg, #101b42, #3157d5, #7439c6);
+    color: white;
+    padding: 30px 7%;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: #ffcb72;
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.5);
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.header h1 {
+    font-size: clamp(25px, 4vw, 38px);
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.hindi {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+.header .hindi {
+    color: #ffcb72;
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+.header p {
+    color: #e1e7ff;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.container {
+    max-width: 1150px;
+    margin: 35px auto;
+    padding: 0 18px 50px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.info-box {
+    background: white;
+    padding: 18px;
+    text-align: center;
+    border-radius: 13px;
+    box-shadow: 0 5px 20px rgba(25,45,100,.07);
+}
+
+.info-box h2 {
+    color: var(--blue);
+    font-size: 23px;
+}
+
+.info-box p {
+    color: #7b849e;
+    font-size: 11px;
+}
+
+.test-layout {
+    display: grid;
+    grid-template-columns: 1fr 270px;
+    gap: 22px;
+    align-items: start;
+}
+
+.question-panel,
+.sidebar {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 5px 25px rgba(25,45,100,.07);
+}
+
+.question-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+}
+
+.question-count {
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.timer {
+    background: #fff0e9;
+    color: #d65a22;
+    padding: 9px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.timer.warning {
+    background: #ffe1e1;
+    color: #d00000;
+}
+
+.progress-track {
+    height: 7px;
+    background: #edf0fa;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3157d5, #7439c6);
+    width: 0%;
+    transition: .3s;
+}
+
+.question {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+
+.question-hindi {
+    font-size: 15px;
+    color: #65718f;
+    line-height: 1.8;
+    margin-bottom: 23px;
+}
+
+.options {
+    display: grid;
+    gap: 12px;
+}
+
+.option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border: 1px solid #e5e9f5;
+    background: #f9faff;
+    padding: 14px;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.option:hover {
+    border-color: #9eafff;
+    background: #f0f3ff;
+}
+
+.option.selected {
+    background: #eaf0ff;
+    border-color: var(--blue);
+}
+
+.option-letter {
+    min-width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    background: #e8ecff;
+    color: var(--blue);
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.option-text {
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.option-text small {
+    display: block;
+    color: #77819b;
+    font-size: 12px;
+    margin-top: 3px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+.question-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.btn {
+    border: none;
+    padding: 12px 21px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: var(--blue);
+    color: white;
+}
+
+.btn-secondary {
+    background: #edf0fa;
+    color: #34415e;
+}
+
+.btn-submit {
+    background: var(--green);
+    color: white;
+}
+
+.sidebar h3 {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.sidebar p {
+    font-size: 11px;
+    color: #818ba3;
+    margin-bottom: 18px;
+}
+
+.number-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 9px;
+}
+
+.number-btn {
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid #e1e6f3;
+    background: #f5f6fb;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #56617c;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.number-btn.active {
+    background: var(--blue);
+    color: white;
+    border-color: var(--blue);
+}
+
+.number-btn.answered {
+    background: #dff6ed;
+    color: #078568;
+    border-color: #a5e2cd;
+}
+
+.number-btn.active.answered {
+    background: var(--blue);
+    color: white;
+}
+
+.legend {
+    display: grid;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 11px;
+    color: #65718f;
+}
+
+.legend-color {
+    width: 13px;
+    height: 13px;
+    border-radius: 4px;
+}
+
+.submit-full {
+    width: 100%;
+    margin-top: 23px;
+}
+
+.result-panel {
+    display: none;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(25,45,100,.07);
+}
+
+.result-heading {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.result-heading h2 {
+    color: var(--blue);
+    font-size: 28px;
+}
+
+.result-score {
+    font-size: 45px;
+    color: var(--green);
+    font-weight: 800;
+    margin: 15px 0;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.result-stat {
+    background: #f5f7ff;
+    padding: 17px 8px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.result-stat h3 {
+    font-size: 22px;
+    color: var(--blue);
+}
+
+.result-stat p {
+    font-size: 10px;
+    color: #75809a;
+}
+
+.review-heading {
+    margin: 30px 0 15px;
+    font-size: 19px;
+}
+
+.review-item {
+    border: 1px solid #e8ebf4;
+    border-radius: 11px;
+    padding: 17px;
+    margin-bottom: 12px;
+}
+
+.review-item h4 {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+
+.review-item p {
+    font-size: 12px;
+    line-height: 1.8;
+    margin-top: 5px;
+}
+
+.review-correct {
+    color: #078568;
+}
+
+.review-wrong {
+    color: #d44242;
+}
+
+.explanation {
+    color: #65718f;
+    background: #f6f7fc;
+    padding: 11px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.result-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+footer {
+    background: var(--navy);
+    color: #d5dcf4;
+    text-align: center;
+    padding: 25px 15px;
+    font-size: 11px;
+    line-height: 2;
+}
+
+footer strong {
+    color: #ffbd59;
+}
+
+@media(max-width:800px) {
+    .test-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: -1;
+    }
+
+    .number-grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}
+
+@media(max-width:500px) {
+    .info-grid {
+        gap: 7px;
+    }
+
+    .info-box {
+        padding: 12px 5px;
+    }
+
+    .info-box h2 {
+        font-size: 18px;
+    }
+
+    .info-box p {
+        font-size: 9px;
+    }
+
+    .question-panel {
+        padding: 17px;
+    }
+
+    .number-grid {
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    .result-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .question-actions .btn {
+        padding: 11px 13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-top">
+        <div class="logo">BLET <span>PREPARATION</span></div>
+        <a href="../index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <h1>Library Management</h1>
+    <div class="hindi">पुस्तकालय प्रबंधन</div>
+
+    <p>
+        Bihar Library Eligibility Test (BLET) – Topic-wise Practice Test.
+        Practice important questions on circulation, stock verification,
+        collection development, budgeting and library administration.
+    </p>
+</header>
+
+<main class="container">
+
+    <section class="info-grid">
+        <div class="info-box">
+            <h2>15</h2>
+            <p>Total Questions</p>
+        </div>
+        <div class="info-box">
+            <h2>15</h2>
+            <p>Total Marks</p>
+        </div>
+        <div class="info-box">
+            <h2>15 Min</h2>
+            <p>Time Duration</p>
+        </div>
+    </section>
+
+    <div class="test-layout" id="testLayout">
+
+        <section class="question-panel">
+
+            <div class="question-top">
+                <div class="question-count" id="questionCount">
+                    Question 1 of 15
+                </div>
+                <div class="timer" id="timer">15:00</div>
+            </div>
+
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div id="questionArea"></div>
+
+            <div class="question-actions">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()">
+                    ← Previous
+                </button>
+
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+                    Next →
+                </button>
+            </div>
+
+        </section>
+
+        <aside class="sidebar">
+
+            <h3>Question Navigator</h3>
+            <p>Click any number to visit that question.</p>
+
+            <div class="number-grid" id="numberGrid"></div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background:#3157d5"></span>
+                    Current Question
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background:#dff6ed"></span>
+                    Answered
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background:#f5f6fb"></span>
+                    Not Answered
+                </div>
+            </div>
+
+            <button class="btn btn-submit submit-full" onclick="submitTest()">
+                Submit Test
+            </button>
+
+        </aside>
+
+    </div>
+
+    <section class="result-panel" id="resultPanel"></section>
+
+</main>
+
+<footer>
+    <strong>BLET Online Test Series</strong><br>
+    Specially Designed for Jahnavi Jee<br>
+    Learn • Practice • Improve • Succeed<br>
+    © 2026 | Mentor: Ashish Kumar Lucky
+</footer>
+
+<script>
+
+/* ======================================
+   QUESTION BANK - 15 MCQs
+====================================== */
+
+const questions = [
+
+{
+    q: "What is the main purpose of the circulation section in a library?",
+    h: "पुस्तकालय के निर्गमन अनुभाग का मुख्य उद्देश्य क्या है?",
+    options: [
+        ["Issuing and returning library materials", "पुस्तकालय सामग्री का निर्गमन एवं वापसी"],
+        ["Preparing the annual budget", "वार्षिक बजट तैयार करना"],
+        ["Classifying books", "पुस्तकों का वर्गीकरण करना"],
+        ["Repairing library furniture", "पुस्तकालय के फर्नीचर की मरम्मत करना"]
+    ],
+    answer: 0,
+    explanation: "The circulation section manages the issue, return and renewal of library materials."
+},
+
+{
+    q: "Which record is commonly used to maintain details of books added to a library collection?",
+    h: "पुस्तकालय संग्रह में जोड़ी गई पुस्तकों का विवरण रखने के लिए सामान्यतः किस अभिलेख का उपयोग किया जाता है?",
+    options: [
+        ["Attendance Register", "उपस्थिति रजिस्टर"],
+        ["Accession Register", "परिग्रहण रजिस्टर"],
+        ["Cash Book", "रोकड़ बही"],
+        ["Visitor Register", "आगंतुक रजिस्टर"]
+    ],
+    answer: 1,
+    explanation: "The accession register records details of documents added to the library collection, usually with unique accession numbers."
+},
+
+{
+    q: "What is stock verification in a library?",
+    h: "पुस्तकालय में स्टॉक सत्यापन क्या है?",
+    options: [
+        ["Checking the physical availability of library materials against records", "अभिलेखों के अनुसार पुस्तकालय सामग्री की भौतिक उपलब्धता की जाँच"],
+        ["Preparing a list of new books only", "केवल नई पुस्तकों की सूची तैयार करना"],
+        ["Issuing books to readers", "पाठकों को पुस्तकें जारी करना"],
+        ["Preparing library membership cards", "पुस्तकालय सदस्यता कार्ड बनाना"]
+    ],
+    answer: 0,
+    explanation: "Stock verification checks whether library materials physically exist as recorded in the library records."
+},
+
+{
+    q: "Which method is commonly used for stock verification in a library?",
+    h: "पुस्तकालय में स्टॉक सत्यापन के लिए सामान्यतः किस विधि का उपयोग किया जाता है?",
+    options: [
+        ["Physical checking of books against records", "अभिलेखों के अनुसार पुस्तकों की भौतिक जाँच"],
+        ["Checking only the library building", "केवल पुस्तकालय भवन की जाँच"],
+        ["Counting library staff", "पुस्तकालय कर्मचारियों की गिनती"],
+        ["Checking electricity bills", "बिजली बिलों की जाँच"]
+    ],
+    answer: 0,
+    explanation: "Physical verification involves checking the actual books and comparing them with catalogue or accession records."
+},
+
+{
+    q: "What does weeding mean in library management?",
+    h: "पुस्तकालय प्रबंधन में वीडिंग (Weeding) का क्या अर्थ है?",
+    options: [
+        ["Adding more books to the library", "पुस्तकालय में अधिक पुस्तकें जोड़ना"],
+        ["Removing outdated, damaged or irrelevant materials", "पुरानी, क्षतिग्रस्त या अप्रासंगिक सामग्री को हटाना"],
+        ["Issuing books to students", "विद्यार्थियों को पुस्तकें जारी करना"],
+        ["Preparing a book catalogue", "पुस्तक सूची तैयार करना"]
+    ],
+    answer: 1,
+    explanation: "Weeding is the systematic removal of outdated, damaged, duplicate or irrelevant materials from a collection."
+},
+
+{
+    q: "What is the primary purpose of library budgeting?",
+    h: "पुस्तकालय बजट निर्माण का मुख्य उद्देश्य क्या है?",
+    options: [
+        ["To estimate income and expenditure", "आय एवं व्यय का अनुमान लगाना"],
+        ["To classify books", "पुस्तकों का वर्गीकरण करना"],
+        ["To issue library cards", "पुस्तकालय कार्ड जारी करना"],
+        ["To arrange books on shelves", "अलमारियों में पुस्तकें व्यवस्थित करना"]
+    ],
+    answer: 0,
+    explanation: "A library budget is a financial plan that estimates expected income and expenditure for a given period."
+},
+
+{
+    q: "Which of the following is generally a recurring expenditure in a library?",
+    h: "निम्नलिखित में से कौन-सा सामान्यतः पुस्तकालय का आवर्ती व्यय है?",
+    options: [
+        ["Purchase of land", "भूमि की खरीद"],
+        ["Construction of a new building", "नए भवन का निर्माण"],
+        ["Staff salaries", "कर्मचारियों का वेतन"],
+        ["Purchase of a building", "भवन की खरीद"]
+    ],
+    answer: 2,
+    explanation: "Staff salaries are normally recurring expenses because they are paid regularly."
+},
+
+{
+    q: "What is the main purpose of accounting in a library?",
+    h: "पुस्तकालय में लेखांकन का मुख्य उद्देश्य क्या है?",
+    options: [
+        ["Maintaining financial records and transactions", "वित्तीय अभिलेखों एवं लेन-देन का रख-रखाव"],
+        ["Preparing book summaries", "पुस्तकों का सारांश तैयार करना"],
+        ["Classifying library documents", "पुस्तकालय दस्तावेजों का वर्गीकरण करना"],
+        ["Issuing books to members", "सदस्यों को पुस्तकें जारी करना"]
+    ],
+    answer: 0,
+    explanation: "Library accounting records and monitors financial transactions, receipts and payments."
+},
+
+{
+    q: "What is collection development in a library?",
+    h: "पुस्तकालय में संग्रह विकास क्या है?",
+    options: [
+        ["Systematic selection, acquisition and evaluation of library resources", "पुस्तकालय संसाधनों का व्यवस्थित चयन, अधिग्रहण एवं मूल्यांकन"],
+        ["Only repairing damaged books", "केवल क्षतिग्रस्त पुस्तकों की मरम्मत"],
+        ["Only arranging furniture", "केवल फर्नीचर की व्यवस्था"],
+        ["Only issuing membership cards", "केवल सदस्यता कार्ड जारी करना"]
+    ],
+    answer: 0,
+    explanation: "Collection development involves planning, selecting, acquiring and evaluating resources according to users' needs."
+},
+
+{
+    q: "Which of the following is an important factor in selecting books for a library?",
+    h: "पुस्तकालय के लिए पुस्तकों का चयन करते समय निम्नलिखित में से कौन-सा महत्वपूर्ण कारक है?",
+    options: [
+        ["Users' needs and relevance of the subject", "उपयोगकर्ताओं की आवश्यकताएँ एवं विषय की प्रासंगिकता"],
+        ["Colour of the library walls", "पुस्तकालय की दीवारों का रंग"],
+        ["Number of windows", "खिड़कियों की संख्या"],
+        ["Location of the librarian's office", "पुस्तकालयाध्यक्ष के कार्यालय का स्थान"]
+    ],
+    answer: 0,
+    explanation: "User requirements, subject relevance, accuracy and usefulness are important selection criteria."
+},
+
+{
+    q: "Which of the following is a common method of acquiring library books?",
+    h: "निम्नलिखित में से पुस्तकालय की पुस्तकें प्राप्त करने की सामान्य विधि कौन-सी है?",
+    options: [
+        ["Purchase", "क्रय"],
+        ["Stock verification", "स्टॉक सत्यापन"],
+        ["Weeding", "वीडिंग"],
+        ["Book repair", "पुस्तक मरम्मत"]
+    ],
+    answer: 0,
+    explanation: "Libraries acquire books through purchase, gifts, exchange and other approved methods."
+},
+
+{
+    q: "What is the purpose of an accession number?",
+    h: "परिग्रहण संख्या (Accession Number) का उद्देश्य क्या है?",
+    options: [
+        ["To uniquely identify a document in the library collection", "पुस्तकालय संग्रह में किसी दस्तावेज की विशिष्ट पहचान करना"],
+        ["To identify the reader's age", "पाठक की आयु की पहचान करना"],
+        ["To calculate staff salary", "कर्मचारियों का वेतन निर्धारित करना"],
+        ["To identify the library building", "पुस्तकालय भवन की पहचान करना"]
+    ],
+    answer: 0,
+    explanation: "An accession number is a unique identification number assigned to a document when it is added to the collection."
+},
+
+{
+    q: "Which activity helps maintain library books in good physical condition?",
+    h: "कौन-सी गतिविधि पुस्तकालय की पुस्तकों को अच्छी भौतिक स्थिति में बनाए रखने में सहायता करती है?",
+    options: [
+        ["Preservation and repair", "संरक्षण एवं मरम्मत"],
+        ["Weeding all books", "सभी पुस्तकों को हटाना"],
+        ["Ignoring damaged books", "क्षतिग्रस्त पुस्तकों की अनदेखी करना"],
+        ["Avoiding stock verification", "स्टॉक सत्यापन से बचना"]
+    ],
+    answer: 0,
+    explanation: "Proper handling, cleaning, preservation and repair help maintain library materials."
+},
+
+{
+    q: "What is the main purpose of book renewal in a library?",
+    h: "पुस्तकालय में पुस्तक नवीनीकरण (Renewal) का मुख्य उद्देश्य क्या है?",
+    options: [
+        ["To extend the borrowing period of an issued book", "जारी की गई पुस्तक की उधार अवधि बढ़ाना"],
+        ["To permanently remove a book", "पुस्तक को स्थायी रूप से हटाना"],
+        ["To purchase a new book", "नई पुस्तक खरीदना"],
+        ["To change the book's title", "पुस्तक का शीर्षक बदलना"]
+    ],
+    answer: 0,
+    explanation: "Renewal extends the borrowing period of a book according to library rules and availability."
+},
+
+{
+    q: "Which of the following best describes acquisition in a library?",
+    h: "निम्नलिखित में से कौन पुस्तकालय में अधिग्रहण का सर्वोत्तम वर्णन करता है?",
+    options: [
+        ["The process of obtaining books and other information resources", "पुस्तकों एवं अन्य सूचना संसाधनों को प्राप्त करने की प्रक्रिया"],
+        ["The process of removing old books only", "केवल पुरानी पुस्तकों को हटाने की प्रक्रिया"],
+        ["The process of issuing books to readers", "पाठकों को पुस्तकें जारी करने की प्रक्रिया"],
+        ["The process of preparing library furniture", "पुस्तकालय फर्नीचर तैयार करने की प्रक्रिया"]
+    ],
+    answer: 0,
+    explanation: "Acquisition is the process of obtaining resources for the library through purchase, gifts, exchange or other means."
+}
+
+];
+
+/* ======================================
+   TEST VARIABLES
+====================================== */
+
+let currentQuestion = 0;
+let answers = new Array(questions.length).fill(null);
+let timeLeft = 15 * 60;
+let timerInterval = null;
+let submitted = false;
+
+/* ======================================
+   DISPLAY QUESTION
+====================================== */
+
+function renderQuestion() {
+
+    if (submitted) return;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionCount").textContent =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
+
+    document.getElementById("progressFill").style.width =
+        ((currentQuestion + 1) / questions.length * 100) + "%";
+
+    let html = `
+        <div class="question">
+            Q${currentQuestion + 1}. ${q.q}
+        </div>
+
+        <div class="question-hindi hindi">
+            ${q.h}
+        </div>
+
+        <div class="options">
+    `;
+
+    q.options.forEach((option, index) => {
+
+        let selected = answers[currentQuestion] === index ? "selected" : "";
+
+        html += `
+            <div class="option ${selected}"
+                 onclick="selectAnswer(${index})">
+
+                <div class="option-letter">
+                    ${String.fromCharCode(65 + index)}
+                </div>
+
+                <div class="option-text">
+                    ${option[0]}
+                    <small>${option[1]}</small>
+                </div>
+
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+
+    document.getElementById("questionArea").innerHTML = html;
+
+    document.getElementById("prevBtn").disabled =
+        currentQuestion === 0;
+
+    document.getElementById("prevBtn").style.opacity =
+        currentQuestion === 0 ? ".5" : "1";
+
+    document.getElementById("nextBtn").textContent =
+        currentQuestion === questions.length - 1
+        ? "Finish →"
+        : "Next →";
+
+    renderNavigator();
+}
+
+/* ======================================
+   SELECT ANSWER
+====================================== */
+
+function selectAnswer(index) {
+
+    if (submitted) return;
+
+    answers[currentQuestion] = index;
+    renderQuestion();
+}
+
+/* ======================================
+   QUESTION NAVIGATOR
+====================================== */
+
+function renderNavigator() {
+
+    let html = "";
+
+    questions.forEach((q, index) => {
+
+        let classes = "number-btn";
+
+        if (answers[index] !== null) {
+            classes += " answered";
+        }
+
+        if (index === currentQuestion) {
+            classes += " active";
+        }
+
+        html += `
+            <button class="${classes}"
+                onclick="goToQuestion(${index})">
+                ${index + 1}
+            </button>
+        `;
+    });
+
+    document.getElementById("numberGrid").innerHTML = html;
+}
+
+function goToQuestion(index) {
+    if (submitted) return;
+
+    currentQuestion = index;
+    renderQuestion();
+}
+
+/* ======================================
+   NEXT / PREVIOUS
+====================================== */
+
+function nextQuestion() {
+
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion();
+    } else {
+        submitTest();
+    }
+}
+
+function previousQuestion() {
+
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion();
+    }
+}
+
+/* ======================================
+   TIMER
+====================================== */
+
+function updateTimer() {
+
+    if (submitted) return;
+
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+
+    let formatted =
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+
+    document.getElementById("timer").textContent = formatted;
+
+    if (timeLeft <= 60) {
+        document.getElementById("timer").classList.add("warning");
+    }
+
+    if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        alert("Time is over! Your test will be submitted automatically.");
+        submitTest(true);
+        return;
+    }
+
+    timeLeft--;
+}
+
+timerInterval = setInterval(updateTimer, 1000);
+updateTimer();
+
+/* ======================================
+   SUBMIT TEST
+====================================== */
+
+function submitTest(autoSubmit = false) {
+
+    if (submitted) return;
+
+    let answered = answers.filter(a => a !== null).length;
+
+    if (!autoSubmit) {
+
+        let confirmSubmit = confirm(
+            "Are you sure you want to submit the test?\n\n" +
+            "Answered: " + answered + " / " + questions.length
+        );
+
+        if (!confirmSubmit) return;
+    }
+
+    submitted = true;
+
+    clearInterval(timerInterval);
+
+    let correct = 0;
+    let wrong = 0;
+    let skipped = 0;
+
+    questions.forEach((q, index) => {
+
+        if (answers[index] === null) {
+            skipped++;
+        }
+        else if (answers[index] === q.answer) {
+            correct++;
+        }
+        else {
+            wrong++;
+        }
+
+    });
+
+    let percentage = Math.round(
+        (correct / questions.length) * 100
+    );
+
+    document.getElementById("testLayout").style.display = "none";
+
+    let resultHTML = `
+        <div class="result-heading">
+
+            <h2>Test Completed!</h2>
+
+            <p class="hindi">
+                परीक्षा पूरी हुई! आपका परिणाम नीचे दिया गया है।
+            </p>
+
+            <div class="result-score">
+                ${correct} / ${questions.length}
+            </div>
+
+            <p>Your Score: ${percentage}%</p>
+
+        </div>
+
+        <div class="result-grid">
+
+            <div class="result-stat">
+                <h3>${correct}</h3>
+                <p>Correct Answers</p>
+            </div>
+
+            <div class="result-stat">
+                <h3>${wrong}</h3>
+                <p>Wrong Answers</p>
+            </div>
+
+            <div class="result-stat">
+                <h3>${skipped}</h3>
+                <p>Skipped</p>
+            </div>
+
+            <div class="result-stat">
+                <h3>${percentage}%</h3>
+                <p>Percentage</p>
+            </div>
+
+        </div>
+
+        <h3 class="review-heading">Answer Review & Explanations</h3>
+    `;
+
+    questions.forEach((q, index) => {
+
+        let isCorrect = answers[index] === q.answer;
+
+        let status = answers[index] === null
+            ? "Not Attempted"
+            : isCorrect
+            ? "Correct"
+            : "Incorrect";
+
+        let statusClass = isCorrect
+            ? "review-correct"
+            : "review-wrong";
+
+        let selectedAnswer = answers[index] === null
+            ? "Not Answered"
+            : q.options[answers[index]][0] +
+              " / " + q.options[answers[index]][1];
+
+        let correctAnswer =
+            q.options[q.answer][0] +
+            " / " + q.options[q.answer][1];
+
+        resultHTML += `
+
+            <div class="review-item">
+
+                <h4>
+                    Q${index + 1}. ${q.q}
+                    <br>
+                    <span class="hindi">${q.h}</span>
+                </h4>
+
+                <p class="${statusClass}">
+                    <strong>Status: ${status}</strong>
+                </p>
+
+                <p>
+                    <strong>Your Answer:</strong> ${selectedAnswer}
+                </p>
+
+                <p class="review-correct">
+                    <strong>Correct Answer:</strong> ${correctAnswer}
+                </p>
+
+                <p class="explanation">
+                    <strong>Explanation:</strong> ${q.explanation}
+                </p>
+
+            </div>
+
+        `;
+    });
+
+    resultHTML += `
+        <div class="result-buttons">
+
+            <button class="btn btn-primary" onclick="restartTest()">
+                Restart Test
+            </button>
+
+            <a href="../index.html" class="btn btn-secondary"
+               style="text-decoration:none">
+                Back to Home
+            </a>
+
+        </div>
+    `;
+
+    const resultPanel = document.getElementById("resultPanel");
+
+    resultPanel.innerHTML = resultHTML;
+    resultPanel.style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+/* ======================================
+   RESTART TEST
+====================================== */
+
+function restartTest() {
+
+    currentQuestion = 0;
+    answers = new Array(questions.length).fill(null);
+    timeLeft = 15 * 60;
+    submitted = false;
+
+    document.getElementById("testLayout").style.display = "grid";
+
+    document.getElementById("resultPanel").style.display = "none";
+
+    document.getElementById("timer").classList.remove("warning");
+
+    renderQuestion();
+
+    updateTimer();
+
+    timerInterval = setInterval(updateTimer, 1000);
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+/* ======================================
+   INITIALIZE TEST
+====================================== */
+
+renderQuestion();
+
+</script>
+
+</body>
+</html>
+
